@@ -1,0 +1,7 @@
+8b/10b Encoder/Decoder
+Reed-Solomon Encoder/Decoder
+Sine-Cosine Look-Up Table
+Single DCM
+Floating-Point Operator
+FIFO Generator
+
