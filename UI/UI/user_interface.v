@@ -37,13 +37,17 @@ module user_interface(
     input down,
     input left,
     input right,
+	input init,
 	input incoming_call,
 	input inc_address,
     output reg [7:0] address,
     output reg [2:0] command,
 	output text,
-    output [2:0] current_state,
+    output reg [2:0] current_state,
     );
+	
+	//commands
+	parameter [2:0] init_signal;
 	
 	//states
 	parameter [2:0] idle=0; //no current calls
@@ -53,54 +57,91 @@ module user_interface(
 	parameter [2:0] call_while_busy=3'b4; //user in call, receiving incoming call
 	parameter [2:0] initialize=3'b5; //initialize node
 	
+	//overall parameters
+	assign init=0; //should this be assigned by me?
+	parameter def_display=1; //turn default display on or off
+	parameter conference=0; //conference call on/off
+	parameter selective=0; //selective mode switch for call forwarding
+	parameter block_state=0; //0=off,1=on call blocking
+	parameter voicemail_state=0; //0=off,1=on
+	
 	//main menu parameters
-	parameter [4:0] call_number=0;//start a phone call
-	parameter [4:0] volume=5'b1; //set headphone volume
-	parameter [4:0] voicemail=5'b2;//voicemail options
-	parameter [4:0] call_block=5'b3;//call block options
-	parameter [4:0] call_fwd=5'b4;//call forwarding options
-	parameter [4:0] get_num=5'b5;//display FPGA's number
-	parameter [4:0] set_time=5'b6;//set system date and time
+	parameter [5:0] call_number=0;//start a phone call
+	parameter [5:0] volume=6'b1; //set headphone volume
+	parameter [5:0] voicemail=6'b2;//voicemail options
+	parameter [5:0] call_block=6'b3;//call block options
+	parameter [5:0] call_fwd=6'b4;//call forwarding options
+	parameter [5:0] get_num=6'b5;//display FPGA's number
+	parameter [5:0] set_time=6'b6;//set system date and time
 	
 	//call number
-	parameter [4:0] dialing=5'b7;
+	parameter [5:0] dialing=6'b7;
 	
 	//volume
-	parameter [4:0] change_vol=5'b8;
+	parameter [5:0] change_vol=6'b8;
 	
 	//voicemail menu
-	parameter [4:0] toggle_v=5'b9; //toggle voicemail on/off
-	parameter [4:0] unread=5'b10; //unread voicemail
-	parameter [4:0] play_unread=5'b11; //play unread voicemail
-	parameter [4:0] del_unread=5'b12; //delete all unread voicemail
-	parameter [4:0] saved=5'b13; //saved voicemail
-	parameter [4:0] play_saved=5'b14; //play saved voicemail
-	parameter [4:0] del_saved=5'b15; //delete saved voicemail
-	parameter [4:0] del_all_saved=5'b16; //delete all saved voicemail
+	parameter [5:0] toggle_v=6'b9; //toggle voicemail on/off
+	parameter [5:0] unread=6'b10; //unread voicemail
+	parameter [5:0] play_unread=6'b11; //play unread voicemail
+	parameter [5:0] del_unread=6'b12; //delete all unread voicemail
+	parameter [5:0] saved=6'b13; //saved voicemail
+	parameter [5:0] play_saved=6'b14; //play saved voicemail
+	parameter [5:0] del_saved=6'b15; //delete saved voicemail
+	parameter [5:0] del_all_saved=6'b16; //delete all saved voicemail
 	
-	parameter voicemail_state=0; //0=off,1=on
+	
 	
 	//scrolling through voicemail?
 	
 	//call blocking menu
-	parameter [4:0] toggle_block=5'b17; //toggle call blocking on/off
-	parameter [4:0] view_blocked=5'b18; //view blocked numbers
-	parameter [4:0] add_blocked=5'b19; //add blocked number
-	parameter [4:0] del_blocked=5'b20; //delete a blocked number
-	parameter [4:0] del_all_blocked=5'b21; //delete all blocked numbers
+	parameter [5:0] toggle_block=6'b17; //toggle call blocking on/off
+	parameter [5:0] view_blocked=6'b18; //view blocked numbers
+	parameter [5:0] add_blocked=6'b19; //add blocked number
+	parameter [5:0] del_blocked=6'b20; //delete a blocked number
+	parameter [5:0] del_all_blocked=6'b21; //delete all blocked numbers
 	
-	parameter block_state=0; //0=off,1=on
+	
 	
 	//how to make list of blocked numbers?
 	
 	//call forward menu
-	parameter [4:0] toggle_fwd=5'b22; //toggle call forwarding on/off
-	parameter [4:0] fwd_mode=5'b23; 
-	parameter [4:0] set_fwd_number=5'b24; 
-	 
+	parameter [5:0] toggle_fwd=6'b22; //toggle call forwarding on/off
+	parameter [5:0] fwd_mode=6'b23; 
+	parameter [5:0] set_fwd_number=6'b24; 
+	
+	//incoming call menu
+	parameter [5:0] accept=6'b25; 
+	parameter [5:0] reject=6'b26; 
+	parameter [5:0] send_to_v=6'b27; //send to voicemail
+	
+	//outgoing call menu
+	parameter [5:0] end_call=6'b28; 
+	
+	//busy (call-in-progress) menu 
+	parameter [5:0] end_call=6'b29;
+	parameter [5:0] set_volume=6'b31;
+	parameter [5:0] called_IDs=6'b32;
+	parameter [5:0] xfer_call=6'b33;
+	parameter [5:0] hold_call=6'b34;
+	parameter [5:0] resume_call=6'b35;
+	parameter [5:0] conf_call=6'b36;
+	
+	//incoming while busy 
+	parameter [5:0] reject_call=6'b37;
+	parameter [5:0] send_2_v=6'b38; //send to voicemail
+	parameter [5:0] end_call=6'b39;
+	parameter [5:0] hold_curr=6'b40; //hold current call
+	
+	//default displays
+	parameter [5:0] def_init=6'b41;
+	parameter [5:0] def_idle=6'b42;
+	parameter [5:0] def_incoming=6'b43;
+	parameter [5:0] def_outgoing=6'b44;
+	parameter [5:0] def_busy=6'b45;
+	parameter [5:0] def_inc_busy=6'b45; //default display for incoming-while-busy state
 	
 	
-
 	
 	
 	//UI=>application layer commands
@@ -109,7 +150,7 @@ module user_interface(
 	reg [2:0] state=initialize;
 	assign current_state=state;
 	
-	reg [4:0] menu_item=0;
+	reg [5:0] menu_item=def_init;
 	
 
 	
@@ -121,15 +162,29 @@ module user_interface(
 		else begin
 			case (state) begin
 				initialize: begin
-					if (enter) begin
+					if (init) begin //another node already initialized system
 						state<=idle;
+						menu_item<=def_idle;
 					end
+					
+					else if (enter) begin
+						command<=init_signal;
+						if (init) begin	//system has been initialized
+							state<=idle;
+							menu_item<=def_idle;
+						end
+					end		
 				end
 				
 				idle: begin	// idle state logic
 				
+					if (incoming_call) begin
+						state<=incoming;
+						//transition menu_item here
+					end
+				
 					
-					if (up) begin
+					else if (up) begin
 						case (menu_item) begin
 							//navigate main menu
 							call_number: menu_item<=set_time;
@@ -238,8 +293,14 @@ module user_interface(
 							del_all_blocked: begin
 							end
 							
+							//display Number
+							get_num: begin				
+							end
 							
-							
+							//set sys date and time
+							set_time: begin
+							end
+	
 						endcase
 					end
 					
@@ -264,6 +325,20 @@ module user_interface(
 					
 				end
 				
+				incoming: begin
+				end
+				
+				outgoing: begin
+				end
+				
+				busy: begin
+				end
+				
+				call_while_busy: begin
+				end
+				
+				
+				
 			endcase
 		end
 	end
@@ -272,3 +347,5 @@ module user_interface(
 
 
 endmodule
+
+				
