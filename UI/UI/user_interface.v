@@ -46,8 +46,7 @@ module user_interface(
     output reg [2:0] current_state,
     );
 	
-	//commands
-	parameter [2:0] init_signal;
+	
 	
 	//states
 	parameter [2:0] idle=0; //no current calls
@@ -64,6 +63,17 @@ module user_interface(
 	parameter selective=0; //selective mode switch for call forwarding
 	parameter block_state=0; //0=off,1=on call blocking
 	parameter voicemail_state=0; //0=off,1=on
+	
+	//call forward mode states
+	parameter [1:0] all=0;
+	parameter [1:0] busy=3'b1;
+	parameter [1:0] no_answer=3'b2;
+	parameter [1:0] selective=3'b3;
+	
+	
+	parameter [1:0] fwd_mode_state = 3'b3; //call forward mode, default is selective
+	parameter [1:0] temp_fwd_mode;
+	parameter fwd_state = 0; //toggle forwarding on/off
 	
 	//main menu parameters
 	parameter [5:0] call_number=0;//start a phone call
@@ -107,8 +117,14 @@ module user_interface(
 	
 	//call forward menu
 	parameter [5:0] toggle_fwd=6'b22; //toggle call forwarding on/off
-	parameter [5:0] fwd_mode=6'b23; 
-	parameter [5:0] set_fwd_number=6'b24; 
+	parameter [5:0] fwd_mode=6'b23; //set forwarding mode
+	parameter [5:0] set_fwd_number=6'b24; //set forwarding number
+	parameter [5:0] view_sel_num=6'b50;	//view selective numbers
+	parameter [5:0] add_sel_num=6'b51;	//add selective numbers
+	parameter [5:0] del_sel_num=6'b52;	//delete selective numbers
+	parameter [5:0] del_all_sel_num=6'b53; //delete all selective numbers
+	
+	parameter [7:0] fwd_address; //forward address added
 	
 	//display user's number
 	parameter [5:0] disp_num = 6'b48;
@@ -152,7 +168,9 @@ module user_interface(
 	
 	
 	//UI=>application layer commands
-	parameter [2:0] make_call;
+	parameter [2:0] init_signal=0; //user wants to initialize system
+	parameter [2:0] make_call=3'b1;	 //user trying to make phone call
+	
 	
 	reg [2:0] state=initialize;
 	assign current_state=state;
@@ -168,8 +186,9 @@ module user_interface(
 		
 		else begin
 			case (state) begin
+				//initialize state logic
 				initialize: begin
-					if (init) begin //another node already initialized system
+					if (init) begin //another node already initialized system	
 						menu_item<=def_welcome;
 						state<=idle;			
 					end
@@ -183,10 +202,10 @@ module user_interface(
 					end		
 				end
 				
-				idle: begin	// idle state logic
+				// idle state logic
+				idle: begin	
 				
 					if (incoming_call) begin
-						menu_item<=def_incoming;
 						state<=incoming;		
 					end
 				
@@ -214,6 +233,23 @@ module user_interface(
 							del_blocked: menu_item<=add_blocked;
 							del_all_blocked: menu_item<=del_blocked;
 							
+							//call forward menu
+							toggle_fwd: begin
+								if (selective) 
+									menu_item<=del_all_sel_num;
+								
+								else
+									menu_item<=set_fwd_number;
+							end
+							fwd_mode: menu_item<=toggle_fwd;
+							set_fwd_number: menu_item<=fwd_mode;
+							view_sel_num:menu_item<=set_fwd_number;
+							add_sel_num:menu_item<=view_sel_num;
+							del_sel_num: menu_item<=add_sel_num;
+							del_all_sel_num: menu_item<=del_sel_num;
+								
+						
+							
 						endcase
 					end
 					
@@ -239,12 +275,30 @@ module user_interface(
 							add_blocked: menu_item<=del_blocked;
 							del_blocked: menu_item<=del_all_blocked;
 							del_all_blocked: menu_item<=toggle_block;
+							
+							//call forward menu
+							toggle_fwd: menu_item<=fwd_mode;
+							fwd_mode: menu_item<=set_fwd_number;
+							set_fwd_number: begin
+								if (selective) 
+									menu_item<=view_sel_num;
+									
+								else
+									menu_item<=toggle_fwd;
+									
+							end
+							view_sel_num:menu_item<=add_sel_num;
+							add_sel_num:menu_item<=del_sel_num;
+							del_sel_num: menu_item<=del_all_sel_num;
+							del_all_sel_num: menu_item<=toggle_fwd;
+								
 						endcase
 					end
 					
 					else if (right) begin //menu item selected
 						case (menu_item) begin
 							def_welcome: menu_item<=call_number;
+							def_sys: menu_item<=call_number;
 							call_number: menu_item<=dialing;
 							volume: menu_item<=change_vol;
 							voicemail: menu_item<=toggle_v;
@@ -301,6 +355,52 @@ module user_interface(
 							del_all_blocked: begin
 							end
 							
+							//call forward menu
+							toggle_fwd:begin
+								if (enter) begin
+									if (fwd_state)
+										fwd_state<=0;
+									else
+										fwd_state<=1;
+								end
+							end
+							
+							fwd_mode: begin
+								temp_fwd_mode<=fwd_mode_state;
+								if (up) begin
+									case (temp_fwd_mode) begin
+										all: temp_fwd_mode<=selective;
+										busy: temp_fwd_mode<=all;
+										no_answer: temp_fwd_modee<=busy;
+										selective: temp_fwd_mode<=no_answer;
+									endcase
+								end
+								
+								else if (down) begin
+									case (temp_fwd_mode) begin
+										all: temp_fwd_mode<=selective;
+										busy: temp_fwd_mode<=all;
+										no_answer: temp_fwd_mode<=busy;
+										selective: temp_fwd_mode<=no_answer;
+									endcase								
+								end
+								
+								else if (enter) begin
+									fwd_mode_state<=temp_fwd_mode;
+								end
+							end
+							
+							set_fwd_number: begin
+								if (enter) begin
+									fwd_address={s7,s6,s5,s4,s3,s2,s1,s0}; //address to forward to
+								end
+							end
+							view_sel_num:
+							add_sel_num:
+							del_sel_num: 
+							del_all_sel_num: 
+							
+							
 							//display Number
 							get_num: begin				
 							end
@@ -309,6 +409,7 @@ module user_interface(
 							set_time: begin
 							end
 	
+							default: def_welcome;
 						endcase
 					end
 					
@@ -325,37 +426,37 @@ module user_interface(
 							set_time: menu_item<=def_sys;
 							
 							//escape to call number
-							dialing: menu_item<=def_sys;
+							dialing: menu_item<=call_number;
 							
 							//escape to volume
-							change_vol: menu_item<=def_sys;
+							change_vol: menu_item<=call_number;
 							
 							//escape to voicemail
-							unread: menu_item<=def_sys;
-							play_unread: menu_item<=def_sys;
-							del_unread: menu_item<=def_sys;
-							saved: menu_item<=def_sys;
-							play_saved:menu_item<=def_sys;
-							del_saved:menu_item<=def_sys;
-							del_all_saved: menu_item<=def_sys;
+							unread: menu_item<=call_number;
+							play_unread: menu_item<=call_number;
+							del_unread: menu_item<=call_number;
+							saved: menu_item<=call_number;
+							play_saved:menu_item<=call_number;
+							del_saved:menu_item<=call_number;
+							del_all_saved: menu_item<=call_number;
 							
 							//escape to call block
-							toggle_block: menu_item<=def_sys;
-							view_blocked: menu_item<=def_sys;
-							add_blocked: menu_item<=def_sys;
-							del_blocked: menu_item<=def_sys;
-							del_all_blocked: menu_item<=def_sys;
+							toggle_block: menu_item<=call_number;
+							view_blocked: menu_item<=call_number;
+							add_blocked: menu_item<=call_number;
+							del_blocked:menu_item<=call_number;
+							del_all_blocked: menu_item<=call_number;
 							
 							//escape to call forward
-							toggle_fwd: menu_item<=def_sys;
-							fwd_mode: menu_item<=def_sys;
-							set_fwd_number: menu_item<=def_sys;
+							toggle_fwd:menu_item<=call_number;
+							fwd_mode: menu_item<=call_number;
+							set_fwd_number: menu_item<=call_number;
 							
 							//escape to get number
-							disp_num: menu_item<=def_sys;
+							disp_num: menu_item<=call_number;
 							
 							//escape to set time
-							set_dt: menu_item<=def_sys;
+							set_dt: menu_item<=call_number;
 						endcase
 					end
 
@@ -363,7 +464,43 @@ module user_interface(
 					
 				end
 				
+				//incoming state logic
 				incoming: begin
+					if (up) begin
+						case (menu_item) begin
+							def_incoming: menu_item<=send_to_v;
+							accept: menu_item<=def_incoming;
+							reject: menu_item<=accept;
+							send_to_v: menu_item<=reject;
+							
+							default: def_incoming;
+						endcase
+					end
+					
+					else if (down) begin
+						case (menu_item) begin
+							def_incoming: menu_item<=accept;
+							accept: menu_item<=reject;
+							reject: menu_item<=send_to_v;
+							send_to_v: menu_item<=def_incoming;
+							
+							default: def_incoming;
+						endcase
+					end
+					
+					else if (right||enter) begin
+						case (menu_item) begin
+							def_incoming: state<=busy;
+							accept: state<=busy;
+							reject: state<=idle;
+							send_to_v: begin
+							//put timer here
+							
+							end
+							
+							default: def_incoming;
+						endcase
+					end
 				end
 				
 				outgoing: begin
