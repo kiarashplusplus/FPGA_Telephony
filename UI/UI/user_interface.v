@@ -110,6 +110,12 @@ module user_interface(
 	parameter [5:0] fwd_mode=6'b23; 
 	parameter [5:0] set_fwd_number=6'b24; 
 	
+	//display user's number
+	parameter [5:0] disp_num = 6'b48;
+	
+	//set system date and time
+	parameter [5:0] set_dt=6'b49;
+	
 	//incoming call menu
 	parameter [5:0] accept=6'b25; 
 	parameter [5:0] reject=6'b26; 
@@ -135,11 +141,12 @@ module user_interface(
 	
 	//default displays
 	parameter [5:0] def_init=6'b41;
-	parameter [5:0] def_idle=6'b42;
+	parameter [5:0] def_welcome=6'b42; //welcome for idle state
 	parameter [5:0] def_incoming=6'b43;
 	parameter [5:0] def_outgoing=6'b44;
 	parameter [5:0] def_busy=6'b45;
-	parameter [5:0] def_inc_busy=6'b45; //default display for incoming-while-busy state
+	parameter [5:0] def_inc_busy=6'b46; //default display for incoming-while-busy state
+	parameter [5:0] def_sys=6'b47; //sys date and time for idle state
 	
 	
 	
@@ -163,15 +170,15 @@ module user_interface(
 			case (state) begin
 				initialize: begin
 					if (init) begin //another node already initialized system
-						state<=idle;
-						menu_item<=def_idle;
+						menu_item<=def_welcome;
+						state<=idle;			
 					end
 					
 					else if (enter) begin
 						command<=init_signal;
 						if (init) begin	//system has been initialized
-							state<=idle;
-							menu_item<=def_idle;
+							menu_item<=def_welcome;
+							state<=idle;					
 						end
 					end		
 				end
@@ -179,8 +186,8 @@ module user_interface(
 				idle: begin	// idle state logic
 				
 					if (incoming_call) begin
-						state<=incoming;
-						//transition menu_item here
+						menu_item<=def_incoming;
+						state<=incoming;		
 					end
 				
 					
@@ -237,6 +244,7 @@ module user_interface(
 					
 					else if (right) begin //menu item selected
 						case (menu_item) begin
+							def_welcome: menu_item<=call_number;
 							call_number: menu_item<=dialing;
 							volume: menu_item<=change_vol;
 							voicemail: menu_item<=toggle_v;
@@ -307,20 +315,50 @@ module user_interface(
 					
 					else if (left) begin //move to higher level menu
 						case (menu_item) begin
+							//go back to system date and time
+							call_number: menu_item<=def_sys;
+							volume: menu_item<=def_sys;
+							voicemail: menu_item<=def_sys;
+							call_block: menu_item<=def_sys;
+							call_fwd: menu_item<=def_sys;
+							get_num: menu_item<=def_sys;
+							set_time: menu_item<=def_sys;
 							
-						end
+							//escape to call number
+							dialing: menu_item<=def_sys;
+							
+							//escape to volume
+							change_vol: menu_item<=def_sys;
+							
+							//escape to voicemail
+							unread: menu_item<=def_sys;
+							play_unread: menu_item<=def_sys;
+							del_unread: menu_item<=def_sys;
+							saved: menu_item<=def_sys;
+							play_saved:menu_item<=def_sys;
+							del_saved:menu_item<=def_sys;
+							del_all_saved: menu_item<=def_sys;
+							
+							//escape to call block
+							toggle_block: menu_item<=def_sys;
+							view_blocked: menu_item<=def_sys;
+							add_blocked: menu_item<=def_sys;
+							del_blocked: menu_item<=def_sys;
+							del_all_blocked: menu_item<=def_sys;
+							
+							//escape to call forward
+							toggle_fwd: menu_item<=def_sys;
+							fwd_mode: menu_item<=def_sys;
+							set_fwd_number: menu_item<=def_sys;
+							
+							//escape to get number
+							disp_num: menu_item<=def_sys;
+							
+							//escape to set time
+							set_dt: menu_item<=def_sys;
+						endcase
 					end
-					
-					//choose which menu text to display based on current item
-					case (menu_item) begin
-							call_number: text<=128'h;
-							volume: 
-							voicemail: 
-							call_block: 
-							call_fwd: 
-							get_num: 
-							set_time: 						
-					endcase
+
 					
 					
 				end
