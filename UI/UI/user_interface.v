@@ -39,10 +39,10 @@ module user_interface(
     input right,
 	input init,
 	input incoming_call,
-	input inc_address,
+	input reg [7:0] inc_address,
     output reg [7:0] address,
     output reg [2:0] command,
-	output text,
+	output text, //will give reg length when I know length of longest strength
     output reg [2:0] current_state,
     );
 	
@@ -177,26 +177,32 @@ module user_interface(
 	
 	reg [5:0] menu_item=def_init;
 	
+	assign text=360'h50726573732022456e7465722220746f207374617274206e6574776f726b20696e697469616c697a6174696f6e; //Press "Enter" to start network initialization
+	
 
 	
 	always @(posedge clk) begin
 		if (reset) begin
-			state=>initialize;
+			state<=initialize;
+			
 		end
 		
 		else begin
 			case (state) begin
 				//initialize state logic
 				initialize: begin
+					text<=360'h50726573732022456e7465722220746f207374617274206e6574776f726b20696e697469616c697a6174696f6e; //Press "Enter" to start network initialization
 					if (init) begin //another node already initialized system	
 						menu_item<=def_welcome;
-						state<=idle;			
+						state<=idle;	
 					end
 					
 					else if (enter) begin
 						command<=init_signal;
+						text<=208'h496e697469616c697a6174696f6e207369676e616c2073656e74; //Initialization signal sent
+						
 						if (init) begin	//system has been initialized
-							menu_item<=def_welcome;
+							menu_item<=def_welcome;				
 							state<=idle;					
 						end
 					end		
@@ -206,6 +212,7 @@ module user_interface(
 				idle: begin	
 				
 					if (incoming_call) begin
+						text<=73'h43616c6c2066726f6d_inc_address; //Call from (number)
 						state<=incoming;		
 					end
 				
@@ -459,6 +466,36 @@ module user_interface(
 							set_dt: menu_item<=call_number;
 						endcase
 					end
+					
+					//display text
+					case (menu_item) begin
+							//main menu
+							def_welcome: text<=64'h57656c636f6d6520; //Welcome
+							def_sys: text<=64'h57656c636f6d6520; //Welcome
+							call_number: text<=88'h43616c6c204e756d626572; //Call Number
+							volume: text<=160'h536574204865616470686f6e6520566f6c756d65; //Set Headphone Volume
+							voicemail: text<=88'h566f6963656d61696c0d0a; //Voicemail
+							call_block: text<=104'h43616c6c20426c6f636b696e67; //Call Blocking
+							call_fwd: text<=96'h43616c6c20466f7277617264; //Call Forward
+							get_num: text<=136'h47657420465047412773204e756d626572; //Get FPGA's Number
+							set_time: text<=176'h5365742053797374656d204461746520262054696d65; //Set System Date & Time
+							
+							//call number
+							
+							//volume
+							
+							//voicemail
+							
+							//call block
+							
+							//call forward
+							
+							//get number
+							
+							//set time
+							
+							
+					endcase
 
 					
 					
