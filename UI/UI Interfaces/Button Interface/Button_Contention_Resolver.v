@@ -68,6 +68,8 @@ module Button_Contention_Resolver(
 	       = button_out;
 	
 	// Manage state transitions and output
+	wire [8:0] button_in_minus_one;
+	assign button_in_minus_one = button_in - 1;
 	always @(posedge clk) begin
 		if (reset) begin
 			state <= S_RESET;
@@ -76,7 +78,7 @@ module Button_Contention_Resolver(
 		else begin
 			case (state)
 				S_RESET: begin
-					if ((|button_in) & !((button_in-1) & button_in)) begin
+					if ((|button_in) & !(button_in_minus_one & button_in)) begin
 						state <= S_SET;
 						button_out <= button_in;
 					end

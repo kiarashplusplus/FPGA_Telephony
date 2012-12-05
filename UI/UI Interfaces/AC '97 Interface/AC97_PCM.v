@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company:        6.111
+// Engineer:       Sachin Shinde
 // 
 // Create Date:    03:07:52 10/31/2012 
 // Design Name:    AC97-PCM Interface
@@ -182,18 +182,6 @@ module ac97 (
 			ready <= 1'b1;
 		if (bit_count == 2)
 			ready <= 1'b0;
-
-		// Latch output signals at the end of each frame. This ensures that 
-		// the first frame after reset will be empty.
-		if (bit_count == 255) begin
-			l_cmd_addr <= {command_address, 12'h000};
-			l_cmd_data <= {command_data, 4'h0};
-			l_cmd_v <= command_valid;
-			l_left_data <= left_data;
-			l_left_v <= left_valid;
-			l_right_data <= right_data;
-			l_right_v <= right_valid;
-		end
 		
 		// Update bit_count
 		bit_count <= bit_count+1;
@@ -226,6 +214,18 @@ module ac97 (
 		else if ((bit_count >= 76) && (bit_count <= 95))
 			// Slot 4: Right channel
 			ac97_sdata_out <= l_right_v ? l_right_data[95-bit_count] : 1'b0;
+		// Latch output signals at the end of each frame. This ensures that 
+		// the first frame after reset will be empty.
+		else if (bit_count == 255) begin
+			l_cmd_addr <= {command_address, 12'h000};
+			l_cmd_data <= {command_data, 4'h0};
+			l_cmd_v <= command_valid;
+			l_left_data <= left_data;
+			l_left_v <= left_valid;
+			l_right_data <= right_data;
+			l_right_v <= right_valid;
+			ac97_sdata_out <= 1'b0;
+		end
 		else
 			ac97_sdata_out <= 1'b0;
 	end
