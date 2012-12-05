@@ -836,6 +836,8 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
+      "../Session.v" 
+      "../Transport.v" 
       "readyPackets.xco"}
 
   HandleException {
