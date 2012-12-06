@@ -1,7 +1,7 @@
 
-module transport #(parameter packetSize=127, parameter inpSize= 48, parameter outSize=8)
+module transportSend #(parameter packetSize=127, parameter inpSize= 48, parameter outSize=8)
 	(input clk, input reset, input [7:0] phoneNum, input [1:0] cmd, input [15:0] data, 
-	 input sendData, , output reg sending, output [7:0] packetOut, output reg busy);
+	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
 	
@@ -35,6 +35,7 @@ module transport #(parameter packetSize=127, parameter inpSize= 48, parameter ou
 
 	//reg [7:0] addrBook;   
 	//reg [1:0] addrBookTop; //number of phone numbers in the addressbook
+	
 	reg [15:0] buffer;
 	reg [packetSize:0] packetSizeCounter;
 	reg [1:0] twoCounter=0;
