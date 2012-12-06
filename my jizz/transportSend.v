@@ -1,6 +1,6 @@
 
 module transportSend #(parameter packetSize=127)
-	(input clk, input reset, input [7:0] phoneNum, input [1:0] cmd, input [15:0] data, 
+	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
 	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
@@ -116,8 +116,7 @@ module transportSend #(parameter packetSize=127)
 				ready_rd_en=0;		
 			end
 				
-		end else if (sendData && (ready_data_count >= packetSize) ) begin
-			busy=1;
+		if (sendData && (ready_data_count >= packetSize) ) begin
 			sending=1;
 			ready_rd_en=1;
 			packetSizeCounter=packetSize+1;	
@@ -125,7 +124,6 @@ module transportSend #(parameter packetSize=127)
 		end else if (sending==1) begin
 			if (packetSizeCounter==0) begin
 				sending=0;
-				busy=0;
 				ready_rd_en=0;
 			end else packetSizeCounter=packetSizeCounter-8;
 		

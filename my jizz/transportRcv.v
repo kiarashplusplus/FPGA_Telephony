@@ -1,7 +1,8 @@
+// set rcvSignal to high to send data from network to here.
 
 module transportRcv #(parameter packetSize=127)
-	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, output reg sendingToSession, output [7:0] phoneNum,
-	output reg [1:0] cmd, output [15:0] data, output reg busy);
+	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, output [1:0] reg sendingToSession,
+	 output [15:0] data);
 		
 	
 	//initializing recieved packets' fifo
@@ -27,40 +28,61 @@ module transportRcv #(parameter packetSize=127)
 	always @(posedge clk) begin
 		if (reset) begin
 			rcvFlag=0;
-			sessionFlag=0;
-			
+			rcv_wr_en=0;
+			rcv_rd_en=0;
 		end else if (rcvSignal==1) begin
-			busy=1;
 			rcv_wr_en=1;
 			rcvIn=packetIn;
 			rcvFlag=1;
-			packetSizeCounter=packetSize+1;
 		end else if (rcvFlag==1) begin
-			if (packetSizeCouneter==0) begin
-				busy=0;
-				rcv_wr_en=0;
-				rcvFlag=0;
-				state=0;
-			end else packetSizeCounter=packetSizeCounter-8;
+			rcv_wr_en=0;
+			rcvFlag=0;
 		end
 		
 		if ((rcvEmpty==0) && (sessionBusy==0) ) begin
-			rcv_rd_en=1;
-			sendingToSession=1;		
-			buffer=rcvIn;
-			sessionFlag=1;
-			state=0;
-		end else if (sessionFlag==1) begin
-			if (state==0 && buffer==8'b0100_0000) begin 
-				state=1; //control command
-			end else if (state==0 && buffer==8'b1000_0000) begin
-				state=3; //audio
-			end else if (state==1) begin
-				data [15:8]=buffer;
-				state=2;
+			if (state==0) begin
+				rcv_rd_en=1;
+				buffer=rcvIn;
+				state=1;
+			end else if (state==1 && buffer==8'b0100_0000) begin 
+				state=2; //control command
+			end else if (state==1 && buffer==8'b1000_0000) begin
+				state=6; //audio
 			end else if (state==2) begin
+				data [15:8]=buffer;
+				state=3;
+			end else if (state==3) begin
 				data[7:0]=buffer;
-
+				sendingToSession=2'b01;
+				state=4;
+			end else if (state==4) begin
+				sendingToSession=0;
+				state=5;
+				packetSizeCounter=packetSize-24+1;
+			end else if (state==5) begin
+				if (packetSizeCounter==0) begin
+					state=0;
+				end else packetSizeCounter=packetSizeCounter-8;
+			end else if (state==6) begin 
+				data[15:8]=buffer;
+				state=7;
+				packetSizeCounter=packetSize-16+1;
+			end else if (state==7) begin
+				data[7:0]=buffer;
+				sendingToSession=2'b10;
+				state=8;
+				if (packetSizeCounter==0) state=9
+				else packetSizeCounter=packetSizeCounter-8;
+				
+			end else if (state==8) begin
+				sendingToSession=2'b00;
+				data[15:8]=buffer;
+				state=7;
+				packetSizeCounter=packetSizeCounter-8;
+			end else if (state==9) begin
+				sendingToSession=2'b00;
+				rcv_rd_en=0;
+				state=0;
 			end
 		end 
 
