@@ -1,10 +1,14 @@
 
 module transport #(parameter packetSize=127, parameter inpSize= 48, parameter outSize=8)
-	(input clk, input reset, input [7:0] phoneNum, input [1:0] cmd, input [15:0] data, input sendData, output [7:0] packet, output busy);
+	(input clk, input reset, input [7:0] phoneNum, input [1:0] cmd, input [15:0] data, 
+	 input sendData, , output reg sending, output [7:0] packetOut, output reg busy);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
 	
-
+	initial begin
+		sending=0;
+	end
+		
 	//initializing buffer packets' fifo
 	reg [7:0] bufferIn;
 	reg buffer_rd_en;
@@ -36,7 +40,7 @@ module transport #(parameter packetSize=127, parameter inpSize= 48, parameter ou
 	reg [1:0] twoCounter=0;
 	
 	reg cdFlag=0;	
-	reg auFlag=0;
+	reg auFlag=0; 
 
 	always @(posedge clk) begin
 		if (reset) begin
@@ -45,6 +49,7 @@ module transport #(parameter packetSize=127, parameter inpSize= 48, parameter ou
 			cdFlag=0;
 			auFlag=0;
 			twoCounter=0;
+			sending=0;
 		end else if(cmd==2'b01 && cdFlag==0) begin  //recieving contol data    //assuming the control data is 16 bits
 			busy=1;
 			cdFlag=1;
@@ -112,7 +117,20 @@ module transport #(parameter packetSize=127, parameter inpSize= 48, parameter ou
 				ready_rd_en=0;		
 			end
 				
-		end 
+		end else if (sendData && (ready_data_count >= packetSize) ) begin
+			busy=1;
+			sending=1;
+			ready_rd_en=1;
+			packetSizeCounter=packetSize+1;	
+			packetOut=readyOut;
+		end else if (sending==1) begin
+			if (packetSizeCounter==0) begin
+				sending=0;
+				busy=0;
+				ready_rd_en=0;
+			end else packetSizeCounter=packetSizeCounter-8;
+		
+		end
 
 	end
 	
