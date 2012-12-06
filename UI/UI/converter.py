@@ -23,8 +23,11 @@ def convert():
 
     ##lengths of each string
     f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/lengths","w")
-    for i in lengths:
-        f.write(str(i) + "\n")
+    for i in range(len(lengths)):
+        if i==0:
+            f.write(str(lengths[i]) + ' ' + strings[i][:] + "\n")
+        else:
+            f.write(str(lengths[i]-1) + ' ' + strings[i][1:] + "\n")
 
     f.close()
 
@@ -52,13 +55,17 @@ def convert():
     f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/addresses","w")
 
     current=0
-    f.write(str(0) + "\n")
-    
+    f.write(str(0) + ' ' + strings[0] + "\n")
+
     ##addresses for beginning of each string
     for i in strings:
         if (strings.index(i)>0):
-            f.write(str(len(strings[strings.index(i)-1]) + current) + "\n")
-            current+=len(strings[strings.index(i)-1])
+            if strings.index(i)==1:
+                f.write(str(len(strings[strings.index(i)-1]) + current) + ' ' + i[1:] + "\n")
+                current+=len(strings[strings.index(i)-1])
+            else:
+                f.write(str(len(strings[strings.index(i)-1]) + current-1) + ' ' + i[1:] + "\n")
+                current+=len(strings[strings.index(i)-1])
 
 
     f.close()

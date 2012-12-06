@@ -1,23 +1,25 @@
-0
-45
-73
-81
-93
-114
-129
-139
-158
-176
-193
-219
-243
-271
-287
-312
-335
-362
-376
-397
-418
-436
-444
+0 Press "Enter" to start network initialization
+45 System has been initialized
+72 Welcome
+80 Call Number
+92 Set Headphone Volume
+113 Current Volume
+128 Voicemail
+138 Turn Voicemail Off
+157 Turn Voicemail On
+175 Unread Voicemail
+192 Playback Unread Voicemail
+218 Delete Unread Voicemail
+242 Delete All Unread Voicemail
+270 Saved Voicemail
+286 Playback Saved Voicemail
+311 Delete Saved Voicemail
+334 Delete All Saved Voicemail
+361 Incoming Call
+375 Accept Incoming Call
+396 Reject Incoming Call
+417 Send to Voicemail
+435 Calling
+443 End Call
+452 Set Date & Time
+468 Display System Number

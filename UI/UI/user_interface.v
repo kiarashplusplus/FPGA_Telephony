@@ -44,13 +44,6 @@ module user_interface(
     output reg [2:0] command,
     output reg [2:0] current_state,
     );
-	 
-	 //inputs for text_scroller_interface
-	 reg start;
-	 reg [10:0] addr;
-	 reg [10:0] length;
-	
-	
 	
 	//states
 	parameter [2:0] idle=0; //no current calls
@@ -176,12 +169,168 @@ module user_interface(
 	reg [2:0] state=initialize;
 	assign current_state=state;
 	
-	reg [5:0] menu_item=init;
-	reg [5:0] menu_item_latch;.
-	always @(posedge clk) menu_item_latch <= menu_item;
+	reg [5:0] menu_item=def_init;
+	reg [5:0] menu_item_latch;
+	
+	//I/O for text_scroller_interface
+	 reg start;
+	 reg [10:0] addr;
+	 reg [10:0] length;
+	 reg [7:0] ascii_out;
+	 reg ascii_out_ready;
+	 reg done;
+	
+	Text_Scroller_Interface tsi(clk,reset,addr,length,start,
+	ascii_out,ascii_out_ready,done);
+	
+//set display text here	
+	always @(posedge clk) begin
+		menu_item_latch <= menu_item;
+		
+		start<=menu_item_latch!=menu_item;
+		
+		if (menu_item_latch!=menu_item) begin
+				case (menu_item) begin //select address for start of text, set length as well
+			//initialization state
+						def_init: begin
+							addr<=0; //text=Press "Enter" to start network initialization
+							length<=11'd45;
+						end
+						
+						
+						
+			//idle state
+						//welcome
+						def_welcome:begin
+							addr<=11'd72; //text=Welcome
+							length<=11'd7;
+						end
+						
+						//main menu
+						def_sys:begin
+							//still confused about this part
+						end
+						call_number:begin
+							addr<=11'd80; //text=Call Number
+							length<=11'd11;
+						end
+						volume: begin
+							addr<=11'd92; //text=Set Headphone Volume
+							length<=11'd20;
+						end
+						voicemail: begin
+							addr<=11'd128; //text=Voicemail
+							length<=11'd9;
+						end
+						get_num: begin
+							addr<=11'd468; //text=Display System Number
+							length<=11'd21;
+						end
+						set_time:begin
+							addr<=11'd452; //text=Set Date & Time
+							length<=11'd15;
+						end
+						
+						//call number
+						dialing: begin
+							//convert switches somehow, display in hex or binary?
+						end
+						
+						//volume
+						change_vol: begin
+							//current volume
+						end
+						
+						//voicemail
+						toggle_v:begin
+							if (voicemail_state) begin //voicemail currently on
+								addr<=11'd138; //text=Turn Voicemail Off
+								length<=11'd18;
+							end
+							
+							else begin //voicemail currently off
+								addr<=11'd157;//text=Turn Voicemail On
+								length<=11'd17;
+							end
+						end
+						
+						unread: begin
+							addr<=11'd175;
+							length<=11'd16;
+						end
+						
+						saved: begin
+							addr<=11'd270;
+							length<=11'd15;
+						end
+						
+						//unread voicemail menu
+						play_unread:begin
+							addr<=11'd191;
+							length<=11'd25;
+						end
+						del_unread:begin
+							addr<=11'd218;
+							length<=11'd23;			
+						end
+						del_all_unread:begin
+							addr<=11'd242;
+							length<=11'd27;				
+						end
+						
+						//saved voicemail menu
+						play_saved:begin
+							addr<=11'd286;
+							length<=11'd24;
+						end
+						del_saved:begin
+							addr<=11'd311;
+							length<=11'd22;
+						end
+						del_all_saved:begin
+							addr<=11'd334;
+							length<=11'd26;
+						end
+
+						//get number
+						disp_num:begin
+							//disp. in hex or binary?
+						end
+						
+						//set time
+						set_dt:begin
+							//?		
+						end
+						
+				//incoming state	
+					accept:begin //text=Accept Incoming Call
+						addr<=11'd375;
+						length<=11'd20;
+					end
+					reject:begin	//text=Reject Incoming Call
+						addr<=11'd396;
+						length<=11'd20;
+					end
+					send_to_v:begin	//text=Send to Voicemail
+						addr<=11'd417;
+						length<=11'd17;
+					end
+					def_incoming:begin	//text=Incoming Call
+						addr<=11'd361;
+						length<=11'd13;
+					end
+	
+					
+						
+				endcase					
+		end
+		
+	end
+	
 	
 	always @(posedge clk) begin
 		if (reset) begin
+			menu_item<=def_init; //right place for this?
 			state<=initialize;
 			
 		end
@@ -189,34 +338,27 @@ module user_interface(
 		else begin
 			case (state) begin
 				//initialize state logic
-				initialize: begin
-					//text=Press "Enter" to start network initialization
-					if (init) begin //another node already initialized system	
-						menu_item<=def_welcome;
-						state<=idle;	
-					end
-					
-					else if (enter) begin
-						command<=init_signal;
-						text<=208'h496e697469616c697a6174696f6e207369676e616c2073656e74; //Initialization signal sent
-						
-						if (init) begin	//text=system has been initialized
+				initialize: begin	//text=Press "Enter" to start network initialization
+						if (enter) begin	
 							menu_item<=def_welcome;				
 							state<=idle;					
 						end
 					end		
 				end
 				
-				// idle state logic
-				idle: begin	
 				
+				
+				
+				
+				
+				// idle state logic
+				idle: begin		
 					if (incoming_call) begin
-						//text=Call from 
+						menu_item<=def_incoming;
 						state<=incoming;		
 					end
-				
-					
-					else if (up) begin
+			
+					else if (up) begin //up button pressed
 						case (menu_item) begin
 							call_number: menu_item<=set_time;//main_menu
 							toggle: menu_item<=saved; //voicemail
@@ -229,7 +371,7 @@ module user_interface(
 
 					end
 					
-					else if (down) begin //use else to prioritize button presses
+					else if (down) begin //down button pressed
 						case (menu_item) begin
 							set_time: menu_item<=call_number;//main_menu
 							saved: menu_item<=toggle; //voicemail
@@ -342,35 +484,14 @@ module user_interface(
 				
 					
 					//display text
-					case (menu_item) begin
-							//main menu
-							def_welcome:
-							def_sys: 
-							call_number: 
-							volume: 
-							voicemail: 
-							call_block: 
-							call_fwd: 
-							get_num: 
-							set_time: 
-							
-							//call number
-							
-							//volume
-							
-							//voicemail
-							
-							//get number
-							
-							//set time
-							
-							
-					endcase
+					if (menu_item_latch!=menu_item)
+						start<=1;
 					
 					
-
+	
+					//instantiate txt_scroller_int here or after?
 					
-					
+					start<=0;		
 				end
 				
 				//incoming state logic
@@ -378,22 +499,14 @@ module user_interface(
 					if (up) begin
 						case (menu_item) begin
 							def_incoming: menu_item<=send_to_v;
-							accept: menu_item<=def_incoming;
-							reject: menu_item<=accept;
-							send_to_v: menu_item<=reject;
-							
-							default: def_incoming;
+							default: menu_item<=menu_item-1;
 						endcase
 					end
 					
 					else if (down) begin
 						case (menu_item) begin
-							def_incoming: menu_item<=accept;
-							accept: menu_item<=reject;
-							reject: menu_item<=send_to_v;
-							send_to_v: menu_item<=def_incoming;
-							
-							default: def_incoming;
+							send_to_v: menu_item<=def_incoming;		
+							default: menu_item<=menu_item+1;
 						endcase
 					end
 					
@@ -403,28 +516,35 @@ module user_interface(
 							accept: state<=busy;
 							reject: state<=idle;
 							send_to_v: begin
-							//put timer here
-							
 							end
-							
-							default: def_incoming;
 						endcase
 					end
 				end
 				
+				
+				
+				
 				outgoing: begin
 				end
 				
+				
+				
+				
+				
 				busy: begin
 				end
+				
+				
+				
 				
 				call_while_busy: begin
 				end
 				
 				
 				
-			endcase
+			endcase	
 		end
+		
 	end
 	
 	
