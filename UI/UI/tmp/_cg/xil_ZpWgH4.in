@@ -1,0 +1,33 @@
+SET_FLAG DEBUG FALSE
+SET_FLAG MODE INTERACTIVE
+SET_FLAG STANDALONE_MODE FALSE
+SET_COMMAND_CONTEXT STRING pdfviewerpath /usr/bin/acroread
+SET_COMMAND_CONTEXT STRING webbrowserpath 
+SET_COMMAND_CONTEXT INT mainwindowycoord 0
+SET_COMMAND_CONTEXT INT mainwindowheight 400
+SET_COMMAND_CONTEXT INT mainwindowxcoord 0
+SET_COMMAND_CONTEXT INT mainwindowwidth 200
+SET_PREFERENCE flowvendor Foundation_iSE
+SET_PREFERENCE verilogsim True
+SET_PREFERENCE vhdlsim True
+SET_PREFERENCE formalverification False
+SET_PREFERENCE speedgrade -6
+SET_PREFERENCE asysymbol True
+SET_PREFERENCE addpads False
+SET_PREFERENCE implementationfiletype Ngc
+SET_PREFERENCE device xc2v6000
+SET_PREFERENCE foundationsym False
+SET_PREFERENCE devicefamily virtex2
+SET_PREFERENCE busformat BusFormatAngleBracketNotRipped
+SET_PREFERENCE package bf957
+SET_PREFERENCE createndf False
+SET_PREFERENCE simulationfiles Behavioral
+SET_PREFERENCE outputdirectory /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI
+SET_PREFERENCE designentry VHDL
+SET_PREFERENCE workingdirectory /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/tmp
+SET_PREFERENCE removerpms False
+SET_PARAMETER component_name Text_Storage
+SET_CORE_CLASS com.xilinx.ip.blk_mem_gen_v2_8.blk_mem_gen_v2_8
+SET_CORE_PATH /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/coregen/ip/xilinx/primary/com/xilinx/ip/blk_mem_gen_v2_8/
+SET_CORE_NAME Block Memory Generator
+SET_CORE_VERSION 2.8

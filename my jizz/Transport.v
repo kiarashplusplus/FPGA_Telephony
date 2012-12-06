@@ -5,7 +5,7 @@ module transport #(parameter packetSize=100, parameter inpSize= 48, parameter ou
 	
 	reg [packetSize:0] packetBuffer; 
 	reg [5:0] packetTop;
-	
+		
 	reg [packetSize:0] readyPackets [0:20] ; //up to 20 packets in the queue
 	reg [4:0] readyBegin;
 	reg [4:0] readyEnd;

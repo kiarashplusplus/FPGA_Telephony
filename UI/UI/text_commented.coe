@@ -1,0 +1,105 @@
+memory_initialization_radix = 16;
+memory_initialization_vector = 
+50 //Press "Enter" to start network initialization, len=45
+72
+65
+73
+73
+20
+22
+45
+6e
+74
+65
+72
+22
+20
+74
+6f
+20
+73
+74
+61
+72
+74
+20
+6e
+65
+74
+77
+6f
+72
+6b
+20
+69
+6e
+69
+74
+69
+61
+6c
+69
+7a
+61
+74
+69
+6f
+6e //Press "Enter" to start network initialization
+
+53 //System has been initialized, len=27
+79
+73
+74
+65
+6d
+20
+68
+61
+73
+20
+62
+65
+65
+6e
+20
+69
+6e
+69
+74
+69
+61
+6c
+69
+7a
+65
+64 //System has been initialized
+
+57 //Welcome, len=7
+65
+6c
+63
+6f
+6d
+65 //Welcome
+
+43 //Call Number, len=11
+61
+6c
+6c
+20
+4e
+75
+6d
+62
+65
+72
+0d
+0a //Call Number
+
+
+
+
+
+
+
+
