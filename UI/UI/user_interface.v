@@ -44,6 +44,11 @@ module user_interface(
     output reg [2:0] command,
     output reg [2:0] current_state,
     );
+	 
+	 //inputs for text_scroller_interface
+	 reg start;
+	 reg [10:0] addr;
+	 reg [10:0] length;
 	
 	
 	
@@ -172,9 +177,8 @@ module user_interface(
 	assign current_state=state;
 	
 	reg [5:0] menu_item=init;
-	
-	
-
+	reg [5:0] menu_item_latch;.
+	always @(posedge clk) menu_item_latch <= menu_item;
 	
 	always @(posedge clk) begin
 		if (reset) begin
@@ -335,6 +339,8 @@ module user_interface(
 						endcase
 					end
 					
+				
+					
 					//display text
 					case (menu_item) begin
 							//main menu
@@ -354,16 +360,14 @@ module user_interface(
 							
 							//voicemail
 							
-							//call block
-							
-							//call forward
-							
 							//get number
 							
 							//set time
 							
 							
 					endcase
+					
+					
 
 					
 					
