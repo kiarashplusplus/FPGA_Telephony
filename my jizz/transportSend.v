@@ -1,5 +1,5 @@
 
-module transportSend #(parameter packetSize=127, parameter inpSize= 48, parameter outSize=8)
+module transportSend #(parameter packetSize=127)
 	(input clk, input reset, input [7:0] phoneNum, input [1:0] cmd, input [15:0] data, 
 	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
 	
@@ -45,8 +45,6 @@ module transportSend #(parameter packetSize=127, parameter inpSize= 48, paramete
 
 	always @(posedge clk) begin
 		if (reset) begin
-			packetBuffer [packetSize:0] =0;	
-			packetTop=0;
 			cdFlag=0;
 			auFlag=0;
 			twoCounter=0;

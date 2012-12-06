@@ -12,7 +12,7 @@
 
 */
 
-module session (input clk, input reset, input [7:0] phoneNum, inp	ut [1:0] cmd, input [15:0] data, 
+module session (input clk, input reset, input [7:0] phoneNum, input [1:0] cmd, input [15:0] data, 
 	 input transportBusy, output [15:0] out, output [3:0] current_state);
 	
 	
