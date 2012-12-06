@@ -836,13 +836,22 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
+      "Text_Storage.xco" 
+      "text_scroll_int.v" 
       "user_interface.v"}
 
   HandleException {
     AddUserFiles $iProjHelper $user_files
   } "A problem occured while restoring user files."
 
-  set imported_files {}
+  set imported_files { 
+      "Text_Storage.asy" 
+      "Text_Storage.ngc" 
+      "Text_Storage.sym" 
+      "Text_Storage.v" 
+      "Text_Storage.veo" 
+      "Text_Storage.vhd" 
+      "Text_Storage.vho"}
 
   set origination 2
 
@@ -865,6 +874,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROP_CompxlibOverwriteLib" "Overwrite" 
       "A" "" "" "" "PROP_CompxlibSimPrimatives" "true" 
       "A" "" "" "" "PROP_CompxlibXlnxCoreLib" "true" 
+      "A" "" "" "" "PROP_CorgenRegenCore" "Under Current Project Setting" 
       "A" "" "" "" "PROP_CurrentFloorplanFile" "" 
       "A" "" "" "" "PROP_DesignName" "UI" 
       "A" "" "" "" "PROP_Dummy" "dum1" 
@@ -925,6 +935,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROP_Top_Level_Module_Type" "HDL" 
       "A" "" "" "" "PROP_UseDataGate" "true" 
       "A" "" "" "" "PROP_UseSmartGuide" "false" 
+      "A" "" "" "" "PROP_UserBrowsedStrategyFiles" "" 
       "A" "" "" "" "PROP_UserConstraintEditorPreference" "Constraints Editor" 
       "A" "" "" "" "PROP_UserEditorCustomSetting" "" 
       "A" "" "" "" "PROP_UserEditorPreference" "ISE Text Editor" 
@@ -1186,6 +1197,7 @@ proc restore { { project_dir "" } } {
       "E" "" "" "" "PROP_PreferredLanguage" "Verilog" 
       "F" "" "" "" "PROP_ChangeDevSpeed" "-6" 
       "F" "" "" "" "PROP_SimModelTarget" "Verilog" 
+      "F" "" "" "" "PROP_coregenFuncModelTargetLang" "Verilog" 
       "F" "" "" "" "PROP_tbwTestbenchTargetLang" "Verilog" 
       "F" "" "" "" "PROP_xilxPostTrceSpeed" "-6" 
       "F" "" "" "" "PROP_xilxPreTrceSpeed" "-6" 

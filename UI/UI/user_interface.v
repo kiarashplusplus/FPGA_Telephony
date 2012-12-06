@@ -42,7 +42,6 @@ module user_interface(
 	input reg [7:0] inc_address,
     output reg [7:0] address,
     output reg [2:0] command,
-	output text, //will give reg length when I know length of longest strength
     output reg [2:0] current_state,
     );
 	
@@ -76,93 +75,90 @@ module user_interface(
 	parameter fwd_state = 0; //toggle forwarding on/off
 	
 	//main menu parameters
-	parameter [5:0] call_number=0;//start a phone call
-	parameter [5:0] volume=6'b1; //set headphone volume
-	parameter [5:0] voicemail=6'b2;//voicemail options
-	parameter [5:0] call_block=6'b3;//call block options
-	parameter [5:0] call_fwd=6'b4;//call forwarding options
-	parameter [5:0] get_num=6'b5;//display FPGA's number
-	parameter [5:0] set_time=6'b6;//set system date and time
+	parameter call_number=0;//start a phone call
+	parameter volume=6'b1; //set headphone volume
+	parameter voicemail=6'b2;//voicemail options
+	// parameter call_block=6'b5;//call block options
+	// parameter call_fwd=6'b6;//call forwarding options
+	parameter get_num=6'b3;//display FPGA's number
+	parameter set_time=6'b4;//set system date and time
 	
 	//call number
-	parameter [5:0] dialing=6'b7;
+	parameter dialing=6'b7;
 	
 	//volume
-	parameter [5:0] change_vol=6'b8;
+	parameter change_vol=6'b8;
 	
 	//voicemail menu
-	parameter [5:0] toggle_v=6'b9; //toggle voicemail on/off
-	parameter [5:0] unread=6'b10; //unread voicemail
-	parameter [5:0] play_unread=6'b11; //play unread voicemail
-	parameter [5:0] del_unread=6'b12; //delete all unread voicemail
-	parameter [5:0] saved=6'b13; //saved voicemail
-	parameter [5:0] play_saved=6'b14; //play saved voicemail
-	parameter [5:0] del_saved=6'b15; //delete saved voicemail
-	parameter [5:0] del_all_saved=6'b16; //delete all saved voicemail
+	parameter toggle_v=6'b9; //toggle voicemail on/off
+	parameter unread=6'b10; //unread voicemail
+	parameter saved=6'b11; //saved voicemail
 	
+	//unread voicemail menu
+	parameter play_unread=6'b12; //play unread voicemail
+	parameter del_unread=6'b13; //delete unread voicemail
+	parameter del_all_unread=6'b14; //delete all unread voicemail
 	
-	
-	//scrolling through voicemail?
+	//saved voicemail menu
+	parameter play_saved=6'b15; //play saved voicemail
+	parameter del_saved=6'b16; //delete saved voicemail
+	parameter del_all_saved=6'b17; //delete all saved voicemail
 	
 	//call blocking menu
-	parameter [5:0] toggle_block=6'b17; //toggle call blocking on/off
-	parameter [5:0] view_blocked=6'b18; //view blocked numbers
-	parameter [5:0] add_blocked=6'b19; //add blocked number
-	parameter [5:0] del_blocked=6'b20; //delete a blocked number
-	parameter [5:0] del_all_blocked=6'b21; //delete all blocked numbers
-	
-	
-	
-	//how to make list of blocked numbers?
-	
+	parameter  toggle_block=6'b18; //toggle call blocking on/off
+	parameter  view_blocked=6'b19; //view blocked numbers
+	parameter  add_blocked=6'b20; //add blocked number
+	parameter  del_blocked=6'b21; //delete a blocked number
+	parameter  del_all_blocked=6'b22; //delete all blocked numbers
+
 	//call forward menu
-	parameter [5:0] toggle_fwd=6'b22; //toggle call forwarding on/off
-	parameter [5:0] fwd_mode=6'b23; //set forwarding mode
-	parameter [5:0] set_fwd_number=6'b24; //set forwarding number
-	parameter [5:0] view_sel_num=6'b50;	//view selective numbers
-	parameter [5:0] add_sel_num=6'b51;	//add selective numbers
-	parameter [5:0] del_sel_num=6'b52;	//delete selective numbers
-	parameter [5:0] del_all_sel_num=6'b53; //delete all selective numbers
+	parameter  toggle_fwd=6'b23; //toggle call forwarding on/off
+	parameter  fwd_mode=6'b24; //set forwarding mode
+	parameter  set_fwd_number=6'b25; //set forwarding number
+	parameter  view_sel_num=6'b26;	//view selective numbers
+	parameter  add_sel_num=6'b27;	//add selective numbers
+	parameter  del_sel_num=6'b28;	//delete selective numbers
+	parameter  del_all_sel_num=6'b29; //delete all selective numbers
 	
 	parameter [7:0] fwd_address; //forward address added
 	
 	//display user's number
-	parameter [5:0] disp_num = 6'b48;
+	parameter  disp_num = 6'b30;
 	
 	//set system date and time
-	parameter [5:0] set_dt=6'b49;
+	parameter  set_dt=6'b31;
 	
 	//incoming call menu
-	parameter [5:0] accept=6'b25; 
-	parameter [5:0] reject=6'b26; 
-	parameter [5:0] send_to_v=6'b27; //send to voicemail
+	parameter  accept=6'b32; 
+	parameter  reject=6'b33; 
+	parameter  send_to_v=6'b34; //send to voicemail
 	
 	//outgoing call menu
-	parameter [5:0] end_call=6'b28; 
+	parameter  end_call=6'b35; 
 	
 	//busy (call-in-progress) menu 
-	parameter [5:0] end_call=6'b29;
-	parameter [5:0] set_volume=6'b31;
-	parameter [5:0] called_IDs=6'b32;
-	parameter [5:0] xfer_call=6'b33;
-	parameter [5:0] hold_call=6'b34;
-	parameter [5:0] resume_call=6'b35;
-	parameter [5:0] conf_call=6'b36;
+	parameter  end_call=6'b36;
+	parameter  set_volume=6'b37;
+	parameter  called_IDs=6'b38;
+	parameter  xfer_call=6'b39;
+	parameter  hold_call=6'b40;
+	parameter  resume_call=6'b41;
+	parameter  conf_call=6'b42;
 	
 	//incoming while busy 
-	parameter [5:0] reject_call=6'b37;
-	parameter [5:0] send_2_v=6'b38; //send to voicemail
-	parameter [5:0] end_call=6'b39;
-	parameter [5:0] hold_curr=6'b40; //hold current call
+	parameter  reject_call=6'b43;
+	parameter  send_2_v=6'b44; //send to voicemail
+	parameter  end_call=6'b45;
+	parameter  hold_curr=6'b46; //hold current call
 	
 	//default displays
-	parameter [5:0] def_init=6'b41;
-	parameter [5:0] def_welcome=6'b42; //welcome for idle state
-	parameter [5:0] def_incoming=6'b43;
-	parameter [5:0] def_outgoing=6'b44;
-	parameter [5:0] def_busy=6'b45;
-	parameter [5:0] def_inc_busy=6'b46; //default display for incoming-while-busy state
-	parameter [5:0] def_sys=6'b47; //sys date and time for idle state
+	parameter  def_init=6'b47;
+	parameter  def_welcome=6'b48; //welcome for idle state
+	parameter  def_incoming=6'b49;
+	parameter  def_outgoing=6'b50;
+	parameter  def_busy=6'b51;
+	parameter  def_inc_busy=6'b52; //default display for incoming-while-busy state
+	parameter  def_sys=6'b53; //sys date and time for idle state
 	
 	
 	
@@ -175,9 +171,8 @@ module user_interface(
 	reg [2:0] state=initialize;
 	assign current_state=state;
 	
-	reg [5:0] menu_item=def_init;
+	reg [5:0] menu_item=init;
 	
-	assign text=360'h50726573732022456e7465722220746f207374617274206e6574776f726b20696e697469616c697a6174696f6e; //Press "Enter" to start network initialization
 	
 
 	
@@ -191,7 +186,7 @@ module user_interface(
 			case (state) begin
 				//initialize state logic
 				initialize: begin
-					text<=360'h50726573732022456e7465722220746f207374617274206e6574776f726b20696e697469616c697a6174696f6e; //Press "Enter" to start network initialization
+					//text=Press "Enter" to start network initialization
 					if (init) begin //another node already initialized system	
 						menu_item<=def_welcome;
 						state<=idle;	
@@ -201,7 +196,7 @@ module user_interface(
 						command<=init_signal;
 						text<=208'h496e697469616c697a6174696f6e207369676e616c2073656e74; //Initialization signal sent
 						
-						if (init) begin	//system has been initialized
+						if (init) begin	//text=system has been initialized
 							menu_item<=def_welcome;				
 							state<=idle;					
 						end
@@ -212,93 +207,33 @@ module user_interface(
 				idle: begin	
 				
 					if (incoming_call) begin
-						text<=73'h43616c6c2066726f6d_inc_address; //Call from (number)
+						//text=Call from 
 						state<=incoming;		
 					end
 				
 					
 					else if (up) begin
 						case (menu_item) begin
-							//navigate main menu
-							call_number: menu_item<=set_time;
-							volume: menu_item<=call_number;
-							voicemail: menu_item<=volume;
-							call_block: menu_item<=voicemail;
-							call_fwd: menu_item<=call_block;
-							get_num: menu_item<=call_fwd;
-							set_time: menu_item<=get_num;		
-
-							//voicemail menu
-							toggle_v: menu_item<=saved;
-							unread: menu_item<=toggle_v;
-							saved:  menu_item<=unread;
-							
-							//call blocking menu
-							toggle_block: menu_item<=del_all_blocked;
-							view_blocked: menu_item<=toggle_block;
-							add_blocked: menu_item<=view_blocked;
-							del_blocked: menu_item<=add_blocked;
-							del_all_blocked: menu_item<=del_blocked;
-							
-							//call forward menu
-							toggle_fwd: begin
-								if (selective) 
-									menu_item<=del_all_sel_num;
-								
-								else
-									menu_item<=set_fwd_number;
-							end
-							fwd_mode: menu_item<=toggle_fwd;
-							set_fwd_number: menu_item<=fwd_mode;
-							view_sel_num:menu_item<=set_fwd_number;
-							add_sel_num:menu_item<=view_sel_num;
-							del_sel_num: menu_item<=add_sel_num;
-							del_all_sel_num: menu_item<=del_sel_num;
-								
-						
-							
+							call_number: menu_item<=set_time;//main_menu
+							toggle: menu_item<=saved; //voicemail
+							play_unread: menu_item<=del_all_unread; //unread voicemail
+							play_saved: menu_item<=del_all_saved; //saved voicemail
+							accept: menu_item<=send_to_v; //incoming call menu	
+							end_call: menu_item<=set_volume; //busy
+							default: menu_item<=menu_item-1;
 						endcase
+
 					end
 					
 					else if (down) begin //use else to prioritize button presses
 						case (menu_item) begin
-							//navigate main menu
-							call_number: menu_item<=volume;
-							volume: menu_item<=voicemail;
-							voicemail: menu_item<=call_block;
-							call_block: menu_item<=call_fwd;
-							call_fwd: menu_item<=get_num;
-							get_num: menu_item<=set_time;
-							set_time: menu_item<=call_number;
-
-							//voicemail menu
-							toggle_v: menu_item<=unread;
-							unread: menu_item<=saved;
-							saved:  menu_item<=toggle_v;	
-
-							//call blocking menu
-							toggle_block: menu_item<=view_blocked
-							view_blocked: menu_item<=add_blocked;
-							add_blocked: menu_item<=del_blocked;
-							del_blocked: menu_item<=del_all_blocked;
-							del_all_blocked: menu_item<=toggle_block;
-							
-							//call forward menu
-							toggle_fwd: menu_item<=fwd_mode;
-							fwd_mode: menu_item<=set_fwd_number;
-							set_fwd_number: begin
-								if (selective) 
-									menu_item<=view_sel_num;
-									
-								else
-									menu_item<=toggle_fwd;
-									
-							end
-							view_sel_num:menu_item<=add_sel_num;
-							add_sel_num:menu_item<=del_sel_num;
-							del_sel_num: menu_item<=del_all_sel_num;
-							del_all_sel_num: menu_item<=toggle_fwd;
-								
+							set_time: menu_item<=call_number;//main_menu
+							saved: menu_item<=toggle; //voicemail
+							del_all_unread: menu_item<=play_unread;//unread voicemail
+							del_all_saved: menu_item<=play_saved; //saved voicemail
+							accept: menu_item<=send_to_v; //incoming call menu	
+							set_volume: menu_item<=end_call; //busy
+							default: menu_item<=menu_item+1;		
 						endcase
 					end
 					
@@ -309,8 +244,6 @@ module user_interface(
 							call_number: menu_item<=dialing;
 							volume: menu_item<=change_vol;
 							voicemail: menu_item<=toggle_v;
-							call_block: menu_item<=call_fwd;
-							call_fwd: menu_item<=get_num;
 							get_num: menu_item<=set_time;
 							set_time: menu_item<=call_number;	
 
@@ -342,71 +275,6 @@ module user_interface(
 							
 							saved: begin
 							end
-							
-							//call blocking menu
-							toggle_block: begin
-								if(block_state) begin
-									block_state<=0;
-								end
-								
-								else begin
-									block_state<=1;
-								end
-							end
-							view_blocked: begin
-							end
-							add_blocked: begin
-							end
-							del_blocked: begin
-							end
-							del_all_blocked: begin
-							end
-							
-							//call forward menu
-							toggle_fwd:begin
-								if (enter) begin
-									if (fwd_state)
-										fwd_state<=0;
-									else
-										fwd_state<=1;
-								end
-							end
-							
-							fwd_mode: begin
-								temp_fwd_mode<=fwd_mode_state;
-								if (up) begin
-									case (temp_fwd_mode) begin
-										all: temp_fwd_mode<=selective;
-										busy: temp_fwd_mode<=all;
-										no_answer: temp_fwd_modee<=busy;
-										selective: temp_fwd_mode<=no_answer;
-									endcase
-								end
-								
-								else if (down) begin
-									case (temp_fwd_mode) begin
-										all: temp_fwd_mode<=selective;
-										busy: temp_fwd_mode<=all;
-										no_answer: temp_fwd_mode<=busy;
-										selective: temp_fwd_mode<=no_answer;
-									endcase								
-								end
-								
-								else if (enter) begin
-									fwd_mode_state<=temp_fwd_mode;
-								end
-							end
-							
-							set_fwd_number: begin
-								if (enter) begin
-									fwd_address={s7,s6,s5,s4,s3,s2,s1,s0}; //address to forward to
-								end
-							end
-							view_sel_num:
-							add_sel_num:
-							del_sel_num: 
-							del_all_sel_num: 
-							
 							
 							//display Number
 							get_num: begin				
@@ -470,15 +338,15 @@ module user_interface(
 					//display text
 					case (menu_item) begin
 							//main menu
-							def_welcome: text<=64'h57656c636f6d6520; //Welcome
-							def_sys: text<=64'h57656c636f6d6520; //Welcome
-							call_number: text<=88'h43616c6c204e756d626572; //Call Number
-							volume: text<=160'h536574204865616470686f6e6520566f6c756d65; //Set Headphone Volume
-							voicemail: text<=88'h566f6963656d61696c0d0a; //Voicemail
-							call_block: text<=104'h43616c6c20426c6f636b696e67; //Call Blocking
-							call_fwd: text<=96'h43616c6c20466f7277617264; //Call Forward
-							get_num: text<=136'h47657420465047412773204e756d626572; //Get FPGA's Number
-							set_time: text<=176'h5365742053797374656d204461746520262054696d65; //Set System Date & Time
+							def_welcome:
+							def_sys: 
+							call_number: 
+							volume: 
+							voicemail: 
+							call_block: 
+							call_fwd: 
+							get_num: 
+							set_time: 
 							
 							//call number
 							

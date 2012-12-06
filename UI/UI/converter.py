@@ -34,7 +34,7 @@ def convert():
     
     
     ##actual hex for .coe file
-    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/hex.coe","w")
+    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/text_storage.coe","w")
 
     ##write initialization for beginning of file
     f.write("memory_initialization_radix = 16;\nmemory_initialization_vector =\n");

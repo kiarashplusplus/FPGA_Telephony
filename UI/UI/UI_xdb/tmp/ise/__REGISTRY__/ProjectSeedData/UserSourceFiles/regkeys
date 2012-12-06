@@ -1,6 +1,12 @@
 NUM_USER_FILES
-1
+3
 s
 user_file_1
 user_interface.v
+s
+user_file_2
+Text_Storage.xco
+s
+user_file_3
+text_scroll_int.v
 s

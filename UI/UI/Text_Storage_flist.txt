@@ -1,0 +1,13 @@
+# Output products list for <Text_Storage>
+Text_Storage.asy
+Text_Storage.mif
+Text_Storage.ngc
+Text_Storage.sym
+Text_Storage.v
+Text_Storage.veo
+Text_Storage.vhd
+Text_Storage.vho
+Text_Storage.xco
+Text_Storage_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+Text_Storage_flist.txt
+Text_Storage_xmdf.tcl
