@@ -37,9 +37,10 @@ module user_interface(
     input down,
     input left,
     input right,
-	input init,
-	input incoming_call,
-	input reg [7:0] inc_address,
+	 input [2:0] inc_command,
+	 input init,
+	 input incoming_call,
+	 input reg [7:0] inc_address,
     output reg [7:0] address,
     output reg [2:0] command,
     output reg [2:0] current_state,
@@ -102,21 +103,21 @@ module user_interface(
 	parameter del_saved=6'b16; //delete saved voicemail
 	parameter del_all_saved=6'b17; //delete all saved voicemail
 	
-	//call blocking menu
-	parameter  toggle_block=6'b18; //toggle call blocking on/off
-	parameter  view_blocked=6'b19; //view blocked numbers
-	parameter  add_blocked=6'b20; //add blocked number
-	parameter  del_blocked=6'b21; //delete a blocked number
-	parameter  del_all_blocked=6'b22; //delete all blocked numbers
-
-	//call forward menu
-	parameter  toggle_fwd=6'b23; //toggle call forwarding on/off
-	parameter  fwd_mode=6'b24; //set forwarding mode
-	parameter  set_fwd_number=6'b25; //set forwarding number
-	parameter  view_sel_num=6'b26;	//view selective numbers
-	parameter  add_sel_num=6'b27;	//add selective numbers
-	parameter  del_sel_num=6'b28;	//delete selective numbers
-	parameter  del_all_sel_num=6'b29; //delete all selective numbers
+//	//call blocking menu
+//	parameter  toggle_block=6'b18; //toggle call blocking on/off
+//	parameter  view_blocked=6'b19; //view blocked numbers
+//	parameter  add_blocked=6'b20; //add blocked number
+//	parameter  del_blocked=6'b21; //delete a blocked number
+//	parameter  del_all_blocked=6'b22; //delete all blocked numbers
+//
+//	//call forward menu
+//	parameter  toggle_fwd=6'b23; //toggle call forwarding on/off
+//	parameter  fwd_mode=6'b24; //set forwarding mode
+//	parameter  set_fwd_number=6'b25; //set forwarding number
+//	parameter  view_sel_num=6'b26;	//view selective numbers
+//	parameter  add_sel_num=6'b27;	//add selective numbers
+//	parameter  del_sel_num=6'b28;	//delete selective numbers
+//	parameter  del_all_sel_num=6'b29; //delete all selective numbers
 	
 	parameter [7:0] fwd_address; //forward address added
 	
@@ -127,33 +128,33 @@ module user_interface(
 	parameter  set_dt=6'b31;
 	
 	//incoming call menu
-	parameter  accept=6'b32; 
-	parameter  reject=6'b33; 
-	parameter  send_to_v=6'b34; //send to voicemail
+	parameter  def_incoming=6'b32;
+	parameter  accept=6'b33; 
+	parameter  reject=6'b34; 
+	parameter  send_to_v=6'b35; //send to voicemail
 	
 	//outgoing call menu
-	parameter  end_call=6'b35; 
+	parameter  def_outgoing=6'b36;
+	parameter  end_call=6'b37; 
 	
 	//busy (call-in-progress) menu 
-	parameter  end_call=6'b36;
-	parameter  set_volume=6'b37;
-	parameter  called_IDs=6'b38;
-	parameter  xfer_call=6'b39;
-	parameter  hold_call=6'b40;
-	parameter  resume_call=6'b41;
-	parameter  conf_call=6'b42;
+	parameter  end_call_b=6'b38;
+	parameter  set_volume=6'b39;
+//	parameter  called_IDs=6'b40;
+//	parameter  xfer_call=6'b41;
+//	parameter  hold_call=6'b42;
+//	parameter  resume_call=6'b43;
+//	parameter  conf_call=6'b44;
 	
 	//incoming while busy 
-	parameter  reject_call=6'b43;
-	parameter  send_2_v=6'b44; //send to voicemail
-	parameter  end_call=6'b45;
-	parameter  hold_curr=6'b46; //hold current call
+	parameter  reject_call=6'b45;
+	parameter  send_2_v=6'b46; //send to voicemail
+	parameter  end_call_inc=6'b47;
+	parameter  hold_curr=6'b48; //hold current call
 	
 	//default displays
-	parameter  def_init=6'b47;
-	parameter  def_welcome=6'b48; //welcome for idle state
-	parameter  def_incoming=6'b49;
-	parameter  def_outgoing=6'b50;
+	parameter  def_init=6'b49;
+	parameter  def_welcome=6'b50; //welcome for idle state
 	parameter  def_busy=6'b51;
 	parameter  def_inc_busy=6'b52; //default display for incoming-while-busy state
 	parameter  def_sys=6'b53; //sys date and time for idle state
@@ -164,6 +165,15 @@ module user_interface(
 	//UI=>application layer commands
 	parameter [2:0] init_signal=0; //user wants to initialize system
 	parameter [2:0] make_call=3'b1;	 //user trying to make phone call
+	parameter [2:0] stop_call=3'b2; //user wants to end call
+	
+	
+	//application layer=>UI commands
+	parameter [2:0] call_ended=0;
+	parameter [2:0] connected=3'b1; //call went through successfully
+	parameter [2:0] sent_to_v=3'b2; //user's call sent to voicemail
+	parameter [2:0] failed=3'b4; //call dropped or didn't go through
+	
 	
 	
 	reg [2:0] state=initialize;
@@ -179,9 +189,29 @@ module user_interface(
 	 reg [7:0] ascii_out;
 	 reg ascii_out_ready;
 	 reg done;
+	 
+	 //outputs for text_scroller
+	reg [127:0] string_data
+	reg wr_en_DEBUG,
+	reg [7:0] wr_data_DEBUG,
+	reg [10:0] wr_addr_DEBUG,
+	reg cntr_DEBUG,
+	reg set_disp_DEBUG,
+	reg [3:0] rel_pos_DEBUG,
+	reg [10:0] rd_addr_DEBUG,
+	reg [7:0] rd_data_DEBUG
 	
 	Text_Scroller_Interface tsi(clk,reset,addr,length,start,
 	ascii_out,ascii_out_ready,done);
+	
+	Text_Scroller ts (.clk(clk),.reset(reset),.ascii_data(ascii_out),
+	.ascii_data_ready(ascii_out_ready),.string_data(string_data),.wr_en_DEBUG(wr_en_DEBUG)
+	,.wr_data_DEBUG(wr_data_DEBUG),.wr_addr_DEBUG(wr_addr_DEBUG)
+	,.cntr_DEBUG(cntr_DEBUG),.set_disp_DEBUG(set_disp_DEBUG),
+	.rel_pos_DEBUG(rel_pos_DEBUG),.rd_addr_DEBUG(rd_addr_DEBUG),
+	.rd_data_DEBUG(rd_data_DEBUG));
+	
+	//instantiate voicemail module
 	
 //set display text here	
 	always @(posedge clk) begin
@@ -254,40 +284,40 @@ module user_interface(
 							end
 						end
 						
-						unread: begin
+						unread: begin	//text=Unread Voicemail
 							addr<=11'd175;
 							length<=11'd16;
 						end
 						
-						saved: begin
+						saved: begin	//text=Saved Voicemail
 							addr<=11'd270;
 							length<=11'd15;
 						end
 						
 						//unread voicemail menu
-						play_unread:begin
+						play_unread:begin	//text=Play Unread Voicemail
 							addr<=11'd191;
 							length<=11'd25;
 						end
-						del_unread:begin
+						del_unread:begin	//text=Delete Unread Voicemail
 							addr<=11'd218;
 							length<=11'd23;			
 						end
-						del_all_unread:begin
+						del_all_unread:begin	//text=Delete All Unread Voicemail
 							addr<=11'd242;
 							length<=11'd27;				
 						end
 						
 						//saved voicemail menu
-						play_saved:begin
+						play_saved:begin	//text=Play Saved Voicemail
 							addr<=11'd286;
 							length<=11'd24;
 						end
-						del_saved:begin
+						del_saved:begin	//text=Delete Saved Voicemail
 							addr<=11'd311;
 							length<=11'd22;
 						end
-						del_all_saved:begin
+						del_all_saved:begin //text=Delete All Saved Voicemail
 							addr<=11'd334;
 							length<=11'd26;
 						end
@@ -319,10 +349,28 @@ module user_interface(
 						addr<=11'd361;
 						length<=11'd13;
 					end
-	
 					
-						
-				endcase					
+				//outgoing state
+				def_outgoing:begin //text=Calling
+					addr<=11'd435;
+					length<=11'd7;
+				end
+				end_call:begin	//text=End Call
+					addr<=11'd443;
+					length<=11'd8;
+				end
+					
+					
+				//busy state
+				def_busy:begin //text=Current Call
+					addr<=11'd490;
+					length<=11'd12;
+				end
+				end_call_b:begin //text=End Call
+					addr<=11'd443;
+					length<=11'd8;
+				end			
+			endcase					
 		end
 		
 	end
@@ -429,8 +477,6 @@ module user_interface(
 							//set sys date and time
 							set_time: begin
 							end
-	
-							default: def_welcome;
 						endcase
 					end
 					
@@ -479,20 +525,11 @@ module user_interface(
 							//escape to set time
 							set_dt: menu_item<=call_number;
 						endcase
-					end
-					
-				
-					
-					//display text
-					if (menu_item_latch!=menu_item)
-						start<=1;
-					
-					
-	
-					//instantiate txt_scroller_int here or after?
-					
-					start<=0;		
+					end	
 				end
+				
+				
+				
 				
 				//incoming state logic
 				incoming: begin
@@ -523,24 +560,86 @@ module user_interface(
 				
 				
 				
-				
+				//outgoing state logic
 				outgoing: begin
+					if (up) begin
+						case (menu_item) begin
+							def_outgoing: menu_item<=end_call;
+							default: menu_item<=menu_item-1;
+						endcase
+					end
+					
+					else if (down) begin
+						case (menu_item) begin
+							end_call: menu_item<=def_outgoing;
+							default: menu_item<=menu_item+1;
+						endcase
+					end
+					
+					else if (enter||right) begin
+						case(menu_item)begin
+							end_call: begin
+								command<=stop_call;
+								if (inc_command==call_ended) begin
+									menu_item<=def_sys;
+									state<=idle;
+								end
+							end
+						endcase
+					end
+					
+					if (inc_command==connected) begin
+						menu_item<=def_busy;
+						state<=busy;
+					end
+					
+					else if (inc_command==failed) begin
+						menu_item<=def_sys;
+						state<=idle;
+					end
+					
+					else if (inc_command==sent_to_v) begin
+						//eventually go back to idle
+					end
 				end
 				
 				
 				
 				
-				
+				//busy state
 				busy: begin
+					if (up) begin
+						case (menu_item) begin
+							end_call_b: menu_item<=set_volume;
+							default: menu_item<=menu_item-1;
+						endcase
+					end
+					else if (down) begin
+						case (menu_item) begin
+							set_volume: menu_item<=end_call_b;
+							default: menu_item<=menu_item+1;
+						endcase
+					end
+					else if (right||enter) begin
+						case (menu_item) begin
+							end_call_b: begin
+								command<=stop_call;
+								if (inc_command==call_ended) begin
+									menu_item<=def_sys;
+									state<=idle;
+								end
+							end
+							set_volume: menu_item<=change_vol;
+							change_vol:begin
+							end
+						endcase
+					end
+					else if (left) begin
+						case (menu_item) begin
+							change_vol: menu_item<=set_volume;
+						endcase
+					end
 				end
-				
-				
-				
-				
-				call_while_busy: begin
-				end
-				
-				
 				
 			endcase	
 		end

@@ -15,6 +15,24 @@ Text_Storage YourInstanceName (
 
  
 		</Template>
+		<Template label="UI_Text_Scroller_BRAM" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+UI_Text_Scroller_BRAM YourInstanceName (
+    .addra(addra), // Bus [10 : 0] 
+    .addrb(addrb), // Bus [10 : 0] 
+    .clka(clka),
+    .clkb(clkb),
+    .dina(dina), // Bus [7 : 0] 
+    .doutb(doutb), // Bus [7 : 0] 
+    .wea(wea));
+
+ 
+		</Template>
 	</Folder>
 	<Folder label="VHDL Component Instantiation" treetype="folder">
 		<Template label="Text_Storage" treetype="template">
@@ -41,6 +59,40 @@ your_instance_name : Text_Storage
             clka =&gt; clka,
             addra =&gt; addra,
             douta =&gt; douta);
+ 
+		</Template>
+		<Template label="UI_Text_Scroller_BRAM" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component UI_Text_Scroller_BRAM
+    port (
+    addra: IN std_logic_VECTOR(10 downto 0);
+    addrb: IN std_logic_VECTOR(10 downto 0);
+    clka: IN std_logic;
+    clkb: IN std_logic;
+    dina: IN std_logic_VECTOR(7 downto 0);
+    doutb: OUT std_logic_VECTOR(7 downto 0);
+    wea: IN std_logic);
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : UI_Text_Scroller_BRAM
+        port map (
+            addra =&gt; addra,
+            addrb =&gt; addrb,
+            clka =&gt; clka,
+            clkb =&gt; clkb,
+            dina =&gt; dina,
+            doutb =&gt; doutb,
+            wea =&gt; wea);
  
 		</Template>
 	</Folder>
