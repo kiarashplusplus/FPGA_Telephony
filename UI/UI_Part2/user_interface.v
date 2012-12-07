@@ -451,7 +451,7 @@ module user_interface(
 						endcase
 					end
 					
-					else if (right) begin //menu item selected
+					else if (right||enter) begin //menu item selected
 						case (menu_item) 
 							def_welcome: menu_item<=call_number;
 							def_sys: menu_item<=call_number;
@@ -460,17 +460,13 @@ module user_interface(
 							voicemail: menu_item<=toggle_v;
 							get_num: menu_item<=set_time;
 							set_time: menu_item<=call_number;	
-
-							//call_number
-							dialing: begin
-								if(enter||right) begin
-									temp_addr<={s7,s6,s5,s4,s3,s2,s1,s0};
-									temp_command<=make_call;
-								end
-							end
 							
-							//change volume
-							change_vol: begin
+							//call number
+							dialing: begin
+								temp_addr<={s7,s6,s5,s4,s3,s2,s1,s0};
+								temp_command<=make_call;
+								menu_item<=def_outgoing;
+								state<=outgoing;
 							end
 							
 							//voicemail menu
@@ -479,6 +475,51 @@ module user_interface(
 									1:voicemail_state<=0;
 									0:voicemail_state<=1;
 								endcase
+							end
+							
+						endcase
+					end
+					
+					
+					else if (left) begin //move to higher level menu	 
+							//go back to system date and time from main menu
+							if (menu_item>=0 && menu_item<=4)
+								 menu_item<=def_sys; 
+									 
+							//back to call number
+							else if (menu_item==7)
+								menu_item<=call_number;
+								
+							//back to set headphone volume
+							else if (menu_item==8)
+								menu_item<=volume;
+								 
+							//back to voicemail	 
+							else if (menu_item>=9 && menu_item<=11)
+								menu_item<=voicemail;
+						
+							//back to unread voicemail
+							else if (menu_item>=12 && menu_item<=14)
+								menu_item<=unread;
+
+							//back to saved voicemail
+							else if (menu_item>=15 && menu_item<=17)
+								menu_item<=saved;
+						
+							//escape to display number
+							else if (menu_item==30)
+								menu_item<=get_num;
+							
+							//escape to set time/date
+							else if (menu_item==31)
+								menu_item<=set_time;
+					
+					end	
+					
+					//no button presses
+					case (menu_item)						
+							//change volume
+							change_vol: begin
 							end
 							
 							unread: begin
@@ -494,41 +535,9 @@ module user_interface(
 							//set sys date and time
 							set_time: begin
 							end
-						endcase
-					end
+					endcase
 					
 					
-					else if (left) begin //move to higher level menu
-						case (menu_item) 
-							//go back to system date and time
-							call_number: menu_item<=def_sys;
-							volume: menu_item<=def_sys;
-							voicemail: menu_item<=def_sys;
-							get_num: menu_item<=def_sys;
-							set_time: menu_item<=def_sys;
-							
-							//escape to call number
-							dialing: menu_item<=call_number;
-							
-							//escape to volume
-							change_vol: menu_item<=call_number;
-							
-							//escape to voicemail
-							unread: menu_item<=call_number;
-							play_unread: menu_item<=call_number;
-							del_unread: menu_item<=call_number;
-							saved: menu_item<=call_number;
-							play_saved:menu_item<=call_number;
-							del_saved:menu_item<=call_number;
-							del_all_saved: menu_item<=call_number;
-							
-							//escape to get number
-							disp_num: menu_item<=call_number;
-							
-							//escape to set time
-							set_dt: menu_item<=call_number;
-						endcase
-					end	
 				end
 				
 				

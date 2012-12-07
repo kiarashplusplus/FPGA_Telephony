@@ -4,10 +4,10 @@ K3
 cModel Technology
 Z0 d/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2
 T_opt
-Z1 VT4Lb[j8EbdFbG_DINB^J>0
+Z1 V18XJgX=2C^3RZ4X^omiMB0
 Z2 04 7 4 work ui_test fast 0
 Z3 04 4 4 work glbl fast 0
-Z4 =1-f04da20f0680-50c13f84-86e00-47b7
+Z4 =1-f04da20f0680-50c15377-11b4d-4e16
 Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
 Z6 OE;O;6.4a;39
 vglbl
@@ -66,9 +66,9 @@ Z34 n@text_@storage
 Z35 !s100 iP:zJCLH^YfYi8Cl=22AK3
 !s85 0
 vui_test
-Z36 ISfl62=_<WXn?kg7kaL7hM3
+Z36 I97R=I<fWbNlZnJOQl7hZ=1
 Z37 Vf:jm7PfbF;R`A3?CQoc591
-Z38 w1354841980
+Z38 w1354847090
 Z39 8ui_test.v
 Z40 Fui_test.v
 L0 25
@@ -76,7 +76,7 @@ R12
 r1
 31
 R13
-Z41 !s100 ;:McW7i><@WG6M6^;5YQ91
+Z41 !s100 Hme1c>1o<92LN_EYfZBFZ3
 !s85 0
 vUI_Text_Scroller_BRAM
 Z42 IOO0_8<7nTj2aoN^aDzSj32
@@ -93,9 +93,9 @@ Z47 n@u@i_@text_@scroller_@b@r@a@m
 Z48 !s100 W;Q4:0X>68PG_mLCziANZ2
 !s85 0
 vuser_interface
-Z49 I5ncG9I1n9KD_mC_fgACM?3
+Z49 I`hzkZ?bkmdJikz_QUi[Yl3
 Z50 VhNGBEWR>3Ee>j7DjTj[jS2
-Z51 w1354841908
+Z51 w1354845965
 Z52 8user_interface.v
 Z53 Fuser_interface.v
 L0 21
@@ -103,5 +103,5 @@ R12
 r1
 31
 R13
-Z54 !s100 O5n@P[_oCM2D@UU>[IS[a0
+Z54 !s100 bNSP[N>Ve_U[bU9oYWNiQ3
 !s85 0

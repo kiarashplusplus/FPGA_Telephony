@@ -146,7 +146,40 @@ module ui_test;
 		#10; 
 		left=1;
 		#10;
-		left=0;
+		left=0; //display sys date & time -checked
+		#10;
+		right=1; //back to main menu - checked
+		#10;
+		right=0;
+		#10;
+		enter=1; //call number, dialing menu item - checked
+		#10;
+		enter=0; 
+		#10;
+		s2=1; //dial number 4, transition to outgoing state - checked
+		#10;	
+		enter=1;	//transition to outgoing state - checked
+		#10;
+		enter=0;
+		#10;
+		inc_command=3'd1;//connected, go to busy state - checked
+		#30;
+		down=1;
+		#10;
+		down=0; //move to end call menu item -
+		#10;
+		enter=1;	//end call, wait for signal from application layer - checked
+		#10
+		enter=0;
+		#10;
+		inc_command=3'd6; //call ended, back to idle state - checked
+		#10; //system date and time should be displayed -checked	
+		reset=1;
+		#10;
+		reset=0;//back to initialization state - checked
+		
+		
+		
 		
 		
 
