@@ -64,15 +64,22 @@ module tSend_tb;
         
 		// Add stimulus here
 		cmd=2'b01;
-		#20
-		cmd=0
-		#200
-		cmd=2'b10;
-		#400
+		#20;
 		cmd=0;
-		#100
-		reset=1
-		
+		#200;
+		cmd=2'b10;
+		#400;
+		cmd=0;
+		#400;
+		sendData=1;
+		#20;
+		sendData=0;
+		#500;
+		sendData=1;
+		#20;
+		sendData=0;
+		#500;		
+
 	end
       
 endmodule
