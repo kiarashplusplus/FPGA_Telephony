@@ -1,0 +1,12 @@
+# Output products list for <rcvPackets>
+rcvPackets.asy
+rcvPackets.ngc
+rcvPackets.sym
+rcvPackets.v
+rcvPackets.veo
+rcvPackets.vhd
+rcvPackets.vho
+rcvPackets.xco
+rcvPackets_fifo_generator_v4_4_xst_1.ngc_xst.xrpt
+rcvPackets_flist.txt
+rcvPackets_xmdf.tcl

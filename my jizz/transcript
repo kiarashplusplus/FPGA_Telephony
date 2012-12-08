@@ -1,0 +1,82 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-34-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+ls
+# fifo_generator_ug175.pdf
+# labkit.ucf
+# labkit.v
+# rcvPackets.asy
+# rcvPackets_fifo_generator_v4_4_xst_1.ngc_xst.xrpt
+# rcvPackets_flist.txt
+# rcvPackets.ngc
+# rcvPackets_readme.txt
+# rcvPackets.sym
+# rcvPackets.v
+# rcvPackets.veo
+# rcvPackets.vhd
+# rcvPackets.vho
+# rcvPackets.xco
+# rcvPackets_xmdf.tcl
+# Session.v
+# tmp
+# transcript
+# transport
+# transportRcv.v
+# transportSend.v
+# tSend_tb.v
+# xlnx_auto_0.ise
+# xlnx_auto_0_xdb
+vlib work
+vlog transportSend.v
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportSend
+# ** Error: transportSend.v(95): near "twoCounter": syntax error, unexpected "IDENTIFIER", expecting ';'
+# ** Error: transportSend.v(136): near "endmodule": syntax error, unexpected "endmodule"
+# /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+vlog transportSend.v
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportSend
+# ** Error: transportSend.v(124): (vlog-2110) Illegal reference to net "packetOut".
+# /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+vlog transportSend.v
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportSend
+# 
+# Top level modules:
+# 	transportSend
+ls
+# fifo_generator_ug175.pdf
+# labkit.ucf
+# labkit.v
+# rcvPackets.asy
+# rcvPackets_fifo_generator_v4_4_xst_1.ngc_xst.xrpt
+# rcvPackets_flist.txt
+# rcvPackets.ngc
+# rcvPackets_readme.txt
+# rcvPackets.sym
+# rcvPackets.v
+# rcvPackets.veo
+# rcvPackets.vhd
+# rcvPackets.vho
+# rcvPackets.xco
+# rcvPackets_xmdf.tcl
+# Session.v
+# tmp
+# transcript
+# transport
+# transportRcv.v
+# transportSend.v
+# transportSend.v~
+# tSend_tb.v
+# work
+# xlnx_auto_0.ise
+# xlnx_auto_0_xdb
+vsim tSend_tb.v
+# OpenFile tSend_tb.v 

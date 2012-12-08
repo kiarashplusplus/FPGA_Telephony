@@ -1,7 +1,7 @@
 
 module transportSend #(parameter packetSize=16) //in bytes
 	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
-	 input sendData, output reg sending, output reg [7:0] packetOut, output reg busy);
+	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
 	

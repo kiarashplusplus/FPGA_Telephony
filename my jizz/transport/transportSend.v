@@ -1,7 +1,7 @@
 
 module transportSend #(parameter packetSize=16) //in bytes
 	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
-	 input sendData, output reg sending, output reg [7:0] packetOut, output reg busy);
+	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
 	
@@ -13,11 +13,11 @@ module transportSend #(parameter packetSize=16) //in bytes
 	reg [7:0] bufferIn;
 	reg buffer_rd_en;
 	reg buffer_wr_en;
-	reg [9:0] buffer_data_count;
+	reg [10:0] buffer_data_count;
 	reg [7:0] bufferOut;
 	reg bufferEmpty;
 	reg bufferFull;
-	packetBuffer packetBuffer (.clk(clk), .din(bufferIn), .rd_en(buffer_rd_en), .rst(reset), .wr_en(buffer_wr_en),
+	packetBuffer packetBuffer (.clk(clk), .din(bufferIn), .rd_en(buffer_rd_en), .srst(reset), .wr_en(buffer_wr_en),
 		.data_count(buffer_data_count), .dout(bufferOut), .empty(bufferEmpty), .full(bufferFull));
 		
 	
@@ -25,11 +25,11 @@ module transportSend #(parameter packetSize=16) //in bytes
 	reg [7:0] readyIn;
 	reg ready_rd_en;
 	reg ready_wr_en;
-	reg [9:0] ready_data_count;
+	reg [10:0] ready_data_count;
 	reg [7:0] readyOut;
 	reg readyEmpty;
 	reg readyFull;
-	readyPackets readyPackets (.clk(clk), .din(readyIn), .rd_en(ready_rd_en), .rst(reset), .wr_en(ready_wr_en),
+	readyPackets readyPackets (.clk(clk), .din(readyIn), .rd_en(ready_rd_en), .srst(reset), .wr_en(ready_wr_en),
 		.data_count(ready_data_count), .dout(readyOut), .empty(readyEmpty), .full(readyFull));
 	
 
@@ -91,7 +91,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 				bufferIn=buffer[15:8];
 				twoCounter=2'b01;
 			end else if (twoCounter==2'b01) begin
-				bufferIn=buffer[7:0];
+				bufferIn=buffer[7:0]
 				twoCounter=2'b10;
 			end else if (buffer_data_count==packetSize) begin   // ?????????????????????????? //if the packet Buffer is full copy it to Ready Packets
 				buffer_wr_en=0;
@@ -115,8 +115,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 				ready_wr_en=0;
 				ready_rd_en=0;		
 			end
-		end
-		
+				
 		if (sendData && (ready_data_count >= packetSize) ) begin
 			sending=1;
 			ready_rd_en=1;
