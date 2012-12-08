@@ -1,6 +1,6 @@
 // set rcvSignal to high to send data from network to here.
 
-module transportRcv #(parameter packetSize=127)
+module transportRcv #(parameter packetSize=16)  //in bytes
 	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, output [1:0] reg sendingToSession,
 	 output [15:0] data);
 		
@@ -58,27 +58,27 @@ module transportRcv #(parameter packetSize=127)
 			end else if (state==4) begin
 				sendingToSession=0;
 				state=5;
-				packetSizeCounter=packetSize-24+1;
+				packetSizeCounter=packetSize-3;
 			end else if (state==5) begin
 				if (packetSizeCounter==0) begin
 					state=0;
-				end else packetSizeCounter=packetSizeCounter-8;
+				end else packetSizeCounter=packetSizeCounter-1;
 			end else if (state==6) begin 
 				data[15:8]=buffer;
 				state=7;
-				packetSizeCounter=packetSize-16+1;
+				packetSizeCounter=packetSize-2;
 			end else if (state==7) begin
 				data[7:0]=buffer;
 				sendingToSession=2'b10;
 				state=8;
 				if (packetSizeCounter==0) state=9
-				else packetSizeCounter=packetSizeCounter-8;
+				else packetSizeCounter=packetSizeCounter-1;
 				
 			end else if (state==8) begin
 				sendingToSession=2'b00;
 				data[15:8]=buffer;
 				state=7;
-				packetSizeCounter=packetSizeCounter-8;
+				packetSizeCounter=packetSizeCounter-1;
 			end else if (state==9) begin
 				sendingToSession=2'b00;
 				rcv_rd_en=0;
