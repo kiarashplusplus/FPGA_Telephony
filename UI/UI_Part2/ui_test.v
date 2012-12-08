@@ -46,12 +46,21 @@ module ui_test;
 	reg right;
 	reg [2:0] inc_command;
 	reg init;
-	reg incoming_call;
+	wire [15:0] audio_in_data;
+	wire ready;
+	wire voicemail_status;
+	wire voicemail_command;
+	wire [7:0] phn_num;
+	wire [15:0] dout;
+	wire [15:0] din;
+	wire disp_en;
 	wire [7:0] inc_address;
 	wire [7:0] address;
    wire [2:0] command;
    wire [2:0] current_state;
 	wire [5:0] current_menu_item;
+	wire [4:0] headphone_volume;
+	wire [15:0] audio_out_data;
 
 	// Instantiate the Unit Under Test (UUT)
 	user_interface uut (
@@ -76,11 +85,21 @@ module ui_test;
 		.right(right), 
 		.inc_command(inc_command), 
 		.init(init), 
+		.audio_in_data(audio_in_data),
+		.ready(ready),
+		.voicemail_status(voicemail_status),
+	   .voicemail_command(voicemail_command),
+		.phn_num(phn_num),
+		.dout(dout),
+		.din(din),
+	   .disp_en(disp_en),
 		.inc_address(inc_address),
 		.address(address),
 		.command(command),
 		.current_state(current_state),
-		.current_menu_item(current_menu_item)
+		.current_menu_item(current_menu_item),
+		.headphone_volume(headphone_volume),
+		.audio_out_data(audio_out_data)
 	);
 	
 	always #5 clk=!clk;

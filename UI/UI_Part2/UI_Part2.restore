@@ -836,10 +836,15 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
+      "../UI Interfaces/AC '97 Interface/AC97_PCM.v" 
+      "../UI Interfaces/Voicemail Interface/CF_Voicemail_Interface.v" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.xco" 
       "Text_Scroller.v" 
       "Text_Scroller_Interface.v" 
       "Text_Storage.v" 
       "UI_Text_Scroller_BRAM.v" 
+      "labkit.ucf" 
+      "labkit.v" 
       "ui_test.v" 
       "user_interface.v"}
 

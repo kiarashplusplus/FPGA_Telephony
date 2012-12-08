@@ -41,10 +41,20 @@ module user_interface(
 	 input [2:0] inc_command,
 	 input init,
 	 input [7:0] inc_address,
+	 input [15:0] audio_in_data,
+	 input ready,
+	 input [3:0] voicemail_status,
+	 output [3:0] voicemail_command,
+	 output [7:0] phn_num,
+	 input [15:0] dout,
+	 output [15:0] din,
+	 output disp_en,
     output [7:0] address,
     output [2:0] command,
     output [2:0] current_state,
-	 output [5:0] current_menu_item
+	 output [5:0] current_menu_item,
+	 output [4:0] headphone_volume,
+	 output [15:0] audio_out_data
     );
 ///////////////////////////////////////////////////////	
 	//states
@@ -191,7 +201,6 @@ module user_interface(
 		
 	reg [5:0] menu_item=def_init;
 	reg [5:0] menu_item_latch;
-	
 /////////////////////////////////////////////////	
 	
 
@@ -227,9 +236,43 @@ module user_interface(
 	,.cntr_DEBUG(cntr_DEBUG),.set_disp_DEBUG(set_disp_DEBUG),
 	.rel_pos_DEBUG(rel_pos_DEBUG),.rd_addr_DEBUG(rd_addr_DEBUG),
 	.rd_data_DEBUG(rd_data_DEBUG));
-//////////////////////////////////////////////////////////////	
+//////////////////////////////////////////////////////////////
+//Voicemail commands/statuses 
 
-	
+//commands
+parameter CMD_IDLE       = 4'd0;
+parameter CMD_START_RD   = 4'd1;
+parameter CMD_END_RD     = 4'd2;
+parameter CMD_START_WR   = 4'd3;
+parameter CMD_END_WR     = 4'd4;
+parameter CMD_VIEW_UNRD  = 4'd5;
+parameter CMD_VIEW_SAVED = 4'd6;
+parameter CMD_DEL        = 4'd7;
+parameter CMD_SAVE       = 4'd8;	
+
+//statuses
+parameter STS_NO_CF_DEVICE = 4'd0;
+parameter STS_CMD_RDY      = 4'd1;
+parameter STS_BUSY         = 4'd2;
+parameter STS_RDING        = 4'd3;
+parameter STS_RD_FIN       = 4'd4;
+parameter STS_WRING        = 4'd5;
+parameter STS_WR_FIN       = 4'd6;
+parameter STS_ERR_VM_FULL  = 4'd7;
+parameter STS_ERR_RD_FAIL  = 4'd8;
+parameter STS_ERR_WR_FAIL  = 4'd9;
+
+////////////////////////////////////////////////////////////
+//Audio
+assign headphone_volume=5'd16; //default volume
+reg [4:0] temp_headphone_volume;
+reg [4:0] headphone_change; //amount user has changed headphone volume by
+
+
+//deal with audio here
+//display mux here
+
+
 //set display text here	
 	always @(posedge clk) begin
 		menu_item_latch <= menu_item;
@@ -397,7 +440,7 @@ module user_interface(
 		c_state<=state;
 		
 		if (reset) begin
-			menu_item<=def_init; //right place for this?
+			menu_item<=def_init; 
 			state<=initialize;
 			voicemail_state<=0;
 			
@@ -434,6 +477,10 @@ module user_interface(
 							play_saved: menu_item<=del_all_saved; //saved voicemail
 							accept: menu_item<=send_to_v; //incoming call menu	
 							end_call: menu_item<=set_volume; //busy
+							change_vol: begin
+								if (headphone_volume<31)
+									headphone-change<=headphone_change+1;
+							end
 							default: menu_item<=menu_item-1;
 						endcase
 
@@ -447,6 +494,10 @@ module user_interface(
 							del_all_saved: menu_item<=play_saved; //saved voicemail
 							accept: menu_item<=send_to_v; //incoming call menu	
 							set_volume: menu_item<=end_call; //busy
+							change_vol: begin
+								if (headphone_volume>0)
+									headphone_change<=headphone_change-1;
+							end		
 							default: menu_item<=menu_item+1;		
 						endcase
 					end
@@ -477,6 +528,11 @@ module user_interface(
 								endcase
 							end
 							
+							//Change Volume Menu (save changes)
+							change_vol:begin
+								temp_headphone_volume<=temp_headphone_volume + headphone_change;
+								menu_item<=volume;
+							end
 						endcase
 					end
 					
@@ -517,11 +573,7 @@ module user_interface(
 					end	
 					
 					//no button presses
-					case (menu_item)						
-							//change volume
-							change_vol: begin
-							end
-							
+					case (menu_item)					
 							unread: begin
 							end
 							
@@ -629,12 +681,19 @@ module user_interface(
 					if (up) begin
 						case (menu_item)
 							def_busy: menu_item<=set_volume;
+							change_vol: begin
+								if (headphone_volume<31)
+									headphone_change<=headphone_change+1;
+							end
 							default: menu_item<=menu_item-1;
 						endcase
 					end
 					else if (down) begin
 						case (menu_item) 
 							set_volume: menu_item<=def_busy;
+							change_vol: begin 
+								if (headphone_volume>0)
+									headphone_change<=headphone_change-1;
 							default: menu_item<=menu_item+1;
 						endcase
 					end
@@ -643,6 +702,10 @@ module user_interface(
 							end_call_b:	temp_command<=stop_call;
 							set_volume: menu_item<=change_vol;
 							change_vol:begin
+								if (headphone_volume<31) begin
+										temp_headphone_volume<=temp_headphone_volume + headphone_change;
+										menu_item<=change_vol;
+									end
 							end
 						endcase
 					end
@@ -673,6 +736,8 @@ module user_interface(
 	assign address=temp_addr;
 	assign command=temp_command;
 	assign current_menu_item=menu_item;
+	assign headphone_volume=temp_headphone_volume;
+	
 
 	
 
