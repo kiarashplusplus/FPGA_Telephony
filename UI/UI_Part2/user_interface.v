@@ -44,11 +44,11 @@ module user_interface(
 	 input [15:0] audio_in_data,
 	 input ready,
 	 input [3:0] voicemail_status,
+	 input [15:0] dout,
 	 output [3:0] voicemail_command,
 	 output [7:0] phn_num,
-	 input [15:0] dout,
 	 output [15:0] din,
-	 output disp_en,
+	 output [1:0] disp_control, //who has control over display
     output [7:0] address,
     output [2:0] command,
     output [2:0] current_state,
@@ -56,8 +56,12 @@ module user_interface(
 	 output [4:0] headphone_volume,
 	 output [15:0] audio_out_data
     );
+	 
+	 
+	 
 ///////////////////////////////////////////////////////	
-	//states
+//States
+//////////////////////////////////////////////////////
 	parameter [2:0] idle=0; //no current calls
 	parameter [2:0] incoming=3'd1; //user is being called
 	parameter [2:0] outgoing=3'd2; //user calls another party
@@ -66,15 +70,27 @@ module user_interface(
 	parameter [2:0] initialize=3'd5; //initialize node
 //////////////////////////////////////////////////////////
 
+
+
+
+
 /////////////////////////////////////////////////////////	
-	//overall parameters
+//Overall parameters
+/////////////////////////////////////////////////////////
 	assign init=0; //should this be assigned by me?
 	parameter conference=0; //conference call on/off
 	parameter selective=0; //selective mode switch for call forwarding
 	parameter block_state=0; //0=off,1=on call blocking
 	reg voicemail_state=0; //0=off,1=on
-///////////////////////////////////////////////////////////	
+	reg override=1; //used for transferring control over up/down buttons from UI to voicemail
+/////////////////////////////////////////////////////////	
 	
+	
+	
+	
+///////////////////////////////////////////////////////////	
+//Menu Items
+///////////////////////////////////////////////////////////	
 //	//call forward mode states
 //	parameter [1:0] all=0;
 //	parameter [1:0] busy_f=3'd1;
@@ -86,7 +102,9 @@ module user_interface(
 //	parameter [1:0] temp_fwd_mode;
 //	parameter fwd_state = 0; //toggle forwarding on/off
 //	
-	//main menu parameters
+	//////////////////////////////////////
+	//Main menu parameters
+	///////////////////////////////////////
 	parameter call_number=0;//start a phone call
 	parameter volume=6'd1; //set headphone volume
 	parameter voicemail=6'd2;//voicemail options
@@ -95,23 +113,33 @@ module user_interface(
 	parameter get_num=6'd3;//display FPGA's number
 	parameter set_time=6'd4;//set system date and time
 	
-	//call number
+	//////////////////////////////////////////
+	//Call number
+	/////////////////////////////////////////
 	parameter dialing=6'd7;
 	
-	//volume
+	///////////////////////////////////////
+	//Volume
+	//////////////////////////////////////
 	parameter change_vol=6'd8;
 	
-	//voicemail menu
+	////////////////////////////////////////
+	//Voicemail menu
+	////////////////////////////////////////
 	parameter toggle_v=6'd9; //toggle voicemail on/off
 	parameter unread=6'd10; //unread voicemail
 	parameter saved=6'd11; //saved voicemail
 	
-	//unread voicemail menu
+	////////////////////////////////////////
+	//Unread voicemail menu
+	///////////////////////////////////////
 	parameter play_unread=6'd12; //play unread voicemail
 	parameter del_unread=6'd13; //delete unread voicemail
 	parameter del_all_unread=6'd14; //delete all unread voicemail
 	
-	//saved voicemail menu
+	///////////////////////////////////////
+	//Saved voicemail menu
+	/////////////////////////////////////////
 	parameter play_saved=6'd15; //play saved voicemail
 	parameter del_saved=6'd16; //delete saved voicemail
 	parameter del_all_saved=6'd17; //delete all saved voicemail
@@ -134,23 +162,33 @@ module user_interface(
 	
 //	parameter [7:0] fwd_address; //forward address added
 	
-	//display user's number
+	/////////////////////////////////////////////
+	//Display user's number
+	////////////////////////////////////////////
 	parameter  disp_num = 6'd30;
 	
-	//set system date and time
+	//////////////////////////////////////////////
+	//Set system date and time
+	/////////////////////////////////////////////
 	parameter  set_dt=6'd31;
 	
-	//incoming call menu
+	/////////////////////////////////////////////
+	//Incoming call menu
+	//////////////////////////////////////////////
 	parameter  def_incoming=6'd32;
 	parameter  accept=6'd33; 
 	parameter  reject=6'd34; 
 	parameter  send_to_v=6'd35; //send to voicemail
 	
-	//outgoing call menu
+	/////////////////////////////////////////////
+	//Outgoing call menu
+	/////////////////////////////////////////////
 	parameter  def_outgoing=6'd36;
 	parameter  end_call=6'd37; 
 	
-	//busy (call-in-progress) menu
+	///////////////////////////////////////////////
+	//Busy (call-in-progress) menu
+	///////////////////////////////////////////////
 	parameter  def_busy=6'd38;	
 	parameter  end_call_b=6'd39;
 	parameter  set_volume=6'd40;
@@ -160,28 +198,36 @@ module user_interface(
 //	parameter  resume_call=6'd44;
 //	parameter  conf_call=6'd45;
 	
-	//incoming while busy 
+	///////////////////////////////////////////////
+	//Incoming while busy 
+	//////////////////////////////////////////////
 	parameter  reject_call=6'd46;
 	parameter  send_2_v=6'd47; //send to voicemail
 	parameter  end_call_inc=6'd48;
 	parameter  hold_curr=6'd49; //hold current call
 	
-	//default displays
+	///////////////////////////////////////////////
+	//Default displays
+	//////////////////////////////////////////////
 	parameter  def_welcome=6'd50; //welcome for idle state
 	parameter  def_init=6'd51;
 	parameter  def_inc_busy=6'd52; //default display for incoming-while-busy state
 	parameter  def_sys=6'd53; //sys date and time for idle state
-	
+//////////////////////////////////////////////////////////////////	
 	
 	
 //////////////////////////////////////////////	
-	//UI=>application layer commands
+//UI=>application layer commands
+////////////////////////////////////////////
 	parameter [2:0] init_signal=0; //user wants to initialize system
 	parameter [2:0] make_call=3'd1;	 //user trying to make phone call
 	parameter [2:0] stop_call=3'd2; //user wants to end call
+/////////////////////////////////////////////	
 	
 	
-	//application layer=>UI commands
+//////////////////////////////////////////////	
+//Application layer=>UI commands
+//////////////////////////////////////////////
 	parameter [2:0] connected=3'd1; //call went through successfully
 	parameter [2:0] sent_to_v=3'd2; //user's call sent to voicemail
 	parameter [2:0] failed=3'd4; //call dropped or didn't go through
@@ -191,7 +237,8 @@ module user_interface(
 
 	
 ////////////////////////////////////////////////	
-	//temp variables for outputs + initialization
+//Temp variables for outputs + initialization
+//////////////////////////////////////////////
 	reg [2:0] state=initialize;
 	reg [2:0] c_state=initialize;
 	
@@ -201,12 +248,25 @@ module user_interface(
 		
 	reg [5:0] menu_item=def_init;
 	reg [5:0] menu_item_latch;
+	
+	reg [3:0] temp_voicemail_command;
+	
+	//parameters for display control
+	parameter UI=0;
+	parameter date_time=2'd1;
+	parameter voicemail_disp=2'd2;
+	reg [1:0] temp_display_control;
+	
+	
+	
+	assign disp_control=UI;
 /////////////////////////////////////////////////	
 	
 
 	
 //////////////////////////////////////////////////////////	
-	//I/O for text_scroller_interface
+// I/O for text_scroller_interface
+///////////////////////////////////////////////////////////
 	 reg start;
 	 reg [10:0] addr;
 	 reg [10:0] length;
@@ -238,6 +298,7 @@ module user_interface(
 	.rd_data_DEBUG(rd_data_DEBUG));
 //////////////////////////////////////////////////////////////
 //Voicemail commands/statuses 
+/////////////////////////////////////
 
 //commands
 parameter CMD_IDLE       = 4'd0;
@@ -264,13 +325,16 @@ parameter STS_ERR_WR_FAIL  = 4'd9;
 
 ////////////////////////////////////////////////////////////
 //Audio
+////////////////////////////////////////////////////////////
 assign headphone_volume=5'd16; //default volume
 reg [4:0] temp_headphone_volume;
 reg [4:0] headphone_change; //amount user has changed headphone volume by
 
 
 //deal with audio here
-//display mux here
+
+
+///////////////////////////////////////////////////////////
 
 
 //set display text here	
@@ -442,10 +506,12 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 		if (reset) begin
 			menu_item<=def_init; 
 			state<=initialize;
-			voicemail_state<=0;
-			
+			voicemail_state<=0;	
 		end
 		
+		else if (voicemail_command!=0) 
+			temp_voicemail_command<=CMD_IDLE;
+			
 		else begin
 			case (state) 
 				//initialize state logic
@@ -469,35 +535,47 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 						state<=incoming;		
 					end
 			 
-					else if (up) begin //up button pressed
+					else if (up&&override) begin //up button pressed
 						case (menu_item) 
 							call_number: menu_item<=set_time;//main_menu
 							toggle_v: menu_item<=saved; //voicemail
-							play_unread: menu_item<=del_all_unread; //unread voicemail
-							play_saved: menu_item<=del_all_saved; //saved voicemail
+							play_unread: menu_item<=play_unread; //unread voicemail
+							play_saved: menu_item<=play_saved; //saved voicemail
 							accept: menu_item<=send_to_v; //incoming call menu	
 							end_call: menu_item<=set_volume; //busy
 							change_vol: begin
 								if (headphone_volume<31)
-									headphone-change<=headphone_change+1;
+									headphone_change<=headphone_change+1;
+							end
+							get_num:begin
+								if (voicemail_status==STS_NO_CF_DEVICE) //no CF device found so hide voicemail menu
+									menu_item<=volume;
+								else
+									menu_item<=voicemail;
 							end
 							default: menu_item<=menu_item-1;
 						endcase
 
 					end
 					
-					else if (down) begin //down button pressed
+					else if (down&&override) begin //down button pressed
 						case (menu_item) 
 							set_time: menu_item<=call_number;//main_menu
 							saved: menu_item<=toggle_v; //voicemail
-							del_all_unread: menu_item<=play_unread;//unread voicemail
-							del_all_saved: menu_item<=play_saved; //saved voicemail
+							play_unread: menu_item<=play_unread;//unread voicemail
+							play_saved: menu_item<=play_saved; //saved voicemail
 							accept: menu_item<=send_to_v; //incoming call menu	
 							set_volume: menu_item<=end_call; //busy
 							change_vol: begin
 								if (headphone_volume>0)
 									headphone_change<=headphone_change-1;
-							end		
+							end	
+							volume:begin
+								if (voicemail_status==STS_NO_CF_DEVICE) //no CF device found so hide voicemail menu
+									menu_item<=get_num;
+								else
+									menu_item<=voicemail;
+							end
 							default: menu_item<=menu_item+1;		
 						endcase
 					end
@@ -533,6 +611,24 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 								temp_headphone_volume<=temp_headphone_volume + headphone_change;
 								menu_item<=volume;
 							end
+							
+							//Play Unread Voicemail
+							play_unread:begin
+								override<=0; //disable up/down buttons for UI
+								if (voicemail_status==STS_CMD_RDY) begin 
+										temp_voicemail_command<=CMD_VIEW_UNRD;
+										temp_display_control<=voicemail_disp; //voicemail now controls display
+								end
+							end
+							
+							//Play Saved Voicemail
+							play_saved:begin
+								override<=0;
+								if (voicemail_status==STS_CMD_RDY) begin
+									temp_voicemail_command<=CMD_VIEW_SAVED;
+									temp_display_control<=voicemail_disp;//voicemail now controls display
+								end
+							end
 						endcase
 					end
 					
@@ -555,31 +651,61 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 								menu_item<=voicemail;
 						
 							//back to unread voicemail
-							else if (menu_item>=12 && menu_item<=14)
+							else if (menu_item>=12 && menu_item<=14) begin
 								menu_item<=unread;
+								override<=1; //up/down buttons enabled for UI
+								temp_display_control<=UI; //UI now controls display
+							 end
 
 							//back to saved voicemail
-							else if (menu_item>=15 && menu_item<=17)
+							else if (menu_item>=15 && menu_item<=17) begin
 								menu_item<=saved;
+								override<=1; //up/down buttons enabled for UI
+								temp_display_control<=UI;//UI now controls display
+							end
 						
 							//escape to display number
 							else if (menu_item==30)
 								menu_item<=get_num;
 							
 							//escape to set time/date
-							else if (menu_item==31)
+							else if (menu_item==31) begin
 								menu_item<=set_time;
+								temp_display_control<=UI;
+							end
 					
 					end	
 					
+					else if (b0) begin	//voicemail delete button
+						case (menu_item) 
+							play_unread: temp_voicemail_command<=CMD_DEL;								
+							play_saved:  temp_voicemail_command<=CMD_DEL;
+						endcase
+					end
+					
+					else if (b1) begin //voicemail save button
+						case (menu_item)
+							play_unread: temp_voicemail_command<=CMD_SAVE;
+							play_saved: temp_voicemail_command<=CMD_SAVE;
+						endcase
+					end
+					
+					else if (b2) begin //voicemail stop button
+						case (menu_item)
+							play_unread: temp_voicemail_command<=CMD_END_RD;
+							play_saved: temp_voicemail_command<=CMD_END_RD;
+						endcase
+					end
+					
+					else if (b3) begin //voicemail play button
+						case (menu_item)
+							play_unread: temp_voicemail_command<=CMD_START_RD;
+							play_saved: temp_voicemail_command<=CMD_START_RD;
+						endcase	
+					end
+					
 					//no button presses
-					case (menu_item)					
-							unread: begin
-							end
-							
-							saved: begin
-							end
-							
+					case (menu_item)									
 							//display Number
 							get_num: begin				
 							end
@@ -694,6 +820,7 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 							change_vol: begin 
 								if (headphone_volume>0)
 									headphone_change<=headphone_change-1;
+							end
 							default: menu_item<=menu_item+1;
 						endcase
 					end
@@ -737,6 +864,8 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 	assign command=temp_command;
 	assign current_menu_item=menu_item;
 	assign headphone_volume=temp_headphone_volume;
+	assign voicemail_command=temp_voicemail_command;
+	assign disp_control=temp_display_control;
 	
 
 	

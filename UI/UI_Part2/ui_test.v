@@ -46,6 +46,8 @@ module ui_test;
 	reg right;
 	reg [2:0] inc_command;
 	reg init;
+	
+	//Outputs
 	wire [15:0] audio_in_data;
 	wire ready;
 	wire voicemail_status;
@@ -53,7 +55,7 @@ module ui_test;
 	wire [7:0] phn_num;
 	wire [15:0] dout;
 	wire [15:0] din;
-	wire disp_en;
+	wire disp_control;
 	wire [7:0] inc_address;
 	wire [7:0] address;
    wire [2:0] command;
@@ -92,7 +94,7 @@ module ui_test;
 		.phn_num(phn_num),
 		.dout(dout),
 		.din(din),
-	   .disp_en(disp_en),
+	   .disp_control(disp_control),
 		.inc_address(inc_address),
 		.address(address),
 		.command(command),

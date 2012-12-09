@@ -53,7 +53,29 @@ entity user_interface is
         sent_to_v       : integer := 2;
         failed          : integer := 4;
         incoming_call   : integer := 5;
-        call_ended      : integer := 6
+        call_ended      : integer := 6;
+        UI              : integer := 0;
+        date_time       : integer := 1;
+        voicemail_disp  : integer := 2;
+        CMD_IDLE        : integer := 0;
+        CMD_START_RD    : integer := 1;
+        CMD_END_RD      : integer := 2;
+        CMD_START_WR    : integer := 3;
+        CMD_END_WR      : integer := 4;
+        CMD_VIEW_UNRD   : integer := 5;
+        CMD_VIEW_SAVED  : integer := 6;
+        CMD_DEL         : integer := 7;
+        CMD_SAVE        : integer := 8;
+        STS_NO_CF_DEVICE: integer := 0;
+        STS_CMD_RDY     : integer := 1;
+        STS_BUSY        : integer := 2;
+        STS_RDING       : integer := 3;
+        STS_RD_FIN      : integer := 4;
+        STS_WRING       : integer := 5;
+        STS_WR_FIN      : integer := 6;
+        STS_ERR_VM_FULL : integer := 7;
+        STS_ERR_RD_FAIL : integer := 8;
+        STS_ERR_WR_FAIL : integer := 9
     );
     port(
         clk             : in     vl_logic;
@@ -78,9 +100,19 @@ entity user_interface is
         inc_command     : in     vl_logic_vector(2 downto 0);
         init            : in     vl_logic;
         inc_address     : in     vl_logic_vector(7 downto 0);
+        audio_in_data   : in     vl_logic_vector(15 downto 0);
+        ready           : in     vl_logic;
+        voicemail_status: in     vl_logic_vector(3 downto 0);
+        dout            : in     vl_logic_vector(15 downto 0);
+        voicemail_command: out    vl_logic_vector(3 downto 0);
+        phn_num         : out    vl_logic_vector(7 downto 0);
+        din             : out    vl_logic_vector(15 downto 0);
+        disp_control    : out    vl_logic_vector(1 downto 0);
         address         : out    vl_logic_vector(7 downto 0);
         command         : out    vl_logic_vector(2 downto 0);
         current_state   : out    vl_logic_vector(2 downto 0);
-        current_menu_item: out    vl_logic_vector(5 downto 0)
+        current_menu_item: out    vl_logic_vector(5 downto 0);
+        headphone_volume: out    vl_logic_vector(4 downto 0);
+        audio_out_data  : out    vl_logic_vector(15 downto 0)
     );
 end user_interface;

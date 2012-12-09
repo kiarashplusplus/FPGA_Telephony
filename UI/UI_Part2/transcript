@@ -32,35 +32,105 @@
 # 	Text_Scroller
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
 # -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
+# ** Error: user_interface.v(258): near "=": syntax error, unexpected '='
+# ** Error: user_interface.v(623): near "endcase": syntax error, unexpected "endcase"
+# ** Error: user_interface.v(666): near "else": syntax error, unexpected "else"
+# ** Error: user_interface.v(669): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+# ** Error: user_interface.v(676): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+# ** Error: user_interface.v(683): 'play_saved' already exists; must not be redefined as assertion label
+# ** Error: user_interface.v(683): near "voicemail_command": syntax error, unexpected "IDENTIFIER", expecting "assert "
+# ** Error: user_interface.v(689): 'play_saved' already exists; must not be redefined as assertion label
+# ** Error: user_interface.v(689): near "voicemail_command": syntax error, unexpected "IDENTIFIER", expecting "assert "
+# ** Error: user_interface.v(737): A label for a block can be specified before 'begin' only in SystemVerilog.
+# ** Error: user_interface.v(738): near "endcase": syntax error, unexpected "endcase"
+# ** Error: user_interface.v(765): near "<=": syntax error, unexpected "<=", expecting "IDENTIFIER" or "TYPE_IDENTIFIER" or '#' or '('
+# ** Error: user_interface.v(796): A label for a block can be specified before 'begin' only in SystemVerilog.
+# ** Error: user_interface.v(797): near "<=": syntax error, unexpected "<=", expecting "IDENTIFIER" or "TYPE_IDENTIFIER" or '#' or '('
+# ** Error: user_interface.v(799): near ":": syntax error, unexpected ':', expecting "IDENTIFIER" or "clock" or "clocking"
+# ** Error: user_interface.v(806): A label for a block can be specified before 'begin' only in SystemVerilog.
+# ** Error: user_interface.v(807): near "<=": syntax error, unexpected "<=", expecting "IDENTIFIER" or "TYPE_IDENTIFIER" or '#' or '('
+# ** Error: user_interface.v(809): near ":": syntax error, unexpected ':', expecting "IDENTIFIER" or "clock" or "clocking"
+# ** Error: user_interface.v(815): 'set_volume' already exists; must not be redefined as assertion label
+# ** Error: user_interface.v(815): near "menu_item": syntax error, unexpected "IDENTIFIER", expecting "assert "
+# ** Error: user_interface.v(817): A label for a block can be specified before 'begin' only in SystemVerilog.
+# ** Error: user_interface.v(818): near "<=": syntax error, unexpected "<=", expecting "IDENTIFIER" or "TYPE_IDENTIFIER" or '#' or '('
+# ** Error: user_interface.v(822): near "endcase": syntax error, unexpected "endcase"
+# ** Error: /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+# Error in macro ./ui_test.fdo line 9
+# /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+#     while executing
+# "vlog +acc  "user_interface.v""
+do {ui_test.fdo}
+# ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
+# -- Compiling module UI_Text_Scroller_BRAM
 # 
 # Top level modules:
-# 	ui_test
+# 	UI_Text_Scroller_BRAM
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
+# -- Compiling module Text_Storage
 # 
 # Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+# 	Text_Storage
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller_Interface
+# 
+# Top level modules:
+# 	Text_Scroller_Interface
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller
+# 
+# Top level modules:
+# 	Text_Scroller
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module user_interface
+# ** Error: user_interface.v(689): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+# ** Error: user_interface.v(690): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+# ** Error: /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+# Error in macro ./ui_test.fdo line 9
+# /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+#     while executing
+# "vlog +acc  "user_interface.v""
+do {ui_test.fdo}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module UI_Text_Scroller_BRAM
+# 
+# Top level modules:
+# 	UI_Text_Scroller_BRAM
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Storage
+# 
+# Top level modules:
+# 	Text_Storage
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller_Interface
+# 
+# Top level modules:
+# 	Text_Scroller_Interface
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller
+# 
+# Top level modules:
+# 	Text_Scroller
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module user_interface
+# ** Error: user_interface.v(509): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(615): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(622): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(669): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(670): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(676): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(677): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(683): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(684): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(690): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: user_interface.v(691): (vlog-2110) Illegal reference to net "voicemail_command".
+# ** Error: /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+# Error in macro ./ui_test.fdo line 9
+# /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+#     while executing
+# "vlog +acc  "user_interface.v""
 do {ui_test.fdo}
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
@@ -100,343 +170,11 @@ do {ui_test.fdo}
 # 	glbl
 # vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-# ** Error: /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/mti_se/XilinxCoreLib_ver/XilinxCoreLib_ver_source.v(93412): $recovery( posedge CLKB:475 ns, posedge CLKA &&& collision_posa_posb:475 ns, 1 ns );
-#    Time: 475 ns  Iteration: 2  Instance: /ui_test/uut/ts/UI_TEXT_SCROLLER_BRAM_1/inst
-# ** Error: /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/mti_se/XilinxCoreLib_ver/XilinxCoreLib_ver_source.v(93413): $recovery( posedge CLKA:475 ns, posedge CLKB &&& collision_posa_posb:475 ns, 1 ns );
-#    Time: 475 ns  Iteration: 2  Instance: /ui_test/uut/ts/UI_TEXT_SCROLLER_BRAM_1/inst
-do {ui_test.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module UI_Text_Scroller_BRAM
-# 
-# Top level modules:
-# 	UI_Text_Scroller_BRAM
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Storage
-# 
-# Top level modules:
-# 	Text_Storage
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller_Interface
-# 
-# Top level modules:
-# 	Text_Scroller_Interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller
-# 
-# Top level modules:
-# 	Text_Scroller
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
-# 
-# Top level modules:
-# 	ui_test
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-do {ui_test.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module UI_Text_Scroller_BRAM
-# 
-# Top level modules:
-# 	UI_Text_Scroller_BRAM
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Storage
-# 
-# Top level modules:
-# 	Text_Storage
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller_Interface
-# 
-# Top level modules:
-# 	Text_Scroller_Interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller
-# 
-# Top level modules:
-# 	Text_Scroller
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
-# 
-# Top level modules:
-# 	ui_test
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-do {ui_test.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module UI_Text_Scroller_BRAM
-# 
-# Top level modules:
-# 	UI_Text_Scroller_BRAM
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Storage
-# 
-# Top level modules:
-# 	Text_Storage
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller_Interface
-# 
-# Top level modules:
-# 	Text_Scroller_Interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller
-# 
-# Top level modules:
-# 	Text_Scroller
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
-# 
-# Top level modules:
-# 	ui_test
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-do {ui_test.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module UI_Text_Scroller_BRAM
-# 
-# Top level modules:
-# 	UI_Text_Scroller_BRAM
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Storage
-# 
-# Top level modules:
-# 	Text_Storage
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller_Interface
-# 
-# Top level modules:
-# 	Text_Scroller_Interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller
-# 
-# Top level modules:
-# 	Text_Scroller
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
-# 
-# Top level modules:
-# 	ui_test
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-do {ui_test.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module UI_Text_Scroller_BRAM
-# 
-# Top level modules:
-# 	UI_Text_Scroller_BRAM
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Storage
-# 
-# Top level modules:
-# 	Text_Storage
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller_Interface
-# 
-# Top level modules:
-# 	Text_Scroller_Interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller
-# 
-# Top level modules:
-# 	Text_Scroller
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
-# 
-# Top level modules:
-# 	ui_test
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-do {ui_test.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module UI_Text_Scroller_BRAM
-# 
-# Top level modules:
-# 	UI_Text_Scroller_BRAM
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Storage
-# 
-# Top level modules:
-# 	Text_Storage
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller_Interface
-# 
-# Top level modules:
-# 	Text_Scroller_Interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module Text_Scroller
-# 
-# Top level modules:
-# 	Text_Scroller
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module user_interface
-# 
-# Top level modules:
-# 	user_interface
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module ui_test
-# 
-# Top level modules:
-# 	ui_test
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_test glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading work.ui_test(fast)
-# Loading work.user_interface(fast)
-# Loading work.Text_Scroller_Interface(fast)
-# Loading work.Text_Storage(fast)
-# Loading work.Text_Scroller(fast)
-# Loading work.UI_Text_Scroller_BRAM(fast)
-# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
-# Loading work.glbl(fast)
-# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
-# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
-# .main_pane.signals.interior.cs
-#  Block Memory Generator CORE Generator module loading initial data...
-#  Block Memory Generator data initialization complete.
-# Block Memory Generator CORE Generator module ui_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-# ** Error: /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/mti_se/XilinxCoreLib_ver/XilinxCoreLib_ver_source.v(93412): $recovery( posedge CLKB:495 ns, posedge CLKA &&& collision_posa_posb:495 ns, 1 ns );
-#    Time: 495 ns  Iteration: 2  Instance: /ui_test/uut/ts/UI_TEXT_SCROLLER_BRAM_1/inst
-# ** Error: /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/mti_se/XilinxCoreLib_ver/XilinxCoreLib_ver_source.v(93413): $recovery( posedge CLKA:495 ns, posedge CLKB &&& collision_posa_posb:495 ns, 1 ns );
-#    Time: 495 ns  Iteration: 2  Instance: /ui_test/uut/ts/UI_TEXT_SCROLLER_BRAM_1/inst
+# ** Warning: ui_test.v(105): (vopt-2241) Connection width does not match width of port 'voicemail_status'.
+# ** Warning: ui_test.v(105): (vopt-2241) Connection width does not match width of port 'voicemail_command'.
+# ** Error: ui_test.v(105): Port 'disp_en' not found in module (29th connection).
+# Optimization failed
+# Error loading design
+# Error: Error loading design 
+#        Pausing macro execution 
+# MACRO ./ui_test.fdo PAUSED at line 12
