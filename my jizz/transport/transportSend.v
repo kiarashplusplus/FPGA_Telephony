@@ -57,6 +57,10 @@ module transportSend #(parameter packetSize=16) //in bytes
 			sending<=0;
 			goingToSend=0;
 			busy<=0;
+			buffer_wr_en<=0;
+			buffer_rd_en<=0;
+			ready_wr_en<=0;
+			ready_wr_en<=0;
 		end else if(cmd==2'b01 && cdFlag==0) begin  //recieving contol data    //assuming the control data is 16 bits
 			busy<=1;
 			cdFlag<=1;

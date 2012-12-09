@@ -27,32 +27,34 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 	
 	always @(posedge clk) begin
 		if (reset) begin
-			rcvFlag=0;
-			rcv_wr_en=0;
-			rcv_rd_en=0;
+			rcvFlag<=0;
+			rcv_wr_en<=0;
+			rcv_rd_en<=0;
 		end else if (rcvSignal==1) begin
-			rcv_wr_en=1;
-			rcvIn=packetIn;
-			rcvFlag=1;
+			rcv_wr_en<=1;
+			rcvIn<=packetIn;
+			rcvFlag<=1;
 		end else if (rcvFlag==1) begin
-			rcv_wr_en=0;
-			rcvFlag=0;
+			rcv_wr_en<=0;
+			rcvFlag<=0;
 		end
 		
 		if ((rcvEmpty==0) && (sessionBusy==0) ) begin
 			if (state==0) begin
-				rcv_rd_en=1;
-				buffer=rcvIn;
-				state=1;
+				rcv_rd_en<=1;
+				state<=1;
 			end else if (state==1 && buffer==8'b0100_0000) begin 
-				state=2; //control command
+				state<=2; //control command
+				buffer<=rcvIn;
 			end else if (state==1 && buffer==8'b1000_0000) begin
-				state=6; //audio
+				state<=6; //audio
+				buffer<=rcvIn;			
 			end else if (state==2) begin
-				data [15:8]=buffer;
+				data [15:8]<=buffer;
+				buffer2<=rcvIn;
 				state=3;
 			end else if (state==3) begin
-				data[7:0]=buffer;
+				data[7:0]=buffer2;
 				sendingToSession=2'b01;
 				state=4;
 			end else if (state==4) begin
@@ -66,9 +68,10 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 			end else if (state==6) begin 
 				data[15:8]=buffer;
 				state=7;
+				buffer2<=rcvIn;
 				packetSizeCounter=packetSize-2;
 			end else if (state==7) begin
-				data[7:0]=buffer;
+				data[7:0]=buffer2;
 				sendingToSession=2'b10;
 				state=8;
 				if (packetSizeCounter==0) state=9
