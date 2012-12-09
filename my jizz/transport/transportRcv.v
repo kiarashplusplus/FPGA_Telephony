@@ -1,8 +1,8 @@
 // set rcvSignal to high to send data from network to here.
 
 module transportRcv #(parameter packetSize=16)  //in bytes
-	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, output [1:0] reg sendingToSession,
-	 output [15:0] data);
+	(input clk, input reset, input rcvSignal, input [7:0] packetIn, 
+	input sessionBusy, output reg [1:0] sendingToSession, output [15:0] data);
 		
 	
 	//initializing recieved packets' fifo

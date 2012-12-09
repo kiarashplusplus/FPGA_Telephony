@@ -11,78 +11,113 @@ Z4 =1-f04da20f0fdb-50c3a25e-b12e1-7ff4
 Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
 Z6 OE;O;6.4a;39
 T_opt1
-VoBUAJOeGbbm6R2Pz=3Ze]0
-Z7 04 8 4 work tSend_tb fast 0
+Z7 VN6^R8KSe`CW[fYYKXiShi1
+Z8 04 8 4 work tSend_tb fast 0
 R3
-Z8 =1-f04da20f0fdb-50c3da4f-bfddc-8c0
+Z9 =1-f04da20f0fdb-50c3f44f-7c38a-a1f
+R5
+R6
+T_opt2
+V>[HLWlKB=`z;=jQOTon_03
+Z10 04 7 4 work tRcv_tb fast 0
+R3
+Z11 =1-f04da20f0fdb-50c3fa86-2cbba-bd4
 R5
 R6
 vglbl
-Z9 IB;@1jEXmEfQXL`;Kf0IBZ3
-Z10 VnN]4Gon>inod6>M^M2[SV1
-Z11 w1202685744
-Z12 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
-Z13 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z12 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z13 VnN]4Gon>inod6>M^M2[SV1
+Z14 w1202685744
+Z15 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z16 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
 L0 5
-Z14 OE;L;6.4a;39
+Z17 OE;L;6.4a;39
 r1
 31
-Z15 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
-Z16 !s100 T?5S;>bN`@zG_25]R_4A33
+Z18 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z19 !s100 T?5S;>bN`@zG_25]R_4A33
 !s85 0
 vpacketBuffer
-Z17 IT2HoRTF2E234I[THGll300
-Z18 Vf0jHda=zRSP67oA4SCdCh0
-Z19 w1354993386
-Z20 8packetBuffer.v
-Z21 FpacketBuffer.v
+Z20 IT2HoRTF2E234I[THGll300
+Z21 Vf0jHda=zRSP67oA4SCdCh0
+Z22 w1354993386
+Z23 8packetBuffer.v
+Z24 FpacketBuffer.v
 L0 40
-R14
+R17
 r1
 31
-R15
-Z22 npacket@buffer
-Z23 !s100 DVJ2K9TGVfmB`1TR:H[PN3
+R18
+Z25 npacket@buffer
+Z26 !s100 DVJ2K9TGVfmB`1TR:H[PN3
 !s85 0
 vreadyPackets
-Z24 I<9;f3kQ0BG^JY@fAWfL4K2
-Z25 VnAL66P]n;<em6@hCJ`4FK1
-Z26 w1354993125
-Z27 8readyPackets.v
-Z28 FreadyPackets.v
+Z27 I<9;f3kQ0BG^JY@fAWfL4K2
+Z28 VnAL66P]n;<em6@hCJ`4FK1
+Z29 w1354993125
+Z30 8readyPackets.v
+Z31 FreadyPackets.v
 L0 40
-R14
+R17
 r1
 31
-R15
-Z29 nready@packets
-Z30 !s100 :hT3[GVZ9eG6HmzPS46<I2
+R18
+Z32 nready@packets
+Z33 !s100 :hT3[GVZ9eG6HmzPS46<I2
+!s85 0
+vtransportRcv
+Z34 IT<oAVXz]j0z2@UKVloKnh3
+Z35 VQL698]8T0gCTHPLoYNA5j2
+Z36 w1355020645
+Z37 8../transportRcv.v
+Z38 F../transportRcv.v
+L0 3
+R17
+r1
+31
+R18
+Z39 ntransport@rcv
+Z40 !s100 B`g>@V^hR=zL6@FRDnhL@3
 !s85 0
 vtransportSend
-Z31 IWamz4K51=Zm7AgbX?cU=e2
-Z32 VRXG>WU5h8`RmSj>eBYV0T1
-Z33 w1355012669
-Z34 8transportSend.v
-Z35 FtransportSend.v
+Z41 I1a?<dQE[E^EJ=naC>kWEB0
+Z42 VRXG>WU5h8`RmSj>eBYV0T1
+Z43 w1355013532
+Z44 8../transportSend.v
+Z45 F../transportSend.v
 L0 2
-R14
+R17
 r1
 31
-R15
-Z36 ntransport@send
-Z37 !s100 @WH:PPJ5QMB@QnJ?j3@_91
+R18
+Z46 ntransport@send
+Z47 !s100 P`_zDAPLDMHg=V:W1hLSl2
+!s85 0
+vtRcv_tb
+Z48 IG>2hY6_P[Yaf:N9UGCbYE0
+Z49 V0T2CVHeLTdZzofXo[N5<g3
+Z50 w1355020923
+Z51 8../tRcv_tb.v
+Z52 F../tRcv_tb.v
+L0 25
+R17
+r1
+31
+R18
+Z53 nt@rcv_tb
+Z54 !s100 z:=EC9P_ccG3]d^EG2<eS0
 !s85 0
 vtSend_tb
-Z38 I61aWlfcm6mJkJ7EOl>HUN0
-Z39 V3SnFn]DlI?`>HJN8ok6<@1
-Z40 w1355012413
-Z41 8../tSend_tb.v
-Z42 F../tSend_tb.v
+Z55 I61aWlfcm6mJkJ7EOl>HUN0
+Z56 V3SnFn]DlI?`>HJN8ok6<@1
+Z57 w1355012413
+Z58 8../tSend_tb.v
+Z59 F../tSend_tb.v
 L0 25
-R14
+R17
 r1
 31
-R15
-Z43 nt@send_tb
-Z44 !s100 AB:Nl`9geCKOEdDabJlZS2
+R18
+Z60 nt@send_tb
+Z61 !s100 AB:Nl`9geCKOEdDabJlZS2
 !s85 0

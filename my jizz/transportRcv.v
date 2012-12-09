@@ -6,21 +6,21 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 		
 	
 	//initializing recieved packets' fifo
-	reg [7:0] rcvIn;
-	reg rcv_rd_en;
-	reg rcv_wr_en;
-	reg [10:0] rcv_data_count;
-	reg [7:0] rcvOut;
-	reg rcvEmpty;
-	reg rcvFull;
-	rcvPackets rcvPackets (.clk(clk), .din(rcvIn), .rd_en(rcv_rd_en), .srst(reset), .wr_en(rcv_wr_en),
+	reg [7:0] rcvIn=0;
+	reg rcv_rd_en=0;
+	reg rcv_wr_en=0;
+	wire [10:0] rcv_data_count;
+	wire [7:0] rcvOut;
+	wire rcvEmpty;
+	wire rcvFull;
+	readyPackets rcvPackets (.clk(clk), .din(rcvIn), .rd_en(rcv_rd_en), .srst(reset), .wr_en(rcv_wr_en),
 		.data_count(rcv_data_count), .dout(rcvOut), .empty(rcvEmpty), .full(rcvFull));
 	
 
 	reg rcvFlag=0;
 	reg [packetSize:0] packetSizeCounter;
 	
-	wire [7:0] buffer;
+	reg [7:0] buffer;
 
 
 	parameter s_idle=0;   
@@ -55,7 +55,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 				rcv_wr_en<=0;
 				rcvFlag<=0;
 			end		
-		
+		end
 			case (state)
 		
 				s_idle:  begin
@@ -84,7 +84,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 				
 				s_control: begin
 					data[15:8]<=rcvIn;
-					next_state<=controlTwo;
+					next_state<=s_controlTwo;
 				end
 				
 				s_controlTwo: begin
@@ -114,7 +114,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 						next_state<=s_idle;
 						rcv_rd_en<=0;
 					end else begin										
-						data[15:8]<-rcvIn;
+						data[15:8]<=rcvIn;
 						next_state<=s_audioTwo;
 						packetSizeCounter=packetSizeCounter-1;
 					end
@@ -127,9 +127,9 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 					next_state<=s_audio;
 					packetSizeCounter=packetSizeCounter-1;					
 				end
-			
-		end	
-	end
+			endcase
+    end
+	
 	
     always @(posedge clk) state<=next_state;
 
