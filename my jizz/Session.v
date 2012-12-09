@@ -16,9 +16,8 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 	  input [1:0] cmdIn, input [15:0] packetIn, input transportBusy,
 	  output reg audioInFlag, output reg audioOutFlag, output [15:0] audioOut;
 	  output [1:0] cmd, output [15:0] dataOut, output , output reg sessionBusy, 
-	  output [7:0] phoneNumOut, output [3:0] current_state);
+	  output [7:0] phoneOut; output [3:0] current_state);
 	
-	assign phoneNumOut= phoneNum;
 	
 	reg [3:0] state, next_state;
 	
@@ -32,7 +31,7 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
    // parameter s_isBusy=5;
     parameter s_ringing=6;	
 	
-	
+	reg [7:0] phone;
 	
 	parameter timeOutConstant=1000;
 	reg [5:0] timeOut; //???????????????
@@ -53,12 +52,13 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 				sessionBusy<=0;
 				
 				
-				
 				if (userInp==5'h1) begin  //call a phone number
 					cmd<=2'b10;      //sending a control packet
-					dataOut<=16'h1;  
+					dataOut[15:8]<=phoneNum;
+					dataOut[7:0]<=8'h1;  
 					next_state<=s_calling;
-				end else if (cmdIn==2'b01 && packetIn==16'h1) begin
+				end else if (cmdIn==2'b01 && packetIn[7:0]==8'h1) begin
+					phone<=packet[15:8];
 					next_state<=s_ringing;
 					cmd<=0;
 				end else begin
@@ -70,33 +70,37 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 			
 			
 			s_calling: begin
+				sessionBusy<=0;
 				cmd<=0;			
 				if (timeOut==0) begin
 					next_state<=s_noAnswer;
 				end else if (cmdIn==2'b01) begin  //incoming control message
 				
-					if (packetIn==16'h2) begin 
+					if (packetIn[7:0]==8'h2) begin 
+						phone<=packetIn[15:8];
 						next_state<=s_connected;
 						
-				//	end else if (packetIn==16'h3) begin
-				//		next_state<=s_connectedToVoice;
+					//end else if (packetIn[7:0]==16'h3) begin
+					//	next_state<=s_connectedToVoice;
 					end		
+					
 				end	else begin
 					timeOut<=timeOut-1;
 					next_state<=s_calling;
-					
 				end
 				
 			end
 			
 			s_ringing: begin
-
+				sessionBusy<=1;
+				phoneOut<=phone;
 				if (timeOut==0) begin
 					next_state<=s_idle;
 					//next_state<=s_voicemail;
-				end else if (usetInp==5'h2) begin   //user answered
+				end else if (usetInp==5'h2) begin   //user answered			
 					cmd<=2'b10;      //sending a control packet
-					dataOut<=16'h2;  
+					dataOut[15:8]<=phone;
+					dataOut[7:0]<=8'h2;
 					next_state<=s_connected;
 				end	else begin
 					timeOut<=timeOut-1;		
@@ -107,13 +111,14 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 			end
 			
 			s_connected: begin
-				
+				sessionBusy<=0;			
 				if (userInp==5'h5) begin  //user disconnects the call
 					cmd<=2'b01; //sending control
-					dataOut<=16'h5;
+					dataOut[7:0]<=8'h5;
+					dataOut[15:0]<=phone;
 					next_state<=s_idle;
-				end else if (cmdIn==2'b01) begin
-					if (packetIn==16'h5) begin
+				end else if (cmdIn==2'b01) begin //they hung up
+					if (packetIn[7:0]==8'h5) begin
 						next_state<=s_idle;
 						cmd<=0;
 					//end else if (packetIn==16'h6) begin
@@ -138,6 +143,15 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 			s_noAnswer: begin ///????? probably some time out
 				
 				next_state<=s_idle;
+			
+			end
+			
+			s_voicemail: begin
+			
+			end
+			
+			s_connectedToVoice: begin
+			
 			
 			end
 			

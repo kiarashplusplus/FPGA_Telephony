@@ -98,7 +98,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 			if (bufferEmpty && twoCounter==0) begin
 				if (buffer_wr_en==0) begin
 					buffer_wr_en<=1;		
-					bufferIn<=8'b1000_0001;
+					bufferIn<=8'b1000_0000;
 				end else buffer_wr_en<=0;
 				
 			end else if (twoCounter==0) begin
