@@ -846,13 +846,21 @@ proc restore { { project_dir "" } } {
       "labkit.ucf" 
       "labkit.v" 
       "ui_test.v" 
+      "ui_voicemail_test.v" 
       "user_interface.v"}
 
   HandleException {
     AddUserFiles $iProjHelper $user_files
   } "A problem occured while restoring user files."
 
-  set imported_files {}
+  set imported_files { 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.asy" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.ngc" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.sym" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.v" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.veo" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.vhd" 
+      "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.vho"}
 
   set origination 2
 
@@ -866,7 +874,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROPEXT_xilxSynthAddBufg_virtex2" "16" 
       "A" "" "" "" "PROPEXT_xilxSynthMaxFanout_virtex2" "500" 
       "A" "" "" "" "PROP_AutoGenFile" "false" 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Module|ui_test" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Module|ui_voicemail_test" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
       "A" "" "" "" "PROP_CompxlibCPLDDetLib" "true" 

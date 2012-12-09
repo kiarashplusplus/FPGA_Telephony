@@ -33,6 +33,26 @@ Text_Storage YourInstanceName (
 
  
 		</Template>
+		<Template label="Voicemail_FIFO" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+Voicemail_FIFO YourInstanceName (
+    .clk(clk),
+    .din(din), // Bus [15 : 0] 
+    .rd_en(rd_en),
+    .rst(rst),
+    .wr_en(wr_en),
+    .data_count(data_count), // Bus [10 : 0] 
+    .dout(dout), // Bus [15 : 0] 
+    .empty(empty),
+    .full(full));
+
+ 
+		</Template>
 	</Folder>
 	<Folder label="VHDL Component Instantiation" treetype="folder">
 		<Template label="UI_Text_Scroller_BRAM" treetype="template">
@@ -93,6 +113,44 @@ your_instance_name : Text_Storage
             clka =&gt; clka,
             addra =&gt; addra,
             douta =&gt; douta);
+ 
+		</Template>
+		<Template label="Voicemail_FIFO" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component Voicemail_FIFO
+    port (
+    clk: IN std_logic;
+    din: IN std_logic_VECTOR(15 downto 0);
+    rd_en: IN std_logic;
+    rst: IN std_logic;
+    wr_en: IN std_logic;
+    data_count: OUT std_logic_VECTOR(10 downto 0);
+    dout: OUT std_logic_VECTOR(15 downto 0);
+    empty: OUT std_logic;
+    full: OUT std_logic);
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : Voicemail_FIFO
+        port map (
+            clk =&gt; clk,
+            din =&gt; din,
+            rd_en =&gt; rd_en,
+            rst =&gt; rst,
+            wr_en =&gt; wr_en,
+            data_count =&gt; data_count,
+            dout =&gt; dout,
+            empty =&gt; empty,
+            full =&gt; full);
  
 		</Template>
 	</Folder>

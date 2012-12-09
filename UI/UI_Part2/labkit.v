@@ -313,25 +313,10 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
 	///////////////////////////////////////////////////
 	//Project Code Starts Here
+	//////////////////////////////////////////////////////
 	
 	
 	
-	
-//AC97	
-AC97_PCM ac(.clk(clock_27mhz),.reset(reset),.volume(headphone_volume),
-.audio_in_data(audio_in_data),.audio_out_data(audio_out_data),
-.ready(ready),.audio_reset_b(audio_reset_b),
-.ac97_sdata_out(ac97_sdata_out),.ac97_sdata_in(ac97_sdata_in),
-.ac97_synch(ac_97_synch),.ac97_bit_clock(ac97_bit_clock));
-
-//Voicemail_Interface vi(.clk(clock_27mhz),.reset(reset),
-////Main Interface Ports
-//.sts(sts),.cmd(cmd),.phn_num(phn_num),.din(din),.dout(dout),
-//.d_ready(d_ready),.disp_en(disp_en),
-////Buttons
-//.button_up(button_up),.button_down(
-
-
 
 	//////////////////////////////////////////////////
 			    
