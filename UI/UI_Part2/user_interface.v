@@ -219,20 +219,22 @@ module user_interface(
 //////////////////////////////////////////////	
 //UI=>application layer commands
 ////////////////////////////////////////////
-	parameter [2:0] init_signal=0; //user wants to initialize system
-	parameter [2:0] make_call=3'd1;	 //user trying to make phone call
-	parameter [2:0] stop_call=3'd2; //user wants to end call
+	parameter init_signal=0; //user wants to initialize system
+	parameter make_call=3'd1;	 //user trying to make phone call
+	parameter stop_call=3'd2; //user wants to end call
+	parameter accept_call=3'd3; //user accepts call
+	parameter go_to_voicemail=3'd4; //user wants to send call to voicemail
 /////////////////////////////////////////////	
 	
 	
 //////////////////////////////////////////////	
 //Application layer=>UI commands
 //////////////////////////////////////////////
-	parameter [2:0] connected=3'd1; //call went through successfully
-	parameter [2:0] sent_to_v=3'd2; //user's call sent to voicemail
-	parameter [2:0] failed=3'd4; //call dropped or didn't go through
-	parameter [2:0] incoming_call=3'd5; //incoming call
-	parameter [2:0] call_ended=3'd6;
+	parameter connected=3'd1; //call went through successfully
+	parameter sent_to_v=3'd2; //user's call sent to voicemail
+	parameter failed=3'd4; //call dropped or didn't go through
+	parameter incoming_call=3'd5; //incoming call
+	parameter call_ended=3'd6;
 /////////////////////////////////////////////////
 
 	
@@ -684,10 +686,7 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 					end
 					
 					else if (b1) begin //voicemail save button
-						case (menu_item)
-							play_unread: temp_voicemail_command<=CMD_SAVE;
-							play_saved: temp_voicemail_command<=CMD_SAVE;
-						endcase
+							temp_voicemail_command<=CMD_SAVE;
 					end
 					
 					else if (b2) begin //voicemail stop button
@@ -722,57 +721,95 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 				
 				
 				//incoming state logic
+				//start 30s timer
 				incoming: begin
 					if (up) begin
 						case (menu_item) 
-							def_incoming: menu_item<=send_to_v;
+							def_incoming: begin
+								if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
+									menu_item<=reject;
+								else 
+									menu_item<=send_to_v;
+							end
 							default: menu_item<=menu_item-1;
 						endcase
 					end
 					
 					else if (down) begin
 						case (menu_item) 
-							send_to_v: menu_item<=def_incoming;		
+							send_to_v: menu_item<=def_incoming;
+							reject:begin
+								if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
+									menu_item<=def_incoming;
+								else 
+									menu_item<=send_to_v;
+							end
 							default: menu_item<=menu_item+1;
 						endcase
 					end
 					
 					else if (right||enter) begin
 						case (menu_item) 
-							def_incoming:begin
-								menu_item<=def_busy;
-								state<=busy;
-							end
-							accept: begin
-								menu_item<=def_busy;
-								state<=busy;
-							end
-							reject: state<=idle;
-							send_to_v: begin
+							def_incoming:temp_command<=accept_call;
+							accept: temp_command<=accept_call;
+							reject:temp_command<=stop_call;
+							send_to_v:begin 
+								if (voicemail_state==1)
+									temp_command<=go_to_voicemail;
+								else
+									temp_command<=stop_call;
 							end
 						endcase
 					end
+				
+				else 
+					case (menu_item)	//waiting on application layer
+						def_incoming: begin
+								if (inc_command==connected) begin
+									menu_item<=def_busy;
+									state<=busy;
+								end		
+						end
+						accept: begin
+							if (inc_command==connected) begin
+									menu_item<=def_busy;
+									state<=busy;
+							end		
+						end
+						reject:begin
+							if (inc_command==call_ended) begin
+								menu_item<=def_sys;
+								state<=idle;
+							end						
+						end
+						send_to_v:begin
+							if (inc_command==sent_to_v)begin
+								menu_item<=def_sys;
+								state<=idle;
+							end
+						end
+					endcase
 				end
 				
 				
 				
 				//outgoing state logic
 				outgoing: begin
-					if (up) begin
+					if (up&&override) begin
 						case (menu_item)
 							def_outgoing: menu_item<=end_call;
 							default: menu_item<=menu_item-1;
 						endcase
 					end
 					
-					else if (down) begin
+					else if (down&&override) begin
 						case (menu_item) 
 							end_call: menu_item<=def_outgoing;
 							default: menu_item<=menu_item+1;
 						endcase
 					end
 					
-					else if (enter||right) begin
+					else if ((enter||right) && override) begin
 						case(menu_item)
 							end_call: begin
 								temp_command<=stop_call;
@@ -783,6 +820,9 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 							end
 						endcase
 					end
+					
+					
+					
 					
 					if (inc_command==connected) begin
 						menu_item<=def_busy;
@@ -795,8 +835,25 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 					end
 					
 					else if (inc_command==sent_to_v) begin
-						//eventually go back to idle
-					end
+						override<=0;
+						temp_display_control<=voicemail_disp;
+						if (voicemail_status==STS_ERR_VM_FULL) begin
+							override<=1;
+							temp_display_control<=UI;
+							menu_item<=def_sys;
+							state<=idle;	
+						end
+						
+						else if (voicemail_status==STS_CMD_RDY)
+							if (b0) 
+								temp_voicemail_command<=CMD_START_WR;
+							else if (b1) begin
+								temp_voicemail_command<=CMD_END_WR;
+								override<=1;
+								menu_item<=def_sys;
+								state<=idle;
+							end
+						end
 				end
 				
 				

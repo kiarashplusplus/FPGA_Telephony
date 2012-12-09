@@ -147,7 +147,9 @@ module ui_test;
 		#10;
 		down=0;	
 		#10;
-		enter=1; //accept call, move to busy state - checked
+		inc_command=3'd1; //connected - 
+		#10;
+		enter=1; //accept call move to busy state - checked
 		#10;
 		enter=0; //caller ID menu item - checked
 		#10

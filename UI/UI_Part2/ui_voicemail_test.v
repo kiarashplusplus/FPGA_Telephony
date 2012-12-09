@@ -153,7 +153,15 @@ module ui_voicemail_test;
 		#10;
 		up=1;
 		#10;
-		up=0; //should be at voicemail menu-item - checked
+		up=0; //should be at voicemail menu_item - checked
+		#10;
+		enter=1;
+		#10;
+		enter=0; //toggle voicemail menu - checked
+		#10;
+		enter=1;
+		#10;
+		enter=0; //turn voicemail on -checked
 		
 		
 		

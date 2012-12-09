@@ -3,132 +3,125 @@ K3
 13
 cModel Technology
 Z0 d/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2
-T_opt
-Z1 VXEF@^mjT?MD_UR_WD]FMS0
-Z2 04 7 4 work ui_test fast 0
+T_opt1
+Z1 VY_TVNR`g_5Q7K_2XZ`>S<1
+Z2 04 17 4 work ui_voicemail_test fast 0
 Z3 04 4 4 work glbl fast 0
-Z4 =1-f04da20f0680-50c3c315-410b5-5e08
+Z4 =1-f04da20f0680-50c3c6a1-ae952-5eb3
 Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
 Z6 OE;O;6.4a;39
-T_opt1
-Z7 VmzFhKbXA1j7_^a@>?UW[V2
-Z8 04 17 4 work ui_voicemail_test fast 0
-R3
-Z9 =1-f04da20f0680-50c3c23f-11609-5db3
-R5
-R6
 T_opt2
-Z10 VLRBbfkQLfLTi7H;7ilkga3
-R2
+Z7 VTROWR8d[^NM6@C[<[90[F2
+Z8 04 7 4 work ui_test fast 0
 R3
-Z11 =1-f04da20f0680-50c3c34a-77611-5e2e
+Z9 =1-f04da20f0680-50c3e4fb-e57ec-5fed
 R5
 R6
 vglbl
-Z12 IB;@1jEXmEfQXL`;Kf0IBZ3
-Z13 VnN]4Gon>inod6>M^M2[SV1
-Z14 w1202685744
-Z15 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
-Z16 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z10 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z11 VnN]4Gon>inod6>M^M2[SV1
+Z12 w1202685744
+Z13 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z14 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
 L0 5
-Z17 OE;L;6.4a;39
+Z15 OE;L;6.4a;39
 r1
 31
-Z18 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
-Z19 !s100 T?5S;>bN`@zG_25]R_4A33
+Z16 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z17 !s100 T?5S;>bN`@zG_25]R_4A33
 !s85 0
 vText_Scroller
-Z20 IeA1U5lEN=_e;1;_5JBzQ01
-Z21 V]DAZ`@zFo^iZfMEYdmA1m3
-Z22 w1354830969
-Z23 8Text_Scroller.v
-Z24 FText_Scroller.v
+Z18 IeA1U5lEN=_e;1;_5JBzQ01
+Z19 V]DAZ`@zFo^iZfMEYdmA1m3
+Z20 w1354830969
+Z21 8Text_Scroller.v
+Z22 FText_Scroller.v
 L0 30
-R17
+R15
 r1
 31
-R18
-Z25 n@text_@scroller
-Z26 !s100 Yk>T68nYHaPR2?1[KA2ni1
+R16
+Z23 n@text_@scroller
+Z24 !s100 Yk>T68nYHaPR2?1[KA2ni1
 !s85 0
 vText_Scroller_Interface
-Z27 I<LR:VkWoJGBjzCZEb>1dI0
-Z28 Vh;?m[e3dJkABTmgjP1JcJ3
-Z29 w1354835566
-Z30 8Text_Scroller_Interface.v
-Z31 FText_Scroller_Interface.v
+Z25 I<LR:VkWoJGBjzCZEb>1dI0
+Z26 Vh;?m[e3dJkABTmgjP1JcJ3
+Z27 w1354835566
+Z28 8Text_Scroller_Interface.v
+Z29 FText_Scroller_Interface.v
 L0 21
-R17
+R15
 r1
 31
-R18
-Z32 n@text_@scroller_@interface
-Z33 !s100 ozcJQ8Wm1K2h[Y087J^ji3
+R16
+Z30 n@text_@scroller_@interface
+Z31 !s100 ozcJQ8Wm1K2h[Y087J^ji3
 !s85 0
 vText_Storage
-Z34 Io^H9cl9=n5gY3IY2iR^c40
-Z35 V2YzmXo2m<XECI5>R]QXMH2
-Z36 w1354762719
-Z37 8Text_Storage.v
-Z38 FText_Storage.v
+Z32 Io^H9cl9=n5gY3IY2iR^c40
+Z33 V2YzmXo2m<XECI5>R]QXMH2
+Z34 w1354762719
+Z35 8Text_Storage.v
+Z36 FText_Storage.v
 L0 40
-R17
+R15
 r1
 31
-R18
-Z39 n@text_@storage
-Z40 !s100 iP:zJCLH^YfYi8Cl=22AK3
+R16
+Z37 n@text_@storage
+Z38 !s100 iP:zJCLH^YfYi8Cl=22AK3
 !s85 0
 vui_test
-Z41 I^^jQa@G[Ibf;BYSN4]i1B3
-Z42 Vf:jm7PfbF;R`A3?CQoc591
-Z43 w1355006787
-Z44 8ui_test.v
-Z45 Fui_test.v
+Z39 IHihz^[38<B<ML>M7Y;8451
+Z40 Vf:jm7PfbF;R`A3?CQoc591
+Z41 w1355015306
+Z42 8ui_test.v
+Z43 Fui_test.v
 L0 25
-R17
+R15
 r1
 31
-R18
-Z46 !s100 kBlDa5FKJBn6dV[JH?96S3
+R16
+Z44 !s100 lY8knnO=^g<faOg``g]_c0
 !s85 0
 vUI_Text_Scroller_BRAM
-Z47 IOO0_8<7nTj2aoN^aDzSj32
-Z48 VaffJ_lLG7:noWf=YIKY7B1
-Z49 w1354836189
-Z50 8UI_Text_Scroller_BRAM.v
-Z51 FUI_Text_Scroller_BRAM.v
+Z45 IOO0_8<7nTj2aoN^aDzSj32
+Z46 VaffJ_lLG7:noWf=YIKY7B1
+Z47 w1354836189
+Z48 8UI_Text_Scroller_BRAM.v
+Z49 FUI_Text_Scroller_BRAM.v
 L0 40
-R17
+R15
 r1
 31
-R18
-Z52 n@u@i_@text_@scroller_@b@r@a@m
-Z53 !s100 W;Q4:0X>68PG_mLCziANZ2
+R16
+Z50 n@u@i_@text_@scroller_@b@r@a@m
+Z51 !s100 W;Q4:0X>68PG_mLCziANZ2
 !s85 0
 vui_voicemail_test
-Z54 Ina0BKFQB[cEME`<?YdWY91
-Z55 VoV@34aL47>>Sl_2Q7ddIk3
-Z56 w1355006454
-Z57 8ui_voicemail_test.v
-Z58 Fui_voicemail_test.v
+Z52 IVRo<keXOl:_ZK`BG4g:n11
+Z53 VoV@34aL47>>Sl_2Q7ddIk3
+Z54 w1355007647
+Z55 8ui_voicemail_test.v
+Z56 Fui_voicemail_test.v
 L0 25
-R17
+R15
 r1
 31
-R18
-Z59 !s100 Fng6V>c2=I8ZVN2;m8YR60
+R16
+Z57 !s100 d0B1lgYL86mVXM=?3UF7_3
 !s85 0
 vuser_interface
-Z60 IlE6`>K1]KicNNW8@AWIoB3
-Z61 VgY6IVIXk8cZ0]le6kTc:52
-Z62 w1355006347
-Z63 8user_interface.v
-Z64 Fuser_interface.v
+Z58 IT`W;5j9YWj?7=_FQ[Q6kJ3
+Z59 V=CA5YcBbD?7=8JUczkUW93
+Z60 w1355015417
+Z61 8user_interface.v
+Z62 Fuser_interface.v
 L0 21
-R17
+R15
 r1
 31
-R18
-Z65 !s100 UCJWUGml7bSbX6izl>cJI1
+R16
+Z63 !s100 `kj[k=3jF03V=<PFbkP7H1
 !s85 0
