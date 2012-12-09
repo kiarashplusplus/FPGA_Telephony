@@ -1,7 +1,7 @@
 
 module transportSend #(parameter packetSize=16) //in bytes
 	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
-	 input sendData, output reg sending, output reg [7:0] packetOut, output reg busy);
+	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
 	reg goingToSend=0;
@@ -35,11 +35,15 @@ module transportSend #(parameter packetSize=16) //in bytes
 		.data_count(ready_data_count), .dout(readyOut), .empty(readyEmpty), .full(readyFull));
 	
 
+	assign packetOut=readyOut;
+
 	//reg [7:0] addrBook;   
 	//reg [1:0] addrBookTop; //number of phone numbers in the addressbook
 	
 	reg [15:0] buffer;
 	reg [packetSize:0] packetSizeCounter=0;
+	reg [packetSize:0] packetSizeCounter2=0;
+	
 	reg [1:0] twoCounter=0;
 	
 	reg cdFlag=0;	
@@ -52,6 +56,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 			twoCounter<=0;
 			sending<=0;
 			goingToSend=0;
+			busy<=0;
 		end else if(cmd==2'b01 && cdFlag==0) begin  //recieving contol data    //assuming the control data is 16 bits
 			busy<=1;
 			cdFlag<=1;
@@ -126,24 +131,25 @@ module transportSend #(parameter packetSize=16) //in bytes
 				buffer_wr_en<=0;
 				buffer_rd_en<=0;
 				ready_wr_en<=0;
-				ready_rd_en<=0;		
 			end
 		end	
 		
 		
 		if (goingToSend==1) begin
-			packetOut<=readyOut;
-			if (packetSizeCounter==1) begin
-				sending<=0;
+			if (packetSizeCounter2==1) begin
 				ready_rd_en<=0;	
+				packetSizeCounter2<=packetSizeCounter2-1;	 
+			end else if (packetSizeCounter2==0) begin
+				sending<=0;	
+				goingToSend<=0;				
 			end else begin
 				sending<=1;
-				packetSizeCounter<=packetSizeCounter-1;
+				packetSizeCounter2<=packetSizeCounter2-1;
 			end
 		end else if (sendData && (ready_data_count >= packetSize) ) begin
 			ready_rd_en<=1;
-			packetSizeCounter<=packetSize;
-			goingToSend=1;	
+			packetSizeCounter2<=packetSize;
+			goingToSend<=1;	
 		end
 
 	end

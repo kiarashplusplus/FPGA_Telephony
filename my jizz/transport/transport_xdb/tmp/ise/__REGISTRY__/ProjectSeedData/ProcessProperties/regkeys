@@ -2291,5 +2291,5 @@ prop_9_name
 PROP_BehavioralSimTop
 s
 prop_9_val
-"Module|transportSend"
+"Module|tSend_tb"
 s
