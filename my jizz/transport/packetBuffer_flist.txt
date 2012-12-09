@@ -1,0 +1,12 @@
+# Output products list for <packetBuffer>
+packetBuffer.asy
+packetBuffer.ngc
+packetBuffer.sym
+packetBuffer.v
+packetBuffer.veo
+packetBuffer.vhd
+packetBuffer.vho
+packetBuffer.xco
+packetBuffer_fifo_generator_v4_4_xst_1.ngc_xst.xrpt
+packetBuffer_flist.txt
+packetBuffer_xmdf.tcl

@@ -1,0 +1,958 @@
+Release 10.1.03 Map K.39 (lin64)
+Xilinx Mapping Report File for Design 'packetBuffer'
+
+Design Information
+------------------
+Command Line   : map -ise
+"/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my
+jizz/transport/transport.ise" -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off
+-k 4 -c 100 -tx off -o packetBuffer_map.ncd packetBuffer.ngd packetBuffer.pcf 
+Target Device  : xc2v6000
+Target Package : bf957
+Target Speed   : -4
+Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
+Mapped Date    : Sat Dec  8 14:19:03 2012
+
+Design Summary
+--------------
+Number of errors   :   1
+Number of warnings :  35
+
+Section 1 - Errors
+------------------
+ERROR:Pack:198 - NCD was not produced.  All logic was removed from the design. 
+   This is usually due to having no input or output PAD connections in the
+   design and no nets or symbols marked as 'SAVE'.  You can either add PADs or
+   'SAVE' attributes to the design, or run 'map -u' to disable logic trimming in
+   the mapper.  For more information on trimming issues search the Xilinx
+   Answers database for "ERROR:Pack:198" and read the Master Answer Record for
+   MAP Trimming Issues.
+
+Section 2 - Warnings
+--------------------
+WARNING:LIT:243 - Logical network dout<7> has no load.
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 9
+   more times for the following (max. 5 shown):
+   dout<6>,
+   dout<5>,
+   dout<4>,
+   dout<3>,
+   dout<2>
+   To see the details of these warning messages, please use the -detail switch.
+WARNING:MapLib:701 - Signal clk connected to top level port clk has been
+   removed.
+WARNING:MapLib:701 - Signal empty connected to top level port empty has been
+   removed.
+WARNING:MapLib:701 - Signal full connected to top level port full has been
+   removed.
+WARNING:MapLib:701 - Signal data_count<0> connected to top level port
+   data_count(0) has been removed.
+WARNING:MapLib:701 - Signal data_count<1> connected to top level port
+   data_count(1) has been removed.
+WARNING:MapLib:701 - Signal data_count<2> connected to top level port
+   data_count(2) has been removed.
+WARNING:MapLib:701 - Signal data_count<3> connected to top level port
+   data_count(3) has been removed.
+WARNING:MapLib:701 - Signal data_count<4> connected to top level port
+   data_count(4) has been removed.
+WARNING:MapLib:701 - Signal data_count<5> connected to top level port
+   data_count(5) has been removed.
+WARNING:MapLib:701 - Signal data_count<6> connected to top level port
+   data_count(6) has been removed.
+WARNING:MapLib:701 - Signal data_count<7> connected to top level port
+   data_count(7) has been removed.
+WARNING:MapLib:701 - Signal data_count<8> connected to top level port
+   data_count(8) has been removed.
+WARNING:MapLib:701 - Signal data_count<9> connected to top level port
+   data_count(9) has been removed.
+WARNING:MapLib:701 - Signal data_count<10> connected to top level port
+   data_count(10) has been removed.
+WARNING:MapLib:701 - Signal srst connected to top level port srst has been
+   removed.
+WARNING:MapLib:701 - Signal wr_en connected to top level port wr_en has been
+   removed.
+WARNING:MapLib:701 - Signal rd_en connected to top level port rd_en has been
+   removed.
+WARNING:MapLib:701 - Signal din<7> connected to top level port din(7) has been
+   removed.
+WARNING:MapLib:701 - Signal din<6> connected to top level port din(6) has been
+   removed.
+WARNING:MapLib:701 - Signal din<5> connected to top level port din(5) has been
+   removed.
+WARNING:MapLib:701 - Signal din<4> connected to top level port din(4) has been
+   removed.
+WARNING:MapLib:701 - Signal din<3> connected to top level port din(3) has been
+   removed.
+WARNING:MapLib:701 - Signal din<2> connected to top level port din(2) has been
+   removed.
+WARNING:MapLib:701 - Signal din<1> connected to top level port din(1) has been
+   removed.
+WARNING:MapLib:701 - Signal din<0> connected to top level port din(0) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<7> connected to top level port dout(7) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<6> connected to top level port dout(6) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<5> connected to top level port dout(5) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<4> connected to top level port dout(4) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<3> connected to top level port dout(3) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<2> connected to top level port dout(2) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<1> connected to top level port dout(1) has been
+   removed.
+WARNING:MapLib:701 - Signal dout<0> connected to top level port dout(0) has been
+   removed.
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+ 254 block(s) removed
+ 271 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "data_count<10>" is loadless and has been removed.
+ Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_10" (FF) removed.
+  The signal "clk" is loadless and has been removed.
+  The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_not0001" is loadless and
+has been removed.
+   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_not00011" (ROM)
+removed.
+    The signal "srst" is loadless and has been removed.
+    The signal "wr_en" is loadless and has been removed.
+    The signal "BU2/U0/grf.rf/ram_rd_en" is loadless and has been removed.
+     Loadless block "BU2/U0/grf.rf/gl0.rd/ram_rd_en_i1" (ROM) removed.
+      The signal "rd_en" is loadless and has been removed.
+      The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i" is loadless and has
+been removed.
+       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i" (FF) removed.
+        The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i_mux0000" is loadless
+and has been removed.
+         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i_mux0000" (MUX)
+removed.
+          The signal "BU2/N5" is loadless and has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i_mux0000_F" (ROM)
+removed.
+            The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/comp1" is loadless and has been
+removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/gmux.gm[5].gms.ms" (MUX)
+removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/carrynet<4>" is loadless and has
+been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/gmux.gm[4].gms.ms" (MUX)
+removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/carrynet<3>" is loadless and has
+been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/gmux.gm[3].gms.ms" (MUX)
+removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/carrynet<2>" is loadless and has
+been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/gmux.gm[2].gms.ms" (MUX)
+removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/carrynet<1>" is loadless and has
+been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/gmux.gm[1].gms.ms" (MUX)
+removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/carrynet<0>" is loadless and has
+been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/gmux.gm[0].gm1.m1" (MUX)
+removed.
+                        The signal "BU2/N1" is loadless and has been removed.
+                         Loadless block "BU2/XST_VCC" (ONE) removed.
+                        The signal "BU2/rd_data_count<0>" is loadless and has been removed.
+                         Loadless block "BU2/XST_GND" (ZERO) removed.
+                        The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1<0>" is loadless and has been
+removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1_0_and00001" (ROM) removed.
+                          The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<1>" is loadless and has been
+removed.
+                           Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_1" (FF) removed.
+                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_not0001" is loadless and has been
+removed.
+                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_not00011" (ROM) removed.
+                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count1" is loadless and has been
+removed.
+                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<1>" (XOR) removed.
+                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<0>" is loadless and has
+been removed.
+                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<0>" (MUX) removed.
+                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/SRST_inv" is loadless and has been
+removed.
+                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/SRST_inv1_INV_0" (BUF) removed.
+                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<0>" is loadless and has
+been removed.
+                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<0>" (ROM) removed.
+                                  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<0>" is loadless and has been
+removed.
+                                   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_0" (FF) removed.
+                                    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count" is loadless and has been
+removed.
+                                     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<0>" (XOR) removed.
+                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<1>" is loadless and has
+been removed.
+                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<1>" (ROM) removed.
+                          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<1>" is loadless and has been
+removed.
+                           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_1" (FF) removed.
+                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_not0001" is loadless and has been
+removed.
+                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_not00011" (ROM) removed.
+                              The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i" is loadless and has
+been removed.
+                               Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i" (FF) removed.
+                                The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb" is loadless and has
+been removed.
+                                 Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb" (MUX) removed.
+                                  The signal "BU2/N7" is loadless and has been removed.
+                                   Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb_F" (ROM) removed.
+                                    The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/comp1" is loadless and has been
+removed.
+                                     Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[5].gms.ms" (MUX)
+removed.
+                                      The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<4>" is loadless and has
+been removed.
+                                       Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[4].gms.ms" (MUX)
+removed.
+                                        The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<3>" is loadless and has
+been removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[3].gms.ms" (MUX)
+removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<2>" is loadless and has
+been removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[2].gms.ms" (MUX)
+removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<1>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[1].gms.ms" (MUX)
+removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<0>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[0].gm1.m1" (MUX)
+removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<0>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_0_and00001" (ROM) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<1>" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_1" (FF) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count1" is loadless and has been
+removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<1>" (XOR) removed.
+*    The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<0>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<0>" (MUX) removed.
+*      The signal "BU2/U0/grf.rf/gl0.wr/wpntr/SRST_inv" is loadless and has been
+removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/SRST_inv1_INV_0" (BUF) removed.
+*      The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<0>" is loadless and has
+been removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<0>" (ROM) removed.
+*        The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<0>" is loadless and has been
+removed.
+*         Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_0" (FF) removed.
+*          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count" is loadless and has been
+removed.
+*           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<0>" (XOR) removed.
+*    The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<1>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<1>" (ROM) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<1>" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_1" (FF) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<9>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<9>1" (ROM) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<0>" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_0" (FF) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<10>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<10>1" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<1>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_1_and00001" (ROM) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<3>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_3" (FF) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count3" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<3>" (XOR) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<2>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<2>" (MUX) removed.
+*    The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<1>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<1>" (MUX) removed.
+*    The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<2>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<2>" (ROM) removed.
+*      The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<2>" is loadless and has been
+removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_2" (FF) removed.
+*        The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count2" is loadless and has been
+removed.
+*         Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<2>" (XOR) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<3>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<3>" (ROM) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<3>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_3" (FF) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<7>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<7>1" (ROM) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<3>" is loadless and has been
+removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_3" (FF) removed.
+*    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count3" is loadless and has been
+removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<3>" (XOR) removed.
+*      The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<2>" is loadless and has
+been removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<2>" (MUX) removed.
+*        The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<1>" is loadless and has
+been removed.
+*         Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<1>" (MUX) removed.
+*        The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<2>" is loadless and has
+been removed.
+*         Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<2>" (ROM) removed.
+*          The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<2>" is loadless and has been
+removed.
+*           Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_2" (FF) removed.
+*            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count2" is loadless and has been
+removed.
+*             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<2>" (XOR) removed.
+*      The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<3>" is loadless and has
+been removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<3>" (ROM) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<2>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_2" (FF) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<8>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<8>1" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<2>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_2_and00001" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<5>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_5" (FF) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count5" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<5>" (XOR) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<4>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<4>" (MUX) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<3>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<3>" (MUX) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<4>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<4>" (ROM) removed.
+*    The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<4>" is loadless and has been
+removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_4" (FF) removed.
+*      The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count4" is loadless and has been
+removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<4>" (XOR) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<5>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<5>" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<5>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_5" (FF) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<5>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<5>1" (ROM) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<5>" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_5" (FF) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count5" is loadless and has been
+removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<5>" (XOR) removed.
+*    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<4>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<4>" (MUX) removed.
+*      The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<3>" is loadless and has
+been removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<3>" (MUX) removed.
+*      The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<4>" is loadless and has
+been removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<4>" (ROM) removed.
+*        The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<4>" is loadless and has been
+removed.
+*         Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_4" (FF) removed.
+*          The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count4" is loadless and has been
+removed.
+*           Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<4>" (XOR) removed.
+*    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<5>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<5>" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<4>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_4" (FF) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<6>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<6>1" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<3>" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_3_and00001" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<7>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_7" (FF) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count7" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<7>" (XOR) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<6>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<6>" (MUX) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<5>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<5>" (MUX) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<6>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<6>" (ROM) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<6>" is loadless and has been
+removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_6" (FF) removed.
+*    The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count6" is loadless and has been
+removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<6>" (XOR) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<7>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<7>" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<7>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_7" (FF) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<3>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<3>1" (ROM) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<7>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_7" (FF) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count7" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<7>" (XOR) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<6>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<6>" (MUX) removed.
+*    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<5>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<5>" (MUX) removed.
+*    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<6>" is loadless and has
+been removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<6>" (ROM) removed.
+*      The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<6>" is loadless and has been
+removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_6" (FF) removed.
+*        The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count6" is loadless and has been
+removed.
+*         Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<6>" (XOR) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<7>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<7>" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<6>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_6" (FF) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<4>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<4>1" (ROM) removed.
+                                        The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<4>" is loadless and has been
+removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_4_and00001" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<9>" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_9" (FF) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count9" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<9>" (XOR) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<8>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<8>" (MUX) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<7>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<7>" (MUX) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<8>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<8>" (ROM) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<8>" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_8" (FF) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count8" is loadless and has been
+removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<8>" (XOR) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<9>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<9>" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<9>" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_9" (FF) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<1>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<1>1" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<9>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_9" (FF) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count9" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<9>" (XOR) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<8>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<8>" (MUX) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<7>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<7>" (MUX) removed.
+*  The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<8>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<8>" (ROM) removed.
+*    The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<8>" is loadless and has been
+removed.
+*     Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_8" (FF) removed.
+*      The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count8" is loadless and has been
+removed.
+*       Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<8>" (XOR) removed.
+*The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<9>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<9>" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<8>" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_8" (FF) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<2>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<2>1" (ROM) removed.
+                                      The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<5>" is loadless and has been
+removed.
+                                       Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_5_not00001" (ROM) removed.
+                                        The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count<10>" is loadless and has been
+removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_10" (FF) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count10" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<10>" (XOR) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<9>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<9>" (MUX) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<10>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_lut<10>" (ROM) removed.
+                                        The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<10>" is loadless and has been
+removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_10" (FF) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<0>" is loadless and has
+been removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_mux0000<0>1" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.rd/rpntr/count<10>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/count_10" (FF) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count10" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_xor<10>" (XOR) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<9>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_cy<9>" (MUX) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<10>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/rpntr/Mcount_count_lut<10>" (ROM) removed.
+                                  The signal "BU2/N8" is loadless and has been removed.
+                                   Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb_G" (ROM) removed.
+                                    The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/comp0" is loadless and has been
+removed.
+                                     Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[5].gms.ms" (MUX)
+removed.
+                                      The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<4>" is loadless and has
+been removed.
+                                       Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[4].gms.ms" (MUX)
+removed.
+                                        The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<3>" is loadless and has
+been removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[3].gms.ms" (MUX)
+removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<2>" is loadless and has
+been removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[2].gms.ms" (MUX)
+removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<1>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[1].gms.ms" (MUX)
+removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<0>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[0].gm1.m1" (MUX)
+removed.
+                                                The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>1_1" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>1_1" (ROM) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<0>" is loadless and has been
+removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_0" (FF) removed.
+*  The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<10>" is loadless and has
+been removed.
+*   Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<10>1" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>1_1" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>1_1" (ROM) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<3>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_3" (FF) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<7>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<7>1" (ROM) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<2>" is loadless and has been
+removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_2" (FF) removed.
+*The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<8>" is loadless and has
+been removed.
+* Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<8>1" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>1_1" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>1_1" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<5>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_5" (FF) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<5>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<5>1" (ROM) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<4>" is loadless and has been
+removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_4" (FF) removed.
+                                                The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<6>" is loadless and has
+been removed.
+                                                 Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<6>1" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>1_1" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>1_1" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<7>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_7" (FF) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<3>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<3>1" (ROM) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<6>" is loadless and has been
+removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_6" (FF) removed.
+                                              The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<4>" is loadless and has
+been removed.
+                                               Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<4>1" (ROM) removed.
+                                        The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>1_1" is loadless and has been
+removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>1_1" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<9>" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_9" (FF) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<1>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<1>1" (ROM) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<8>" is loadless and has been
+removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_8" (FF) removed.
+                                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<2>" is loadless and has
+been removed.
+                                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<2>1" (ROM) removed.
+                                      The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<5>1_1" is loadless and has been
+removed.
+                                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<5>1_1" (ROM) removed.
+                                        The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1<10>" is loadless and has been
+removed.
+                                         Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_10" (FF) removed.
+                                          The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<0>" is loadless and has
+been removed.
+                                           Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<0>1" (ROM) removed.
+                            The signal "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<9>" is loadless and has
+been removed.
+                             Loadless block "BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_mux0000<9>1" (ROM) removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1<1>" is loadless and has been
+removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1_1_and00001" (ROM) removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1<2>" is loadless and has been
+removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1_2_and00001" (ROM) removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1<3>" is loadless and has been
+removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1_3_and00001" (ROM) removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1<4>" is loadless and has been
+removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1_4_and00001" (ROM) removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1<5>" is loadless and has been
+removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c2/v1_5_not00001" (ROM) removed.
+          The signal "BU2/N6" is loadless and has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i_mux0000_G" (ROM)
+removed.
+            The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/comp0" is loadless and has been
+removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[5].gms.ms" (MUX)
+removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<4>" is loadless and has
+been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[4].gms.ms" (MUX)
+removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<3>" is loadless and has
+been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[3].gms.ms" (MUX)
+removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<2>" is loadless and has
+been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[2].gms.ms" (MUX)
+removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<1>" is loadless and has
+been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[1].gms.ms" (MUX)
+removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<0>" is loadless and has
+been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[0].gm1.m1" (MUX)
+removed.
+                        The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>" is loadless and has been
+removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>1" (ROM) removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>" is loadless and has been
+removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>1" (ROM) removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>" is loadless and has been
+removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>1" (ROM) removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>" is loadless and has been
+removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>1" (ROM) removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>" is loadless and has been
+removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>1" (ROM) removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<5>" is loadless and has been
+removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<5>1" (ROM) removed.
+          The signal "BU2/U0/grf.rf/ram_wr_en" is loadless and has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.wr/ram_wr_en_i1" (ROM) removed.
+  The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count11" is loadless and
+has been removed.
+   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<10>" (XOR)
+removed.
+    The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<9>" is loadless
+and has been removed.
+     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<9>" (MUX)
+removed.
+      The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<8>" is loadless
+and has been removed.
+       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<8>" (MUX)
+removed.
+        The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<7>" is loadless
+and has been removed.
+         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<7>" (MUX)
+removed.
+          The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<6>" is loadless
+and has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<6>" (MUX)
+removed.
+            The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<5>" is loadless
+and has been removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<5>" (MUX)
+removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<4>" is loadless
+and has been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<4>" (MUX)
+removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<3>" is loadless
+and has been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<3>" (MUX)
+removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<2>" is loadless
+and has been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<2>" (MUX)
+removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<1>" is loadless
+and has been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<1>" (MUX)
+removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<0>" is loadless
+and has been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<0>" (MUX)
+removed.
+                        The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count" is loadless and
+has been removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count1" (ROM)
+removed.
+                        The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand" is loadless
+and has been removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand" (AND)
+removed.
+                          The signal "data_count<0>" is loadless and has been removed.
+                           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_0" (FF) removed.
+                            The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count1" is loadless and
+has been removed.
+                             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<0>" (XOR)
+removed.
+                              The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<0>" is loadless
+and has been removed.
+                               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<0>" (ROM)
+removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand1" is loadless
+and has been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_0" (AND)
+removed.
+                        The signal "data_count<1>" is loadless and has been removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_1" (FF) removed.
+                          The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count2" is loadless and
+has been removed.
+                           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<1>" (XOR)
+removed.
+                            The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<1>" is loadless
+and has been removed.
+                             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<1>" (ROM)
+removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand2" is loadless
+and has been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_1" (AND)
+removed.
+                      The signal "data_count<2>" is loadless and has been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_2" (FF) removed.
+                        The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count3" is loadless and
+has been removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<2>" (XOR)
+removed.
+                          The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<2>" is loadless
+and has been removed.
+                           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<2>" (ROM)
+removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand3" is loadless
+and has been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_2" (AND)
+removed.
+                    The signal "data_count<3>" is loadless and has been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_3" (FF) removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count4" is loadless and
+has been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<3>" (XOR)
+removed.
+                        The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<3>" is loadless
+and has been removed.
+                         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<3>" (ROM)
+removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand4" is loadless
+and has been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_3" (AND)
+removed.
+                  The signal "data_count<4>" is loadless and has been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_4" (FF) removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count5" is loadless and
+has been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<4>" (XOR)
+removed.
+                      The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<4>" is loadless
+and has been removed.
+                       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<4>" (ROM)
+removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand5" is loadless
+and has been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_4" (AND)
+removed.
+                The signal "data_count<5>" is loadless and has been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_5" (FF) removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count6" is loadless and
+has been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<5>" (XOR)
+removed.
+                    The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<5>" is loadless
+and has been removed.
+                     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<5>" (ROM)
+removed.
+            The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand6" is loadless
+and has been removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_5" (AND)
+removed.
+              The signal "data_count<6>" is loadless and has been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_6" (FF) removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count7" is loadless and
+has been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<6>" (XOR)
+removed.
+                  The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<6>" is loadless
+and has been removed.
+                   Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<6>" (ROM)
+removed.
+          The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand7" is loadless
+and has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_6" (AND)
+removed.
+            The signal "data_count<7>" is loadless and has been removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_7" (FF) removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count8" is loadless and
+has been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<7>" (XOR)
+removed.
+                The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<7>" is loadless
+and has been removed.
+                 Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<7>" (ROM)
+removed.
+        The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand8" is loadless
+and has been removed.
+         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_7" (AND)
+removed.
+          The signal "data_count<8>" is loadless and has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_8" (FF) removed.
+            The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count9" is loadless and
+has been removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<8>" (XOR)
+removed.
+              The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<8>" is loadless
+and has been removed.
+               Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<8>" (ROM)
+removed.
+      The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand9" is loadless
+and has been removed.
+       Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_mand_8" (AND)
+removed.
+        The signal "data_count<9>" is loadless and has been removed.
+         Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_9" (FF) removed.
+          The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count10" is loadless and
+has been removed.
+           Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<9>" (XOR)
+removed.
+            The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<9>" is loadless
+and has been removed.
+             Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<9>" (ROM)
+removed.
+    The signal "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<10>" is
+loadless and has been removed.
+     Loadless block "BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<10>" (ROM)
+removed.
+The signal "dout<7>" is loadless and has been removed.
+The signal "dout<6>" is loadless and has been removed.
+The signal "dout<5>" is loadless and has been removed.
+The signal "dout<4>" is loadless and has been removed.
+The signal "dout<3>" is loadless and has been removed.
+The signal "dout<2>" is loadless and has been removed.
+The signal "dout<1>" is loadless and has been removed.
+The signal "dout<0>" is loadless and has been removed.
+The signal "empty" is loadless and has been removed.
+ Loadless block "BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i" (FF) removed.
+The signal "full" is loadless and has been removed.
+ Loadless block "BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i" (FF) removed.
+The signal "din<7>" is sourceless and has been removed.
+The signal "din<6>" is sourceless and has been removed.
+The signal "din<5>" is sourceless and has been removed.
+The signal "din<4>" is sourceless and has been removed.
+The signal "din<3>" is sourceless and has been removed.
+The signal "din<2>" is sourceless and has been removed.
+The signal "din<1>" is sourceless and has been removed.
+The signal "din<0>" is sourceless and has been removed.
+Unused block
+"BU2/U0/grf.rf/mem/gbm.gbmg.gbmga.ngecc.bmg/blk_mem_generator/valid.cstr/ramloop
+[0].ram.r/v2_noinit.ram/dp9x9.ram" () removed.
+Unused block "GND" (ZERO) removed.
+Unused block "VCC" (ONE) removed.

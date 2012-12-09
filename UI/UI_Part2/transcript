@@ -1,0 +1,128 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-34-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {ui_voicemail_test.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module UI_Text_Scroller_BRAM
+# 
+# Top level modules:
+# 	UI_Text_Scroller_BRAM
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Storage
+# 
+# Top level modules:
+# 	Text_Storage
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller_Interface
+# 
+# Top level modules:
+# 	Text_Scroller_Interface
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller
+# 
+# Top level modules:
+# 	Text_Scroller
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module user_interface
+# 
+# Top level modules:
+# 	user_interface
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module ui_voicemail_test
+# 
+# Top level modules:
+# 	ui_voicemail_test
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_voicemail_test glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ui_voicemail_test.v(104): (vopt-2241) Connection width does not match width of port 'voicemail_command'.
+# ** Warning: ui_voicemail_test.v(104): (vopt-2241) Connection width does not match width of port 'disp_control'.
+# Loading work.ui_voicemail_test(fast)
+# Loading work.user_interface(fast)
+# Loading work.Text_Scroller_Interface(fast)
+# Loading work.Text_Storage(fast)
+# Loading work.Text_Scroller(fast)
+# Loading work.UI_Text_Scroller_BRAM(fast)
+# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ui_voicemail_test.v(104): [PCDPC] - Port size (4 or 4) does not match connection size (1) for port 'voicemail_command'.
+#         Region: /ui_voicemail_test/uut
+# ** Warning: (vsim-3015) ui_voicemail_test.v(104): [PCDPC] - Port size (2 or 2) does not match connection size (1) for port 'disp_control'.
+#         Region: /ui_voicemail_test/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+#  Block Memory Generator CORE Generator module loading initial data...
+#  Block Memory Generator data initialization complete.
+# Block Memory Generator CORE Generator module ui_voicemail_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+do {ui_voicemail_test.fdo}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module UI_Text_Scroller_BRAM
+# 
+# Top level modules:
+# 	UI_Text_Scroller_BRAM
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Storage
+# 
+# Top level modules:
+# 	Text_Storage
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller_Interface
+# 
+# Top level modules:
+# 	Text_Scroller_Interface
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module Text_Scroller
+# 
+# Top level modules:
+# 	Text_Scroller
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module user_interface
+# 
+# Top level modules:
+# 	user_interface
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module ui_voicemail_test
+# 
+# Top level modules:
+# 	ui_voicemail_test
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps ui_voicemail_test glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ui_voicemail_test.v(104): (vopt-2241) Connection width does not match width of port 'voicemail_command'.
+# ** Warning: ui_voicemail_test.v(104): (vopt-2241) Connection width does not match width of port 'disp_control'.
+# Loading work.ui_voicemail_test(fast)
+# Loading work.user_interface(fast)
+# Loading work.Text_Scroller_Interface(fast)
+# Loading work.Text_Storage(fast)
+# Loading work.Text_Scroller(fast)
+# Loading work.UI_Text_Scroller_BRAM(fast)
+# Loading xilinxcorelib_ver.BLKMEMDP_V6_3(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ui_voicemail_test.v(104): [PCDPC] - Port size (4 or 4) does not match connection size (1) for port 'voicemail_command'.
+#         Region: /ui_voicemail_test/uut
+# ** Warning: (vsim-3015) ui_voicemail_test.v(104): [PCDPC] - Port size (2 or 2) does not match connection size (1) for port 'disp_control'.
+#         Region: /ui_voicemail_test/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+#  Block Memory Generator CORE Generator module loading initial data...
+#  Block Memory Generator data initialization complete.
+# Block Memory Generator CORE Generator module ui_voicemail_test.uut.tsi.TEXT_STORAGE.inst is using a behavioral model for simulation which will not precisely model memory collision behavior.

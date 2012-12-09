@@ -1,0 +1,2 @@
+verilog work "user_interface.v"
+verilog work /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v

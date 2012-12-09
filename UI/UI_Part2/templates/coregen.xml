@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="UI_Text_Scroller_BRAM" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+UI_Text_Scroller_BRAM YourInstanceName (
+    .addra(addra), // Bus [10 : 0] 
+    .addrb(addrb), // Bus [10 : 0] 
+    .clka(clka),
+    .clkb(clkb),
+    .dina(dina), // Bus [7 : 0] 
+    .doutb(doutb), // Bus [7 : 0] 
+    .wea(wea));
+
+ 
+		</Template>
+		<Template label="Text_Storage" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+Text_Storage YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [7 : 0] 
+
+ 
+		</Template>
+		<Template label="Voicemail_FIFO" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+Voicemail_FIFO YourInstanceName (
+    .clk(clk),
+    .din(din), // Bus [15 : 0] 
+    .rd_en(rd_en),
+    .rst(rst),
+    .wr_en(wr_en),
+    .data_count(data_count), // Bus [10 : 0] 
+    .dout(dout), // Bus [15 : 0] 
+    .empty(empty),
+    .full(full));
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="UI_Text_Scroller_BRAM" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component UI_Text_Scroller_BRAM
+    port (
+    addra: IN std_logic_VECTOR(10 downto 0);
+    addrb: IN std_logic_VECTOR(10 downto 0);
+    clka: IN std_logic;
+    clkb: IN std_logic;
+    dina: IN std_logic_VECTOR(7 downto 0);
+    doutb: OUT std_logic_VECTOR(7 downto 0);
+    wea: IN std_logic);
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : UI_Text_Scroller_BRAM
+        port map (
+            addra =&gt; addra,
+            addrb =&gt; addrb,
+            clka =&gt; clka,
+            clkb =&gt; clkb,
+            dina =&gt; dina,
+            doutb =&gt; doutb,
+            wea =&gt; wea);
+ 
+		</Template>
+		<Template label="Text_Storage" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component Text_Storage
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : Text_Storage
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="Voicemail_FIFO" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component Voicemail_FIFO
+    port (
+    clk: IN std_logic;
+    din: IN std_logic_VECTOR(15 downto 0);
+    rd_en: IN std_logic;
+    rst: IN std_logic;
+    wr_en: IN std_logic;
+    data_count: OUT std_logic_VECTOR(10 downto 0);
+    dout: OUT std_logic_VECTOR(15 downto 0);
+    empty: OUT std_logic;
+    full: OUT std_logic);
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : Voicemail_FIFO
+        port map (
+            clk =&gt; clk,
+            din =&gt; din,
+            rd_en =&gt; rd_en,
+            rst =&gt; rst,
+            wr_en =&gt; wr_en,
+            data_count =&gt; data_count,
+            dout =&gt; dout,
+            empty =&gt; empty,
+            full =&gt; full);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

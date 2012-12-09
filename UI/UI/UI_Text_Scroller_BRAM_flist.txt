@@ -1,0 +1,11 @@
+# Output products list for <UI_Text_Scroller_BRAM>
+UI_Text_Scroller_BRAM.asy
+UI_Text_Scroller_BRAM.ngc
+UI_Text_Scroller_BRAM.sym
+UI_Text_Scroller_BRAM.v
+UI_Text_Scroller_BRAM.veo
+UI_Text_Scroller_BRAM.vhd
+UI_Text_Scroller_BRAM.vho
+UI_Text_Scroller_BRAM.xco
+UI_Text_Scroller_BRAM_flist.txt
+UI_Text_Scroller_BRAM_xmdf.tcl

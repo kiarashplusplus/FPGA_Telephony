@@ -1,0 +1,127 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2
+T_opt1
+VePI52lIZPgQYHK<f4Y6Uz1
+Z1 04 17 4 work ui_voicemail_test fast 0
+Z2 04 4 4 work glbl fast 0
+Z3 =1-f04da20f0680-50c3e7be-ec68d-603b
+Z4 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z5 OE;O;6.4a;39
+T_opt2
+Z6 VTROWR8d[^NM6@C[<[90[F2
+Z7 04 7 4 work ui_test fast 0
+R2
+Z8 =1-f04da20f0680-50c3e4fb-e57ec-5fed
+R4
+R5
+vglbl
+Z9 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z10 VnN]4Gon>inod6>M^M2[SV1
+Z11 w1202685744
+Z12 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z13 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+Z14 OE;L;6.4a;39
+r1
+31
+Z15 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z16 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
+vText_Scroller
+Z17 IeA1U5lEN=_e;1;_5JBzQ01
+Z18 V]DAZ`@zFo^iZfMEYdmA1m3
+Z19 w1354830969
+Z20 8Text_Scroller.v
+Z21 FText_Scroller.v
+L0 30
+R14
+r1
+31
+R15
+Z22 n@text_@scroller
+Z23 !s100 Yk>T68nYHaPR2?1[KA2ni1
+!s85 0
+vText_Scroller_Interface
+Z24 I<LR:VkWoJGBjzCZEb>1dI0
+Z25 Vh;?m[e3dJkABTmgjP1JcJ3
+Z26 w1354835566
+Z27 8Text_Scroller_Interface.v
+Z28 FText_Scroller_Interface.v
+L0 21
+R14
+r1
+31
+R15
+Z29 n@text_@scroller_@interface
+Z30 !s100 ozcJQ8Wm1K2h[Y087J^ji3
+!s85 0
+vText_Storage
+Z31 Io^H9cl9=n5gY3IY2iR^c40
+Z32 V2YzmXo2m<XECI5>R]QXMH2
+Z33 w1354762719
+Z34 8Text_Storage.v
+Z35 FText_Storage.v
+L0 40
+R14
+r1
+31
+R15
+Z36 n@text_@storage
+Z37 !s100 iP:zJCLH^YfYi8Cl=22AK3
+!s85 0
+vui_test
+Z38 IHihz^[38<B<ML>M7Y;8451
+Z39 Vf:jm7PfbF;R`A3?CQoc591
+Z40 w1355015306
+Z41 8ui_test.v
+Z42 Fui_test.v
+L0 25
+R14
+r1
+31
+R15
+Z43 !s100 lY8knnO=^g<faOg``g]_c0
+!s85 0
+vUI_Text_Scroller_BRAM
+Z44 IOO0_8<7nTj2aoN^aDzSj32
+Z45 VaffJ_lLG7:noWf=YIKY7B1
+Z46 w1354836189
+Z47 8UI_Text_Scroller_BRAM.v
+Z48 FUI_Text_Scroller_BRAM.v
+L0 40
+R14
+r1
+31
+R15
+Z49 n@u@i_@text_@scroller_@b@r@a@m
+Z50 !s100 W;Q4:0X>68PG_mLCziANZ2
+!s85 0
+vui_voicemail_test
+Z51 IYoBGRR@lfSEWSW7Lh]BNa2
+Z52 VoV@34aL47>>Sl_2Q7ddIk3
+Z53 w1355016117
+Z54 8ui_voicemail_test.v
+Z55 Fui_voicemail_test.v
+L0 25
+R14
+r1
+31
+R15
+Z56 !s100 TFODK^RE@3jPF<GS_mKZz1
+!s85 0
+vuser_interface
+Z57 IW16EeJe?a9<RIFFBQn:JT1
+Z58 V=CA5YcBbD?7=8JUczkUW93
+Z59 w1355015930
+Z60 8user_interface.v
+Z61 Fuser_interface.v
+L0 21
+R14
+r1
+31
+R15
+Z62 !s100 <HzUfnZH[2G<GMHZ6oacg2
+!s85 0

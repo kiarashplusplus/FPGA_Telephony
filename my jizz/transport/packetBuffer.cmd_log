@@ -1,0 +1,2 @@
+ngdbuild -ise "/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/transport.ise" -intstyle ise -dd _ngo   -sd "/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz" -nt timestamp -i -p xc2v6000-bf957-4 "packetBuffer.ngc" packetBuffer.ngd
+map -ise "/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/transport.ise" -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4 -c 100 -tx off -o packetBuffer_map.ncd packetBuffer.ngd packetBuffer.pcf
