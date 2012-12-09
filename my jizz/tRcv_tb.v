@@ -50,14 +50,14 @@ module tRcv_tb;
 
 
 	always #5 clk= !clk;
-	always #5 packetIn=packetIn+2;
+//	always #20 packetIn=packetIn+2;
 	
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		reset = 0;
 		rcvSignal = 0;
-		packetIn = 8'b1000_0000;
+		packetIn = 0;
 		sessionBusy = 1;
 
 		// Wait 100 ns for global reset to finish
@@ -65,13 +65,29 @@ module tRcv_tb;
         
 		// Add stimulus here
 		rcvSignal=1;
-		#100;
+		packetIn=8'b1000_0000;
+		#10;
+		packetIn=8'h4;
+		#10;
+		packetIn=8'h1;		
+		#10;
+		packetIn=8'h13;
+		#130;
 		rcvSignal=0;
 		#50;
-		sessionBusy=0;
-		#50;
 		rcvSignal=1;
+		
+		
+		packetIn=8'b0100_0000;
+		#10;
+		packetIn=8'h2;
+		#20;
+		packetIn=0;
+		#130;		
+		rcvSignal=0;
 		#100;
+		sessionBusy=0;
+		#500;
 		reset=1;
 		#50;
 		reset=0;

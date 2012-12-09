@@ -12,6 +12,6 @@ entity transportRcv is
         sessionBusy     : in     vl_logic;
         sendingToSession: out    vl_logic_vector(1 downto 0);
         data            : out    vl_logic_vector(15 downto 0);
-        dafuq           : out    vl_logic
+        dafuq           : out    vl_logic_vector(7 downto 0)
     );
 end transportRcv;

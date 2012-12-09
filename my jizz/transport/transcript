@@ -31,6 +31,57 @@
 # Top level modules:
 # 	glbl
 # vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vsim-3601) Iteration limit reached at time 100 ns.
+do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Error: (vsim-3601) Iteration limit reached at time 100 ns.
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Error: (vsim-3601) Iteration limit reached at time 100 ns.
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading work.tRcv_tb(fast)
 # Loading work.transportRcv(fast)
@@ -41,3 +92,1228 @@
 # .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
 # .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
 # .main_pane.signals.interior.cs
+# ** Error: (vsim-3601) Iteration limit reached at time 100 ns.
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Error: (vsim-3601) Iteration limit reached at time 100 ns.
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# ** Error: ../transportRcv.v(46): Undefined variable: clock.
+# ** Error: /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+# Error in macro ./tRcv_tb.fdo line 6
+# /afs/csail.mit.edu/proj/redsocs/modeltech/linux/vlog failed.
+#     while executing
+# "vlog +acc  "../transportRcv.v""
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+do {tRcv_tb.fdo};do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do}
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module readyPackets
+# 
+# Top level modules:
+# 	readyPackets
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module transportRcv
+# 
+# Top level modules:
+# 	transportRcv
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module tRcv_tb
+# 
+# Top level modules:
+# 	tRcv_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps tRcv_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: ../tRcv_tb.v(49): (vopt-2241) Connection width does not match width of port 'dafuq'.
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# ** Error: (vish-4014) No objects found matching '/tRcv_tb/uut/rcvFlag'.
+# Executing ONERROR command at macro /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/receive.do line 17
+restart -f; run 1000ns
+# Loading work.tRcv_tb(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /tRcv_tb/uut
+# Loading work.readyPackets(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3015) ../tRcv_tb.v(49): [PCDPC] - Port size (8 or 8) does not match connection size (1) for port 'dafuq'.
+#         Region: /tRcv_tb/uut
