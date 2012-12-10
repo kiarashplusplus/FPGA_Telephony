@@ -63,6 +63,13 @@ module ui_voicemail_test;
 	wire [4:0] headphone_volume;
 	wire [15:0] audio_out_data;
 	wire [127:0] string_data;
+	wire [7:0] ascii_out;
+	wire ascii_out_ready;
+	wire [11:0] txt_addr;
+	wire [11:0] txt_length;
+	wire txt_start;
+	wire done;
+	wire set_dt;
 
 	// Instantiate the Unit Under Test (UUT)
 	user_interface uut (
@@ -102,7 +109,14 @@ module ui_voicemail_test;
 		.current_menu_item(current_menu_item),
 		.headphone_volume(headphone_volume),
 		.audio_out_data(audio_out_data),
-		.string_data(string_data)
+		.string_data(string_data),
+		.ascii_out(ascii_out),
+		.ascii_out_ready(ascii_out_ready),
+		.txt_addr(txt_addr),
+		.txt_length(txt_length),
+		.txt_start(txt_start),
+		.done(done)
+		.set_dt(set_dt)
 	);
 
 	always #5 clk=!clk;

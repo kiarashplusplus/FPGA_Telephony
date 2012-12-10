@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version K.39
-# Date: Sun Nov 25 07:51:57 2012
+# Date: Mon Dec 10 08:47:25 2012
 #
 ##############################################################
 #
@@ -27,7 +27,7 @@ SET implementationfiletype = Ngc
 SET package = bf957
 SET removerpms = False
 SET simulationfiles = Behavioral
-SET speedgrade = -4
+SET speedgrade = -6
 SET verilogsim = True
 SET vhdlsim = True
 # END Project Options
@@ -35,7 +35,7 @@ SET vhdlsim = True
 SELECT Dual_Port_Block_Memory family Xilinx,_Inc. 6.3
 # END Select
 # BEGIN Parameters
-CSET coefficient_file="C:\Users\Sachin Shinde\Desktop\6.111\Final Project\Verilog\Final_Project\Binary_to_Decimal.coe"
+CSET coefficient_file="/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI Interfaces/Binary to Decimal ROM/Binary_to_Decimal.coe"
 CSET component_name=Binary_to_Decimal
 CSET configuration_port_a=Read_Only
 CSET configuration_port_b=Read_Only
@@ -72,5 +72,5 @@ CSET write_mode_port_a=Read_After_Write
 CSET write_mode_port_b=Read_After_Write
 # END Parameters
 GENERATE
-# CRC: eb737bc0
+# CRC: f2e3c74a
 

@@ -55,13 +55,11 @@ module user_interface(
 	 output [5:0] current_menu_item,
 	 output [4:0] headphone_volume,
 	 output [15:0] audio_out_data,
-	 output [127:0] string_data,
-	 output [7:0] ascii_out,
-	 output ascii_out_ready,
 	 output [11:0] txt_addr,
 	 output [11:0] txt_length,
 	 output txt_start,
-	 output done
+	 input done,
+	 output set_date
     );
 	 
 	 
@@ -75,6 +73,7 @@ module user_interface(
 	parameter [2:0] busy=3'd3; //call in progress
 	parameter [2:0] call_while_busy=3'd4; //user in call, receiving incoming call
 	parameter [2:0] initialize=3'd5; //initialize node
+	parameter [2:0] in_voicemail=3'd6;
 //////////////////////////////////////////////////////////
 
 
@@ -259,6 +258,8 @@ module user_interface(
 	
 	reg [3:0] temp_voicemail_command;
 	
+	reg temp_set_date;
+	
 	//parameters for display control
 	parameter UI=0;
 	parameter date_time=2'd1;
@@ -278,28 +279,6 @@ module user_interface(
 //	 wire [7:0] ascii_out;
 //	 wire ascii_out_ready;
 //	 wire done;
-	 
-	 //outputs for text_scroller
-	wire wr_en_DEBUG;
-	wire [7:0] wr_data_DEBUG;
-	wire [10:0] wr_addr_DEBUG;
-	wire cntr_DEBUG;
-	wire set_disp_DEBUG;
-	wire [3:0] rel_pos_DEBUG;
-	wire [10:0] rd_addr_DEBUG;
-	wire [7:0] rd_data_DEBUG;
-	
-	
-	Text_Scroller_Interface tsi(.clk(clk),.reset(reset),
-	.addr(addr),.length(length),.start(start),
-	.ascii_out(ascii_out),.ascii_out_ready(ascii_out_ready),.done(done));
-	
-	Text_Scroller ts (.clk(clk),.reset(reset),.ascii_data(ascii_out),
-	.ascii_data_ready(ascii_out_ready),.string_data(string_data),.wr_en_DEBUG(wr_en_DEBUG)
-	,.wr_data_DEBUG(wr_data_DEBUG),.wr_addr_DEBUG(wr_addr_DEBUG)
-	,.cntr_DEBUG(cntr_DEBUG),.set_disp_DEBUG(set_disp_DEBUG),
-	.rel_pos_DEBUG(rel_pos_DEBUG),.rd_addr_DEBUG(rd_addr_DEBUG),
-	.rd_data_DEBUG(rd_data_DEBUG));
 //////////////////////////////////////////////////////////////
 //Voicemail commands/statuses 
 /////////////////////////////////////
@@ -416,10 +395,6 @@ reg reset_latch;
 							length<=11'd7;
 						end
 						
-						//main menu
-						def_sys:begin
-							//still confused about this part
-						end
 						call_number:begin
 							addr<=11'd52;//text=Call Number
 							length<=11'd11;
@@ -454,23 +429,23 @@ reg reset_latch;
 						//voicemail
 						toggle_v:begin
 							if (voicemail_state) begin //voicemail currently on
-								addr<=11'd137; //text=Turn Voicemail Off
+								addr<=11'd142; //text=Turn Voicemail Off
 								length<=11'd18;
 							end
 							
 							else begin //voicemail currently off
-								addr<=11'd156;//text=Turn Voicemail On
+								addr<=11'd160;//text=Turn Voicemail On
 								length<=11'd17;
 							end
 						end
 						
 						unread: begin	//text=Unread Voicemail
-							addr<=11'd174;
+							addr<=11'd177;
 							length<=11'd16;
 						end
 						
 						saved: begin	//text=Saved Voicemail
-							addr<=11'd269;
+							addr<=11'd268;
 							length<=11'd15;
 						end
 						
@@ -505,11 +480,6 @@ reg reset_latch;
 						//get number
 						disp_num:begin
 							//disp. in hex or binary?
-						end
-						
-						//set time
-						set_dt:begin
-							//?		
 						end
 						
 				//incoming state	
@@ -613,6 +583,7 @@ reg reset_latch;
 							def_sys: menu_item<=def_sys;
 							def_init:menu_item<=def_init;
 							def_welcome:menu_item<=def_welcome;
+							set_dt:menu_item<=set_dt;
 							default: menu_item<=menu_item-1;
 						endcase
 
@@ -639,19 +610,23 @@ reg reset_latch;
 							def_sys: menu_item<=def_sys;
 							def_init:menu_item<=def_init;
 							def_welcome:menu_item<=def_welcome;
+							set_dt:menu_item<=set_dt;
 							default: menu_item<=menu_item+1;		
 						endcase
 					end
 					
-					else if ((right&&!right_latch)||(enter&&!enter_latch)) begin //menu item selected
+					else if (((right&&!right_latch)||(enter&&!enter_latch))&&override) begin //menu item selected
 						case (menu_item) 
 							def_welcome: menu_item<=call_number;
-							def_sys: menu_item<=call_number;
+							def_sys: begin
+								temp_display_control<=UI;
+								menu_item<=call_number; 
+							end
 							call_number: menu_item<=dialing;
 							volume: menu_item<=change_vol;
 							voicemail: menu_item<=toggle_v;
-							get_num: menu_item<=set_time;
-							set_time: menu_item<=call_number;
+//							get_num: menu_item<=set_time;
+//							set_time: menu_item<=call_number;
 							def_init:menu_item<=def_welcome;
 							
 							//call number
@@ -693,14 +668,23 @@ reg reset_latch;
 									temp_display_control<=voicemail_disp;//voicemail now controls display
 								end
 							end
+							
+							set_time:begin
+								temp_set_date<=1;
+								temp_display_control<=date_time;
+								override<=0;
+								menu_item<=set_dt;
+							end
 						endcase
 					end
 					
 					
-					else if (left&&!left_latch) begin //move to higher level menu	 
+					else if (left&&!left_latch&&override) begin //move to higher level menu	 
 							//go back to system date and time from main menu
-							if (menu_item>=0 && menu_item<=4)
+							if (menu_item>=0 && menu_item<=4) begin
+							    temp_display_control<=date_time;
 								 menu_item<=def_sys; 
+							end
 									 
 							//back to call number
 							else if (menu_item==7)
@@ -732,47 +716,50 @@ reg reset_latch;
 							else if (menu_item==30)
 								menu_item<=get_num;
 							
-							//escape to set time/date
-							else if (menu_item==31) begin
-								menu_item<=set_time;
-								temp_display_control<=UI;
-							end
+//							//escape to set time/date
+//							else if (menu_item==31) begin
+//								menu_item<=set_time;
+//								temp_display_control<=UI;
+//							end
 					
 					end	
 					
-					else if (b0&&!b0_latch) begin	//voicemail delete button
+					else if (b0&&!b0_latch&&(menu_item==15||menu_item==12)) begin	//voicemail delete button
 						case (menu_item) 
 							play_unread: temp_voicemail_command<=CMD_DEL;								
 							play_saved:  temp_voicemail_command<=CMD_DEL;
 						endcase
 					end
 					
-					else if (b1&&!b1_latch) begin //voicemail save button
+					else if (b1&&!b1_latch&&(menu_item==15||menu_item==12)) begin //voicemail save button
 							temp_voicemail_command<=CMD_SAVE;
 					end
 					
-					else if (b2&&b2_latch) begin //voicemail stop button
+					else if (b2&&b2_latch&&(menu_item==15||menu_item==12)) begin //voicemail stop button
 						case (menu_item)
 							play_unread: temp_voicemail_command<=CMD_END_RD;
 							play_saved: temp_voicemail_command<=CMD_END_RD;
 						endcase
 					end
 					
-					else if (b3&&b3_latch) begin //voicemail play button
+					else if (b3&&b3_latch&&(menu_item==play_saved||menu_item==play_unread)) begin //voicemail play button
 						case (menu_item)
 							play_unread: temp_voicemail_command<=CMD_START_RD;
 							play_saved: temp_voicemail_command<=CMD_START_RD;
 						endcase	
 					end
 					
+					else if (b0&&!b1_latch&&menu_item==set_dt) begin
+						override<=1;
+						temp_set_date<=0;
+						temp_display_control<=UI;
+						menu_item<=set_time; //escape from setting time
+					end
+					
 					//no button presses
 					case (menu_item)									
 							//display Number
 							get_num: begin				
-							end
-							
-							//set sys date and time
-							set_time: begin
 							end
 					endcase
 					
@@ -857,7 +844,7 @@ reg reset_latch;
 							end						
 						end
 						send_to_v:begin
-							if (inc_command==sent_to_v)begin
+							if (inc_command==sent_to_v)begin	
 								menu_item<=def_sys;
 								state<=idle;
 							end
@@ -1002,6 +989,7 @@ reg reset_latch;
 	assign txt_addr=addr;
 	assign txt_length=length;
 	assign txt_start=start;
+	assign set_date=temp_set_date;
 	
 
 	

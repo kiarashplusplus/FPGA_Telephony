@@ -70,6 +70,7 @@ module ui_test;
 	wire [11:0] txt_length;
 	wire txt_start;
 	wire done;
+	wire set_dt;
 
 	// Instantiate the Unit Under Test (UUT)
 	user_interface uut (
@@ -115,7 +116,8 @@ module ui_test;
 		.txt_addr(txt_addr),
 		.txt_length(txt_length),
 		.txt_start(txt_start),
-		.done(done)
+		.done(done),
+		.set_dt(set_dt)
 	);
 	
 	always #5 clk=!clk;

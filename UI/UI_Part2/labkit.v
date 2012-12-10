@@ -230,25 +230,25 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // tv_in_aef, tv_in_hff, and tv_in_aff are inputs
    
    // SRAMs
-   assign ram0_data = 36'hZ;
-   assign ram0_address = 19'h0;
+//   assign ram0_data = 36'hZ;
+//   assign ram0_address = 19'h0;
    assign ram0_adv_ld = 1'b0;
-   assign ram0_clk = 1'b0;
+//   assign ram0_clk = 1'b0;
    assign ram0_cen_b = 1'b1;
    assign ram0_ce_b = 1'b1;
    assign ram0_oe_b = 1'b1;
-   assign ram0_we_b = 1'b1;
-   assign ram0_bwe_b = 4'hF;
+//   assign ram0_we_b = 1'b1;
+//   assign ram0_bwe_b = 4'hF;
    assign ram1_data = 36'hZ; 
    assign ram1_address = 19'h0;
    assign ram1_adv_ld = 1'b0;
-   assign ram1_clk = 1'b0;
+//   assign ram1_clk = 1'b0;
    assign ram1_cen_b = 1'b1;
    assign ram1_ce_b = 1'b1;
    assign ram1_oe_b = 1'b1;
    assign ram1_we_b = 1'b1;
    assign ram1_bwe_b = 4'hF;
-   assign clock_feedback_out = 1'b0;
+//   assign clock_feedback_out = 1'b0;
    // clock_feedback_in is an input
    
    // Flash ROM
@@ -293,22 +293,22 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign daughtercard = 44'hZ;
 
    // SystemACE Microprocessor Port
-   assign systemace_data = 16'hZ;
-   assign systemace_address = 7'h0;
-   assign systemace_ce_b = 1'b1;
-   assign systemace_we_b = 1'b1;
-   assign systemace_oe_b = 1'b1;
+//   assign systemace_data = 16'hZ;
+//   assign systemace_address = 7'h0;
+//   assign systemace_ce_b = 1'b1;
+//   assign systemace_we_b = 1'b1;
+//   assign systemace_oe_b = 1'b1;
    // systemace_irq and systemace_mpbrdy are inputs
 
    // Logic Analyzer
 //   assign analyzer1_data[15:9] = 0;
 //   assign analyzer1_clock = 1'b1;
    assign analyzer2_data[15:7]= 9'h0;
-   assign analyzer2_clock = clock_27mhz;
+//   assign analyzer2_clock = clock_27mhz;
 //   assign analyzer3_data = 16'h0;
-   assign analyzer3_clock = clock_27mhz;
+//   assign analyzer3_clock = clock_27mhz;
    assign analyzer4_data = 16'h0;
-   assign analyzer4_clock = clock_27mhz;
+//   assign analyzer4_clock = clock_27mhz;
 	
 	
 	///////////////////////////////////////////////////
@@ -330,44 +330,62 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [3:0] voicemail_status;
 	
 	
+	
 	//UI outputs
-	wire [127:0] string_data;
 	wire [3:0] voicemail_command;
-	wire [7:0] phn_num,address,ascii_out_ready;
+	wire [7:0] phn_num,address,ui_ascii_out,ascii_out;
 	wire [15:0] din,audio_out_data;
 	wire [1:0] disp_control;
 	wire [2:0] current_state;
 	wire [15:0] current_menu_item;
 	wire [4:0] headphone_volume;
-	wire ascii_out, start;
+	wire ui_ascii_out_ready, start,ascii_out_ready;
 	wire [10:0] addr,length;
-	wire done;
+	wire done, over;
+	
+	reg [7:0] a_out;
+	reg a_out_ready;
+	
+	//RAM clock I/O
+	wire clk_27mhz,locked;
+	
+	
+	//RAM clock
+	ramclock RAMCLOCK_1(
+		.ref_clock(clock_27mhz), 
+		.fpga_clock(clk_27mhz), 
+		.ram0_clock(ram0_clk), 
+		.ram1_clock(ram1_clk),		
+	   .clock_feedback_in(clock_feedback_in),
+		.clock_feedback_out(clock_feedback_out), 
+		.locked(locked)
+	);
 	
 
 	
 	//Debounce buttons
-	debounce db0(.reset(reset),.clock(clock_27mhz),.noisy(~button0),
+	debounce db0(.reset(reset),.clock(clk_27mhz),.noisy(~button0),
 	.clean(debb0));
-	debounce db1(.reset(reset),.clock(clock_27mhz),.noisy(~button1),
+	debounce db1(.reset(reset),.clock(clk_27mhz),.noisy(~button1),
 	.clean(debb1));
-	debounce db2(.reset(reset),.clock(clock_27mhz),.noisy(~button2),
+	debounce db2(.reset(reset),.clock(clk_27mhz),.noisy(~button2),
 	.clean(debb2));
-	debounce db3(.reset(reset),.clock(clock_27mhz),.noisy(~button3),
+	debounce db3(.reset(reset),.clock(clk_27mhz),.noisy(~button3),
 	.clean(debb3));
 	
-	debounce dup(.reset(reset),.clock(clock_27mhz),.noisy(~button_up),
+	debounce dup(.reset(reset),.clock(clk_27mhz),.noisy(~button_up),
 	.clean(debup));
-	debounce ddown(.reset(reset),.clock(clock_27mhz),.noisy(~button_down),
+	debounce ddown(.reset(reset),.clock(clk_27mhz),.noisy(~button_down),
 	.clean(debdown));
-	debounce dleft(.reset(reset),.clock(clock_27mhz),.noisy(~button_left),
+	debounce dleft(.reset(reset),.clock(clk_27mhz),.noisy(~button_left),
 	.clean(debleft));
-	debounce dright(.reset(reset),.clock(clock_27mhz),.noisy(~button_right),
+	debounce dright(.reset(reset),.clock(clk_27mhz),.noisy(~button_right),
 	.clean(debright));
-	debounce denter(.reset(reset),.clock(clock_27mhz),.noisy(~button_enter),
+	debounce denter(.reset(reset),.clock(clk_27mhz),.noisy(~button_enter),
 	.clean(debenter));
 	
 	//Contention Resolver
-	Button_Contention_Resolver bcr(.clk(clock_27mhz),.reset(reset),
+	Button_Contention_Resolver bcr(.clk(clk_27mhz),.reset(reset),
 	.button0_in(debb0),.button1_in(debb1),.button2_in(debb2),
 	.button3_in(debb3),.button_enter_in(debenter),
 	.button_left_in(debleft),.button_right_in(debright),
@@ -379,17 +397,17 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
 	
 	//Synchronize Switches 
-	synchronize #(.NSYNC(2)) synch6(.clk(clock_27mhz),.in(switch[7]),.out(s7));
-   synchronize #(.NSYNC(2)) synch7(.clk(clock_27mhz),.in(switch[5]),.out(s5));
-   synchronize #(.NSYNC(2)) synch8(.clk(clock_27mhz),.in(switch[4]),.out(s4));
-   synchronize #(.NSYNC(2)) synch9(.clk(clock_27mhz),.in(switch[3]),.out(s3));
-   synchronize #(.NSYNC(2)) synch10(.clk(clock_27mhz),.in(switch[2]),.out(s2));
-   synchronize #(.NSYNC(2)) synch11(.clk(clock_27mhz),.in(switch[1]),.out(s1));
-   synchronize #(.NSYNC(2)) synch12(.clk(clock_27mhz),.in(switch[0]),.out(s0));
+	synchronize #(.NSYNC(2)) synch6(.clk(clk_27mhz),.in(switch[7]),.out(s7));
+   synchronize #(.NSYNC(2)) synch7(.clk(clk_27mhz),.in(switch[5]),.out(s5));
+   synchronize #(.NSYNC(2)) synch8(.clk(clk_27mhz),.in(switch[4]),.out(s4));
+   synchronize #(.NSYNC(2)) synch9(.clk(clk_27mhz),.in(switch[3]),.out(s3));
+   synchronize #(.NSYNC(2)) synch10(.clk(clk_27mhz),.in(switch[2]),.out(s2));
+   synchronize #(.NSYNC(2)) synch11(.clk(clk_27mhz),.in(switch[1]),.out(s1));
+   synchronize #(.NSYNC(2)) synch12(.clk(clk_27mhz),.in(switch[0]),.out(s0));
 	
 	
 	//Instantiate User Interface module
-	user_interface ui(.clk(clock_27mhz),.s7(s7),.s6(s6),.s5(s5),.s4(s4), 
+	user_interface ui(.clk(clk_27mhz),.s7(s7),.s6(s6),.s5(s5),.s4(s4), 
 	.s3(s3),.s2(s2),.s1(s1),.s0(s0),.b3(b3),.b2(b2), 
 	.b1(b1),.b0(b0),.reset(reset),.enter(enter), 
 	.up(up),.down(down),.left(left),.right(right), 
@@ -402,86 +420,137 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	.command(command),.current_state(current_state),
 	.current_menu_item(current_menu_item),
 	.headphone_volume(headphone_volume),
-	.audio_out_data(audio_out_data),
-	.string_data(string_data),.ascii_out(ascii_out),
-	.ascii_out_ready(ascii_out_ready),.txt_addr(addr),
-	.txt_length(length),.txt_start(start),.done(done));
+	.audio_out_data(audio_out_data),.txt_addr(addr),
+	.txt_length(length),.txt_start(start),.done(done),.set_date(set));
+	
+	/////////////////////////////////////////////
+	//Text Interfaces
+	///////////////////////////////////////////////
+	wire [127:0] string_data;
+	wire wr_en_DEBUG;
+	wire [7:0] wr_data_DEBUG;
+	wire [10:0] wr_addr_DEBUG;
+	wire cntr_DEBUG;
+	wire set_disp_DEBUG;
+	wire [3:0] rel_pos_DEBUG;
+	wire [10:0] rd_addr_DEBUG;
+	wire [7:0] rd_data_DEBUG;
+	
+	Text_Scroller_Interface tsi(.clk(clk_27mhz),.reset(reset),
+	.addr(addr),.length(length),.start(start),
+	.ascii_out(ui_ascii_out),.ascii_out_ready(ui_ascii_out_ready),.done(done));
+	
+	Text_Scroller ts (.clk(clk_27mhz),.reset(reset),.ascii_data(ascii_out),
+	.ascii_data_ready(ascii_out_ready),.string_data(string_data),.wr_en_DEBUG(wr_en_DEBUG)
+	,.wr_data_DEBUG(wr_data_DEBUG),.wr_addr_DEBUG(wr_addr_DEBUG)
+	,.cntr_DEBUG(cntr_DEBUG),.set_disp_DEBUG(set_disp_DEBUG),
+	.rel_pos_DEBUG(rel_pos_DEBUG),.rd_addr_DEBUG(rd_addr_DEBUG),
+	.rd_data_DEBUG(rd_data_DEBUG));
 	
 	//display here
-	display_string ds(.reset(reset), .clock_27mhz(clock_27mhz),
+	display_string ds(.reset(reset),.clock_27mhz(clk_27mhz),
 	.string_data(string_data),.disp_blank(disp_blank),
 	.disp_clock(disp_clock),.disp_rs(disp_rs),
 	.disp_ce_b(disp_ce_b),.disp_reset_b(disp_reset_b)
 	,.disp_data_out(disp_data_out));
 	
+	//Voicemail I/Os
 	reg vmail_disp_en;
+	wire d_ready;
+	wire [6:0] vm_addr;
+	wire [7:0] vm_data;
+	wire v_disp_en;
+	wire [7:0] v_ascii_out;
+	wire v_ascii_out_ready;
 	
-	//Voicemail
-	module Voicemail_Interface(.clk_27mhz(clock_27mhz),
-	.reset(reset),.sts(voicemail_status),.cmd(voicemail_command),
-	.phn_num(phn_num),.din(din),.dout(dout),.d_ready(d_ready),
-	.disp_en(disp_en),.button_up(up),.button_down(down),
-	.ascii_out(ascii_out),.ascii_out_ready(ascii_out_ready),
-	.ram_data
-	// Main Interface ports
-	input d_ready,            // Sample Data Ready Signal
-	input disp_en,            // Display Enable
-	// Button inputs
-	input button_up,
-	input button_down,
-	// ASCII output
-	output [7:0] ascii_out,   // Port for ASCII data
-	output ascii_out_ready,   // Ready signal for ASCII data
-	// ZBT RAM I/Os
-   inout  [35:0] ram_data,
-   output [18:0] ram_address,
-   output ram_we_b,
-   output [3:0] ram_bwe_b,
-	// Date & Time inputs	
-	input [6:0] year,
-	input [3:0] month,
-	input [4:0] day,
-	input [4:0] hour,
-	input [5:0] minute,
-	input [5:0] second,
-	// Binary-to-Decimal Lookup-Table I/O
-	output [6:0] addr,
-	input [7:0] data,
-	// SystemACE ports
-	inout [15:0] systemace_data,     // SystemACE R/W data
-	output [6:0] systemace_address,  // SystemACE R/W address
-	output systemace_ce_b,           // SystemACE chip enable (Active Low)
-	output systemace_we_b,           // SystemACE write enable (Active Low)
-	output systemace_oe_b,           // SystemACE output enable (Active Low)
-	input systemace_mpbrdy           // SystemACE buffer ready
+	//Date and Time I/Os
+	wire date_disp_en;
+	reg d_disp_en;
+	wire [6:0] year;
+	wire [3:0] month;
+	wire [4:0] day, hour;
+	wire [5:0] minute, second;
+	wire [7:0] date_ascii_out;
+	wire date_ascii_out_ready;
+	wire [6:0] DT_addr;
+	wire [7:0] DT_data;
+	
+	//Binary to Decimal
+	Binary_to_Decimal BtD1(
+		.clka(clk_27mhz),
+		.clkb(clk_27mhz),
+		.addra(DT_addr),
+		.addrb(vm_addr),
+		.douta(DT_data),
+		.doutb(vm_data)
 	);
 	
+	
+	//System Date and Time
+	Date_Time dt(.clk_27mhz(clk_27mhz),.reset(reset),
+	.set(set),.disp_en(date_disp_en),.button_up(up),
+	.button_down(down),.button_left(left),
+	.button_right(right),.year(year),.month(month),
+	.day(day),.hour(hour),.minute(minute),.second(second),
+	.ascii_out(date_ascii_out),.ascii_out_ready(date_ascii_out_ready)
+	,.addr(DT_addr),.data(DT_data));
+	
+	
+	//Voicemail
+	 Voicemail_Interface vmail(.clk_27mhz(clk_27mhz),
+	.reset(reset),.sts(voicemail_status),.cmd(voicemail_command),
+	.phn_num(phn_num),.din(din),.dout(dout),.d_ready(d_ready),
+	.disp_en(v_disp_en),.button_up(up),.button_down(down),
+	.ascii_out(v_ascii_out),.ascii_out_ready(v_ascii_out_ready),
+	.ram_data(ram0_data),.ram_address(ram0_address),.ram_we_b(ram0_we_b),.ram_bwe_b(ram0_bwe_b),
+	.year(year),.month(month),.day(day),.hour(hour),.minute(minute),.addr(vm_addr),
+	.data(vm_data),.systemace_data(systemace_data),.systemace_address(systemace_address),
+	.systemace_ce_b(systemace_ce_b),.systemace_we_b(systemace_we_b),
+	.systemace_oe_b(systemace_oe_b),.systemace_mpbrdy(systemace_mpbrdy));
+	
 	//Display Control Mux
-	always @(posedge clock_27mhz) begin
+	always @(posedge clk_27mhz) begin
 		case(disp_control)
-			0: begin
-				vmail_disp_en=0;
-			end//UI case
-			1: begin
-			end//Date&Time
-			2:	begin
-				vmail_disp_en=1;
-			end//Voicemail	
+			0: begin //UI case
+				vmail_disp_en<=0;
+				d_disp_en<=0;
+				a_out<=ui_ascii_out;
+				a_out_ready<=ui_ascii_out_ready;
+			end
+			1: begin //Date&Time		
+				vmail_disp_en<=0;
+				a_out<=date_ascii_out;
+				a_out_ready<=date_ascii_out_ready;
+				d_disp_en<=1;
+			end
+			2:	begin //Voicemail	
+				d_disp_en<=0;
+				a_out<=v_ascii_out;
+				a_out_ready<=v_ascii_out_ready;
+				vmail_disp_en<=1;
+			end
 		endcase
 	end
 	
-	assign disp_en=vmail_disp_en;
+	assign v_disp_en=vmail_disp_en;
+	assign date_disp_en=d_disp_en;
+	assign ascii_out_ready=a_out_ready;
+	assign ascii_out=a_out;
 	
 	//Logic Analyzer
 	assign analyzer1_data[7:0] = ascii_out;
 	assign analyzer1_data[8]=ascii_out_ready;
-	assign analyzer1_clock=clock_27mhz;
+	assign analyzer1_clock=clk_27mhz;
 	assign analyzer1_data[9]=start;
 	assign analyzer1_data[15:10]=addr[10:5];
-	assign analyzer3_data[4:0]=addr[4:0];
-	assign analyzer3_data[15:5]=length;
-	assign analyzer2_data[0]=done;
+	assign analyzer3_data[3:0]=voicemail_status;
+	assign analyzer3_data[5:4]=disp_control;
+	assign analyzer3_data[15:6]=0;
+	assign analyzer2_data[0]=a_out;
 	assign analyzer2_data[6:1]=current_menu_item;
+	assign analyzer2_clock=clk_27mhz;
+	assign analyzer3_clock=clk_27mhz;
+	assign analyzer4_clock=clk_27mhz;
 
 
 

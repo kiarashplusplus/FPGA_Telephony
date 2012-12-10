@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="Binary_to_Decimal" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+Binary_to_Decimal YourInstanceName (
+    .addra(addra), // Bus [6 : 0] 
+    .addrb(addrb), // Bus [6 : 0] 
+    .clka(clka),
+    .clkb(clkb),
+    .douta(douta), // Bus [7 : 0] 
+    .doutb(doutb)); // Bus [7 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="Binary_to_Decimal" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component Binary_to_Decimal
+    port (
+    addra: IN std_logic_VECTOR(6 downto 0);
+    addrb: IN std_logic_VECTOR(6 downto 0);
+    clka: IN std_logic;
+    clkb: IN std_logic;
+    douta: OUT std_logic_VECTOR(7 downto 0);
+    doutb: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : Binary_to_Decimal
+        port map (
+            addra =&gt; addra,
+            addrb =&gt; addrb,
+            clka =&gt; clka,
+            clkb =&gt; clkb,
+            douta =&gt; douta,
+            doutb =&gt; doutb);
+ 
+		</Template>
+	</Folder>
+</RootFolder>
