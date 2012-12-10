@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map K.39 on Mon Dec 10 07:05:19 2012
+// Written by: Map K.39 on Mon Dec 10 14:52:12 2012
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -579,5 +579,7 @@ COMP "daughtercard<6>" LOCATE = SITE "H5" LEVEL 1;
 COMP "daughtercard<7>" LOCATE = SITE "G5" LEVEL 1;
 COMP "daughtercard<8>" LOCATE = SITE "F5" LEVEL 1;
 COMP "daughtercard<9>" LOCATE = SITE "E1" LEVEL 1;
+NET "ac97_bit_clock_BUFGP/IBUFG" BEL "ac97_bit_clock_BUFGP/BUFG.GCLKMUX"
+        USELOCALCONNECT;
 SCHEMATIC END;
 

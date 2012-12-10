@@ -41,7 +41,7 @@ module user_interface(
 	 input [2:0] inc_command,
 	 input init,
 	 input [7:0] inc_address,
-	 input [15:0] audio_in_data,
+	 output [15:0] audio_out_data,
 	 input ready,
 	 input [3:0] voicemail_status,
 	 input [15:0] dout,
@@ -54,7 +54,7 @@ module user_interface(
     output [2:0] current_state,
 	 output [5:0] current_menu_item,
 	 output [4:0] headphone_volume,
-	 output [15:0] audio_out_data,
+	 input [15:0] audio_in_data,
 	 output [11:0] txt_addr,
 	 output [11:0] txt_length,
 	 output txt_start,
@@ -314,6 +314,16 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 
 
 //Audio Mux (switches between voicemail and call audio)
+//AC97_PCM ac(.clock_27mhz(clk),.reset(reset),.volume(headphone_volume),
+//.audio_in_data(audio_in_data),.audio_out_data(audio_out_data),
+//.ready(ready),
+//.audio_reset_b(audio_reset_b),.ac97_sdata_out(ac97_sdata_out),
+//.ac97_sdata_in(ac97_sdata_in),
+//.ac97_synch(ac97_synch),.ac97_bit_clock(ac97_bit_clock));
+
+assign audio_out_data=(menu_item==play_unread||menu_item==play_saved
+||inc_command==sent_to_v)?(dout):(audio_in_data);
+
 
 
 
@@ -321,7 +331,7 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 
 ////////////////////////////////////////////////////////////
 //Timer for Incoming Calls
-///////////////////////////////////////////////////////////\
+///////////////////////////////////////////////////////////
 //I/Os
 wire enable;
 wire start_timer;
@@ -651,22 +661,30 @@ reg reset_latch;
 								menu_item<=volume;
 							end
 							
-							//Play Unread Voicemail
-							play_unread:begin
-								override<=0; //disable up/down buttons for UI
+							//Unread Voicemail
+							unread:begin	
 								if (voicemail_status==STS_CMD_RDY) begin 
+									   override<=0; //disable up/down buttons for UI
 										temp_voicemail_command<=CMD_VIEW_UNRD;
 										temp_display_control<=voicemail_disp; //voicemail now controls display
+										menu_item<=play_unread;	
 								end
+								
+								else 
+									menu_item<=unread;
 							end
 							
-							//Play Saved Voicemail
-							play_saved:begin
-								override<=0;
+							//Saved Voicemail
+							saved:begin		
 								if (voicemail_status==STS_CMD_RDY) begin
+									override<=0;
 									temp_voicemail_command<=CMD_VIEW_SAVED;
 									temp_display_control<=voicemail_disp;//voicemail now controls display
+									menu_item<=play_saved;
 								end
+								
+								else
+									menu_item<=saved;
 							end
 							
 							set_time:begin
@@ -679,7 +697,7 @@ reg reset_latch;
 					end
 					
 					
-					else if (left&&!left_latch&&override) begin //move to higher level menu	 
+					else if (left&&!left_latch) begin //move to higher level menu	 
 							//go back to system date and time from main menu
 							if (menu_item>=0 && menu_item<=4) begin
 							    temp_display_control<=date_time;

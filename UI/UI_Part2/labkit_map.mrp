@@ -11,32 +11,32 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -6
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Mon Dec 10 07:05:14 2012
+Mapped Date    : Mon Dec 10 14:52:06 2012
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  276
+Number of warnings:  274
 Logic Utilization:
-  Number of Slice Flip Flops:         1,740 out of  67,584    2%
-  Number of 4 input LUTs:             2,946 out of  67,584    4%
+  Number of Slice Flip Flops:         1,931 out of  67,584    2%
+  Number of 4 input LUTs:             3,209 out of  67,584    4%
 Logic Distribution:
-  Number of occupied Slices:          2,124 out of  33,792    6%
-    Number of Slices containing only related logic:   2,124 out of   2,124 100%
-    Number of Slices containing unrelated logic:          0 out of   2,124   0%
+  Number of occupied Slices:          2,369 out of  33,792    7%
+    Number of Slices containing only related logic:   2,369 out of   2,369 100%
+    Number of Slices containing unrelated logic:          0 out of   2,369   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       3,277 out of  67,584    4%
-    Number used as logic:             2,941
-    Number used as a route-thru:        331
-    Number used as Shift registers:       5
+  Total Number of 4 input LUTs:       3,556 out of  67,584    5%
+    Number used as logic:             3,202
+    Number used as a route-thru:        347
+    Number used as Shift registers:       7
   Number of bonded IOBs:                576 out of     684   84%
     IOB Flip Flops:                       6
-  Number of RAMB16s:                      4 out of     144    2%
-  Number of BUFGMUXs:                     3 out of      16   18%
+  Number of RAMB16s:                      5 out of     144    3%
+  Number of BUFGMUXs:                     4 out of      16   25%
   Number of DCMs:                         2 out of      12   16%
 
-Peak Memory Usage:  534 MB
-Total REAL time to MAP completion:  7 secs 
+Peak Memory Usage:  541 MB
+Total REAL time to MAP completion:  8 secs 
 Total CPU time to MAP completion:   7 secs 
 
 NOTES:
@@ -80,7 +80,7 @@ Section 1 - Errors
 Section 2 - Warnings
 --------------------
 WARNING:LIT:243 - Logical network user3<28>_IBUF has no load.
-WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 291
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 271
    more times for the following (max. 5 shown):
    user3<4>_IBUF,
    user3<29>_IBUF,
@@ -230,8 +230,6 @@ WARNING:PhysDesignRules:367 - The signal <mouse_data_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <keyboard_data_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <ac97_bit_clock_IBUF> is incomplete.
-   The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_sts_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <tv_in_ycrcb<0>_IBUF> is incomplete.
@@ -540,8 +538,6 @@ WARNING:PhysDesignRules:367 - The signal <flash_data<8>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_data<9>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <ac97_sdata_in_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<0>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<1>_IBUF> is incomplete. The
@@ -724,9 +720,9 @@ INFO:LIT:244 - All of the single ended outputs in this design are using slew
 
 Section 4 - Removed Logic Summary
 ---------------------------------
- 106 block(s) removed
-  35 block(s) optimized away
- 125 signal(s) removed
+  10 block(s) removed
+  14 block(s) optimized away
+   4 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -742,248 +738,7 @@ above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
 The signal "vmail/VM_FIFO_OUT/full" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/empty" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<15>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<14>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<13>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<12>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<11>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<10>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<9>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<8>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<7>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<6>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<5>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<4>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<3>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<2>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<1>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/dout<0>" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/rstblk/rd_rst_reg<0>" is sourceless
-and has been removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_15" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_14" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_13" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_12" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_11" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_10" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_9" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_8" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_7" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_6" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_5" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_4" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_3" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_2" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_1" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_i_0" (FF) removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/tmp_ram_rd_en1" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/tmp_ram_rd_en" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/user_valid" is
-sourceless and has been removed.
-The signal
-"vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i_or0000" is
-sourceless and has been removed.
- Sourceless block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i"
-(FF) removed.
- Sourceless block
-"vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_fb" (FF) removed.
-  The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_fb" is
-sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i_or00001" (ROM)
-removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/ram_regout_en" is sourceless and has
-been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<15>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<14>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<13>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<12>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<11>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<10>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<9>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<8>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<7>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<6>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<5>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<4>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<3>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<2>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<1>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/dout_mem<0>" is sourceless and
-has been removed.
-The signal "vmail/VM_FIFO_IN/full" is sourceless and has been removed.
 The signal "vmail/VM_FIFO_IN/empty" is sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_asreg_d1" is sourceless
-and has been removed.
- Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_asreg_d2" (FF)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_asreg_d2" is sourceless
-and has been removed.
-   Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_comb1" (ROM)
-removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_comb" is sourceless and
-has been removed.
-     Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_reg_1" (FF)
-removed.
-      The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_reg<1>" is sourceless
-and has been removed.
-       Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/wr_rst_d1"
-(FF) removed.
-        The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/wr_rst_d1" is
-sourceless and has been removed.
-         Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb15" (ROM) removed.
-          The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb15" is
-sourceless and has been removed.
-           Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb24" (ROM) removed.
-            The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb" is
-sourceless and has been removed.
-             Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i"
-(FF) removed.
-             Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i"
-(FF) removed.
-              The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i" is
-sourceless and has been removed.
-               Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb24_SW0" (ROM)
-removed.
-                The signal
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb24_SW0/O" is
-sourceless and has been removed.
-                 Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_comb24_SW0/LUT3_L_BUF"
-(BUF) removed.
-                  The signal "vmail/VM_FIFO_IN/BU2/N2" is sourceless and has been removed.
- Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_asreg" (FF)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_asreg" is sourceless
-and has been removed.
-   Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/rstblk/wr_rst_asreg_d1" (FF)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<3>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[4].gms.ms" (MUX)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/comp0" is sourceless
-and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<2>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[3].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<1>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[2].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/carrynet<0>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[1].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/gmux.gm[0].gm1.m1" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<3>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[4].gms.ms" (MUX)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/comp0" is sourceless
-and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>1_1" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<2>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[3].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>1_1" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<1>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[2].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>1_1" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/carrynet<0>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[1].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>1_1" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>1_1" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c0/gmux.gm[0].gm1.m1" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<3>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[4].gms.ms" (MUX)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/comp1" is sourceless
-and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<4>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<2>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[3].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<3>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<1>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[2].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<2>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/carrynet<0>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[1].gms.ms" (MUX)
-removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<1>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1<0>" is
-sourceless and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/gmux.gm[0].gm1.m1" (MUX)
-removed.
 The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i_or0000"
 is sourceless and has been removed.
  Sourceless block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i"
@@ -995,209 +750,12 @@ sourceless and has been removed.
    Sourceless block
 "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_i_or00001" (ROM)
 removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count9" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<9>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_4_and00001" (ROM)
-removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<9>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<9>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<9>" (XOR) removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count8" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<8>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<8>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<8>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<8>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<8>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<8>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count6" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<6>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_3_and00001" (ROM)
-removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<6>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<6>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<6>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<6>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<6>" is
-sourceless and has been removed.
-     Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<7>" (XOR) removed.
-      The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count7" is
-sourceless and has been removed.
-     Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<7>" (MUX) removed.
-      The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<7>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count5" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<5>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_2_and00001" (ROM)
-removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<5>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<5>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<5>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<5>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<5>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<7>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<7>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<7>_rt"
-is sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count4" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<4>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<4>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<4>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<4>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<4>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<4>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count3" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<3>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_1_and00001" (ROM)
-removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<3>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<3>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<3>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<3>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<3>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count1" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<1>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/gwss.wsts/c1/v1_0_and00001" (ROM)
-removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<1>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<1>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<1>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<1>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<1>" is
-sourceless and has been removed.
-     Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<2>" (XOR) removed.
-      The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count2" is
-sourceless and has been removed.
-     Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<2>" (MUX) removed.
-      The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<2>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<0>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<0>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<0>_rt"
-is sourceless and has been removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_xor<0>" (XOR) removed.
-   Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<0>" (MUX) removed.
-    The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<0>" is
-sourceless and has been removed.
-The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count<2>" is sourceless
-and has been removed.
- Sourceless block
-"vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<2>_rt" (ROM)
-removed.
-  The signal "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/Mcount_count_cy<2>_rt"
-is sourceless and has been removed.
-
-The trimmed logic reported below is either:
-   1. part of a cycle
-   2. part of disabled logic
-   3. a side-effect of other trimmed logic
-
-The signal "N557" is unused and has been removed.
- Unused block "systemace_data_12_IOBUF/IBUF" (BUF) removed.
 Unused block "tsi/TEXT_STORAGE/GND" (ZERO) removed.
 Unused block "tsi/TEXT_STORAGE/VCC" (ONE) removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<0>1_1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<1>1_1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<2>1_1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<3>1_1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>1" (ROM)
-removed.
-Unused block "vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.rd/grss.rsts/c1/v1<4>1_1" (ROM)
-removed.
 Unused block "vmail/VM_FIFO_IN/GND" (ZERO) removed.
 Unused block "vmail/VM_FIFO_IN/VCC" (ONE) removed.
-Unused block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/RAM_REGOUT_EN1"
-(ROM) removed.
-Unused block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/user_valid" (FF)
-removed.
 Unused block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i" (FF)
 removed.
-Unused block
-"vmail/VM_FIFO_OUT/BU2/U0/grf.rf/mem/gbm.gbmg.gbmga.ngecc.bmg/blk_mem_generator/
-valid.cstr/ramloop[0].ram.r/v2_noinit.ram/dp18x18.ram" () removed.
-Unused block "vmail/VM_FIFO_OUT/BU2/U0/grf.rf/rstblk/rd_rst_reg_0" (FF) removed.
 Unused block "vmail/VM_FIFO_OUT/GND" (ZERO) removed.
 Unused block "vmail/VM_FIFO_OUT/VCC" (ONE) removed.
 
@@ -1211,50 +769,8 @@ GND 		ts/UI_TEXT_SCROLLER_BRAM_1/GND
 VCC 		ts/UI_TEXT_SCROLLER_BRAM_1/VCC
 GND 		tsi/TEXT_STORAGE/BU2/XST_GND
 VCC 		tsi/TEXT_STORAGE/BU2/XST_VCC
-LUT2 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/ram_wr_en_i1
-FDPE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_0
-   optimized to 1
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_1
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_2
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_3
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_4
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_5
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_6
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_7
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_8
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_9
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_0
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_1
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_2
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_3
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_4
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_5
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_6
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_7
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_8
-   optimized to 0
-FDCE 		vmail/VM_FIFO_IN/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_9
-   optimized to 0
 GND 		vmail/VM_FIFO_IN/BU2/XST_GND
 VCC 		vmail/VM_FIFO_IN/BU2/XST_VCC
-LUT2 		vmail/VM_FIFO_OUT/BU2/U0/grf.rf/gl0.rd/gr1.gdcf.dc/ram_rd_en_temp1
 GND 		vmail/VM_FIFO_OUT/BU2/XST_GND
 VCC 		vmail/VM_FIFO_OUT/BU2/XST_VCC
 
@@ -1627,7 +1143,7 @@ Section 6 - IOB Properties
 | systemace_data<9>                  | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |
 | systemace_data<10>                 | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |
 | systemace_data<11>                 | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |
-| systemace_data<12>                 | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
+| systemace_data<12>                 | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |
 | systemace_data<13>                 | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |
 | systemace_data<14>                 | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |
 | systemace_data<15>                 | IOB              | BIDIR     | LVTTL                | 12       | SLOW |              |          |          |

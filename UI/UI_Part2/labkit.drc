@@ -58,8 +58,6 @@ WARNING:PhysDesignRules:367 - The signal <mouse_data_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <keyboard_data_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <ac97_bit_clock_IBUF> is incomplete.
-   The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_sts_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <tv_in_ycrcb<0>_IBUF> is incomplete.
@@ -368,8 +366,6 @@ WARNING:PhysDesignRules:367 - The signal <flash_data<8>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_data<9>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <ac97_sdata_in_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<0>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user1<1>_IBUF> is incomplete. The
@@ -542,5 +538,5 @@ WARNING:PhysDesignRules:367 - The signal <daughtercard<8>_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <daughtercard<9>_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
-DRC detected 0 errors and 272 warnings.  Please see the previously displayed
+DRC detected 0 errors and 270 warnings.  Please see the previously displayed
 individual error or warning messages for more details.

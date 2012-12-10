@@ -1,7 +1,7 @@
 Release 10.1.03 - par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-Mon Dec 10 07:06:36 2012
+Mon Dec 10 14:53:37 2012
 
 
 # NOTE: This file is designed to be imported into a spreadsheet program
@@ -600,7 +600,7 @@ H24|||GND|||||||||||||
 H25|tv_out_blank_b|IOB|IO_L03N_7|OUTPUT|LVDCI_33|7||NONE*|NONE**|||LOCATED||NO|DRIVER|
 H26|tv_out_ycrcb<6>|IOB|IO_L03P_7/VREF_7|OUTPUT|LVDCI_33|7||NONE*|NONE**|||LOCATED||NO|DRIVER|
 H27|tv_out_i2c_data|IOB|IO_L21P_7/VREF_7|OUTPUT|LVDCI_33|7||NONE*|NONE**|||LOCATED||NO|DRIVER|
-H28|systemace_data<12>|IOB|IO_L22P_7|TRISTATE|LVTTL*|7|12|SLOW|NONE**|||LOCATED||NO|NONE|
+H28|systemace_data<12>|IOB|IO_L22P_7|BIDIR|LVTTL*|7|12|SLOW|NONE**|NONE||LOCATED||NO|NONE|
 H29|systemace_data<13>|IOB|IO_L46N_7|BIDIR|LVTTL*|7|12|SLOW|NONE**|NONE||LOCATED||NO|NONE|
 H30|||GND|||||||||||||
 H31|systemace_address<4>|IOB|IO_L47N_7|OUTPUT|LVTTL*|7|12|SLOW|NONE**|||LOCATED||NO|NONE|

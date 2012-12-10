@@ -8,7 +8,7 @@
 <msg type="warning" file="LIT" num="243" delta="unknown" >Logical network <arg fmt="%s" index="1">user3&lt;28&gt;_IBUF</arg> has no load.
 </msg>
 
-<msg type="warning" file="LIT" num="395" delta="unknown" >The above <arg fmt="%s" index="1">warning</arg> message <arg fmt="%s" index="2">base_net_load_rule</arg> is repeated <arg fmt="%d" index="3">291</arg> more times for the following (max. 5 shown):
+<msg type="warning" file="LIT" num="395" delta="unknown" >The above <arg fmt="%s" index="1">warning</arg> message <arg fmt="%s" index="2">base_net_load_rule</arg> is repeated <arg fmt="%d" index="3">271</arg> more times for the following (max. 5 shown):
 <arg fmt="%s" index="4">user3&lt;4&gt;_IBUF,
 user3&lt;29&gt;_IBUF,
 user3&lt;5&gt;_IBUF,
@@ -158,9 +158,6 @@ There is more than one MUXF6.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">keyboard_data_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">ac97_bit_clock_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">flash_sts_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
@@ -623,9 +620,6 @@ There is more than one MUXF6.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">flash_data&lt;9&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">ac97_sdata_in_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user1&lt;0&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.

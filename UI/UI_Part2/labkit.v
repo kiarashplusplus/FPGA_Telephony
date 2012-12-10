@@ -117,7 +117,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
  	       analyzer3_data, analyzer3_clock,
  	       analyzer4_data, analyzer4_clock);
 
-   output beep, audio_reset_b, ac97_synch, ac97_sdata_out;
+   output beep, ac97_synch, ac97_sdata_out,audio_reset_b;
    input  ac97_bit_clock, ac97_sdata_in;
    
    output [7:0] vga_out_red, vga_out_green, vga_out_blue;
@@ -191,9 +191,9 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    
    // Audio Input and Output
    assign beep= 1'b0;
-   assign audio_reset_b = 1'b0;
-   assign ac97_synch = 1'b0;
-   assign ac97_sdata_out = 1'b0;
+//   assign audio_reset_b = 1'b0;
+//   assign ac97_synch = 1'b0;
+//   assign ac97_sdata_out = 1'b0;
    // ac97_sdata_in is an input
 
    // VGA Output
@@ -326,7 +326,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [2:0] inc_command;
 	wire init, ready;
 	wire [7:0] inc_address;
-	wire [15:0] audio_in_data, dout;
+	wire [15:0] audio_in_data, dout,session_audio_data;
 	wire [3:0] voicemail_status;
 	
 	
@@ -337,7 +337,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [15:0] din,audio_out_data;
 	wire [1:0] disp_control;
 	wire [2:0] current_state;
-	wire [15:0] current_menu_item;
+	wire [5:0] current_menu_item;
 	wire [4:0] headphone_volume;
 	wire ui_ascii_out_ready, start,ascii_out_ready;
 	wire [10:0] addr,length;
@@ -406,13 +406,23 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    synchronize #(.NSYNC(2)) synch12(.clk(clk_27mhz),.in(switch[0]),.out(s0));
 	
 	
+	//AC97
+	AC97_PCM ac(.clock_27mhz(clk_27mhz),.reset(reset),.volume(headphone_volume),
+	.audio_in_data(audio_in_data),.audio_out_data(audio_out_data),
+	.ready(ready),
+	.audio_reset_b(audio_reset_b),.ac97_sdata_out(ac97_sdata_out),
+	.ac97_sdata_in(ac97_sdata_in),
+	.ac97_synch(ac97_synch),.ac97_bit_clock(ac97_bit_clock));
+
+	wire ui_ready;
+	
 	//Instantiate User Interface module
 	user_interface ui(.clk(clk_27mhz),.s7(s7),.s6(s6),.s5(s5),.s4(s4), 
 	.s3(s3),.s2(s2),.s1(s1),.s0(s0),.b3(b3),.b2(b2), 
 	.b1(b1),.b0(b0),.reset(reset),.enter(enter), 
 	.up(up),.down(down),.left(left),.right(right), 
 	.inc_command(inc_command),.init(init), 
-	.audio_in_data(audio_in_data),.ready(ready),
+	.audio_in_data(audio_in_data),.ready(ui_ready),
 	.voicemail_status(voicemail_status),.voicemail_command(voicemail_command),
 	.phn_num(phn_num),.dout(dout),
 	.din(din),.disp_control(disp_control),
@@ -456,7 +466,6 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
 	//Voicemail I/Os
 	reg vmail_disp_en;
-	wire d_ready;
 	wire [6:0] vm_addr;
 	wire [7:0] vm_data;
 	wire v_disp_en;
@@ -499,7 +508,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	//Voicemail
 	 Voicemail_Interface vmail(.clk_27mhz(clk_27mhz),
 	.reset(reset),.sts(voicemail_status),.cmd(voicemail_command),
-	.phn_num(phn_num),.din(din),.dout(dout),.d_ready(d_ready),
+	.phn_num(phn_num),.din(audio_out_data),.dout(dout),.d_ready(ready),
 	.disp_en(v_disp_en),.button_up(up),.button_down(down),
 	.ascii_out(v_ascii_out),.ascii_out_ready(v_ascii_out_ready),
 	.ram_data(ram0_data),.ram_address(ram0_address),.ram_we_b(ram0_we_b),.ram_bwe_b(ram0_bwe_b),

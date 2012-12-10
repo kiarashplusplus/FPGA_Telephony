@@ -1,0 +1,1 @@
+ngdbuild -ise "/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/UI_Part2.ise" -intstyle ise -dd _ngo   -sd "/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI Interfaces/Voicemail Interface"  -sd "/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI Interfaces/Binary to Decimal ROM" -aul -nt timestamp -i -p xc2v6000-bf957-6 "Text_Storage.ngc" Text_Storage.ngd
