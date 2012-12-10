@@ -5,34 +5,34 @@ user_file_1
 Text_Scroller_Interface.v
 s
 user_file_10
-../UI Interfaces/Voicemail Interface/CF_Voicemail_Interface.v
-s
-user_file_11
 ../UI Interfaces/Voicemail Interface/Voicemail_FIFO.xco
 s
-user_file_12
+user_file_11
 ui_voicemail_test.v
 s
-user_file_13
+user_file_12
 display_string.v
 s
-user_file_14
+user_file_13
 debounce.v
 s
-user_file_15
+user_file_14
 ../UI Interfaces/Button Interface/Button_Contention_Resolver.v
 s
-user_file_16
+user_file_15
 synchronize.v
 s
-user_file_17
+user_file_16
 ../UI Interfaces/Display String/display_string.v
 s
-user_file_18
+user_file_17
 ../../../Lab4/Lab4_new/divider.v
 s
-user_file_19
+user_file_18
 ../../../Lab4/Lab4_new/timer.v
+s
+user_file_19
+Text_Storage.xco
 s
 user_file_2
 Text_Scroller.v
@@ -44,17 +44,17 @@ user_file_4
 ui_test.v
 s
 user_file_5
-Text_Storage.v
-s
-user_file_6
 UI_Text_Scroller_BRAM.v
 s
-user_file_7
+user_file_6
 ../UI Interfaces/AC '97 Interface/AC97_PCM.v
 s
-user_file_8
+user_file_7
 labkit.v
 s
-user_file_9
+user_file_8
 labkit.ucf
+s
+user_file_9
+../UI Interfaces/Voicemail Interface/CF_Voicemail_Interface.v
 s

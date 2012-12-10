@@ -303,7 +303,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // Logic Analyzer
 //   assign analyzer1_data[15:9] = 0;
 //   assign analyzer1_clock = 1'b1;
-   assign analyzer2_data[15:1]= 15'h0;
+   assign analyzer2_data[15:7]= 9'h0;
    assign analyzer2_clock = clock_27mhz;
 //   assign analyzer3_data = 16'h0;
    assign analyzer3_clock = clock_27mhz;
@@ -407,15 +407,70 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	.ascii_out_ready(ascii_out_ready),.txt_addr(addr),
 	.txt_length(length),.txt_start(start),.done(done));
 	
-	
-	
-	
 	//display here
 	display_string ds(.reset(reset), .clock_27mhz(clock_27mhz),
 	.string_data(string_data),.disp_blank(disp_blank),
 	.disp_clock(disp_clock),.disp_rs(disp_rs),
 	.disp_ce_b(disp_ce_b),.disp_reset_b(disp_reset_b)
 	,.disp_data_out(disp_data_out));
+	
+	reg vmail_disp_en;
+	
+	//Voicemail
+	module Voicemail_Interface(.clk_27mhz(clock_27mhz),
+	.reset(reset),.sts(voicemail_status),.cmd(voicemail_command),
+	.phn_num(phn_num),.din(din),.dout(dout),.d_ready(d_ready),
+	.disp_en(disp_en),.button_up(up),.button_down(down),
+	.ascii_out(ascii_out),.ascii_out_ready(ascii_out_ready),
+	.ram_data
+	// Main Interface ports
+	input d_ready,            // Sample Data Ready Signal
+	input disp_en,            // Display Enable
+	// Button inputs
+	input button_up,
+	input button_down,
+	// ASCII output
+	output [7:0] ascii_out,   // Port for ASCII data
+	output ascii_out_ready,   // Ready signal for ASCII data
+	// ZBT RAM I/Os
+   inout  [35:0] ram_data,
+   output [18:0] ram_address,
+   output ram_we_b,
+   output [3:0] ram_bwe_b,
+	// Date & Time inputs	
+	input [6:0] year,
+	input [3:0] month,
+	input [4:0] day,
+	input [4:0] hour,
+	input [5:0] minute,
+	input [5:0] second,
+	// Binary-to-Decimal Lookup-Table I/O
+	output [6:0] addr,
+	input [7:0] data,
+	// SystemACE ports
+	inout [15:0] systemace_data,     // SystemACE R/W data
+	output [6:0] systemace_address,  // SystemACE R/W address
+	output systemace_ce_b,           // SystemACE chip enable (Active Low)
+	output systemace_we_b,           // SystemACE write enable (Active Low)
+	output systemace_oe_b,           // SystemACE output enable (Active Low)
+	input systemace_mpbrdy           // SystemACE buffer ready
+	);
+	
+	//Display Control Mux
+	always @(posedge clock_27mhz) begin
+		case(disp_control)
+			0: begin
+				vmail_disp_en=0;
+			end//UI case
+			1: begin
+			end//Date&Time
+			2:	begin
+				vmail_disp_en=1;
+			end//Voicemail	
+		endcase
+	end
+	
+	assign disp_en=vmail_disp_en;
 	
 	//Logic Analyzer
 	assign analyzer1_data[7:0] = ascii_out;
@@ -426,6 +481,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	assign analyzer3_data[4:0]=addr[4:0];
 	assign analyzer3_data[15:5]=length;
 	assign analyzer2_data[0]=done;
+	assign analyzer2_data[6:1]=current_menu_item;
 
 
 

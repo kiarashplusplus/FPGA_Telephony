@@ -364,12 +364,36 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 
 ///////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////
+//Latches for Buttons
+//////////////////////////////////////////////////////////////
+reg up_latch;
+reg down_latch;
+reg right_latch;
+reg left_latch;
+reg b0_latch;
+reg b1_latch;
+reg b2_latch;
+reg b3_latch;
+reg enter_latch;
+reg reset_latch;
+////////////////////////////////////////////////////////////
+
 
 //set display text here	
 	always @(posedge clk) begin
-		if (start) 
-			start<=0;
-			
+		//deal with latches here
+		up_latch<=up;
+      down_latch<=down;
+      right_latch<=right;
+		left_latch<=left;
+		b0_latch<=b0;
+		b1_latch<=b1;
+		b2_latch<=b2;
+		b3_latch<=b3;
+		enter_latch<=enter;
+      reset_latch<=reset;
+		
 		menu_item_latch <= menu_item;
 		
 		start<=menu_item_latch!=menu_item;
@@ -388,7 +412,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 			//idle state
 						//welcome
 						def_welcome:begin
-							addr<=11'd72; //text=Welcome
+							addr<=11'd45; //text=Welcome
 							length<=11'd7;
 						end
 						
@@ -397,23 +421,23 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							//still confused about this part
 						end
 						call_number:begin
-							addr<=11'd80; //text=Call Number
+							addr<=11'd52;//text=Call Number
 							length<=11'd11;
 						end
 						volume: begin
-							addr<=11'd92; //text=Set Headphone Volume
+							addr<=11'd63;//91 //text=Set Headphone Volume
 							length<=11'd20;
 						end
 						voicemail: begin
-							addr<=11'd128; //text=Voicemail
+							addr<=11'd83; //text=Voicemail
 							length<=11'd9;
 						end
 						get_num: begin
-							addr<=11'd468; //text=Display System Number
+							addr<=11'd92; //text=Display System Number
 							length<=11'd21;
 						end
 						set_time:begin
-							addr<=11'd452; //text=Set Date & Time
+							addr<=11'd113; //text=Set Date & Time
 							length<=11'd15;
 						end
 						
@@ -430,51 +454,51 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 						//voicemail
 						toggle_v:begin
 							if (voicemail_state) begin //voicemail currently on
-								addr<=11'd138; //text=Turn Voicemail Off
+								addr<=11'd137; //text=Turn Voicemail Off
 								length<=11'd18;
 							end
 							
 							else begin //voicemail currently off
-								addr<=11'd157;//text=Turn Voicemail On
+								addr<=11'd156;//text=Turn Voicemail On
 								length<=11'd17;
 							end
 						end
 						
 						unread: begin	//text=Unread Voicemail
-							addr<=11'd175;
+							addr<=11'd174;
 							length<=11'd16;
 						end
 						
 						saved: begin	//text=Saved Voicemail
-							addr<=11'd270;
+							addr<=11'd269;
 							length<=11'd15;
 						end
 						
 						//unread voicemail menu
 						play_unread:begin	//text=Play Unread Voicemail
-							addr<=11'd191;
+							addr<=11'd190;
 							length<=11'd25;
 						end
 						del_unread:begin	//text=Delete Unread Voicemail
-							addr<=11'd218;
+							addr<=11'd217;
 							length<=11'd23;			
 						end
 						del_all_unread:begin	//text=Delete All Unread Voicemail
-							addr<=11'd242;
+							addr<=11'd241;
 							length<=11'd27;				
 						end
 						
 						//saved voicemail menu
 						play_saved:begin	//text=Play Saved Voicemail
-							addr<=11'd286;
+							addr<=11'd285;
 							length<=11'd24;
 						end
 						del_saved:begin	//text=Delete Saved Voicemail
-							addr<=11'd311;
+							addr<=11'd310;
 							length<=11'd22;
 						end
 						del_all_saved:begin //text=Delete All Saved Voicemail
-							addr<=11'd334;
+							addr<=11'd333;
 							length<=11'd26;
 						end
 
@@ -490,40 +514,40 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 						
 				//incoming state	
 					accept:begin //text=Accept Incoming Call
-						addr<=11'd375;
+						addr<=11'd374;
 						length<=11'd20;
 					end
 					reject:begin	//text=Reject Incoming Call
-						addr<=11'd396;
+						addr<=11'd395;
 						length<=11'd20;
 					end
 					send_to_v:begin	//text=Send to Voicemail
-						addr<=11'd417;
+						addr<=11'd416;
 						length<=11'd17;
 					end
 					def_incoming:begin	//text=Incoming Call
-						addr<=11'd361;
+						addr<=11'd360;
 						length<=11'd13;
 					end
 					
 				//outgoing state
 				def_outgoing:begin //text=Calling
-					addr<=11'd435;
+					addr<=11'd434;
 					length<=11'd7;
 				end
 				end_call:begin	//text=End Call
-					addr<=11'd443;
+					addr<=11'd442;
 					length<=11'd8;
 				end
 					
 					
 				//busy state
 				def_busy:begin //text=Current Call
-					addr<=11'd490;
+					addr<=11'd489;
 					length<=11'd12;
 				end
 				end_call_b:begin //text=End Call
-					addr<=11'd443;
+					addr<=11'd442;
 					length<=11'd8;
 				end			
 			endcase					
@@ -535,7 +559,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 	always @(posedge clk) begin
 		c_state<=state;
 		
-		if (reset) begin
+		if (reset&&!reset_latch) begin
 			menu_item<=def_init; 
 			state<=initialize;
 			voicemail_state<=0;	
@@ -548,7 +572,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 			case (state) 
 				//initialize state logic
 				initialize: begin	//text=Press "Enter" to start network initialization
-						if (enter) begin	
+						if (enter&&!enter_latch) begin	
 							menu_item<=def_welcome;				
 							state<=idle;					
 						end
@@ -568,7 +592,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 						state<=incoming;		
 					end
 			 
-					else if (up&&override) begin //up button pressed
+					else if (up&&override&&!up_latch) begin //up button pressed
 						case (menu_item) 
 							call_number: menu_item<=set_time;//main_menu
 							toggle_v: menu_item<=saved; //voicemail
@@ -586,12 +610,15 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 								else
 									menu_item<=voicemail;
 							end
+							def_sys: menu_item<=def_sys;
+							def_init:menu_item<=def_init;
+							def_welcome:menu_item<=def_welcome;
 							default: menu_item<=menu_item-1;
 						endcase
 
 					end
 					
-					else if (down&&override) begin //down button pressed
+					else if (down&&override&&!down_latch) begin //down button pressed
 						case (menu_item) 
 							set_time: menu_item<=call_number;//main_menu
 							saved: menu_item<=toggle_v; //voicemail
@@ -609,11 +636,14 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 								else
 									menu_item<=voicemail;
 							end
+							def_sys: menu_item<=def_sys;
+							def_init:menu_item<=def_init;
+							def_welcome:menu_item<=def_welcome;
 							default: menu_item<=menu_item+1;		
 						endcase
 					end
 					
-					else if (right||enter) begin //menu item selected
+					else if ((right&&!right_latch)||(enter&&!enter_latch)) begin //menu item selected
 						case (menu_item) 
 							def_welcome: menu_item<=call_number;
 							def_sys: menu_item<=call_number;
@@ -621,7 +651,8 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							volume: menu_item<=change_vol;
 							voicemail: menu_item<=toggle_v;
 							get_num: menu_item<=set_time;
-							set_time: menu_item<=call_number;	
+							set_time: menu_item<=call_number;
+							def_init:menu_item<=def_welcome;
 							
 							//call number
 							dialing: begin
@@ -666,7 +697,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 					end
 					
 					
-					else if (left) begin //move to higher level menu	 
+					else if (left&&!left_latch) begin //move to higher level menu	 
 							//go back to system date and time from main menu
 							if (menu_item>=0 && menu_item<=4)
 								 menu_item<=def_sys; 
@@ -709,25 +740,25 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 					
 					end	
 					
-					else if (b0) begin	//voicemail delete button
+					else if (b0&&!b0_latch) begin	//voicemail delete button
 						case (menu_item) 
 							play_unread: temp_voicemail_command<=CMD_DEL;								
 							play_saved:  temp_voicemail_command<=CMD_DEL;
 						endcase
 					end
 					
-					else if (b1) begin //voicemail save button
+					else if (b1&&!b1_latch) begin //voicemail save button
 							temp_voicemail_command<=CMD_SAVE;
 					end
 					
-					else if (b2) begin //voicemail stop button
+					else if (b2&&b2_latch) begin //voicemail stop button
 						case (menu_item)
 							play_unread: temp_voicemail_command<=CMD_END_RD;
 							play_saved: temp_voicemail_command<=CMD_END_RD;
 						endcase
 					end
 					
-					else if (b3) begin //voicemail play button
+					else if (b3&&b3_latch) begin //voicemail play button
 						case (menu_item)
 							play_unread: temp_voicemail_command<=CMD_START_RD;
 							play_saved: temp_voicemail_command<=CMD_START_RD;
@@ -756,7 +787,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 					start_t<=0;
 				
 					if (expired==0) begin
-						if (up) begin
+						if (up&&!up_latch) begin
 							case (menu_item) 
 								def_incoming: begin
 									if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
@@ -768,7 +799,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							endcase
 						end
 						
-						else if (down) begin
+						else if (down&&!down_latch) begin
 							case (menu_item) 
 								send_to_v: menu_item<=def_incoming;
 								reject:begin
@@ -781,7 +812,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							endcase
 						end
 						
-						else if (right||enter) begin
+						else if ((right&&!right_latch)||(enter&&!enter_latch)) begin
 							case (menu_item) 
 								def_incoming:temp_command<=accept_call;
 								accept: temp_command<=accept_call;
@@ -839,21 +870,21 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 				
 				//outgoing state logic
 				outgoing: begin
-					if (up&&override) begin
+					if (up&&override&&!up_latch) begin
 						case (menu_item)
 							def_outgoing: menu_item<=end_call;
 							default: menu_item<=menu_item-1;
 						endcase
 					end
 					
-					else if (down&&override) begin
+					else if (down&&override&&!down_latch) begin
 						case (menu_item) 
 							end_call: menu_item<=def_outgoing;
 							default: menu_item<=menu_item+1;
 						endcase
 					end
 					
-					else if ((enter||right) && override) begin
+					else if (((enter&&!enter_latch)||(right&&!right_latch)) && override) begin
 						case(menu_item)
 							end_call: begin
 								temp_command<=stop_call;
@@ -889,9 +920,9 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 						end
 						
 						else if (voicemail_status==STS_CMD_RDY)
-							if (b0) 
+							if (b0&&!b0_latch) 
 								temp_voicemail_command<=CMD_START_WR;
-							else if (b1) begin
+							else if (b1&&b1_latch) begin
 								temp_voicemail_command<=CMD_END_WR;
 								override<=1;
 								menu_item<=def_sys;
@@ -905,7 +936,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 				
 				//busy state
 				busy: begin
-					if (up) begin
+					if (up&&!up_latch) begin
 						case (menu_item)
 							def_busy: menu_item<=set_volume;
 							change_vol: begin
@@ -915,7 +946,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							default: menu_item<=menu_item-1;
 						endcase
 					end
-					else if (down) begin
+					else if (down&&!down_latch) begin
 						case (menu_item) 
 							set_volume: menu_item<=def_busy;
 							change_vol: begin 
@@ -925,7 +956,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							default: menu_item<=menu_item+1;
 						endcase
 					end
-					else if (right||enter) begin
+					else if ((right&&!right_latch)||(enter&&!enter_latch)) begin
 						case (menu_item) 
 							end_call_b:	temp_command<=stop_call;
 							set_volume: menu_item<=change_vol;
@@ -937,7 +968,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 							end
 						endcase
 					end
-					else if (left) begin
+					else if (left&&!left_latch) begin
 						case (menu_item) 
 							change_vol: menu_item<=set_volume;
 						endcase

@@ -1,7 +1,7 @@
 import binascii
 
 def convert():
-    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/strings","r")
+    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/strings","r")
     data=f.read()
     f.close()
     
@@ -22,7 +22,7 @@ def convert():
         lengths[strings.index(s)]=len(s) ##get length of each string
 
     ##lengths of each string
-    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/lengths","w")
+    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/lengths","w")
     for i in range(len(lengths)):
         if i==0:
             f.write(str(lengths[i]) + ' ' + strings[i][:] + "\n")
@@ -37,7 +37,7 @@ def convert():
     
     
     ##actual hex for .coe file
-    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/text_storage.coe","w")
+    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/text_storage.coe","w")
 
     ##write initialization for beginning of file
     f.write("memory_initialization_radix = 16;\nmemory_initialization_vector =\n");
@@ -52,7 +52,7 @@ def convert():
     f.write(";")
     f.close()
 
-    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/addresses","w")
+    f=open("/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/addresses","w")
 
     current=0
     f.write(str(0) + ' ' + strings[0] + "\n")
@@ -62,7 +62,7 @@ def convert():
         if (strings.index(i)>0):
             if strings.index(i)==1:
                 f.write(str(len(strings[strings.index(i)-1]) + current) + ' ' + i[1:] + "\n")
-                current+=len(strings[strings.index(i)-1])
+                current+=len(strings[strings.index(i)-1])-1
             else:
                 f.write(str(len(strings[strings.index(i)-1]) + current-1) + ' ' + i[1:] + "\n")
                 current+=len(strings[strings.index(i)-1])

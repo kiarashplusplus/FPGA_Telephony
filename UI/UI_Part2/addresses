@@ -1,26 +1,25 @@
 0 Press "Enter" to start network initialization
-45 System has been initialized
-72 Welcome
-80 Call Number
-92 Set Headphone Volume
-113 Current Volume
-128 Voicemail
-138 Turn Voicemail Off
-157 Turn Voicemail On
-175 Unread Voicemail
-192 Playback Unread Voicemail
-218 Delete Unread Voicemail
-242 Delete All Unread Voicemail
-270 Saved Voicemail
-286 Playback Saved Voicemail
-311 Delete Saved Voicemail
-334 Delete All Saved Voicemail
-361 Incoming Call
-375 Accept Incoming Call
-396 Reject Incoming Call
-417 Send to Voicemail
-435 Calling
-443 End Call
-452 Set Date & Time
-468 Display System Number
-490 Current Call
+45 Welcome
+51 Call Number
+63 Set Headphone Volume
+84 Voicemail
+94 Display System Number
+116 Set Date & Time
+132 Current Volume
+147 Turn Voicemail Off
+166 Turn Voicemail On
+184 Unread Voicemail
+201 Playback Unread Voicemail
+227 Delete Unread Voicemail
+251 Delete All Unread Voicemail
+279 Saved Voicemail
+295 Playback Saved Voicemail
+320 Delete Saved Voicemail
+343 Delete All Saved Voicemail
+370 Incoming Call
+384 Accept Incoming Call
+405 Reject Incoming Call
+426 Send to Voicemail
+444 Calling
+452 End Call
+461 Current Call

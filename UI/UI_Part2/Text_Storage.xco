@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version K.39
-# Date: Thu Dec  6 02:58:50 2012
+# Date: Mon Dec 10 07:02:02 2012
 #
 ##############################################################
 #
@@ -38,7 +38,7 @@ SELECT Block_Memory_Generator family Xilinx,_Inc. 2.8
 CSET algorithm=Minimum_Area
 CSET assume_synchronous_clk=false
 CSET byte_size=9
-CSET coe_file=/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI/hex.coe
+CSET coe_file=/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/text_storage.coe
 CSET collision_warnings=ALL
 CSET component_name=Text_Storage
 CSET disable_collision_warnings=false
@@ -74,5 +74,5 @@ CSET write_width_a=8
 CSET write_width_b=8
 # END Parameters
 GENERATE
-# CRC: 349494bd
+# CRC: 678a795d
 

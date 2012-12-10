@@ -845,7 +845,7 @@ proc restore { { project_dir "" } } {
       "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.xco" 
       "Text_Scroller.v" 
       "Text_Scroller_Interface.v" 
-      "Text_Storage.v" 
+      "Text_Storage.xco" 
       "UI_Text_Scroller_BRAM.v" 
       "debounce.v" 
       "display_string.v" 
@@ -868,7 +868,13 @@ proc restore { { project_dir "" } } {
       "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.veo" 
       "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.vhd" 
       "../UI Interfaces/Voicemail Interface/Voicemail_FIFO.vho" 
+      "Text_Storage.asy" 
       "Text_Storage.ngc" 
+      "Text_Storage.sym" 
+      "Text_Storage.v" 
+      "Text_Storage.veo" 
+      "Text_Storage.vhd" 
+      "Text_Storage.vho" 
       "UI_Text_Scroller_BRAM.ngc" 
       "labkit_guide.ncd"}
 

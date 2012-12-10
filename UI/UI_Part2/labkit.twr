@@ -37,15 +37,15 @@ Setup/Hold to clock clock_27mhz
             |  Setup to  |  Hold to   |                    | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s)   | Phase  |
 ------------+------------+------------+--------------------+--------+
-button0     |    1.734(R)|   -0.288(R)|analyzer1_clock_OBUF|   0.000|
-button1     |    1.495(R)|    0.289(R)|analyzer1_clock_OBUF|   0.000|
-button2     |    1.148(R)|   -0.148(R)|analyzer1_clock_OBUF|   0.000|
-button3     |    1.474(R)|   -0.027(R)|analyzer1_clock_OBUF|   0.000|
-button_down |    1.911(R)|   -0.223(R)|analyzer1_clock_OBUF|   0.000|
-button_enter|    1.380(R)|   -0.174(R)|analyzer1_clock_OBUF|   0.000|
-button_left |    1.768(R)|    0.162(R)|analyzer1_clock_OBUF|   0.000|
-button_right|    1.561(R)|    0.077(R)|analyzer1_clock_OBUF|   0.000|
-button_up   |    1.827(R)|   -0.329(R)|analyzer1_clock_OBUF|   0.000|
+button0     |    1.091(R)|    0.213(R)|analyzer1_clock_OBUF|   0.000|
+button1     |    2.884(R)|    0.122(R)|analyzer1_clock_OBUF|   0.000|
+button2     |    1.346(R)|   -0.095(R)|analyzer1_clock_OBUF|   0.000|
+button3     |    1.815(R)|    0.290(R)|analyzer1_clock_OBUF|   0.000|
+button_down |    1.797(R)|   -0.301(R)|analyzer1_clock_OBUF|   0.000|
+button_enter|    1.271(R)|    0.392(R)|analyzer1_clock_OBUF|   0.000|
+button_left |    2.418(R)|   -0.324(R)|analyzer1_clock_OBUF|   0.000|
+button_right|    1.366(R)|    0.076(R)|analyzer1_clock_OBUF|   0.000|
+button_up   |    1.944(R)|   -0.186(R)|analyzer1_clock_OBUF|   0.000|
 ------------+------------+------------+--------------------+--------+
 
 Clock clock_27mhz to Pad
@@ -53,26 +53,32 @@ Clock clock_27mhz to Pad
                   | clk (edge) |                    | Clock  |
 Destination       |   to PAD   |Internal Clock(s)   | Phase  |
 ------------------+------------+--------------------+--------+
-analyzer1_data<0> |   13.670(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<8> |   11.702(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<9> |   11.580(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<10>|   11.280(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<11>|   11.295(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<12>|   11.926(R)|analyzer1_clock_OBUF|   0.000|
-analyzer1_data<13>|   11.954(R)|analyzer1_clock_OBUF|   0.000|
-analyzer2_data<0> |   10.364(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<0> |   10.000(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<1> |   10.400(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<2> |   11.128(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<3> |   11.972(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<4> |   12.317(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<5> |   11.636(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<6> |   12.580(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<7> |   11.170(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<8> |   11.404(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<9> |   12.487(R)|analyzer1_clock_OBUF|   0.000|
-analyzer3_data<10>|   11.936(R)|analyzer1_clock_OBUF|   0.000|
-disp_clock        |    9.133(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<0> |   12.431(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<8> |   10.563(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<9> |   14.291(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<10>|   11.134(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<11>|   11.227(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<12>|   15.742(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<13>|   12.416(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<0> |    9.560(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<1> |   14.782(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<2> |   11.289(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<3> |   14.183(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<4> |   15.046(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<5> |   14.840(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<6> |   11.672(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<0> |   15.342(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<1> |   15.089(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<2> |   12.044(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<3> |   12.528(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<4> |   12.722(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<5> |   11.588(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<6> |   12.594(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<7> |   11.477(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<8> |   11.672(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<9> |   12.932(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<10>|   11.198(R)|analyzer1_clock_OBUF|   0.000|
+disp_clock        |    9.085(R)|analyzer1_clock_OBUF|   0.000|
 ------------------+------------+--------------------+--------+
 
 Clock to Setup on destination clock clock_27mhz
@@ -80,28 +86,28 @@ Clock to Setup on destination clock clock_27mhz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clock_27mhz    |    7.230|         |         |         |
+clock_27mhz    |    7.082|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
 ---------------+---------------+---------+
 Source Pad     |Destination Pad|  Delay  |
 ---------------+---------------+---------+
-clock_27mhz    |analyzer1_clock|    9.323|
-clock_27mhz    |analyzer2_clock|    9.816|
+clock_27mhz    |analyzer1_clock|    9.480|
+clock_27mhz    |analyzer2_clock|    9.487|
 clock_27mhz    |analyzer3_clock|    8.885|
-clock_27mhz    |analyzer4_clock|   17.412|
+clock_27mhz    |analyzer4_clock|   10.736|
 ---------------+---------------+---------+
 
 
-Analysis completed Sun Dec  9 23:32:33 2012 
+Analysis completed Mon Dec 10 02:23:27 2012 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 366 MB
+Peak Memory Usage: 367 MB
 
 
 

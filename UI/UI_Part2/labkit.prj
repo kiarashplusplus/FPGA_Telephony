@@ -1,5 +1,5 @@
 verilog work "UI_Text_Scroller_BRAM.v"
-verilog work "Text_Storage.v"
+verilog work "./Text_Storage.v"
 verilog work "../../../Lab4/Lab4_new/timer.v"
 verilog work "../../../Lab4/Lab4_new/divider.v"
 verilog work "Text_Scroller_Interface.v"
