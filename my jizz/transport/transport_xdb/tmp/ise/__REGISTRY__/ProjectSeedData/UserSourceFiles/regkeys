@@ -11,13 +11,13 @@ user_file_11
 ../session_tb.v
 s
 user_file_12
-../complete_tb.v
-s
-user_file_13
 ../labkit.v
 s
-user_file_14
+user_file_13
 ../display_16hex.v
+s
+user_file_14
+../complete_tb.v
 s
 user_file_2
 readyPackets.xco

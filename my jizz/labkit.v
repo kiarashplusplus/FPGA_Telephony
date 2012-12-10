@@ -280,13 +280,13 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 */
 
    // Buttons, Switches, and Individual LEDs
-   assign led[5:2] = 5'b11111;
+   assign led[7:0] = 8'b1111_1111;
 	
    // button0, button1, button2, button3, button_enter, button_right,
    // button_left, button_down, button_up, and switches are inputs
 
    // User I/Os
-   //assign user1 = 32'hZ;
+   assign user1 = 32'hZ;
    assign user2 = 32'hZ;
    assign user3 = 32'hZ;
    assign user4 = 32'hZ;
@@ -303,11 +303,11 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // systemace_irq and systemace_mpbrdy are inputs
 
    // Logic Analyzer
-   //assign analyzer1_data = 16'h0;
+   assign analyzer1_data = 16'h0;
    assign analyzer1_clock = 1'b1;
    assign analyzer2_data = 16'h0;
    assign analyzer2_clock = 1'b1;
-   //assign analyzer3_data = 16'h0;
+   assign analyzer3_data = 16'h0;
    assign analyzer3_clock = 1'b1;
    assign analyzer4_data = 16'h0;
    assign analyzer4_clock = 1'b1;
@@ -325,110 +325,28 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
   SRL16 reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
 	         .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
   defparam reset_sr.INIT = 16'hFFFF;
-	wire noisy_hidden,noisy_brake, noisy_driver,noisy_passenger,ignit,
-		noisy_reprogram,status,
-		fuelPower, noisy_reset;
-	wire [3:0] Time_Value; 
-	wire [1:0] Time_Parameter_Selector;
+
+	wire [3:0] oneInp;
+	wire [3:0] twoInp;
 	
-  assign noisy_hidden=~button0;
-  assign noisy_brake=~button1;
-  assign noisy_driver=~button2;
-  assign noisy_passenger=~button3;
-  assign ignit=switch[7];
-  assign Time_Parameter_Selector=switch[5:4];
-  assign Time_Value=switch[3:0];
-  assign noisy_reprogram=~button_enter;
-
-  assign led[1]=~fuelPower;
-  assign led[0]=~status;
- 
-  wire hidden, brake, driver, passenger, reprogram, rst;
-
-
-	
-  assign noisy_reset=~button_down;
+  assign oneInp=switch[7:4];
+  assign twoInp=switch[3:0];
+  
+	wire clk;
   
   assign clk = clock_27mhz;
+  
+  wire [3:0] twocurrent_state;
+  wire [3:0] onecurrent_state;
     
-  full_debounce db   ( .reset(reset),  .clk(clk),  .brake(noisy_brake),  .clean_break(brake), 
-	 .hidden(noisy_hidden),  .clean_hidden(hidden), .rst(noisy_reset), .clean_rst(rst),
-	 .driver(noisy_driver),  .clean_driver(driver), .passenger(noisy_passenger), 
-	 .clean_passenger(passenger), .reprogram(noisy_reprogram), .clean_reprogram(reprogram));
-								
-							
-  FuelLogic f1 (.brake(brake), .hidden(hidden), .ignit(ignit), .power(fuelPower));
-  
-  wire [1:0] interval;
-  wire [3:0] value;
-  wire [3:0] ARM_DELAY,DRIVER_DELAY,PASSENGER_DELAY,ALARM_ON;
-	timeParam tp1 (
-		.clk(clk), 
-		.Time_Parameter_Selector(Time_Parameter_Selector), 
-		.Time_Value(Time_Value), 
-		.Reprogram(reprogram), 
-		.reset(rst), 
-		.interval(interval), 
-		.value(value),
-		.ARM_DELAY(ARM_DELAY),
-		.DRIVER_DELAY(DRIVER_DELAY),
-		.PASSENGER_DELAY(PASSENGER_DELAY),
-		.ALARM_ON(ALARM_ON)
-	);
-	
-	
-  wire start_timer;
-  wire expired;
-  wire [3:0] timerCounter;
-  
-  parameter freq=27000000;  
-	
-  timer #(.mgh(freq))t1 (.clk(clk),
-  
-   	.start_timer(start_timer), 
-		.value(value), 
-		.reset(rst), 
-		.expired(expired),
-		.counter(timerCounter)
-	);
-	wire sirenOn;
-	wire speaker;
-  assign user1[0]=speaker;
-  assign user1[31:1]=0;
-  
-  assign led[6]=~sirenOn;  
-  assign led[7]=1;	
-  
-	sirenGen s1 (
-		.clk(clk), 
-		.on(sirenOn), 
-		.speaker(speaker)
-	);	
-	
-	wire [3:0] current_state;
-	
-	FSM fsm1 (
-		.clk(clk), 
-		.reset(rst),
-		.ignit(ignit), 
-		.driver(driver), 
-		.passenger(passenger), 
-		.reprogram(reprogram), 
-		.expired(expired), 
-		.interval(interval), 
-		.start_timer(start_timer), 
-		.siren(sirenOn), 
-		.status(status),
-		.current_state(current_state)
-	);	
+	 complete c1 (.clk(clk), .reset(reset), .oneInp(oneInp), .twoInp(twoInp),
+		.onecurrent_state(onecurrent_state),.twocurrent_state(twocurrent_state));
+		
+		
 	wire [63:0] displayData;
 	
-	assign displayData[63:0]={16'd0,Time_Value, 3'b000,reprogram, timerCounter,3'b000,expired,value,2'b00,
-		Time_Parameter_Selector,2'b00,interval,
-		ARM_DELAY,DRIVER_DELAY,PASSENGER_DELAY,ALARM_ON,current_state };
+	assign displayData[63:0]={48'd0,4'b0,twocurrent_state, 4'b0,onecurrent_state };
         
-    assign analyzer3_data = {current_state,interval, driver, ignit, timerCounter, expired, passenger, start_timer, clk};
-	assign analyzer1_data= {11'b0,passenger, value};
 	
    display_16hex dsp1(.reset(reset), .clock_27mhz(clk), .data(displayData), 
 		.disp_blank(disp_blank), .disp_clock(disp_clock), .disp_rs(disp_rs), .disp_ce_b(disp_ce_b),

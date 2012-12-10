@@ -20,17 +20,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 module complete(
 	 input clk,  input reset,	
-	input [7:0] onephoneNum,
-	input [4:0] oneuserInp,
-	input [15:0] onepacketIn,
-	input [1:0] onecmdIn,
-	input sendData,
-	input [4:0] twouserInp,
-	
-	output [7:0] twophoneOut,
-	output twotransportBusy
+	input [3:0] oneInp,
+	input [3:0] twoInp,
+	output [3:0] onecurrent_state,
+	output [3:0] twocurrent_state
 	);
 	
+	wire [4:0] oneuserInp;
+	assign oneuserInp={1'b0,oneInp};
+
+	wire [4:0] twouserInp;
+	assign twouserInp={1'b0, twoInp};
+	
+		
+	wire [1:0] onecmdIn;
+	wire twotransportBusy;
+	wire [7:0] onephoneNum=8'b1111_1111;
+	wire [7:0] twophoneOut;
 	
 	wire onetransportBusy;
 	
@@ -39,7 +45,7 @@ module complete(
 	wire [15:0] onedataOut;
 	wire onesessionBusy;
 	wire [7:0] onephoneOut;
-	wire [3:0] onecurrent_state;
+	 
 
 	wire [15:0] onespkBufferOut;
 	wire onemicBufferFull;
@@ -48,13 +54,15 @@ module complete(
 	wire onespkBufferEmpty;
 	wire [15:0] onemicBufferOut;
 	
+	wire [15:0] onepacketInp;
+	
 	session one (
 		.clk(clk), 
 		.reset(reset), 
 		.phoneNum(onephoneNum), 
 		.userInp(oneuserInp), 
 		.cmdIn(onecmdIn), 
-		.packetIn(onepacketIn), 
+		.packetIn(onepacketInp), 
 		.transportBusy(onetransportBusy), 
 		.micFlag(onemicFlag), 
 		.cmd(onecmd), 
@@ -82,7 +90,7 @@ module complete(
 		.reset(reset), 
 		.cmd(onecmd), 
 		.data(onedataOut), 
-		.sendData(sendData), 
+		.sendData(1'b1), 
 		.sending(sending), 
 		.packetOut(sendPacketOut), 
 		.busy(onetransportBusy),
@@ -114,7 +122,6 @@ module complete(
 	wire [1:0] twocmd;
 	wire [15:0] twodataOut;
 	wire [7:0] twophoneNum;
-	wire [3:0] twocurrent_state;
 
 	
 	wire [15:0] twospkBufferOut;
@@ -149,5 +156,37 @@ module complete(
 		.spkBufferEmpty(twospkBufferEmpty)
 	);	
 
+	wire s2sending;
+	wire [7:0] s2sendPacketOut;
+	wire [10:0] s2senderCounter;
+	
+	transportSend s2 (
+		.clk(clk), 
+		.reset(reset), 
+		.cmd(twocmd), 
+		.data(twodataOut), 
+		.sendData(1'b1), 
+		.sending(s2sending), 
+		.packetOut(s2sendPacketOut), 
+		.busy(twotransportBusy),
+		.ready_data_count(s2senderCounter)
+	);
 
+
+	wire [7:0] r2dafuq;
+	wire [10:0] r2rcvCounter;
+
+	transportRcv r2 (
+		.clk(clk), 
+		.reset(reset), 
+		.rcvSignal(s2sending), 
+		.packetIn(s2sendPacketOut), 
+		.sessionBusy(onesessionBusy), 
+		.sendingToSession(onecmdIn), 
+		.data(onepacketInp), 
+		.rcv_data_count(r2rcvCounter),
+		.dafuq(r2dafuq)
+	);
+	
+	
 endmodule

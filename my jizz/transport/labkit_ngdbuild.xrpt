@@ -5,14 +5,33 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Sat Dec  8 14:40:36 2012">
+  <application stringID="NgdBuild" timeStamp="Mon Dec 10 16:45:11 2012">
     <task stringID="NGDBUILD_REPORT">
       <section stringID="NGDBUILD_DESIGN_SUMMARY">
-        <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="1"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="NGDBUILD_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="NGDBUILD_NUM_WARNINGS" value="277"/>
         <item dataType="int" stringID="NGDBUILD_FILTERED_INFOS" value="0"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="0"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="1"/>
+      </section>
+      <section stringID="NGDBUILD_CORE_SUMMARY">
+        <item COUNT="1" stringID="NGDBUILD_CORE" value="fifo_generator_v4_4, Xilinx CORE Generator 10.1.03_ip3"/>
+        <section stringID="NGDBUILD_CORE_GENERATION_SUMMARY">
+          <section stringID="NGDBUILD_CORE_INSTANCES">
+            <scope stringID="NGDBUILD_CORE_INSTANCE" value="audioBuffer">
+              <item stringID="NGDBUILD_CORE_INFO" type="fifo_generator_v4_4" value="audioBuffer"/>
+              <item c_common_clock="0" c_data_count_width="11" c_din_width="16" c_dout_rst_val="0" c_dout_width="16" c_full_flags_rst_val="1" c_has_almost_empty="0" c_has_almost_full="0" c_has_data_count="0" c_has_int_clk="0" c_has_overflow="0" c_has_rd_data_count="0" c_has_rst="1" c_has_srst="0" c_has_underflow="0" c_has_valid="0" c_has_wr_ack="0" c_has_wr_data_count="0" c_implementation_type="2" c_memory_type="1" c_msgon_val="1" c_overflow_low="0" c_preload_latency="0" c_preload_regs="1" c_prim_fifo_type="2kx18" c_prog_empty_thresh_assert_val="4" c_prog_empty_thresh_negate_val="5" c_prog_empty_type="0" c_prog_full_thresh_assert_val="2047" c_prog_full_thresh_negate_val="2046" c_prog_full_type="0" c_rd_data_count_width="11" c_rd_depth="2048" c_rd_freq="1" c_rd_pntr_width="11" c_underflow_low="0" c_use_dout_rst="0" c_use_ecc="0" c_use_embedded_reg="0" c_use_fwft_data_count="0" c_valid_low="0" c_wr_ack_low="0" c_wr_data_count_width="11" c_wr_depth="2048" c_wr_freq="1" c_wr_pntr_width="11" component_name="audioBuffer" stringID="NGDBUILD_CORE_PARAMETERS" value="audioBuffer"/>
+            </scope>
+            <scope stringID="NGDBUILD_CORE_INSTANCE" value="packetBuffer">
+              <item stringID="NGDBUILD_CORE_INFO" type="fifo_generator_v4_4" value="packetBuffer"/>
+              <item c_common_clock="1" c_data_count_width="11" c_din_width="8" c_dout_rst_val="0" c_dout_width="8" c_full_flags_rst_val="0" c_has_almost_empty="0" c_has_almost_full="0" c_has_data_count="1" c_has_int_clk="0" c_has_overflow="0" c_has_rd_data_count="0" c_has_rst="0" c_has_srst="1" c_has_underflow="0" c_has_valid="0" c_has_wr_ack="0" c_has_wr_data_count="0" c_implementation_type="0" c_memory_type="1" c_msgon_val="1" c_overflow_low="0" c_preload_latency="1" c_preload_regs="0" c_prim_fifo_type="2kx9" c_prog_empty_thresh_assert_val="2" c_prog_empty_thresh_negate_val="3" c_prog_empty_type="0" c_prog_full_thresh_assert_val="2046" c_prog_full_thresh_negate_val="2045" c_prog_full_type="0" c_rd_data_count_width="11" c_rd_depth="2048" c_rd_freq="1" c_rd_pntr_width="11" c_underflow_low="0" c_use_dout_rst="0" c_use_ecc="0" c_use_embedded_reg="0" c_use_fwft_data_count="0" c_valid_low="0" c_wr_ack_low="0" c_wr_data_count_width="11" c_wr_depth="2048" c_wr_freq="1" c_wr_pntr_width="11" component_name="packetBuffer" stringID="NGDBUILD_CORE_PARAMETERS" value="packetBuffer"/>
+            </scope>
+            <scope stringID="NGDBUILD_CORE_INSTANCE" value="readyPackets">
+              <item stringID="NGDBUILD_CORE_INFO" type="fifo_generator_v4_4" value="readyPackets"/>
+              <item c_common_clock="1" c_data_count_width="11" c_din_width="8" c_dout_rst_val="0" c_dout_width="8" c_full_flags_rst_val="0" c_has_almost_empty="0" c_has_almost_full="0" c_has_data_count="1" c_has_int_clk="0" c_has_overflow="0" c_has_rd_data_count="0" c_has_rst="0" c_has_srst="1" c_has_underflow="0" c_has_valid="0" c_has_wr_ack="0" c_has_wr_data_count="0" c_implementation_type="0" c_memory_type="1" c_msgon_val="1" c_overflow_low="0" c_preload_latency="1" c_preload_regs="0" c_prim_fifo_type="2kx9" c_prog_empty_thresh_assert_val="2" c_prog_empty_thresh_negate_val="3" c_prog_empty_type="0" c_prog_full_thresh_assert_val="2046" c_prog_full_thresh_negate_val="2045" c_prog_full_type="0" c_rd_data_count_width="11" c_rd_depth="2048" c_rd_freq="1" c_rd_pntr_width="11" c_underflow_low="0" c_use_dout_rst="0" c_use_ecc="0" c_use_embedded_reg="0" c_use_fwft_data_count="0" c_valid_low="0" c_wr_ack_low="0" c_wr_data_count_width="11" c_wr_depth="2048" c_wr_freq="1" c_wr_pntr_width="11" component_name="readyPackets" stringID="NGDBUILD_CORE_PARAMETERS" value="readyPackets"/>
+            </scope>
+          </section>
+        </section>
       </section>
     </task>
   </application>

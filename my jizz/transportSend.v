@@ -55,7 +55,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 			auFlag<=0;
 			twoCounter<=0;
 			sending<=0;
-			goingToSend=0;
+			goingToSend<=0;
 			busy<=0;
 			buffer_wr_en<=0;
 			buffer_rd_en<=0;
@@ -119,7 +119,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 					ready_wr_en<=1;
 				end
 			end else if (bufferEmpty && twoCounter==2'b11) begin
-				twoCounter=2'b10;
+				twoCounter<=2'b10;
 				readyIn<=bufferOut;
 			
 			end else if (buffer_data_count==packetSize-2) begin  

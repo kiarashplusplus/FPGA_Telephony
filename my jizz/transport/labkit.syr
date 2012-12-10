@@ -1,0 +1,1234 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: labkit.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "labkit.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "labkit"
+Output Format                      : NGC
+Target Device                      : xc2v6000-4-bf957
+
+---- Source Options
+Top Module Name                    : labkit
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Convert Tristates To Logic         : Yes
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : labkit.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "readyPackets.v" in library work
+Compiling verilog file "./packetBuffer.v" in library work
+Module <readyPackets> compiled
+Compiling verilog file "../audioBuffer.v" in library work
+Module <packetBuffer> compiled
+Compiling verilog file "../transportSend.v" in library work
+Module <audioBuffer> compiled
+Compiling verilog file "../transportRcv.v" in library work
+Module <transportSend> compiled
+Compiling verilog file "../Session.v" in library work
+Module <transportRcv> compiled
+Compiling verilog file "../display_16hex.v" in library work
+Module <session> compiled
+Compiling verilog file "../complete.v" in library work
+Module <display_16hex> compiled
+Compiling verilog file "../labkit.v" in library work
+Module <complete> compiled
+Module <labkit> compiled
+No errors in compilation
+Analysis of file <"labkit.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <labkit> in library <work>.
+
+Analyzing hierarchy for module <complete> in library <work>.
+
+Analyzing hierarchy for module <display_16hex> in library <work>.
+
+Analyzing hierarchy for module <session> in library <work> with parameters.
+	s_calling = "0001"
+	s_connected = "0010"
+	s_connectedToVoice = "0101"
+	s_idle = "0000"
+	s_noAnswer = "0011"
+	s_ringing = "0110"
+	s_voicemail = "0100"
+
+Analyzing hierarchy for module <transportSend> in library <work> with parameters.
+	packetSize = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <transportRcv> in library <work> with parameters.
+	packetSize = "00000000000000000000000000010000"
+	s_audio = "00000000000000000000000000000111"
+	s_audioThree = "00000000000000000000000000001001"
+	s_audioTwo = "00000000000000000000000000001000"
+	s_before_sending = "00000000000000000000000000000001"
+	s_control = "00000000000000000000000000000011"
+	s_controlTwo = "00000000000000000000000000000100"
+	s_countDown = "00000000000000000000000000000110"
+	s_idle = "00000000000000000000000000000000"
+	s_sending = "00000000000000000000000000000010"
+	s_zeros = "00000000000000000000000000000101"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <labkit>.
+Module <labkit> is correct for synthesis.
+ 
+    Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <labkit>.
+Analyzing module <complete> in library <work>.
+Module <complete> is correct for synthesis.
+ 
+Analyzing module <session> in library <work>.
+	s_calling = 4'b0001
+	s_connected = 4'b0010
+	s_connectedToVoice = 4'b0101
+	s_idle = 4'b0000
+	s_noAnswer = 4'b0011
+	s_ringing = 4'b0110
+	s_voicemail = 4'b0100
+Module <session> is correct for synthesis.
+ 
+Analyzing module <transportSend> in library <work>.
+	packetSize = 32'sb00000000000000000000000000010000
+Module <transportSend> is correct for synthesis.
+ 
+Analyzing module <transportRcv> in library <work>.
+	packetSize = 32'sb00000000000000000000000000010000
+	s_audio = 32'sb00000000000000000000000000000111
+	s_audioThree = 32'sb00000000000000000000000000001001
+	s_audioTwo = 32'sb00000000000000000000000000001000
+	s_before_sending = 32'sb00000000000000000000000000000001
+	s_control = 32'sb00000000000000000000000000000011
+	s_controlTwo = 32'sb00000000000000000000000000000100
+	s_countDown = 32'sb00000000000000000000000000000110
+	s_idle = 32'sb00000000000000000000000000000000
+	s_sending = 32'sb00000000000000000000000000000010
+	s_zeros = 32'sb00000000000000000000000000000101
+WARNING:Xst:1643 - "../transportRcv.v" line 54: You are giving the signal rcvState a default value. rcvState already had a default value, which will be overridden by this one.
+Module <transportRcv> is correct for synthesis.
+ 
+Analyzing module <display_16hex> in library <work>.
+INFO:Xst:1433 - Contents of array <dots> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+Module <display_16hex> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2561 - Always blocking tristate driving signal <flash_data> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <ram0_data> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user1> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user2> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user3> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user4> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <ram1_data> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <daughtercard> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <systemace_data> in unit <labkit> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <tv_in_i2c_data> in unit <labkit> is removed.
+INFO:Xst:2679 - Register <sessionBusy> in unit <session> has a constant value of 0 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <display_16hex>.
+    Related source file is "../display_16hex.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clock (rising_edge)                            |
+    | Reset              | dreset (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00000000                                       |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16x40-bit ROM for signal <dots>.
+    Found 1-bit register for signal <disp_ce_b>.
+    Found 1-bit register for signal <disp_data_out>.
+    Found 1-bit register for signal <disp_rs>.
+    Found 1-bit register for signal <disp_reset_b>.
+    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 160.
+    Found 4-bit register for signal <char_index>.
+    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 166.
+    Found 1-bit register for signal <clock>.
+    Found 32-bit register for signal <control>.
+    Found 5-bit up counter for signal <count>.
+    Found 10-bit register for signal <dot_index>.
+    Found 10-bit addsub for signal <dot_index$share0000> created at line 95.
+    Found 4-bit 16-to-1 multiplexer for signal <nibble>.
+    Found 8-bit down counter for signal <reset_count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   2 Counter(s).
+	inferred  51 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   5 Multiplexer(s).
+Unit <display_16hex> synthesized.
+
+
+Synthesizing Unit <session>.
+    Related source file is "../Session.v".
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 33                                             |
+    | Inputs             | 9                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (positive)                               |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 0000                                           |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <micFlag>.
+    Found 2-bit register for signal <cmd>.
+    Found 16-bit register for signal <dataOut>.
+    Found 8-bit register for signal <phoneOut>.
+    Found 1-bit register for signal <micBuffer_rd_en>.
+    Found 8-bit register for signal <phone>.
+    Found 1-bit register for signal <spkBuffer_wr_en>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  37 D-type flip-flop(s).
+Unit <session> synthesized.
+
+
+Synthesizing Unit <transportSend>.
+    Related source file is "../transportSend.v".
+WARNING:Xst:646 - Signal <readyFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <bufferFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_2> for signal <twoCounter>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 27                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 5                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Clock enable       | twoCounter$not0000 (positive)                  |
+    | Reset              | reset (positive)                               |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00                                             |
+    | Power Up State     | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <sending>.
+    Found 1-bit register for signal <busy>.
+    Found 1-bit register for signal <auFlag>.
+    Found 16-bit register for signal <buffer>.
+    Found 1-bit register for signal <buffer_rd_en>.
+    Found 1-bit register for signal <buffer_wr_en>.
+    Found 8-bit register for signal <bufferIn>.
+    Found 1-bit register for signal <cdFlag>.
+    Found 1-bit register for signal <goingToSend>.
+    Found 17-bit register for signal <packetSizeCounter>.
+    Found 17-bit subtractor for signal <packetSizeCounter$addsub0000> created at line 86.
+    Found 17-bit register for signal <packetSizeCounter2>.
+    Found 17-bit subtractor for signal <packetSizeCounter2$addsub0000> created at line 151.
+    Found 1-bit register for signal <ready_rd_en>.
+    Found 1-bit register for signal <ready_wr_en>.
+    Found 8-bit register for signal <readyIn>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  75 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+Unit <transportSend> synthesized.
+
+
+Synthesizing Unit <transportRcv>.
+    Related source file is "../transportRcv.v".
+WARNING:Xst:1780 - Signal <rcvState> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rcvFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rcvEmpty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <buffer> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_3> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 9                                              |
+    | Transitions        | 15                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 9                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (positive)                               |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00000                                          |
+    | Power Up State     | 00000                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 2-bit register for signal <sendingToSession>.
+    Found 16-bit register for signal <data>.
+    Found 17-bit register for signal <counter>.
+    Found 17-bit subtractor for signal <counter$addsub0000> created at line 114.
+    Found 17-bit register for signal <packetSizeCounter>.
+    Found 17-bit subtractor for signal <packetSizeCounter$share0000> created at line 62.
+    Found 1-bit register for signal <rcv_rd_en>.
+    Found 11-bit comparator greatequal for signal <state$cmp_ge0000> created at line 65.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  53 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <transportRcv> synthesized.
+
+
+Synthesizing Unit <complete>.
+    Related source file is "../complete.v".
+WARNING:Xst:1780 - Signal <twospkBufferOut> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <twospkBufferFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <twospkBufferEmpty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <twophoneOut> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <twophoneNum> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
+WARNING:Xst:646 - Signal <twomicFlag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <twomicBufferOut> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <twomicBufferFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <twomicBufferEmpty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <twoaudioOut> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <senderCounter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s2senderCounter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rcvCounter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <r2rcvCounter> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <r2dafuq> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <onespkBufferOut> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onespkBufferFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onespkBufferEmpty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onephoneOut> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onemicFlag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onemicBufferOut> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onemicBufferFull> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <onemicBufferEmpty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dafuq> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <complete> synthesized.
+
+
+Synthesizing Unit <labkit>.
+    Related source file is "../labkit.v".
+WARNING:Xst:2565 - Inout <user3<28>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<29>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<5>> is never assigned.
+WARNING:Xst:647 - Input <button0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <button1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <button2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <button3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<9>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<10>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<11>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<11>> is never assigned.
+WARNING:Xst:647 - Input <clock1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <clock2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<12>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<13>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<13>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_aef> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<14>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<14>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_aff> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<15>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<20>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<21>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<16>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<22>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<17>> is never assigned.
+WARNING:Xst:647 - Input <systemace_irq> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<18>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<23>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<0>> is never assigned.
+WARNING:Xst:647 - Input <clock_feedback_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<19>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<24>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<1>> is never assigned.
+WARNING:Xst:647 - Input <disp_data_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user2<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<25>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<30>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<11>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<31>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<26>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<32>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<27>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<13>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<33>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<28>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<14>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<34>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<29>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<20>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<40>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<35>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<21>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<16>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<41>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<36>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<17>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<22>> is never assigned.
+WARNING:Xst:647 - Input <button_enter> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<37>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<42>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<23>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<18>> is never assigned.
+WARNING:Xst:647 - Input <keyboard_clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<38>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<43>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<24>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<19>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<39>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<3>> is never assigned.
+WARNING:Xst:2565 - Inout <tv_in_i2c_data> is never assigned.
+WARNING:Xst:2565 - Inout <user4<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<25>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<31>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<5>> is never assigned.
+WARNING:Xst:647 - Input <flash_sts> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user4<8>> is never assigned.
+WARNING:Xst:647 - Input <rs232_rxd> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user2<27>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<28>> is never assigned.
+WARNING:Xst:647 - Input <mouse_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user1<7>> is never assigned.
+WARNING:Xst:647 - Input <rs232_cts> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user2<29>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<9>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<11>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<13>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<14>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<20>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<15>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<6>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<16>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<7>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<22>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<17>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<11>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<8>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<23>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<18>> is never assigned.
+WARNING:Xst:647 - Input <button_left> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<9>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<19>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<24>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<13>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<0>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<25>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<14>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<1>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<31>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<20>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<27>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<16>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<7>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_data_valid> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user4<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<22>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<17>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_hff> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<10>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<29>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<23>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<18>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<11>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_ycrcb> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<24>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<19>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<12>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<11>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<7>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<25>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<13>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<2>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<31>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<14>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<13>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<32>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<9>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<27>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<20>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<14>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_line_clock1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<33>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_line_clock2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<16>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<20>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<29>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<34>> is never assigned.
+WARNING:Xst:647 - Input <keyboard_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<17>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<22>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<16>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<35>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<18>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<23>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<22>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<17>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<24>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<19>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<23>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<18>> is never assigned.
+WARNING:Xst:647 - Input <ac97_sdata_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<11>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<25>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<30>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<24>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<19>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<31>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<25>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<30>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<13>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<27>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<31>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<26>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<7>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<14>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<32>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<27>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<29>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<33>> is never assigned.
+WARNING:Xst:647 - Input <systemace_mpbrdy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<9>> is never assigned.
+WARNING:Xst:647 - Input <button_right> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<34>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<29>> is never assigned.
+WARNING:Xst:647 - Input <button_down> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<35>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<10>> is never assigned.
+WARNING:Xst:647 - Input <mouse_clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<11>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<12>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<13>> is never assigned.
+WARNING:Xst:647 - Input <ac97_bit_clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<14>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<20>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<21>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<16>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<22>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<17>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<23>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<18>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<24>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<19>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<0>> is never assigned.
+WARNING:Xst:647 - Input <button_up> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<25>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<31>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
+Unit <labkit> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x40-bit ROM                                         : 1
+# Adders/Subtractors                                   : 10
+ 10-bit addsub                                         : 1
+ 17-bit subtractor                                     : 8
+ 4-bit subtractor                                      : 1
+# Counters                                             : 2
+ 5-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+# Registers                                            : 120
+ 1-bit register                                        : 95
+ 10-bit register                                       : 1
+ 16-bit register                                       : 2
+ 17-bit register                                       : 8
+ 2-bit register                                        : 4
+ 32-bit register                                       : 1
+ 4-bit register                                        : 1
+ 8-bit register                                        : 8
+# Comparators                                          : 2
+ 11-bit comparator greatequal                          : 2
+# Multiplexers                                         : 2
+ 1-bit 40-to-1 multiplexer                             : 1
+ 4-bit 16-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_3> for best encoding.
+Optimizing FSM <c1/receive/state/FSM> on signal <state[1:4]> with gray encoding.
+Optimizing FSM <c1/r2/state/FSM> on signal <state[1:4]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00000 | 0000
+ 00010 | 0001
+ 00011 | 0011
+ 00100 | 0110
+ 00101 | 0111
+ 00110 | 0101
+ 00111 | 0010
+ 01000 | 1100
+ 01001 | 0100
+-------------------
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <c1/sender/twoCounter/FSM> on signal <twoCounter[1:2]> with gray encoding.
+Optimizing FSM <c1/s2/twoCounter/FSM> on signal <twoCounter[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+ 11    | 10
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <c1/one/state/FSM> on signal <state[1:3]> with sequential encoding.
+Optimizing FSM <c1/two/state/FSM> on signal <state[1:3]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0110  | 010
+ 0010  | 011
+ 0101  | 100
+ 0011  | 101
+ 0100  | 110
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <dsp1/state/FSM> on signal <state[1:3]> with sequential encoding.
+----------------------
+ State    | Encoding
+----------------------
+ 00000000 | 000
+ 00000001 | 001
+ 00000010 | 010
+ 00000011 | 011
+ 00000100 | 100
+ 00000101 | 101
+ 00000110 | 110
+----------------------
+Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+Reading core <packetBuffer.ngc>.
+Reading core <readyPackets.ngc>.
+Loading core <packetBuffer> for timing and area information for instance <packetBuffer>.
+Loading core <readyPackets> for timing and area information for instance <readyPackets>.
+Loading core <readyPackets> for timing and area information for instance <rcvPackets>.
+WARNING:Xst:2677 - Node <micFlag> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_0> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_1> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_2> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_3> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_4> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_5> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_6> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <phoneOut_7> of sequential type is unconnected in block <one>.
+WARNING:Xst:2677 - Node <micFlag> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_0> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_1> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_2> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_3> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_4> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_5> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_6> of sequential type is unconnected in block <two>.
+WARNING:Xst:2677 - Node <phoneOut_7> of sequential type is unconnected in block <two>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x40-bit ROM                                         : 1
+# Adders/Subtractors                                   : 10
+ 10-bit addsub                                         : 1
+ 17-bit subtractor                                     : 8
+ 4-bit subtractor                                      : 1
+# Counters                                             : 2
+ 5-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+# Registers                                            : 402
+ Flip-Flops                                            : 402
+# Comparators                                          : 2
+ 11-bit comparator greatequal                          : 2
+# Multiplexers                                         : 2
+ 1-bit 40-to-1 multiplexer                             : 1
+ 4-bit 16-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <labkit> ...
+
+Optimizing unit <display_16hex> ...
+
+Optimizing unit <session> ...
+
+Optimizing unit <transportSend> ...
+
+Optimizing unit <transportRcv> ...
+WARNING:Xst:2677 - Node <c1/two/phoneOut_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/phoneOut_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/two/micFlag> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_5> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_4> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_3> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_2> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_1> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/phoneOut_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <c1/one/micFlag> of sequential type is unconnected in block <labkit>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 2.
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.wr/gwss.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_fb_i> in Unit <BU2> is equivalent to the following FF/Latch : <U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i> 
+FlipFlop dsp1/dot_index_0 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <labkit> :
+	Found 7-bit shift register for signal <dsp1/control_30>.
+	Found 7-bit shift register for signal <dsp1/control_22>.
+	Found 7-bit shift register for signal <dsp1/control_14>.
+	Found 7-bit shift register for signal <dsp1/control_6>.
+Unit <labkit> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 370
+ Flip-Flops                                            : 370
+# Shift Registers                                      : 4
+ 7-bit shift register                                  : 4
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : labkit.ngr
+Top Level Output File Name         : labkit
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 576
+
+Cell Usage :
+# BELS                             : 2597
+#      GND                         : 7
+#      INV                         : 160
+#      LUT1                        : 9
+#      LUT2                        : 208
+#      LUT2_D                      : 8
+#      LUT2_L                      : 16
+#      LUT3                        : 296
+#      LUT3_D                      : 18
+#      LUT3_L                      : 6
+#      LUT4                        : 774
+#      LUT4_D                      : 31
+#      LUT4_L                      : 72
+#      MULT_AND                    : 60
+#      MUXCY                       : 489
+#      MUXF5                       : 91
+#      MUXF6                       : 2
+#      MUXF7                       : 1
+#      VCC                         : 7
+#      XORCY                       : 342
+# FlipFlops/Latches                : 738
+#      FDC                         : 12
+#      FDCE                        : 318
+#      FDE                         : 308
+#      FDP                         : 12
+#      FDPE                        : 12
+#      FDR                         : 20
+#      FDRE                        : 15
+#      FDRS                        : 25
+#      FDRSE                       : 6
+#      FDSE                        : 10
+# RAMS                             : 6
+#      RAMB16_S9_S9                : 6
+# Shift Registers                  : 5
+#      SRL16                       : 1
+#      SRL16E                      : 4
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 248
+#      IBUF                        : 8
+#      OBUF                        : 240
+# Others                           : 4
+#      audioBuffer                 : 4
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v6000bf957-4 
+
+ Number of Slices:                      845  out of  33792     2%  
+ Number of Slice Flip Flops:            738  out of  67584     1%  
+ Number of 4 input LUTs:               1603  out of  67584     2%  
+    Number used as logic:              1598
+    Number used as Shift registers:       5
+ Number of IOs:                         576
+ Number of bonded IOBs:                 249  out of    684    36%  
+ Number of BRAMs:                         6  out of    144     4%  
+ Number of GCLKs:                         2  out of     16    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_27mhz                        | BUFGP                  | 705   |
+dsp1/clock1                        | BUFG                   | 44    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+------------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+Control Signal                                                          | Buffer(FF name)                                                    | Load  |
+------------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+c1/r2/rcvPackets/BU2/dbiterr(c1/r2/rcvPackets/BU2/XST_GND:G)            | NONE(c1/r2/rcvPackets/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_6)       | 59    |
+c1/receive/rcvPackets/BU2/dbiterr(c1/receive/rcvPackets/BU2/XST_GND:G)  | NONE(c1/receive/rcvPackets/BU2/U0/grf.rf/gl0.wr/wpntr/count_d1_2)  | 59    |
+c1/s2/packetBuffer/BU2/dbiterr(c1/s2/packetBuffer/BU2/XST_GND:G)        | NONE(c1/s2/packetBuffer/BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_2)     | 59    |
+c1/s2/readyPackets/BU2/dbiterr(c1/s2/readyPackets/BU2/XST_GND:G)        | NONE(c1/s2/readyPackets/BU2/U0/grf.rf/gl0.rd/grss.rsts/ram_empty_i)| 59    |
+c1/sender/packetBuffer/BU2/dbiterr(c1/sender/packetBuffer/BU2/XST_GND:G)| NONE(c1/sender/packetBuffer/BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_8) | 59    |
+c1/sender/readyPackets/BU2/dbiterr(c1/sender/readyPackets/BU2/XST_GND:G)| NONE(c1/sender/readyPackets/BU2/U0/grf.rf/gl0.rd/rpntr/count_d1_0) | 59    |
+------------------------------------------------------------------------+--------------------------------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 9.378ns (Maximum Frequency: 106.636MHz)
+   Minimum input arrival time before clock: 8.050ns
+   Maximum output required time after clock: 6.771ns
+   Maximum combinational path delay: 3.294ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'dsp1/clock1'
+  Clock period: 9.087ns (frequency: 110.053MHz)
+  Total number of paths / destination ports: 1707 / 74
+-------------------------------------------------------------------------
+Delay:               9.087ns (Levels of Logic = 7)
+  Source:            dsp1/char_index_1 (FF)
+  Destination:       dsp1/disp_data_out (FF)
+  Source Clock:      dsp1/clock1 rising
+  Destination Clock: dsp1/clock1 rising
+
+  Data Path: dsp1/char_index_1 to dsp1/disp_data_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             13   0.568   0.955  dsp1/char_index_1 (dsp1/char_index_1)
+     MUXF5:S->O            3   0.699   0.765  dsp1/Mmux_nibble229_SW0 (N246)
+     LUT4_D:I3->O         15   0.439   1.023  dsp1/Mmux_nibble229 (dsp1/nibble<1>)
+     LUT4:I2->O            1   0.439   0.000  dsp1/Mmux__varindex0000_8 (dsp1/Mmux__varindex0000_8)
+     MUXF5:I1->O           1   0.436   0.557  dsp1/Mmux__varindex0000_7_f5 (dsp1/Mmux__varindex0000_7_f5)
+     LUT4:I3->O            2   0.439   0.701  dsp1/disp_data_out_mux00002 (dsp1/disp_data_out_mux00002)
+     MUXF5:S->O            1   0.699   0.558  dsp1/disp_data_out_mux0000109_SW1 (N190)
+     LUT4:I3->O            1   0.439   0.000  dsp1/disp_data_out_mux0000170 (dsp1/disp_data_out_mux0000)
+     FDE:D                     0.370          dsp1/disp_data_out
+    ----------------------------------------
+    Total                      9.087ns (4.528ns logic, 4.559ns route)
+                                       (49.8% logic, 50.2% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 9.378ns (frequency: 106.636MHz)
+  Total number of paths / destination ports: 21503 / 1600
+-------------------------------------------------------------------------
+Delay:               9.378ns (Levels of Logic = 14)
+  Source:            reset_sr (FF)
+  Destination:       c1/s2/readyPackets/BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_10 (FF)
+  Source Clock:      clock_27mhz rising
+  Destination Clock: clock_27mhz rising
+
+  Data Path: reset_sr to c1/s2/readyPackets/BU2/U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     SRL16:CLK->Q        370   2.901   1.963  reset_sr (reset)
+     begin scope: 'c1/s2/packetBuffer'
+     begin scope: 'BU2'
+     INV:I->O             12   0.439   1.216  U0/grf.rf/gl0.wr/wpntr/SRST_inv1_INV_0 (U0/grf.rf/gl0.wr/wpntr/SRST_inv)
+     LUT4:I0->O            1   0.439   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<0> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_lut<0>)
+     MUXCY:S->O            1   0.298   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<0> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<0>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<1> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<2> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<3> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<3>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<4> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<4>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<5> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<5>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<6> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<6>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<7> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<7>)
+     MUXCY:CI->O           1   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<8> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<8>)
+     MUXCY:CI->O           0   0.053   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<9> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_cy<9>)
+     XORCY:CI->O           1   1.274   0.000  U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count_xor<10> (U0/grf.rf/gl0.rd/grss.gdc.dc/dc/Mcount_count11)
+     FDCE:D                    0.370          U0/grf.rf/gl0.rd/grss.gdc.dc/dc/count_10
+    ----------------------------------------
+    Total                      9.378ns (6.198ns logic, 3.180ns route)
+                                       (66.1% logic, 33.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 1526 / 66
+-------------------------------------------------------------------------
+Offset:              8.050ns (Levels of Logic = 7)
+  Source:            switch<0> (PAD)
+  Destination:       c1/two/dataOut_0 (FF)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: switch<0> to c1/two/dataOut_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             7   0.825   1.102  switch_0_IBUF (switch_0_IBUF)
+     LUT4:I0->O           17   0.439   1.220  c1/two/state_cmp_eq00061 (c1/two/state_cmp_eq0006)
+     LUT4_D:I1->LO         1   0.439   0.308  c1/two/dataOut_0_mux000021 (N436)
+     LUT2:I1->O            1   0.439   0.726  c1/two/dataOut_0_mux00009 (c1/two/dataOut_0_mux00009)
+     LUT4_L:I1->LO         1   0.439   0.140  c1/two/dataOut_0_mux000024 (c1/two/dataOut_0_mux000024)
+     LUT4:I3->O            1   0.439   0.725  c1/two/dataOut_0_mux00007_SW0 (N258)
+     LUT4:I1->O            1   0.439   0.000  c1/two/dataOut_0_mux000046 (c1/two/dataOut_0_mux0000)
+     FDE:D                     0.370          c1/two/dataOut_0
+    ----------------------------------------
+    Total                      8.050ns (3.829ns logic, 4.221ns route)
+                                       (47.6% logic, 52.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'dsp1/clock1'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            dsp1/disp_rs (FF)
+  Destination:       disp_rs (PAD)
+  Source Clock:      dsp1/clock1 rising
+
+  Data Path: dsp1/disp_rs to disp_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.568   0.701  dsp1/disp_rs (dsp1/disp_rs)
+     OBUF:I->O                 4.361          disp_rs_OBUF (disp_rs)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 41 / 41
+-------------------------------------------------------------------------
+Offset:              6.771ns (Levels of Logic = 2)
+  Source:            dsp1/clock (FF)
+  Destination:       disp_clock (PAD)
+  Source Clock:      clock_27mhz rising
+
+  Data Path: dsp1/clock to disp_clock
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.568   0.701  dsp1/clock (dsp1/clock1)
+     INV:I->O              2   0.439   0.701  dsp1/disp_clock1_INV_0 (disp_clock_OBUF)
+     OBUF:I->O                 4.361          disp_clock_OBUF (disp_clock)
+    ----------------------------------------
+    Total                      6.771ns (5.368ns logic, 1.403ns route)
+                                       (79.3% logic, 20.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Delay:               3.294ns (Levels of Logic = 1)
+  Source:            clock_27mhz (PAD)
+  Destination:       c1/two/spkBuffer:rd_clk (PAD)
+
+  Data Path: clock_27mhz to c1/two/spkBuffer:rd_clk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     BUFGP:I->O          711   0.994   2.300  clock_27mhz_BUFGP (clock_27mhz_BUFGP)
+    audioBuffer:wr_clk         0.000          c1/two/micBuffer
+    ----------------------------------------
+    Total                      3.294ns (0.994ns logic, 2.300ns route)
+                                       (30.2% logic, 69.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 22.00 secs
+Total CPU time to Xst completion: 21.26 secs
+ 
+--> 
+
+
+Total memory usage is 495928 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  375 (   0 filtered)
+Number of infos    :   37 (   0 filtered)
+
