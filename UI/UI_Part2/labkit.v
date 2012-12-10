@@ -329,6 +329,14 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [15:0] audio_in_data, dout,session_audio_data;
 	wire [3:0] voicemail_status;
 	
+	//UI 2 Inputs
+	wire [3:0] inc_command_2;
+	wire init_2, ready_2;
+	wire [7:0] inc_address_2;
+	wire [15:0] audio_in_data_2, dout_2,session_audio_data_2;
+	wire [3:0] voicemail_status;
+
+	
 	
 	
 	//UI outputs
