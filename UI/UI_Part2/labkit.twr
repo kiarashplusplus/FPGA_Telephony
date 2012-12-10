@@ -37,7 +37,7 @@ Setup/Hold to clock ac97_bit_clock
              |  Setup to  |  Hold to   |                    | Clock  |
 Source       | clk (edge) | clk (edge) |Internal Clock(s)   | Phase  |
 -------------+------------+------------+--------------------+--------+
-ac97_sdata_in|   -1.501(F)|    2.269(F)|ac97_bit_clock_BUFGP|   0.000|
+ac97_sdata_in|   -1.940(F)|    2.604(F)|ac97_bit_clock_BUFGP|   0.000|
 -------------+------------+------------+--------------------+--------+
 
 Setup/Hold to clock clock_27mhz
@@ -45,67 +45,67 @@ Setup/Hold to clock clock_27mhz
                   |  Setup to  |  Hold to   |                    | Clock  |
 Source            | clk (edge) | clk (edge) |Internal Clock(s)   | Phase  |
 ------------------+------------+------------+--------------------+--------+
-button0           |   10.078(R)|   -5.615(R)|analyzer4_clock_OBUF|   0.000|
-button1           |    8.102(R)|   -6.670(R)|analyzer4_clock_OBUF|   0.000|
-button2           |    7.909(R)|   -5.901(R)|analyzer4_clock_OBUF|   0.000|
-button3           |    8.026(R)|   -6.608(R)|analyzer4_clock_OBUF|   0.000|
-button_down       |    8.110(R)|   -6.365(R)|analyzer4_clock_OBUF|   0.000|
-button_enter      |    8.756(R)|   -6.592(R)|analyzer4_clock_OBUF|   0.000|
-button_left       |    8.550(R)|   -6.928(R)|analyzer4_clock_OBUF|   0.000|
-button_right      |    9.871(R)|   -6.373(R)|analyzer4_clock_OBUF|   0.000|
-button_up         |    8.668(R)|   -6.681(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<1>      |    2.879(R)|   -2.664(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<2>      |    3.298(R)|   -3.083(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<3>      |    2.276(R)|   -2.061(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<4>      |    2.497(R)|   -2.282(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<5>      |    2.549(R)|   -2.334(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<6>      |    2.853(R)|   -2.638(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<7>      |    2.955(R)|   -2.740(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<8>      |    2.540(R)|   -2.325(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<9>      |    3.052(R)|   -2.837(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<10>     |    2.761(R)|   -2.546(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<11>     |    2.963(R)|   -2.748(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<12>     |    2.477(R)|   -2.262(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<13>     |    2.576(R)|   -2.361(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<14>     |    1.942(R)|   -1.727(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<15>     |    2.639(R)|   -2.424(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<16>     |    2.476(R)|   -2.261(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<17>     |    2.401(R)|   -2.186(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<18>     |    2.860(R)|   -2.645(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<19>     |    2.960(R)|   -2.745(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<20>     |    3.149(R)|   -2.934(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<21>     |    3.402(R)|   -3.187(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<22>     |    3.417(R)|   -3.202(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<23>     |    2.915(R)|   -2.700(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<24>     |    3.091(R)|   -2.876(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<25>     |    3.393(R)|   -3.178(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<26>     |    1.527(R)|   -1.312(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<27>     |    3.184(R)|   -2.969(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<28>     |    2.616(R)|   -2.401(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<29>     |    3.426(R)|   -3.211(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<30>     |    2.844(R)|   -2.629(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<31>     |    3.954(R)|   -3.739(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<32>     |    3.982(R)|   -3.767(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<33>     |    3.920(R)|   -3.705(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<34>     |    3.653(R)|   -3.438(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<35>     |    2.815(R)|   -2.600(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<0> |    2.560(R)|   -2.056(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<1> |    3.418(R)|   -2.161(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<2> |    3.018(R)|   -1.817(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<3> |    2.605(R)|   -1.764(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<4> |    5.467(R)|   -1.508(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<5> |    3.274(R)|   -1.864(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<6> |    3.221(R)|   -1.637(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<7> |    2.987(R)|   -2.309(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<8> |    4.169(R)|   -2.416(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<9> |    3.236(R)|   -2.479(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<10>|    3.266(R)|   -2.420(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<11>|    3.277(R)|   -2.327(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<12>|    3.242(R)|   -2.958(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<13>|    3.316(R)|   -2.504(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<14>|    4.100(R)|   -2.963(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<15>|    4.526(R)|   -3.538(R)|analyzer4_clock_OBUF|   0.000|
-systemace_mpbrdy  |    4.318(R)|   -2.168(R)|analyzer4_clock_OBUF|   0.000|
+button0           |    4.469(R)|   -2.699(R)|analyzer4_clock_OBUF|   0.000|
+button1           |    4.686(R)|   -2.502(R)|analyzer4_clock_OBUF|   0.000|
+button2           |    5.031(R)|   -3.227(R)|analyzer4_clock_OBUF|   0.000|
+button3           |    5.024(R)|   -2.502(R)|analyzer4_clock_OBUF|   0.000|
+button_down       |    5.370(R)|   -2.810(R)|analyzer4_clock_OBUF|   0.000|
+button_enter      |    5.491(R)|   -3.513(R)|analyzer4_clock_OBUF|   0.000|
+button_left       |    5.904(R)|   -3.123(R)|analyzer4_clock_OBUF|   0.000|
+button_right      |    4.862(R)|   -3.324(R)|analyzer4_clock_OBUF|   0.000|
+button_up         |    5.489(R)|   -3.170(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<1>      |    2.855(R)|   -2.640(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<2>      |    3.166(R)|   -2.951(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<3>      |    2.948(R)|   -2.733(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<4>      |    2.593(R)|   -2.378(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<5>      |    2.280(R)|   -2.065(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<6>      |    2.876(R)|   -2.661(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<7>      |    2.585(R)|   -2.370(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<8>      |    2.499(R)|   -2.284(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<9>      |    2.600(R)|   -2.385(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<10>     |    2.290(R)|   -2.075(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<11>     |    3.484(R)|   -3.269(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<12>     |    2.268(R)|   -2.053(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<13>     |    2.792(R)|   -2.577(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<14>     |    2.237(R)|   -2.022(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<15>     |    2.501(R)|   -2.286(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<16>     |    2.595(R)|   -2.380(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<17>     |    2.136(R)|   -1.921(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<18>     |    2.646(R)|   -2.431(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<19>     |    2.912(R)|   -2.697(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<20>     |    3.064(R)|   -2.849(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<21>     |    3.162(R)|   -2.947(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<22>     |    2.941(R)|   -2.726(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<23>     |    3.419(R)|   -3.204(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<24>     |    3.201(R)|   -2.986(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<25>     |    3.497(R)|   -3.282(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<26>     |    2.640(R)|   -2.425(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<27>     |    3.631(R)|   -3.416(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<28>     |    2.595(R)|   -2.380(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<29>     |    3.185(R)|   -2.970(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<30>     |    2.752(R)|   -2.537(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<31>     |    3.618(R)|   -3.403(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<32>     |    3.509(R)|   -3.294(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<33>     |    3.247(R)|   -3.032(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<34>     |    3.266(R)|   -3.051(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<35>     |    3.091(R)|   -2.876(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<0> |    2.281(R)|   -1.665(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<1> |    3.768(R)|   -2.028(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<2> |    2.201(R)|   -1.753(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<3> |    2.721(R)|   -2.130(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<4> |    4.841(R)|   -1.782(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<5> |    2.685(R)|   -1.864(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<6> |    3.120(R)|   -1.542(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<7> |    3.583(R)|   -2.802(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<8> |    4.226(R)|   -2.474(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<9> |    2.736(R)|   -2.343(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<10>|    2.424(R)|   -2.003(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<11>|    3.401(R)|   -2.786(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<12>|    3.409(R)|   -3.125(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<13>|    3.240(R)|   -2.382(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<14>|    3.365(R)|   -2.872(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<15>|    3.438(R)|   -3.010(R)|analyzer4_clock_OBUF|   0.000|
+systemace_mpbrdy  |    4.864(R)|   -2.218(R)|analyzer4_clock_OBUF|   0.000|
 ------------------+------------+------------+--------------------+--------+
 
 Clock ac97_bit_clock to Pad
@@ -113,8 +113,8 @@ Clock ac97_bit_clock to Pad
               | clk (edge) |                    | Clock  |
 Destination   |   to PAD   |Internal Clock(s)   | Phase  |
 --------------+------------+--------------------+--------+
-ac97_sdata_out|   12.239(R)|ac97_bit_clock_BUFGP|   0.000|
-ac97_synch    |   10.692(R)|ac97_bit_clock_BUFGP|   0.000|
+ac97_sdata_out|   12.673(R)|ac97_bit_clock_BUFGP|   0.000|
+ac97_synch    |   11.105(R)|ac97_bit_clock_BUFGP|   0.000|
 --------------+------------+--------------------+--------+
 
 Clock clock_27mhz to Pad
@@ -122,124 +122,124 @@ Clock clock_27mhz to Pad
                     | clk (edge) |                    | Clock  |
 Destination         |   to PAD   |Internal Clock(s)   | Phase  |
 --------------------+------------+--------------------+--------+
-analyzer1_data<0>   |    6.966(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<1>   |    7.309(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<2>   |    7.342(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<3>   |    6.986(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<4>   |    7.597(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<5>   |    7.848(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<6>   |    7.247(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<7>   |    6.780(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<8>   |    7.827(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<9>   |   14.050(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<10>  |   13.142(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<11>  |   13.839(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<12>  |    8.318(R)|analyzer4_clock_OBUF|   0.000|
-analyzer1_data<13>  |   14.293(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<0>   |    7.167(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<1>   |   14.569(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<2>   |    9.848(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<3>   |   14.155(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<4>   |   14.222(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<5>   |   14.428(R)|analyzer4_clock_OBUF|   0.000|
-analyzer2_data<6>   |    9.144(R)|analyzer4_clock_OBUF|   0.000|
-analyzer3_data<0>   |    6.227(R)|analyzer4_clock_OBUF|   0.000|
-analyzer3_data<1>   |    6.464(R)|analyzer4_clock_OBUF|   0.000|
-analyzer3_data<2>   |    6.019(R)|analyzer4_clock_OBUF|   0.000|
-analyzer3_data<3>   |    6.769(R)|analyzer4_clock_OBUF|   0.000|
-analyzer3_data<4>   |    6.911(R)|analyzer4_clock_OBUF|   0.000|
-analyzer3_data<5>   |    7.030(R)|analyzer4_clock_OBUF|   0.000|
-audio_reset_b       |    4.093(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<0>   |    5.471(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<1>   |    5.515(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<2>   |    5.479(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<3>   |    6.296(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<4>   |    6.149(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<5>   |    5.788(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<6>   |    5.749(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<7>   |    5.629(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<8>   |    6.489(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<9>   |    7.055(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<10>  |    6.636(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<11>  |    9.956(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<12>  |    7.448(R)|analyzer4_clock_OBUF|   0.000|
+analyzer1_data<13>  |    7.722(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<0>   |    5.439(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<1>   |   11.439(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<2>   |    8.090(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<3>   |   11.914(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<4>   |    7.729(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<5>   |    6.942(R)|analyzer4_clock_OBUF|   0.000|
+analyzer2_data<6>   |    7.568(R)|analyzer4_clock_OBUF|   0.000|
+analyzer3_data<0>   |    5.736(R)|analyzer4_clock_OBUF|   0.000|
+analyzer3_data<1>   |    6.128(R)|analyzer4_clock_OBUF|   0.000|
+analyzer3_data<2>   |    6.537(R)|analyzer4_clock_OBUF|   0.000|
+analyzer3_data<3>   |    8.428(R)|analyzer4_clock_OBUF|   0.000|
+analyzer3_data<4>   |    7.949(R)|analyzer4_clock_OBUF|   0.000|
+analyzer3_data<5>   |    8.100(R)|analyzer4_clock_OBUF|   0.000|
+audio_reset_b       |    4.327(R)|analyzer4_clock_OBUF|   0.000|
 clock_feedback_out  |    6.749(R)|RAMCLOCK_1/ram_clock|   0.000|
                     |    6.749(F)|RAMCLOCK_1/ram_clock|   0.000|
-disp_clock          |    5.783(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<0>     |    3.906(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<1>     |    3.013(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<2>     |    4.144(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<3>     |    2.752(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<4>     |    3.771(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<5>     |    3.787(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<6>     |    3.568(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<7>     |    3.009(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<8>     |    2.749(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<9>     |    2.765(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<10>    |    3.506(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<11>    |    3.585(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<12>    |    3.035(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<13>    |    3.900(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<14>    |    4.036(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<15>    |    3.872(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<16>    |    4.679(R)|analyzer4_clock_OBUF|   0.000|
-ram0_address<17>    |    3.294(R)|analyzer4_clock_OBUF|   0.000|
-ram0_bwe_b<0>       |    2.708(R)|analyzer4_clock_OBUF|   0.000|
-ram0_bwe_b<1>       |    2.735(R)|analyzer4_clock_OBUF|   0.000|
-ram0_bwe_b<2>       |    3.285(R)|analyzer4_clock_OBUF|   0.000|
-ram0_bwe_b<3>       |    3.730(R)|analyzer4_clock_OBUF|   0.000|
+disp_clock          |    6.050(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<0>     |    4.101(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<1>     |    2.776(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<2>     |    4.135(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<3>     |    3.221(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<4>     |    3.732(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<5>     |    3.837(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<6>     |    3.699(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<7>     |    2.983(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<8>     |    3.262(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<9>     |    3.301(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<10>    |    3.263(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<11>    |    3.352(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<12>    |    2.779(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<13>    |    4.153(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<14>    |    4.071(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<15>    |    3.650(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<16>    |    4.774(R)|analyzer4_clock_OBUF|   0.000|
+ram0_address<17>    |    3.530(R)|analyzer4_clock_OBUF|   0.000|
+ram0_bwe_b<0>       |    3.569(R)|analyzer4_clock_OBUF|   0.000|
+ram0_bwe_b<1>       |    3.762(R)|analyzer4_clock_OBUF|   0.000|
+ram0_bwe_b<2>       |    3.894(R)|analyzer4_clock_OBUF|   0.000|
+ram0_bwe_b<3>       |    3.869(R)|analyzer4_clock_OBUF|   0.000|
 ram0_clk            |    6.661(R)|RAMCLOCK_1/ram_clock|   0.000|
                     |    6.661(F)|RAMCLOCK_1/ram_clock|   0.000|
-ram0_data<0>        |    4.332(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<1>        |    4.254(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<2>        |    4.249(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<3>        |    4.260(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<4>        |    4.251(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<5>        |    4.103(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<6>        |    2.981(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<7>        |    4.109(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<8>        |    3.464(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<9>        |    5.500(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<10>       |    4.571(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<11>       |    5.512(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<12>       |    4.537(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<13>       |    4.573(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<14>       |    4.540(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<15>       |    4.001(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<16>       |    3.577(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<17>       |    3.576(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<18>       |    3.285(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<19>       |    2.991(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<20>       |    3.289(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<0>        |    4.430(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<1>        |    4.146(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<2>        |    4.141(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<3>        |    4.152(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<4>        |    4.143(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<5>        |    3.251(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<6>        |    3.490(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<7>        |    3.292(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<8>        |    3.259(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<9>        |    5.103(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<10>       |    4.174(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<11>       |    5.115(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<12>       |    4.169(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<13>       |    4.176(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<14>       |    4.172(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<15>       |    3.893(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<16>       |    3.859(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<17>       |    3.448(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<18>       |    3.906(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<19>       |    3.506(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<20>       |    3.846(R)|analyzer4_clock_OBUF|   0.000|
 ram0_data<21>       |    4.244(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<22>       |    4.957(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<22>       |    4.713(R)|analyzer4_clock_OBUF|   0.000|
 ram0_data<23>       |    4.252(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<24>       |    4.961(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<25>       |    5.421(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<26>       |    3.491(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<27>       |    4.434(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<28>       |    3.949(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<29>       |    5.151(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<30>       |    4.474(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<31>       |    5.143(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<32>       |    4.938(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<33>       |    4.925(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<34>       |    5.417(R)|analyzer4_clock_OBUF|   0.000|
-ram0_data<35>       |    3.798(R)|analyzer4_clock_OBUF|   0.000|
-ram0_we_b           |    4.125(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<24>       |    4.717(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<25>       |    4.934(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<26>       |    3.532(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<27>       |    4.195(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<28>       |    4.460(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<29>       |    5.145(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<30>       |    4.240(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<31>       |    5.137(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<32>       |    4.932(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<33>       |    4.919(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<34>       |    4.930(R)|analyzer4_clock_OBUF|   0.000|
+ram0_data<35>       |    4.179(R)|analyzer4_clock_OBUF|   0.000|
+ram0_we_b           |    4.572(R)|analyzer4_clock_OBUF|   0.000|
 ram1_clk            |    6.657(R)|RAMCLOCK_1/ram_clock|   0.000|
                     |    6.657(F)|RAMCLOCK_1/ram_clock|   0.000|
-systemace_address<1>|    5.104(R)|analyzer4_clock_OBUF|   0.000|
-systemace_address<2>|    4.390(R)|analyzer4_clock_OBUF|   0.000|
-systemace_address<3>|    4.875(R)|analyzer4_clock_OBUF|   0.000|
-systemace_address<4>|    4.916(R)|analyzer4_clock_OBUF|   0.000|
-systemace_address<6>|    5.525(R)|analyzer4_clock_OBUF|   0.000|
+systemace_address<1>|    4.623(R)|analyzer4_clock_OBUF|   0.000|
+systemace_address<2>|    4.632(R)|analyzer4_clock_OBUF|   0.000|
+systemace_address<3>|    4.841(R)|analyzer4_clock_OBUF|   0.000|
+systemace_address<4>|    4.395(R)|analyzer4_clock_OBUF|   0.000|
+systemace_address<6>|    5.671(R)|analyzer4_clock_OBUF|   0.000|
 systemace_ce_b      |    5.488(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<0>   |    6.206(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<1>   |    6.901(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<2>   |    6.205(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<3>   |    5.939(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<4>   |    5.950(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<5>   |    5.942(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<6>   |    6.198(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<7>   |    5.471(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<8>   |    5.236(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<9>   |    5.237(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<10>  |    5.536(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<11>  |    5.324(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<12>  |    5.223(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<13>  |    5.232(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<14>  |    5.117(R)|analyzer4_clock_OBUF|   0.000|
-systemace_data<15>  |    6.299(R)|analyzer4_clock_OBUF|   0.000|
-systemace_oe_b      |    5.999(R)|analyzer4_clock_OBUF|   0.000|
-systemace_we_b      |    5.617(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<0>   |    5.817(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<1>   |    5.889(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<2>   |    5.816(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<3>   |    5.747(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<4>   |    5.758(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<5>   |    5.750(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<6>   |    5.761(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<7>   |    5.103(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<8>   |    5.531(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<9>   |    5.532(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<10>  |    4.827(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<11>  |    5.527(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<12>  |    6.913(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<13>  |    5.527(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<14>  |    6.922(R)|analyzer4_clock_OBUF|   0.000|
+systemace_data<15>  |    7.628(R)|analyzer4_clock_OBUF|   0.000|
+systemace_oe_b      |    5.998(R)|analyzer4_clock_OBUF|   0.000|
+systemace_we_b      |    5.167(R)|analyzer4_clock_OBUF|   0.000|
 --------------------+------------+--------------------+--------+
 
 Clock to Setup on destination clock ac97_bit_clock
@@ -247,8 +247,8 @@ Clock to Setup on destination clock ac97_bit_clock
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ac97_bit_clock |    8.386|         |    5.165|    2.597|
-clock_27mhz    |    2.868|         |         |         |
+ac97_bit_clock |    7.799|         |    5.292|    2.629|
+clock_27mhz    |    3.048|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clock_27mhz
@@ -256,8 +256,8 @@ Clock to Setup on destination clock clock_27mhz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ac97_bit_clock |    2.068|    8.012|         |         |
-clock_27mhz    |    7.538|         |         |         |
+ac97_bit_clock |    2.311|    8.635|         |         |
+clock_27mhz    |    8.651|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
@@ -267,18 +267,18 @@ Source Pad     |Destination Pad|  Delay  |
 clock_27mhz    |analyzer1_clock|    5.930|
 clock_27mhz    |analyzer2_clock|    5.704|
 clock_27mhz    |analyzer3_clock|    6.321|
-clock_27mhz    |analyzer4_clock|    5.461|
+clock_27mhz    |analyzer4_clock|    4.229|
 ---------------+---------------+---------+
 
 
-Analysis completed Mon Dec 10 14:53:45 2012 
+Analysis completed Mon Dec 10 16:20:32 2012 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 428 MB
+Peak Memory Usage: 426 MB
 
 
 

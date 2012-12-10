@@ -323,7 +323,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire s0,s1,s2,s3,s4,s5,s6,s7;
 	
 	//UI inputs
-	wire [2:0] inc_command;
+	wire [3:0] inc_command;
 	wire init, ready;
 	wire [7:0] inc_address;
 	wire [15:0] audio_in_data, dout,session_audio_data;
@@ -338,7 +338,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [1:0] disp_control;
 	wire [2:0] current_state;
 	wire [5:0] current_menu_item;
-	wire [4:0] headphone_volume;
+	wire [4:0] headphone_volume, command;
 	wire ui_ascii_out_ready, start,ascii_out_ready;
 	wire [10:0] addr,length;
 	wire done, over;

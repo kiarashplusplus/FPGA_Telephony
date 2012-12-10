@@ -4,15 +4,15 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Reading design: labkit.prj
@@ -196,15 +196,15 @@ Analyzing hierarchy for module <user_interface> in library <work> with parameter
 	STS_WR_FIN = "0110"
 	UI = "00000000000000000000000000000000"
 	accept = "100001"
-	accept_call = "011"
+	answer_call = "00010"
 	block_state = "00000000000000000000000000000000"
 	busy = "011"
-	call_ended = "110"
 	call_number = "00000000000000000000000000000000"
 	call_while_busy = "100"
 	change_vol = "001000"
 	conference = "00000000000000000000000000000000"
-	connected = "001"
+	connected = "0010"
+	connected_to_v = "0101"
 	date_time = "01"
 	def_busy = "100110"
 	def_inc_busy = "110100"
@@ -218,22 +218,25 @@ Analyzing hierarchy for module <user_interface> in library <work> with parameter
 	del_saved = "010000"
 	del_unread = "001101"
 	dialing = "000111"
+	disconnect = "00101"
+	disconnected = "0000"
 	disp_num = "011110"
 	end_call = "100101"
 	end_call_b = "100111"
 	end_call_inc = "110000"
-	failed = "100"
 	get_num = "000011"
-	go_to_voicemail = "100"
+	go_to_voicemail = "011"
 	hold_curr = "110001"
 	idle = "000"
 	in_voicemail = "110"
 	incoming = "001"
-	incoming_call = "101"
+	incoming_call = "0110"
 	init_signal = "00000000000000000000000000000000"
 	initialize = "101"
-	make_call = "001"
+	make_call = "00001"
+	no_answer = "0011"
 	outgoing = "010"
+	outgoing_call = "0001"
 	play_saved = "001111"
 	play_unread = "001100"
 	reject = "100010"
@@ -242,11 +245,10 @@ Analyzing hierarchy for module <user_interface> in library <work> with parameter
 	selective = "00000000000000000000000000000000"
 	send_2_v = "101111"
 	send_to_v = "100011"
-	sent_to_v = "010"
+	sent_to_v = "0100"
 	set_dt = "011111"
 	set_time = "000100"
 	set_volume = "101000"
-	stop_call = "010"
 	toggle_v = "001001"
 	unread = "001010"
 	voicemail = "000010"
@@ -598,15 +600,15 @@ Analyzing module <user_interface> in library <work>.
 	STS_WR_FIN = 4'b0110
 	UI = 32'sb00000000000000000000000000000000
 	accept = 6'b100001
-	accept_call = 3'b011
+	answer_call = 5'b00010
 	block_state = 32'sb00000000000000000000000000000000
 	busy = 3'b011
-	call_ended = 3'b110
 	call_number = 32'sb00000000000000000000000000000000
 	call_while_busy = 3'b100
 	change_vol = 6'b001000
 	conference = 32'sb00000000000000000000000000000000
-	connected = 3'b001
+	connected = 4'b0010
+	connected_to_v = 4'b0101
 	date_time = 2'b01
 	def_busy = 6'b100110
 	def_inc_busy = 6'b110100
@@ -620,22 +622,25 @@ Analyzing module <user_interface> in library <work>.
 	del_saved = 6'b010000
 	del_unread = 6'b001101
 	dialing = 6'b000111
+	disconnect = 5'b00101
+	disconnected = 4'b0000
 	disp_num = 6'b011110
 	end_call = 6'b100101
 	end_call_b = 6'b100111
 	end_call_inc = 6'b110000
-	failed = 3'b100
 	get_num = 6'b000011
-	go_to_voicemail = 3'b100
+	go_to_voicemail = 3'b011
 	hold_curr = 6'b110001
 	idle = 3'b000
 	in_voicemail = 3'b110
 	incoming = 3'b001
-	incoming_call = 3'b101
+	incoming_call = 4'b0110
 	init_signal = 32'sb00000000000000000000000000000000
 	initialize = 3'b101
-	make_call = 3'b001
+	make_call = 5'b00001
+	no_answer = 4'b0011
 	outgoing = 3'b010
+	outgoing_call = 4'b0001
 	play_saved = 6'b001111
 	play_unread = 6'b001100
 	reject = 6'b100010
@@ -644,11 +649,10 @@ Analyzing module <user_interface> in library <work>.
 	selective = 32'sb00000000000000000000000000000000
 	send_2_v = 6'b101111
 	send_to_v = 6'b100011
-	sent_to_v = 3'b010
+	sent_to_v = 4'b0100
 	set_dt = 6'b011111
 	set_time = 6'b000100
 	set_volume = 6'b101000
-	stop_call = 3'b010
 	toggle_v = 6'b001001
 	unread = 6'b001010
 	voicemail = 6'b000010
@@ -1180,14 +1184,14 @@ WARNING:Xst:1305 - Output <phn_num> is never assigned. Tied to value 00000000.
 WARNING:Xst:647 - Input <init> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <inc_address> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ready> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <temp_command<7:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <temp_command<7:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <sys_reset> is used but never assigned. This sourceless signal will be automatically connected to value 0.
 WARNING:Xst:646 - Signal <countdown> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_3> for signal <state>.
     -----------------------------------------------------------------------
     | States             | 5                                              |
-    | Transitions        | 107                                            |
-    | Inputs             | 27                                             |
+    | Transitions        | 56                                             |
+    | Inputs             | 19                                             |
     | Outputs            | 6                                              |
     | Clock              | clk (rising_edge)                              |
     | Clock enable       | state$not0000 (positive)                       |
@@ -1207,32 +1211,32 @@ WARNING:Xst:646 - Signal <countdown> is assigned but never used. This unconnecte
     Found 1-bit register for signal <down_latch>.
     Found 1-bit register for signal <enter_latch>.
     Found 5-bit register for signal <headphone_change>.
-    Found 5-bit comparator greater for signal <headphone_change$cmp_gt0000> created at line 611.
-    Found 5-bit addsub for signal <headphone_change$share0000> created at line 552.
+    Found 5-bit comparator greater for signal <headphone_change$cmp_gt0000> created at line 590.
+    Found 5-bit addsub for signal <headphone_change$share0000> created at line 531.
     Found 1-bit register for signal <left_latch>.
     Found 11-bit register for signal <length>.
     Found 6-bit register for signal <menu_item>.
-    Found 6-bit comparator greatequal for signal <menu_item$cmp_ge0000> created at line 716.
-    Found 6-bit comparator greatequal for signal <menu_item$cmp_ge0001> created at line 720.
-    Found 6-bit comparator greatequal for signal <menu_item$cmp_ge0002> created at line 727.
-    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0000> created at line 702.
-    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0001> created at line 716.
-    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0002> created at line 720.
-    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0003> created at line 727.
-    Found 5-bit comparator less for signal <menu_item$cmp_lt0000> created at line 969.
-    Found 6-bit addsub for signal <menu_item$share0000> created at line 552.
+    Found 6-bit comparator greatequal for signal <menu_item$cmp_ge0000> created at line 695.
+    Found 6-bit comparator greatequal for signal <menu_item$cmp_ge0001> created at line 699.
+    Found 6-bit comparator greatequal for signal <menu_item$cmp_ge0002> created at line 706.
+    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0000> created at line 681.
+    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0001> created at line 695.
+    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0002> created at line 699.
+    Found 6-bit comparator lessequal for signal <menu_item$cmp_le0003> created at line 706.
+    Found 5-bit comparator less for signal <menu_item$cmp_lt0000> created at line 952.
+    Found 6-bit addsub for signal <menu_item$share0000> created at line 531.
     Found 6-bit register for signal <menu_item_latch>.
     Found 1-bit register for signal <override>.
     Found 1-bit register for signal <reset_latch>.
     Found 1-bit register for signal <right_latch>.
     Found 1-bit register for signal <start>.
-    Found 6-bit comparator not equal for signal <start$cmp_ne0000> created at line 388.
+    Found 6-bit comparator not equal for signal <start$cmp_ne0000> created at line 395.
     Found 1-bit register for signal <start_t>.
     Found 8-bit register for signal <temp_addr>.
     Found 8-bit register for signal <temp_command>.
     Found 2-bit register for signal <temp_display_control>.
     Found 5-bit register for signal <temp_headphone_volume>.
-    Found 5-bit adder for signal <temp_headphone_volume$share0000> created at line 552.
+    Found 5-bit adder for signal <temp_headphone_volume$share0000> created at line 531.
     Found 1-bit register for signal <temp_set_date>.
     Found 4-bit register for signal <temp_voicemail_command>.
     Found 1-bit register for signal <up_latch>.
@@ -1264,7 +1268,7 @@ Synthesizing Unit <Text_Scroller>.
     Found 25-bit register for signal <cntr_lim>.
     Found 25-bit up counter for signal <cntr_val>.
     Found 25-bit comparator equal for signal <cntr_val$cmp_eq0000> created at line 131.
-    Found 11-bit comparator greater for signal <COND_12$cmp_gt0000> created at line 192.
+    Found 11-bit comparator greater for signal <COND_11$cmp_gt0000> created at line 192.
     Found 11-bit up counter for signal <disp_pos>.
     Found 11-bit comparator equal for signal <disp_pos$cmp_eq0000> created at line 146.
     Found 11-bit subtractor for signal <disp_pos_last$addsub0000> created at line 139.
@@ -1731,7 +1735,7 @@ WARNING:Xst:646 - Signal <rd_addr_DEBUG> is assigned but never used. This unconn
 WARNING:Xst:1780 - Signal <over> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <locked> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <init> is used but never assigned. This sourceless signal will be automatically connected to value 0.
-WARNING:Xst:653 - Signal <inc_command> is used but never assigned. This sourceless signal will be automatically connected to value 000.
+WARNING:Xst:653 - Signal <inc_command> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 WARNING:Xst:653 - Signal <inc_address> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
 WARNING:Xst:646 - Signal <din> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <current_state> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -2056,8 +2060,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <length_7> (without 
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <length_8> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <length_9> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <length_10> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <temp_command_3> of sequential type is unconnected in block <user_interface>.
-WARNING:Xst:2677 - Node <temp_command_4> of sequential type is unconnected in block <user_interface>.
 WARNING:Xst:2677 - Node <temp_command_5> of sequential type is unconnected in block <user_interface>.
 WARNING:Xst:2677 - Node <temp_command_6> of sequential type is unconnected in block <user_interface>.
 WARNING:Xst:2677 - Node <temp_command_7> of sequential type is unconnected in block <user_interface>.
@@ -2195,6 +2197,8 @@ WARNING:Xst:2677 - Node <temp_addr_7> of sequential type is unconnected in block
 WARNING:Xst:2677 - Node <temp_command_0> of sequential type is unconnected in block <ui>.
 WARNING:Xst:2677 - Node <temp_command_1> of sequential type is unconnected in block <ui>.
 WARNING:Xst:2677 - Node <temp_command_2> of sequential type is unconnected in block <ui>.
+WARNING:Xst:2677 - Node <temp_command_3> of sequential type is unconnected in block <ui>.
+WARNING:Xst:2677 - Node <temp_command_4> of sequential type is unconnected in block <ui>.
 WARNING:Xst:2677 - Node <c_state_0> of sequential type is unconnected in block <ui>.
 WARNING:Xst:2677 - Node <c_state_1> of sequential type is unconnected in block <ui>.
 WARNING:Xst:2677 - Node <c_state_2> of sequential type is unconnected in block <ui>.
@@ -2254,8 +2258,8 @@ Macro Statistics
  7-bit up counter                                      : 1
  8-bit down counter                                    : 1
  8-bit up counter                                      : 1
-# Registers                                            : 1453
- Flip-Flops                                            : 1453
+# Registers                                            : 1455
+ Flip-Flops                                            : 1455
 # Comparators                                          : 44
  11-bit comparator equal                               : 1
  11-bit comparator greater                             : 1
@@ -2302,6 +2306,8 @@ WARNING:Xst:1426 - The value init of the FF/Latch audio_reset_b hinder the const
 WARNING:Xst:1710 - FF/Latch <reset_latch> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <start_t> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_addr_6> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <temp_command_3> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <temp_command_4> (without init value) has a constant value of 0 in block <user_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <SC_reg_3> (without init value) has a constant value of 0 in block <CF_Interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SC_reg_4> (without init value) has a constant value of 0 in block <CF_Interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <SC_reg_5> (without init value) has a constant value of 0 in block <CF_Interface>. This FF/Latch will be trimmed during the optimization process.
@@ -2427,15 +2433,15 @@ FlipFlop ac/ac97/bit_count_2 has been replicated 1 time(s)
 FlipFlop ac/ac97/bit_count_3 has been replicated 1 time(s)
 FlipFlop bcr/button_out_1 has been replicated 1 time(s)
 FlipFlop ds/char_index_0 has been replicated 3 time(s)
-FlipFlop ui/menu_item_0 has been replicated 2 time(s)
+FlipFlop ds/dot_index_0 has been replicated 1 time(s)
+FlipFlop ui/menu_item_0 has been replicated 1 time(s)
 FlipFlop ui/menu_item_1 has been replicated 1 time(s)
-FlipFlop ui/menu_item_2 has been replicated 1 time(s)
-FlipFlop ui/menu_item_3 has been replicated 2 time(s)
+FlipFlop ui/menu_item_2 has been replicated 2 time(s)
+FlipFlop ui/menu_item_3 has been replicated 1 time(s)
 FlipFlop ui/menu_item_4 has been replicated 1 time(s)
-FlipFlop ui/menu_item_5 has been replicated 2 time(s)
 FlipFlop ui/override has been replicated 1 time(s)
+FlipFlop ui/state_FSM_FFd2 has been replicated 1 time(s)
 FlipFlop ui/state_FSM_FFd3 has been replicated 1 time(s)
-FlipFlop ui/up_latch has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -2452,8 +2458,8 @@ Unit <labkit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1748
- Flip-Flops                                            : 1748
+# Registers                                            : 1746
+ Flip-Flops                                            : 1746
 # Shift Registers                                      : 6
  2-bit shift register                                  : 1
  4-bit shift register                                  : 1
@@ -2486,36 +2492,36 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 4831
+# BELS                             : 4760
 #      GND                         : 3
 #      INV                         : 102
 #      LUT1                        : 303
-#      LUT2                        : 331
-#      LUT2_D                      : 24
-#      LUT2_L                      : 47
-#      LUT3                        : 591
-#      LUT3_D                      : 40
-#      LUT3_L                      : 40
-#      LUT4                        : 1644
-#      LUT4_D                      : 107
-#      LUT4_L                      : 194
+#      LUT2                        : 341
+#      LUT2_D                      : 23
+#      LUT2_L                      : 41
+#      LUT3                        : 584
+#      LUT3_D                      : 43
+#      LUT3_L                      : 37
+#      LUT4                        : 1586
+#      LUT4_D                      : 114
+#      LUT4_L                      : 196
 #      MUXCY                       : 592
-#      MUXF5                       : 256
+#      MUXF5                       : 238
 #      MUXF6                       : 69
 #      MUXF7                       : 32
 #      MUXF8                       : 1
 #      VCC                         : 3
 #      XORCY                       : 452
-# FlipFlops/Latches                : 1767
-#      FD                          : 108
+# FlipFlops/Latches                : 1765
+#      FD                          : 107
 #      FDE                         : 302
 #      FDE_1                       : 18
 #      FDR                         : 262
-#      FDRE                        : 698
-#      FDRS                        : 247
+#      FDRE                        : 699
+#      FDRS                        : 248
 #      FDRSE                       : 23
 #      FDS                         : 62
-#      FDSE                        : 44
+#      FDSE                        : 41
 #      OFDDRRSE                    : 3
 # RAMS                             : 2
 #      RAMB16_S9_S9                : 2
@@ -2544,10 +2550,10 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-6 
 
- Number of Slices:                     1861  out of  33792     5%  
- Number of Slice Flip Flops:           1767  out of  67584     2%  
- Number of 4 input LUTs:               3430  out of  67584     5%  
-    Number used as logic:              3423
+ Number of Slices:                     1815  out of  33792     5%  
+ Number of Slice Flip Flops:           1765  out of  67584     2%  
+ Number of 4 input LUTs:               3377  out of  67584     4%  
+    Number used as logic:              3370
     Number used as Shift registers:       7
  Number of IOs:                         576
  Number of bonded IOBs:                 306  out of    684    44%  
@@ -2576,10 +2582,10 @@ Clock Information:
 -----------------------------------+--------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                  | Load  |
 -----------------------------------+--------------------------------------------------------------------------------------------------------+-------+
-clock_27mhz                        | RAMCLOCK_1/int_dcm:CLK0                                                                                | 1605  |
+clock_27mhz                        | RAMCLOCK_1/int_dcm:CLK0                                                                                | 1602  |
 tsi/TEXT_STORAGE/BU2/dbiterr       | NONE(tsi/TEXT_STORAGE/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v2_init.ram/dpram.dp9x9.ram)| 1     |
 ac97_bit_clock                     | BUFGP                                                                                                  | 88    |
-ds/clock1                          | BUFG                                                                                                   | 86    |
+ds/clock1                          | BUFG                                                                                                   | 87    |
 -----------------------------------+--------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -2602,32 +2608,32 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 7.359ns (frequency: 135.885MHz)
-  Total number of paths / destination ports: 68457 / 3585
+  Clock period: 7.211ns (frequency: 138.677MHz)
+  Total number of paths / destination ports: 65844 / 3579
 -------------------------------------------------------------------------
-Delay:               7.359ns (Levels of Logic = 8)
-  Source:            bcr/button_out_0 (FF)
-  Destination:       ui/menu_item_1 (FF)
+Delay:               7.211ns (Levels of Logic = 8)
+  Source:            ts/msg_length_3 (FF)
+  Destination:       ts/disp_pos_10 (FF)
   Source Clock:      clock_27mhz rising
   Destination Clock: clock_27mhz rising
 
-  Data Path: bcr/button_out_0 to ui/menu_item_1
+  Data Path: ts/msg_length_3 to ts/disp_pos_10
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             15   0.449   0.896  bcr/button_out_0 (bcr/button_out_0)
-     LUT2_D:I1->O         13   0.347   0.733  ui/state_FSM_FFd2-In121 (ui/N196)
-     LUT4:I2->O           29   0.347   0.825  ui/menu_item_mux0000<5>11 (ui/N64)
-     LUT3:I2->O            1   0.347   0.410  ui/menu_item_mux0000<4>824_F_SW0 (N1240)
-     LUT4:I2->O            1   0.347   0.000  ui/menu_item_mux0000<4>824_F (N944)
-     MUXF5:I0->O           3   0.345   0.568  ui/menu_item_mux0000<4>824 (ui/N94)
-     LUT4:I3->O            1   0.347   0.000  ui/menu_item_mux0000<4>114_SW1_SW2_F (N946)
-     MUXF5:I0->O           1   0.345   0.414  ui/menu_item_mux0000<4>114_SW1_SW2 (N893)
-     LUT4:I3->O            2   0.347   0.000  ui/menu_item_mux0000<4>284 (ui/menu_item_mux0000<4>)
-     FDSE:D                    0.293          ui/menu_item_1
+     FDRE:C->Q             3   0.449   0.760  ts/msg_length_3 (ts/msg_length_3)
+     LUT4_D:I0->LO         1   0.347   0.127  ts/disp_pos_last<7>11 (N1471)
+     LUT3:I2->O            3   0.347   0.562  ts/disp_pos_last<7>31 (ts/N11)
+     LUT4_D:I2->O          2   0.347   0.545  ts/disp_pos_last<8>41 (ts/N29)
+     LUT4:I2->O            1   0.347   0.410  ts/disp_pos_last<8>21 (ts/disp_pos_last<8>)
+     LUT4:I2->O            1   0.347   0.000  ts/Mcompar_disp_pos_cmp_eq0000_lut<4> (ts/Mcompar_disp_pos_cmp_eq0000_lut<4>)
+     MUXCY:S->O            1   0.235   0.000  ts/Mcompar_disp_pos_cmp_eq0000_cy<4> (ts/Mcompar_disp_pos_cmp_eq0000_cy<4>)
+     MUXCY:CI->O           2   0.601   0.546  ts/Mcompar_disp_pos_cmp_eq0000_cy<5> (ts/Mcompar_disp_pos_cmp_eq0000_cy<5>)
+     LUT3:I2->O           11   0.347   0.672  ts/disp_pos_or00001 (ts/disp_pos_or0000)
+     FDRE:R                    0.222          ts/disp_pos_0
     ----------------------------------------
-    Total                      7.359ns (3.514ns logic, 3.845ns route)
-                                       (47.8% logic, 52.2% route)
+    Total                      7.211ns (3.589ns logic, 3.622ns route)
+                                       (49.8% logic, 50.2% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ac97_bit_clock'
@@ -2645,8 +2651,8 @@ Delay:               3.940ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q              13   0.449   0.871  ac/ac97/bit_count_6 (ac/ac97/bit_count_6)
-     LUT4:I1->O            1   0.347   0.410  ac/ac97/left_in_data_and000010_SW0 (N897)
-     LUT4:I2->O            1   0.347   0.000  ac/ac97/left_in_data_and000063_G (N1415)
+     LUT4:I1->O            1   0.347   0.410  ac/ac97/left_in_data_and000010_SW0 (N811)
+     LUT4:I2->O            1   0.347   0.000  ac/ac97/left_in_data_and000063_G (N1378)
      MUXF5:I1->O          18   0.345   0.757  ac/ac97/left_in_data_and000063 (ac/ac97/left_in_data_and0000)
      SRL16E_1:CE               0.416          ac/ac97/Mshreg_left_in_data_4
     ----------------------------------------
@@ -2655,37 +2661,37 @@ Delay:               3.940ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ds/clock1'
-  Clock period: 7.021ns (frequency: 142.425MHz)
-  Total number of paths / destination ports: 18215 / 114
+  Clock period: 7.033ns (frequency: 142.181MHz)
+  Total number of paths / destination ports: 18264 / 116
 -------------------------------------------------------------------------
-Delay:               7.021ns (Levels of Logic = 9)
-  Source:            ds/char_index_0_1 (FF)
+Delay:               7.033ns (Levels of Logic = 9)
+  Source:            ds/char_index_0_3 (FF)
   Destination:       ds/rdots_35 (FF)
   Source Clock:      ds/clock1 rising
   Destination Clock: ds/clock1 rising
 
-  Data Path: ds/char_index_0_1 to ds/rdots_35
+  Data Path: ds/char_index_0_3 to ds/rdots_35
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             16   0.449   0.766  ds/char_index_0_1 (ds/char_index_0_1)
-     LUT3:I2->O            1   0.347   0.000  ds/Mmux_ascii_53 (ds/Mmux_ascii_53)
-     MUXF5:I1->O           1   0.345   0.000  ds/Mmux_ascii_4_f5_2 (ds/Mmux_ascii_4_f53)
-     MUXF6:I1->O           1   0.354   0.000  ds/Mmux_ascii_3_f6_2 (ds/Mmux_ascii_3_f63)
-     MUXF7:I1->O         163   0.354   1.280  ds/Mmux_ascii_2_f7_2 (ds/ascii<3>)
-     LUT4:I0->O            2   0.347   0.684  ds/a2d/Mrom_char_dots_mux0000723 (ds/a2d/Mrom_char_dots_mux0000723)
+     FDE:C->Q             32   0.449   0.831  ds/char_index_0_3 (ds/char_index_0_3)
+     LUT3:I2->O            1   0.347   0.000  ds/Mmux_ascii_5 (ds/Mmux_ascii_5)
+     MUXF5:I1->O           1   0.345   0.000  ds/Mmux_ascii_4_f5 (ds/Mmux_ascii_4_f5)
+     MUXF6:I1->O           1   0.354   0.000  ds/Mmux_ascii_3_f6 (ds/Mmux_ascii_3_f6)
+     MUXF7:I1->O         167   0.354   1.227  ds/Mmux_ascii_2_f7 (ds/ascii<0>)
+     LUT4:I1->O            2   0.347   0.684  ds/a2d/Mrom_char_dots_mux0000723 (ds/a2d/Mrom_char_dots_mux0000723)
      LUT3:I1->O            1   0.347   0.000  ds/a2d/Mrom_char_dots_mux0000801_5 (ds/a2d/Mrom_char_dots_mux0000801_5)
      MUXF5:I0->O           1   0.345   0.000  ds/a2d/Mrom_char_dots_mux0000801_3_f5 (ds/a2d/Mrom_char_dots_mux0000801_3_f5)
      MUXF6:I1->O           1   0.354   0.410  ds/a2d/Mrom_char_dots_mux0000801_2_f6 (ds/a2d/N20)
      LUT4:I2->O            1   0.347   0.000  ds/rdots_mux0000<35> (ds/rdots_mux0000<35>)
      FDE:D                     0.293          ds/rdots_35
     ----------------------------------------
-    Total                      7.021ns (3.882ns logic, 3.139ns route)
-                                       (55.3% logic, 44.7% route)
+    Total                      7.033ns (3.882ns logic, 3.151ns route)
+                                       (55.2% logic, 44.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 1813 / 458
+  Total number of paths / destination ports: 1815 / 458
 -------------------------------------------------------------------------
 Offset:              4.827ns (Levels of Logic = 4)
   Source:            vmail/VM_FIFO_OUT:data_count<9> (PAD)
@@ -2796,7 +2802,7 @@ Delay:               1.257ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IOBUF:IO->O           7   0.653   0.604  systemace_data_4_IOBUF (N635)
+     IOBUF:IO->O           7   0.653   0.604  systemace_data_4_IOBUF (N639)
     Voicemail_FIFO:din<4>        0.000          vmail/VM_FIFO_OUT
     ----------------------------------------
     Total                      1.257ns (0.653ns logic, 0.604ns route)
@@ -2806,14 +2812,14 @@ Delay:               1.257ns (Levels of Logic = 1)
 
 
 Total REAL time to Xst completion: 77.00 secs
-Total CPU time to Xst completion: 75.72 secs
+Total CPU time to Xst completion: 71.01 secs
  
 --> 
 
 
-Total memory usage is 614192 kilobytes
+Total memory usage is 611044 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  596 (   0 filtered)
+Number of warnings :  597 (   0 filtered)
 Number of infos    :   27 (   0 filtered)
 

@@ -1,0 +1,174 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2
+T_opt
+Z1 VFhfF6WK9DAL8ln8?Z_jc51
+Z2 04 23 4 work new_voicemail_interface fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-f04da20f0680-50c65680-b10e2-a97
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z6 OE;O;6.4a;39
+T_opt1
+Z7 VB`26IH4H=6`6>>j:X]j0I0
+Z8 04 11 4 work new_ui_test fast 0
+R3
+Z9 =1-f04da20f0680-50c655cf-88a2b-a5d
+R5
+R6
+T_opt2
+Z10 VgLPjfC;TTG>XN^e5KBb7b0
+R8
+R3
+Z11 =1-f04da20f0680-50c652f7-9b257-a26
+R5
+R6
+vDivider
+Z12 I75_?8AmD6e5dTKDg]gkBo2
+Z13 V^aXgiM6;Nciiglal>GC6U0
+Z14 w1355100426
+Z15 8../../../Lab4/Lab4_new/divider.v
+Z16 F../../../Lab4/Lab4_new/divider.v
+L0 22
+Z17 OE;L;6.4a;39
+r1
+31
+Z18 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z19 n@divider
+Z20 !s100 <13H@OS55Ocna5l;`Pd=j0
+!s85 0
+vglbl
+Z21 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z22 VnN]4Gon>inod6>M^M2[SV1
+Z23 w1202685744
+Z24 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z25 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+R17
+r1
+31
+R18
+Z26 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
+vnew_ui_test
+Z27 IN]U?@h`KHkeE3eAH]UePJ1
+Z28 VNnf_a[Ya1B;4EWMV@Q5ZK0
+Z29 w1355175369
+Z30 8new_ui_test.v
+Z31 Fnew_ui_test.v
+L0 25
+R17
+r1
+31
+R18
+Z32 !s100 RMaK?26BK4HgU]fl`=Ocb1
+!s85 0
+vnew_voicemail_interface
+Z33 IA7aM1mM<KlL?@VHK`N_hL2
+Z34 VSTR^eSJBG:W5OZcL?U3UF2
+Z35 w1355175544
+Z36 8new_voicemail_interface.v
+Z37 Fnew_voicemail_interface.v
+L0 25
+R17
+r1
+31
+R18
+Z38 !s100 i9lMJSZIOaR?f_?5_hD_P2
+!s85 0
+vText_Scroller
+Z39 IeA1U5lEN=_e;1;_5JBzQ01
+Z40 V]DAZ`@zFo^iZfMEYdmA1m3
+Z41 w1354830969
+Z42 8Text_Scroller.v
+Z43 FText_Scroller.v
+L0 30
+R17
+r1
+31
+R18
+Z44 n@text_@scroller
+Z45 !s100 Yk>T68nYHaPR2?1[KA2ni1
+!s85 0
+vText_Scroller_Interface
+Z46 I<LR:VkWoJGBjzCZEb>1dI0
+Z47 Vh;?m[e3dJkABTmgjP1JcJ3
+Z48 w1354835566
+Z49 8Text_Scroller_Interface.v
+Z50 FText_Scroller_Interface.v
+L0 21
+R17
+r1
+31
+R18
+Z51 n@text_@scroller_@interface
+Z52 !s100 ozcJQ8Wm1K2h[Y087J^ji3
+!s85 0
+vText_Storage
+Z53 Io^H9cl9=n5gY3IY2iR^c40
+Z54 V2YzmXo2m<XECI5>R]QXMH2
+Z55 w1355121761
+Z56 8Text_Storage.v
+Z57 FText_Storage.v
+L0 40
+R17
+r1
+31
+R18
+Z58 n@text_@storage
+Z59 !s100 iP:zJCLH^YfYi8Cl=22AK3
+!s85 0
+vtimer
+Z60 IX0oUa?o3A40fiIFVl>;iO1
+Z61 VI^XfRR72J1HXW:8m@DjXe1
+Z62 w1351021426
+Z63 8../../../Lab4/Lab4_new/timer.v
+Z64 F../../../Lab4/Lab4_new/timer.v
+L0 21
+R17
+r1
+31
+R18
+Z65 !s100 0XQoLRP=6CkB1iJAUHPhG3
+!s85 0
+vui_test
+Z66 IRfnU<jbbiYZbQkn3^KS9]1
+Z67 Vf:jm7PfbF;R`A3?CQoc591
+Z68 w1355111147
+Z69 8ui_test.v
+Z70 Fui_test.v
+L0 25
+R17
+r1
+31
+R18
+Z71 !s100 jc>U;QlAHcTdMPTY?fMVa1
+!s85 0
+vUI_Text_Scroller_BRAM
+Z72 IOO0_8<7nTj2aoN^aDzSj32
+Z73 VaffJ_lLG7:noWf=YIKY7B1
+Z74 w1354836189
+Z75 8UI_Text_Scroller_BRAM.v
+Z76 FUI_Text_Scroller_BRAM.v
+L0 40
+R17
+r1
+31
+R18
+Z77 n@u@i_@text_@scroller_@b@r@a@m
+Z78 !s100 W;Q4:0X>68PG_mLCziANZ2
+!s85 0
+vuser_interface
+Z79 IGa8Km6XWD;V2gWcaM^2]<0
+Z80 V1M<FLjT<9ZN[1QOOC]X_M1
+Z81 w1355173713
+Z82 8user_interface.v
+Z83 Fuser_interface.v
+L0 24
+R17
+r1
+31
+R18
+Z84 !s100 e40nL0oOlb]ij=zJ79_ZD0
+!s85 0

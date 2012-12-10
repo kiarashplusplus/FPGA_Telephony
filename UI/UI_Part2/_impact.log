@@ -1,0 +1,32 @@
+iMPACT Version: 10.1.03
+
+iMPACT log file Started on Mon Dec 10 16:40:40 2012
+
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+AutoDetecting cable. Please wait.
+PROGRESS_START - Starting Operation.
+Connecting to cable (Parallel Port - parport0).
+ Linux release = 3.2.0-34-generic.
+WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
+Cable connection failed.
+Connecting to cable (Parallel Port - parport1).
+ Linux release = 3.2.0-34-generic.
+WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
+Cable connection failed.
+Connecting to cable (Parallel Port - parport2).
+ Linux release = 3.2.0-34-generic.
+WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
+Cable connection failed.
+Connecting to cable (Parallel Port - parport3).
+ Linux release = 3.2.0-34-generic.
+WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
+Cable connection failed.
+ Using libusb.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+File version of/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/xusbdfwu.hex = 1030.
+File version of /usr/share/xusbdfwu.hex = 1030.
+ Using libusb.

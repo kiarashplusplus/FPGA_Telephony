@@ -70,6 +70,9 @@ There is more than one MUXF6.
 </arg>  The design will exhibit suboptimal timing.
 </msg>
 
+<msg type="warning" file="Pack" num="266" delta="unknown" >The function generator <arg fmt="%s" index="1">ui/state_FSM_FFd2-In21</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">ui/menu_item_mux0000&lt;0&gt;7130_SW1</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">rs232_cts_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 

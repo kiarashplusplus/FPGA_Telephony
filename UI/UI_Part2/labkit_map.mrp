@@ -11,23 +11,23 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -6
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Mon Dec 10 14:52:06 2012
+Mapped Date    : Mon Dec 10 16:18:48 2012
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  274
+Number of warnings:  275
 Logic Utilization:
-  Number of Slice Flip Flops:         1,931 out of  67,584    2%
-  Number of 4 input LUTs:             3,209 out of  67,584    4%
+  Number of Slice Flip Flops:         1,929 out of  67,584    2%
+  Number of 4 input LUTs:             3,151 out of  67,584    4%
 Logic Distribution:
-  Number of occupied Slices:          2,369 out of  33,792    7%
-    Number of Slices containing only related logic:   2,369 out of   2,369 100%
-    Number of Slices containing unrelated logic:          0 out of   2,369   0%
+  Number of occupied Slices:          2,335 out of  33,792    6%
+    Number of Slices containing only related logic:   2,335 out of   2,335 100%
+    Number of Slices containing unrelated logic:          0 out of   2,335   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       3,556 out of  67,584    5%
-    Number used as logic:             3,202
-    Number used as a route-thru:        347
+  Total Number of 4 input LUTs:       3,501 out of  67,584    5%
+    Number used as logic:             3,144
+    Number used as a route-thru:        350
     Number used as Shift registers:       7
   Number of bonded IOBs:                576 out of     684   84%
     IOB Flip Flops:                       6
@@ -35,8 +35,8 @@ Logic Distribution:
   Number of BUFGMUXs:                     4 out of      16   25%
   Number of DCMs:                         2 out of      12   16%
 
-Peak Memory Usage:  541 MB
-Total REAL time to MAP completion:  8 secs 
+Peak Memory Usage:  535 MB
+Total REAL time to MAP completion:  11 secs 
 Total CPU time to MAP completion:   7 secs 
 
 NOTES:
@@ -170,6 +170,9 @@ WARNING:Pack:266 - The function generator ds/a2d/Mrom_char_dots_mux0000215_INV_0
    ds/a2d/Mrom_char_dots_mux0000214)
    There is more than one MUXF6.
      The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator ui/state_FSM_FFd2-In21 failed to merge
+   with F5 multiplexer ui/menu_item_mux0000<0>7130_SW1.  There is a conflict for
+   the FXMUX.  The design will exhibit suboptimal timing.
 WARNING:PhysDesignRules:367 - The signal <rs232_cts_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <rs232_rxd_IBUF> is incomplete. The

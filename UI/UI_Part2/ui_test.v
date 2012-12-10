@@ -151,33 +151,33 @@ module ui_test;
 		// Add stimulus here
 		enter=1;
 		#10;
-		enter=0; //should be in idle mode - checked
+		enter=0; //should be in idle mode 
 		#10;
 		right=1;
 		#10;
 		right=0; //move from welcome message to main menu - checked
 		#10;
-		inc_command=3'd5; //incoming call, move to incoming mode - checked
+		inc_command=4'd6; //incoming call, move to incoming mode - checked
 		#10;
-		down=1; //move to accept menu item -checked
+		down=1; //move to accept menu item - checked
 		#10;
 		down=0;	
 		#10;
-		inc_command=3'd1; //connected - 
+		enter=1; //accept call - wait to be connected - 
 		#10;
-		enter=1; //accept call move to busy state - checked
-		#10;
-		enter=0; //caller ID menu item - checked
+		enter=0; 
 		#10
+		inc_command=4'd2; //connected - 
+		#10; //transition to busy states
 		down=1;
 		#10;
-		down=0; //move to end call menu item -
+		down=0; //move to end call menu item - 
 		#10;
 		enter=1;	//end call, wait for signal from application layer - 
 		#10
 		enter=0;
 		#10; 
-		inc_command=3'd6; //call ended, back to idle state - checked
+		inc_command=4'd0; //call ended, back to idle state - checked
 		#10; //system date and time should be displayed -checked
 		right=1;
 		#10;
@@ -201,17 +201,17 @@ module ui_test;
 		#10;
 		enter=0;
 		#10;
-		inc_command=3'd1;//connected, go to busy state - checked
+		inc_command=4'd2;//connected, go to busy state - checked
 		#30;
 		down=1;
 		#10;
-		down=0; //move to end call menu item -
+		down=0; //move to end call menu item - 
 		#10;
 		enter=1;	//end call, wait for signal from application layer - checked
 		#10
 		enter=0;
 		#10;
-		inc_command=3'd6; //call ended, back to idle state - checked
+		inc_command=4'd0; //call ended, back to idle state - checked
 		#10; //system date and time should be displayed -checked	
 		reset=1;
 		#10;
