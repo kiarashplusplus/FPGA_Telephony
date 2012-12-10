@@ -54,7 +54,8 @@ module user_interface(
     output [2:0] current_state,
 	 output [5:0] current_menu_item,
 	 output [4:0] headphone_volume,
-	 output [15:0] audio_out_data
+	 output [15:0] audio_out_data,
+	 output [127:0] string_data
     );
 	 
 	 
@@ -277,7 +278,6 @@ module user_interface(
 	 wire done;
 	 
 	 //outputs for text_scroller
-	wire [127:0] string_data;
 	wire wr_en_DEBUG;
 	wire [7:0] wr_data_DEBUG;
 	wire [10:0] wr_addr_DEBUG;
@@ -333,7 +333,32 @@ reg [4:0] temp_headphone_volume;
 reg [4:0] headphone_change; //amount user has changed headphone volume by
 
 
-//deal with audio here
+//Audio Mux (switches between voicemail and call audio)
+
+
+
+///////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+//Timer for Incoming Calls
+///////////////////////////////////////////////////////////\
+//I/Os
+wire enable;
+wire start_timer;
+reg start_t;
+wire expired;
+wire countdown;
+wire [4:0] inc_timer=5'd30;
+
+
+ //Divider
+Divider#(.N(27000000),.W(25)) div(.clk(clk),.reset(reset),.sys_reset(reset),
+				     .new_clk(enable));
+
+ //Timer
+timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
+	     .enable(enable),.clk_value(inc_timer),.expired(expired),.countdown(countdown));
+
 
 
 ///////////////////////////////////////////////////////////
@@ -534,6 +559,7 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 				idle: begin		
 					if (inc_command==incoming_call) begin
 						menu_item<=def_incoming;
+						start_t<=1;
 						state<=incoming;		
 					end
 			 
@@ -721,48 +747,60 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 				
 				
 				//incoming state logic
-				//start 30s timer
 				incoming: begin
-					if (up) begin
-						case (menu_item) 
-							def_incoming: begin
-								if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
-									menu_item<=reject;
-								else 
-									menu_item<=send_to_v;
-							end
-							default: menu_item<=menu_item-1;
-						endcase
-					end
-					
-					else if (down) begin
-						case (menu_item) 
-							send_to_v: menu_item<=def_incoming;
-							reject:begin
-								if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
-									menu_item<=def_incoming;
-								else 
-									menu_item<=send_to_v;
-							end
-							default: menu_item<=menu_item+1;
-						endcase
-					end
-					
-					else if (right||enter) begin
-						case (menu_item) 
-							def_incoming:temp_command<=accept_call;
-							accept: temp_command<=accept_call;
-							reject:temp_command<=stop_call;
-							send_to_v:begin 
-								if (voicemail_state==1)
-									temp_command<=go_to_voicemail;
-								else
-									temp_command<=stop_call;
-							end
-						endcase
-					end
+					start_t<=0;
 				
-				else 
+					if (expired==0) begin
+						if (up) begin
+							case (menu_item) 
+								def_incoming: begin
+									if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
+										menu_item<=reject;
+									else 
+										menu_item<=send_to_v;
+								end
+								default: menu_item<=menu_item-1;
+							endcase
+						end
+						
+						else if (down) begin
+							case (menu_item) 
+								send_to_v: menu_item<=def_incoming;
+								reject:begin
+									if (voicemail_status==STS_NO_CF_DEVICE||voicemail_state==0)
+										menu_item<=def_incoming;
+									else 
+										menu_item<=send_to_v;
+								end
+								default: menu_item<=menu_item+1;
+							endcase
+						end
+						
+						else if (right||enter) begin
+							case (menu_item) 
+								def_incoming:temp_command<=accept_call;
+								accept: temp_command<=accept_call;
+								reject: begin
+									if (voicemail_status==1)
+										temp_command<=go_to_voicemail;
+									else
+										temp_command<=stop_call;
+								end
+								send_to_v:temp_command<=go_to_voicemail;
+							endcase
+						end
+				end
+				
+				//timer expired w/o call being answered
+				else begin 
+						if (voicemail_state==1) 
+							temp_command<=go_to_voicemail;
+						else
+							temp_command<=stop_call;
+				end
+		
+				
+	
 					case (menu_item)	//waiting on application layer
 						def_incoming: begin
 								if (inc_command==connected) begin
@@ -789,6 +827,7 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 							end
 						end
 					endcase
+				
 				end
 				
 				
@@ -923,6 +962,7 @@ reg [4:0] headphone_change; //amount user has changed headphone volume by
 	assign headphone_volume=temp_headphone_volume;
 	assign voicemail_command=temp_voicemail_command;
 	assign disp_control=temp_display_control;
+	assign start_timer=start_t;
 	
 
 	

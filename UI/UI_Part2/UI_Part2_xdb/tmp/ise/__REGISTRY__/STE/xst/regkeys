@@ -1,0 +1,6 @@
+CommandLine
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/UI_Part2.ise -intstyle ise -ifn /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/AC97_PCM.xst -ofn /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/AC97_PCM.syr -finalclean 1
+s
+FormatString
+xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
+s

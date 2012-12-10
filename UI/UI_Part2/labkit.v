@@ -314,9 +314,105 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	///////////////////////////////////////////////////
 	//Project Code Starts Here
 	//////////////////////////////////////////////////////
+	//Declarations for Buttons
+	wire reset,debb0,debb1,debb2,debb3,
+	debup,debdown,debleft,debright,debenter,
+	b0,b1,b2,b3,up,down,left,right,enter;
+	
+	//Declarations for Switches
+	wire s0,s1,s2,s3,s4,s5,s6,s7;
+	
+	//UI inputs
+	wire [2:0] inc_command;
+	wire init, ready, 
+	wire [7:0] inc_address;
+	wire [15:0] audio_in_data, dout;
+	wire [3:0] voicemail_status;
+	
+	
+	//UI outputs
+	wire [127:0] string_data;
+	wire [3:0] voicemail_command;
+	wire [7:0] phn_num,address;
+	wire [15:0] din,audio_out_data;
+	wire [1:0] disp_control;
+	wire [2:0] current_state;
+	wire [15:0] current_menu_item;
+	wire [4:0] headphone_volume;
+	
+	
+	//Debounce buttons
+	debounce db0(.reset(reset),.clock(clock_27mhz),.noisy(~button0),
+	.clean(debb0));
+	debounce db1(.reset(reset),.clock(clock_27mhz),.noisy(~button1),
+	.clean(debb1));
+	debounce db2(.reset(reset),.clock(clock_27mhz),.noisy(~button2),
+	.clean(debb2));
+	debounce db3(.reset(reset),.clock(clock_27mhz),.noisy(~button3),
+	.clean(debb3));
+	
+	debounce dup(.reset(reset),.clock(clock_27mhz),.noisy(~button_up),
+	.clean(debup));
+	debounce ddown(.reset(reset),.clock(clock_27mhz),.noisy(~button_down),
+	.clean(debdown));
+	debounce dleft(.reset(reset),.clock(clock_27mhz),.noisy(~button_left),
+	.clean(debleft));
+	debounce dright(.reset(reset),.clock(clock_27mhz),.noisy(~button_right),
+	.clean(debright));
+	debounce dright(.reset(reset),.clock(clock_27mhz),.noisy(~button_enter),
+	.clean(debenter));
+	
+	//Contention Resolver
+	Button_Contention_Resolver bcr(.clk(clock_27mhz),.reset(reset),
+	.button0_in(debb0),.button1_in(debb1),.button2_in(debb2),
+	.button3_in(debb3),.button_enter_in(debenter),
+	.button_left_in(debleft),.button_right_in(debright),
+	.button_up_in(debup),.button_down_in(debdown),
+	.button0_out(b0),.button1_out(b1),.button2_out(b2),
+	.button3_out(b3),.button_enter_out(enter),
+	.button_left_out(left),.button_right_out(right),
+	.button_up_out(up),.button_down_out(down));
+	
+	
+	//Synchronize Switches 
+	synchronize #(.NSYNC(2)) synch6(.clk(clock_27mhz),.in(switch[7]),.out(s7));
+   synchronize #(.NSYNC(2)) synch7(.clk(clock_27mhz),.in(switch[5]),.out(s5));
+   synchronize #(.NSYNC(2)) synch8(.clk(clock_27mhz),.in(switch[4]),.out(s4));
+   synchronize #(.NSYNC(2)) synch9(.clk(clock_27mhz),.in(switch[3]),.out(s3));
+   synchronize #(.NSYNC(2)) synch10(.clk(clock_27mhz),.in(switch[2]),.out(s2));
+   synchronize #(.NSYNC(2)) synch11(.clk(clock_27mhz),.in(switch[1]),.out(s1));
+   synchronize #(.NSYNC(2)) synch12(.clk(clock_27mhz),.in(switch[0]),.out(s0));
+	
+	
+	//Instantiate User Interface module
+	user_interface ui(.clk(clock_27mhz),.s7(s7),.s6(s6),.s5(s5),.s4(s4), 
+	.s3(s3),.s2(s2),.s1(s1),.s0(s0),.b3(b3),.b2(b2), 
+	.b1(b1),b0(b0),.reset(reset),.enter(enter), 
+	.up(up),.down(down),.left(left),.right(right), 
+	.inc_command(inc_command),.init(init), 
+	.audio_in_data(audio_in_data),.ready(ready),
+	.voicemail_status(voicemail_status),.voicemail_command(voicemail_command),
+	.phn_num(phn_num),.dout(dout),
+	.din(din),.disp_control(disp_control),
+	.inc_address(inc_address),.address(address),
+	.command(command),.current_state(current_state),
+	.current_menu_item(current_menu_item),
+	.headphone_volume(headphone_volume),
+	.audio_out_data(audio_out_data),
+	.string_data(string_data));
 	
 	
 	
+	
+	//display here
+	display_string ds (.reset(reset), .clock_27mhz(.clock_27mhz),
+	.string_data(string_data),.disp_blank(disp_blank),
+	.disp_clock(disp_clock),.disp_rs(disp_rs),
+	.disp_ce_b(disp_ce_b),.disp_reset_b(disp_reset_b)
+	,.disp_data_out(disp_data_out));
+	
+	//display mux here
+
 
 	//////////////////////////////////////////////////
 			    

@@ -1,5 +1,5 @@
 NUM_USER_FILES
-12
+19
 s
 user_file_1
 Text_Scroller_Interface.v
@@ -12,6 +12,27 @@ user_file_11
 s
 user_file_12
 ui_voicemail_test.v
+s
+user_file_13
+display_string.v
+s
+user_file_14
+debounce.v
+s
+user_file_15
+../UI Interfaces/Button Interface/Button_Contention_Resolver.v
+s
+user_file_16
+synchronize.v
+s
+user_file_17
+../UI Interfaces/Display String/display_string.v
+s
+user_file_18
+../../../Lab4/Lab4_new/divider.v
+s
+user_file_19
+../../../Lab4/Lab4_new/timer.v
 s
 user_file_2
 Text_Scroller.v
