@@ -65,7 +65,7 @@ prop_10_name
 PROP_BehavioralSimTop
 s
 prop_10_val
-"Module|tRcv_tb"
+"Module|session_tb"
 s
 prop_110_name
 PROP_xilxPostTrceRpt
