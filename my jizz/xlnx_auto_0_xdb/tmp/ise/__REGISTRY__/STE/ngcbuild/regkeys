@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngcbuild -intstyle ise -dd /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/tmp/_cg /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/tmp/_cg/rcvPackets.edn /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/tmp/_cg/rcvPackets_unobf.ngc
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngcbuild -intstyle ise -dd /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/tmp/_cg /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/tmp/_cg/audioBuffer.edn /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/tmp/_cg/audioBuffer_unobf.ngc
 s
 FormatString
 ngcbuild [-p <partname>] {-sd <source_dir>} [-ur <rules_file[.urf]>] [-dd <output_dir>] [-r] [-nt timestamp|on|off] [-uc <ucf_file[.ucf]>] [-aul] [-i] [-intstyle ise|xflow|silent] [-quiet] [-verbose] [-active <active_module_name>] [-insert_keep_hierarchy] [--insert_secure_netlist prohibit|encrypt|noinit|enable_unisim_hdl|off] [--insert_secure_config off|protect] [--insert_secure_bitstream <bitstream_value>] [--insert_check_license <license_value> ] [--forcengd] [--script <tcl_file>] <design_name> <ngc_file[.ngc]>

@@ -35,6 +35,7 @@ module tSend_tb;
 	wire sending;
 	wire [7:0] packetOut;
 	wire busy;
+	wire ready_data_count;
 
 	// Instantiate the Unit Under Test (UUT)
 	transportSend uut (
@@ -45,25 +46,26 @@ module tSend_tb;
 		.sendData(sendData), 
 		.sending(sending), 
 		.packetOut(packetOut), 
-		.busy(busy)
+		.busy(busy),
+      .ready_data_count(ready_data_count)
+
 	);
 	
 	always #5 clk= !clk;
-	always #20 data=data+1;
 	
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		reset = 0;
 		cmd = 0;
-		data = 16'b1000_0000_0000_0000;
+		data = 0;
 		sendData = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
         
 		// Add stimulus here
-		cmd=2'b01;
+	/*	cmd=2'b01;
 		#20;
 		cmd=0;
 		#200;
@@ -81,6 +83,12 @@ module tSend_tb;
 		#20;
 		sendData=0;
 		#500;		
+	*/
+		cmd=2'b01;
+		data=16'h44;
+		#100;
+		sendData=1;
+		
 
 	end
       

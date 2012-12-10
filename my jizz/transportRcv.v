@@ -2,14 +2,16 @@
 
 module transportRcv #(parameter packetSize=16)  //in bytes
 	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, 
-	output reg [1:0]  sendingToSession,	 output reg [15:0] data, output reg [7:0] dafuq);
+	output reg [1:0]  sendingToSession,	 output reg [15:0] data, 
+	output [10:0] rcv_data_count, output [7:0] dafuq);
 		
+	
 	
 	//initializing recieved packets' fifo
 	wire [7:0] rcvIn;
 	reg rcv_rd_en=0;
 	wire rcv_wr_en	;
-	wire [10:0] rcv_data_count;
+	//wire [10:0] rcv_data_count;
 	wire [7:0] rcvOut;
 	wire rcvEmpty;
 	wire rcvFull;
@@ -42,8 +44,12 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 	//reg [4:0]  state=s_idle;
 	
 	
+	//debug
+	assign dafuq=rcvOut;
+	
+	
 	initial begin
-		dafuq=0;
+		
 		sendingToSession=0;
 		rcvState=0;
 	end
@@ -51,87 +57,88 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 			
     always @(posedge clk) begin
 			if (reset) begin
-				state=s_idle;
+				state<=s_idle;
  				
 			end else case (state)
 		
 				s_idle:  begin
 					if ((rcv_data_count>=packetSize) && (sessionBusy==0) ) begin
-						rcv_rd_en=1;
-						state=s_sending;
+						rcv_rd_en<=1;
+						state<=s_sending;
 					end else begin 
-						rcv_rd_en=0;
-							state=s_idle;
+						rcv_rd_en<=0;
+							state<=s_idle;
 					end
 				end
 				
 				/*s_before_sending: begin
-					state=s_sending;
+					state<=s_sending;
 				end*/
 				
 				s_sending: begin
 					if (rcvOut==8'b0100_0000) begin
-						dafuq=0;
-						state=s_control;
+						
+						state<=s_control;
 					end else if (rcvOut==8'b1000_0000) begin
-						dafuq=0;
-						state=s_audio;
-						packetSizeCounter=packetSize-2;
-					end else dafuq=1;
+						
+						state<=s_audio;
+						packetSizeCounter<=packetSize-2;
+					end
+					//end else dafuq<=1;
 				end
 				
 				s_control: begin
-					data[15:8]=rcvOut;
-					state=s_controlTwo;
+					data[15:8]<=rcvOut;
+					state<=s_controlTwo;
 				end
 				
 				s_controlTwo: begin
-					data[7:0]=rcvOut;
-					sendingToSession=2'b01;
-					state=s_zeros;
+					data[7:0]<=rcvOut;
+					sendingToSession<=2'b01;
+					state<=s_zeros;
 				
 				end
 				
 				s_zeros: begin
-					sendingToSession=0;
-					counter=packetSize-4; ///?????????
-					state=s_countDown;
+					sendingToSession<=0;
+					counter<=packetSize-4; ///?????????
+					state<=s_countDown;
 				end
 				
 				s_countDown: begin
 				
 					if (counter==1) begin
-						state=s_idle;
+						state<=s_idle;
 					end else begin
-						state=s_countDown;
-						counter=counter-1;						
+						state<=s_countDown;
+						counter<=counter-1;						
 					end
 				
 				end
 				
 
 				s_audio: begin
-					sendingToSession=0;
+					sendingToSession<=0;
 					if (packetSizeCounter==2) begin
-						state=s_audioThree;
+						state<=s_audioThree;
 					end else begin										
-						data[15:8]=rcvOut;
-						state=s_audioTwo;
-						packetSizeCounter=packetSizeCounter-1;
+						data[15:8]<=rcvOut;
+						state<=s_audioTwo;
+						packetSizeCounter<=packetSizeCounter-1;
 					end
 					
 				end
 				
 				s_audioTwo: begin
-					data[7:0]=rcvOut;
-					sendingToSession=2'b10;
-					state=s_audio;
-					packetSizeCounter=packetSizeCounter-1;					
+					data[7:0]<=rcvOut;
+					sendingToSession<=2'b10;
+					state<=s_audio;
+					packetSizeCounter<=packetSizeCounter-1;					
 				end
 				
 				s_audioThree: begin
-					rcv_rd_en=0;
-					state=s_idle;				
+					rcv_rd_en<=0;
+					state<=s_idle;				
 				end
 			endcase
     end

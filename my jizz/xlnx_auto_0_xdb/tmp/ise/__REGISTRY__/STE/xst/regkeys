@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ifn tmp/_cg/_bbx/rcvPackets_fifo_generator_v4_4_xst_1.scr -ofn tmp/_cg/_bbx/rcvPackets_fifo_generator_v4_4_xst_1_xst.log -intstyle silent -finalclean 1
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ifn tmp/_cg/_bbx/audioBuffer_fifo_generator_v4_4_xst_1.scr -ofn tmp/_cg/_bbx/audioBuffer_fifo_generator_v4_4_xst_1_xst.log -intstyle silent -finalclean 1
 s
 FormatString
 xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]

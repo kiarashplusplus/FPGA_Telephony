@@ -1,0 +1,18 @@
+[Inputs]
+clk
+reset
+sendData
+=onephoneNum[7:0]=
+=oneuserInp[4:0]=
+=oneaudioIn[15:0]=
+=onepacketIn[15:0]=
+=onecmdIn[1:0]=
+[Outputs]
+twotransportBusy
+=twophoneNum[7:0]=
+=twouserInp[4:0]=
+=twoaudioIn[15:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel connectedSys
+

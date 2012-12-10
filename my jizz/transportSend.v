@@ -1,7 +1,8 @@
 
 module transportSend #(parameter packetSize=16) //in bytes
 	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
-	 input sendData, output reg sending, output [7:0] packetOut, output reg busy);
+	 input sendData, output reg sending, output [7:0] packetOut, 
+	 output reg busy, output [10:0] ready_data_count);
 	
 	//cmd == 2'b00 idle ; 2'b01  command control data; 2'b10  audio
 	reg goingToSend=0;
@@ -27,7 +28,6 @@ module transportSend #(parameter packetSize=16) //in bytes
 	reg [7:0] readyIn=0;
 	reg ready_rd_en=0;
 	reg ready_wr_en=0;
-	wire [10:0] ready_data_count;
 	wire [7:0] readyOut;
 	wire readyEmpty;
 	wire readyFull;
