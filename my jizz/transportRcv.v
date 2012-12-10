@@ -36,9 +36,10 @@ module transportRcv #(parameter packetSize=16)  //in bytes
     parameter s_countDown=6;
     parameter s_audio=7;
     parameter s_audioTwo=8;	
+	 parameter s_audioThree=9;
 	
 	reg [4:0] state=s_idle;
-	reg [4:0]  next_state=s_idle;
+	//reg [4:0]  state=s_idle;
 	
 	
 	initial begin
@@ -48,61 +49,61 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 	end
 	
 			
-    always @(*) begin
+    always @(posedge clk) begin
 			if (reset) begin
-				next_state=s_idle;
+				state=s_idle;
  				
 			end else case (state)
 		
 				s_idle:  begin
 					if ((rcv_data_count>=packetSize) && (sessionBusy==0) ) begin
 						rcv_rd_en=1;
-						next_state=s_sending;
+						state=s_sending;
 					end else begin 
 						rcv_rd_en=0;
-							next_state=s_idle;
+							state=s_idle;
 					end
 				end
 				
 				/*s_before_sending: begin
-					next_state=s_sending;
+					state=s_sending;
 				end*/
 				
 				s_sending: begin
 					if (rcvOut==8'b0100_0000) begin
 						dafuq=0;
-						next_state=s_control;
+						state=s_control;
 					end else if (rcvOut==8'b1000_0000) begin
 						dafuq=0;
-						next_state=s_audio;
-						packetSizeCounter=packetSize-1;
+						state=s_audio;
+						packetSizeCounter=packetSize-2;
 					end else dafuq=1;
 				end
 				
 				s_control: begin
 					data[15:8]=rcvOut;
-					next_state=s_controlTwo;
+					state=s_controlTwo;
 				end
 				
 				s_controlTwo: begin
 					data[7:0]=rcvOut;
 					sendingToSession=2'b01;
-					next_state=s_zeros;
+					state=s_zeros;
 				
 				end
 				
 				s_zeros: begin
 					sendingToSession=0;
 					counter=packetSize-4; ///?????????
-					next_state=s_countDown;
+					state=s_countDown;
 				end
 				
 				s_countDown: begin
 				
 					if (counter==1) begin
-						next_state=s_idle;
+						state=s_idle;
 					end else begin
-						next_state=s_countDown;
+						state=s_countDown;
 						counter=counter-1;						
 					end
 				
@@ -111,12 +112,11 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 
 				s_audio: begin
 					sendingToSession=0;
-					if (packetSizeCounter==0) begin
-						next_state=s_idle;
-						rcv_rd_en=0;
+					if (packetSizeCounter==2) begin
+						state=s_audioThree;
 					end else begin										
 						data[15:8]=rcvOut;
-						next_state=s_audioTwo;
+						state=s_audioTwo;
 						packetSizeCounter=packetSizeCounter-1;
 					end
 					
@@ -125,14 +125,17 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 				s_audioTwo: begin
 					data[7:0]=rcvOut;
 					sendingToSession=2'b10;
-					next_state=s_audio;
+					state=s_audio;
 					packetSizeCounter=packetSizeCounter-1;					
+				end
+				
+				s_audioThree: begin
+					rcv_rd_en=0;
+					state=s_idle;				
 				end
 			endcase
     end
 	
 	
-    always @(posedge clk) state<=next_state;
-
 	
 endmodule

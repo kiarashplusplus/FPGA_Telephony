@@ -63,6 +63,7 @@ module session_tb;
 		.phoneOut(phoneOut), 
 		.current_state(current_state)
 	);
+	
 	always #5 clk= !clk;
 
 	initial begin
@@ -82,10 +83,10 @@ module session_tb;
 		// Add stimulus here
 		phoneNum=8'h20;
 		userInp=5'h01;
-		#50;
+		#100;
 		phoneNum=0;
 		userInp=0;
-		#50;
+		#100;
 		cmdIn=2'b01;
 		packetIn[7:0]=8'h1;
 		packetIn[15:8]=8'h30;
