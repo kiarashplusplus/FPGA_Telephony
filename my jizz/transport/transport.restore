@@ -840,14 +840,14 @@ proc restore { { project_dir "" } } {
       "../connectedSys.v" 
       "../labkit.ucf" 
       "../labkit.v" 
+      "../session_tb.v" 
+      "../sys_tb.v" 
       "../tRcv_tb.v" 
       "../tSend_tb.v" 
       "../transportRcv.v" 
       "../transportSend.v" 
       "packetBuffer.xco" 
-      "readyPackets.xco" 
-      "session_tb.v" 
-      "sys_tb.v"}
+      "readyPackets.xco"}
 
   HandleException {
     AddUserFiles $iProjHelper $user_files
@@ -881,7 +881,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROPEXT_xilxSynthAddBufg_virtex2" "16" 
       "A" "" "" "" "PROPEXT_xilxSynthMaxFanout_virtex2" "500" 
       "A" "" "" "" "PROP_AutoGenFile" "false" 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Module|sys_tb" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Module|labkit" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
       "A" "" "" "" "PROP_CompxlibCPLDDetLib" "true" 

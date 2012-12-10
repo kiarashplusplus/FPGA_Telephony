@@ -5,13 +5,13 @@ user_file_1
 ../transportSend.v
 s
 user_file_10
-session_tb.v
-s
-user_file_11
 ../connectedSys.v
 s
+user_file_11
+../session_tb.v
+s
 user_file_12
-sys_tb.v
+../sys_tb.v
 s
 user_file_2
 readyPackets.xco

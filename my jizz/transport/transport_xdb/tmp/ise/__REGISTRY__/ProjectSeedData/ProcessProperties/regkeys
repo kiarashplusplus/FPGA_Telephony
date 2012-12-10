@@ -2225,7 +2225,7 @@ prop_8_name
 PROP_BehavioralSimTop
 s
 prop_8_val
-"Module|sys_tb"
+"Module|labkit"
 s
 prop_90_name
 PROP_xilxBitgCfg_TDI
