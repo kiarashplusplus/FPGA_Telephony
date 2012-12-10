@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Nandi Bugg
 // 
 // Create Date:    12:49:56 11/15/2012 
 // Design Name: 
@@ -55,7 +55,13 @@ module user_interface(
 	 output [5:0] current_menu_item,
 	 output [4:0] headphone_volume,
 	 output [15:0] audio_out_data,
-	 output [127:0] string_data
+	 output [127:0] string_data,
+	 output [7:0] ascii_out,
+	 output ascii_out_ready,
+	 output [11:0] txt_addr,
+	 output [11:0] txt_length,
+	 output txt_start,
+	 output done
     );
 	 
 	 
@@ -78,7 +84,6 @@ module user_interface(
 /////////////////////////////////////////////////////////	
 //Overall parameters
 /////////////////////////////////////////////////////////
-	assign init=0; //should this be assigned by me?
 	parameter conference=0; //conference call on/off
 	parameter selective=0; //selective mode switch for call forwarding
 	parameter block_state=0; //0=off,1=on call blocking
@@ -258,11 +263,8 @@ module user_interface(
 	parameter UI=0;
 	parameter date_time=2'd1;
 	parameter voicemail_disp=2'd2;
-	reg [1:0] temp_display_control;
+	reg [1:0] temp_display_control=UI;
 	
-	
-	
-	assign disp_control=UI;
 /////////////////////////////////////////////////	
 	
 
@@ -273,9 +275,9 @@ module user_interface(
 	 reg start;
 	 reg [10:0] addr;
 	 reg [10:0] length;
-	 wire [7:0] ascii_out;
-	 wire ascii_out_ready;
-	 wire done;
+//	 wire [7:0] ascii_out;
+//	 wire ascii_out_ready;
+//	 wire done;
 	 
 	 //outputs for text_scroller
 	wire wr_en_DEBUG;
@@ -327,9 +329,8 @@ parameter STS_ERR_WR_FAIL  = 4'd9;
 
 ////////////////////////////////////////////////////////////
 //Audio
-////////////////////////////////////////////////////////////
-assign headphone_volume=5'd16; //default volume
-reg [4:0] temp_headphone_volume;
+//////////////////////////////////////////////////////////// 
+reg [4:0] temp_headphone_volume=5'd16; //default volume
 reg [4:0] headphone_change; //amount user has changed headphone volume by
 
 
@@ -366,9 +367,13 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 
 //set display text here	
 	always @(posedge clk) begin
+		if (start) 
+			start<=0;
+			
 		menu_item_latch <= menu_item;
 		
 		start<=menu_item_latch!=menu_item;
+		
 		
 		if (menu_item_latch!=menu_item) begin
 				case (menu_item) //select address for start of text, set length as well
@@ -539,7 +544,7 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 		else if (voicemail_command!=0) 
 			temp_voicemail_command<=CMD_IDLE;
 			
-		else begin
+		else if (done) begin
 			case (state) 
 				//initialize state logic
 				initialize: begin	//text=Press "Enter" to start network initialization
@@ -950,9 +955,9 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 				end									
 			endcase	
 		end
-		
+
 	end
-	
+
 	
 	//assign outputs
 	assign current_state=c_state;
@@ -963,6 +968,9 @@ timer tim(.start_timer(start_timer),.sys_reset(sys_reset),.clk(clk),
 	assign voicemail_command=temp_voicemail_command;
 	assign disp_control=temp_display_control;
 	assign start_timer=start_t;
+	assign txt_addr=addr;
+	assign txt_length=length;
+	assign txt_start=start;
 	
 
 	

@@ -4,151 +4,138 @@ K3
 cModel Technology
 Z0 d/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2
 T_opt
-VNO;89EMneheeVAn[hWhWn0
-04 7 4 work ui_test fast 0
-Z1 04 4 4 work glbl fast 0
-=1-f04da20f0680-50c53508-36879-6b09
-Z2 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
-Z3 OE;O;6.4a;39
+VdB3i:=lC:Bn@3_g<Lfg0c1
+Z1 04 7 4 work ui_test fast 0
+Z2 04 4 4 work glbl fast 0
+Z3 =1-f04da20f0680-50c55fed-abed9-76ca
+Z4 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z5 OE;O;6.4a;39
 T_opt1
-VS0VAbVaH[Qf65n3:2]Mdm0
-04 17 4 work ui_voicemail_test fast 0
+Z6 Vf]GclemW3PUzFcRSLO8QK1
 R1
-=1-f04da20f0680-50c529dc-5f9b5-6a28
 R2
-R3
+Z7 =1-f04da20f0680-50c55afb-eac87-7558
+R4
+R5
 vDivider
-I75_?8AmD6e5dTKDg]gkBo2
-V^aXgiM6;Nciiglal>GC6U0
-w1355100426
-8../../../Lab4/Lab4_new/divider.v
-F../../../Lab4/Lab4_new/divider.v
+Z8 I75_?8AmD6e5dTKDg]gkBo2
+Z9 V^aXgiM6;Nciiglal>GC6U0
+Z10 w1355100426
+Z11 8../../../Lab4/Lab4_new/divider.v
+Z12 F../../../Lab4/Lab4_new/divider.v
 L0 22
-Z4 OE;L;6.4a;39
+Z13 OE;L;6.4a;39
 r1
 31
-Z5 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
-n@divider
-!s100 <13H@OS55Ocna5l;`Pd=j0
+Z14 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z15 n@divider
+Z16 !s100 <13H@OS55Ocna5l;`Pd=j0
 !s85 0
 vglbl
-!s100 T?5S;>bN`@zG_25]R_4A33
-IB;@1jEXmEfQXL`;Kf0IBZ3
-VnN]4Gon>inod6>M^M2[SV1
-w1202685744
-8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
-F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z17 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z18 VnN]4Gon>inod6>M^M2[SV1
+Z19 w1202685744
+Z20 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z21 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
 L0 5
-R4
+R13
 r1
+31
+R14
+Z22 !s100 T?5S;>bN`@zG_25]R_4A33
 !s85 0
-31
-R5
 vText_Scroller
-IeA1U5lEN=_e;1;_5JBzQ01
-V]DAZ`@zFo^iZfMEYdmA1m3
-w1354830969
-8Text_Scroller.v
-FText_Scroller.v
+Z23 IeA1U5lEN=_e;1;_5JBzQ01
+Z24 V]DAZ`@zFo^iZfMEYdmA1m3
+Z25 w1354830969
+Z26 8Text_Scroller.v
+Z27 FText_Scroller.v
 L0 30
-R4
+R13
 r1
 31
-R5
-n@text_@scroller
-!s100 Yk>T68nYHaPR2?1[KA2ni1
+R14
+Z28 n@text_@scroller
+Z29 !s100 Yk>T68nYHaPR2?1[KA2ni1
 !s85 0
 vText_Scroller_Interface
-I<LR:VkWoJGBjzCZEb>1dI0
-Vh;?m[e3dJkABTmgjP1JcJ3
-w1354835566
-8Text_Scroller_Interface.v
-FText_Scroller_Interface.v
+Z30 I<LR:VkWoJGBjzCZEb>1dI0
+Z31 Vh;?m[e3dJkABTmgjP1JcJ3
+Z32 w1354835566
+Z33 8Text_Scroller_Interface.v
+Z34 FText_Scroller_Interface.v
 L0 21
-R4
+R13
 r1
 31
-R5
-n@text_@scroller_@interface
-!s100 ozcJQ8Wm1K2h[Y087J^ji3
+R14
+Z35 n@text_@scroller_@interface
+Z36 !s100 ozcJQ8Wm1K2h[Y087J^ji3
 !s85 0
 vText_Storage
-Io^H9cl9=n5gY3IY2iR^c40
-V2YzmXo2m<XECI5>R]QXMH2
-w1354762719
-8Text_Storage.v
-FText_Storage.v
+Z37 Io^H9cl9=n5gY3IY2iR^c40
+Z38 V2YzmXo2m<XECI5>R]QXMH2
+Z39 w1354762719
+Z40 8Text_Storage.v
+Z41 FText_Storage.v
 L0 40
-R4
+R13
 r1
 31
-R5
-n@text_@storage
-!s100 iP:zJCLH^YfYi8Cl=22AK3
+R14
+Z42 n@text_@storage
+Z43 !s100 iP:zJCLH^YfYi8Cl=22AK3
 !s85 0
 vtimer
-IX0oUa?o3A40fiIFVl>;iO1
-VI^XfRR72J1HXW:8m@DjXe1
-w1351021426
-8../../../Lab4/Lab4_new/timer.v
-F../../../Lab4/Lab4_new/timer.v
+Z44 IX0oUa?o3A40fiIFVl>;iO1
+Z45 VI^XfRR72J1HXW:8m@DjXe1
+Z46 w1351021426
+Z47 8../../../Lab4/Lab4_new/timer.v
+Z48 F../../../Lab4/Lab4_new/timer.v
 L0 21
-R4
+R13
 r1
 31
-R5
-!s100 0XQoLRP=6CkB1iJAUHPhG3
+R14
+Z49 !s100 0XQoLRP=6CkB1iJAUHPhG3
 !s85 0
 vui_test
-IQeBVdj_^?Q2kKA<]caoez2
-Vf:jm7PfbF;R`A3?CQoc591
-w1355096885
-8ui_test.v
-Fui_test.v
+Z50 IRfnU<jbbiYZbQkn3^KS9]1
+Z51 Vf:jm7PfbF;R`A3?CQoc591
+Z52 w1355111147
+Z53 8ui_test.v
+Z54 Fui_test.v
 L0 25
-R4
+R13
 r1
 31
-R5
-!s100 eGaz2zL5b`z6P3G773e]A2
+R14
+Z55 !s100 jc>U;QlAHcTdMPTY?fMVa1
 !s85 0
 vUI_Text_Scroller_BRAM
-IOO0_8<7nTj2aoN^aDzSj32
-VaffJ_lLG7:noWf=YIKY7B1
-w1354836189
-8UI_Text_Scroller_BRAM.v
-FUI_Text_Scroller_BRAM.v
+Z56 IOO0_8<7nTj2aoN^aDzSj32
+Z57 VaffJ_lLG7:noWf=YIKY7B1
+Z58 w1354836189
+Z59 8UI_Text_Scroller_BRAM.v
+Z60 FUI_Text_Scroller_BRAM.v
 L0 40
-R4
+R13
 r1
 31
-R5
-n@u@i_@text_@scroller_@b@r@a@m
-!s100 W;Q4:0X>68PG_mLCziANZ2
-!s85 0
-vui_voicemail_test
-IcZH1FGY<iakU`cz@28kLF0
-VoV@34aL47>>Sl_2Q7ddIk3
-w1355096843
-8ui_voicemail_test.v
-Fui_voicemail_test.v
-L0 25
-R4
-r1
-31
-R5
-!s100 A6@^MJf?F;H:JFkGlh04:1
+R14
+Z61 n@u@i_@text_@scroller_@b@r@a@m
+Z62 !s100 W;Q4:0X>68PG_mLCziANZ2
 !s85 0
 vuser_interface
-IZF7WOR[Sh4hIRYmOOnJQ?3
-VK^c4Tz8AE@KA1fB[YWFkl3
-w1355101443
-8user_interface.v
-Fuser_interface.v
+Z63 ISI6>m`7KX]XI<HK24UF131
+Z64 Vf2@I:7;cS1XSg9Kd0[MDN3
+Z65 w1355112423
+Z66 8user_interface.v
+Z67 Fuser_interface.v
 L0 21
-R4
+R13
 r1
 31
-R5
-!s100 Va`mU6^>3RhnJ9EC?bC4m2
+R14
+Z68 !s100 [Km_RiPfLBH2LVkeb`lNI0
 !s85 0

@@ -1,0 +1,107 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/UI_Part2.ise
+-intstyle ise -v 3 -s 6 -xml labkit labkit.ncd -o labkit.twr labkit.pcf -ucf
+labkit.ucf
+
+Design file:              labkit.ncd
+Physical constraint file: labkit.pcf
+Device,package,speed:     xc2v6000,bf957,-6 (PRODUCTION 1.121 2008-07-25, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clock_27mhz
+------------+------------+------------+--------------------+--------+
+            |  Setup to  |  Hold to   |                    | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s)   | Phase  |
+------------+------------+------------+--------------------+--------+
+button0     |    1.734(R)|   -0.288(R)|analyzer1_clock_OBUF|   0.000|
+button1     |    1.495(R)|    0.289(R)|analyzer1_clock_OBUF|   0.000|
+button2     |    1.148(R)|   -0.148(R)|analyzer1_clock_OBUF|   0.000|
+button3     |    1.474(R)|   -0.027(R)|analyzer1_clock_OBUF|   0.000|
+button_down |    1.911(R)|   -0.223(R)|analyzer1_clock_OBUF|   0.000|
+button_enter|    1.380(R)|   -0.174(R)|analyzer1_clock_OBUF|   0.000|
+button_left |    1.768(R)|    0.162(R)|analyzer1_clock_OBUF|   0.000|
+button_right|    1.561(R)|    0.077(R)|analyzer1_clock_OBUF|   0.000|
+button_up   |    1.827(R)|   -0.329(R)|analyzer1_clock_OBUF|   0.000|
+------------+------------+------------+--------------------+--------+
+
+Clock clock_27mhz to Pad
+------------------+------------+--------------------+--------+
+                  | clk (edge) |                    | Clock  |
+Destination       |   to PAD   |Internal Clock(s)   | Phase  |
+------------------+------------+--------------------+--------+
+analyzer1_data<0> |   13.670(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<8> |   11.702(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<9> |   11.580(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<10>|   11.280(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<11>|   11.295(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<12>|   11.926(R)|analyzer1_clock_OBUF|   0.000|
+analyzer1_data<13>|   11.954(R)|analyzer1_clock_OBUF|   0.000|
+analyzer2_data<0> |   10.364(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<0> |   10.000(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<1> |   10.400(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<2> |   11.128(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<3> |   11.972(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<4> |   12.317(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<5> |   11.636(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<6> |   12.580(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<7> |   11.170(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<8> |   11.404(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<9> |   12.487(R)|analyzer1_clock_OBUF|   0.000|
+analyzer3_data<10>|   11.936(R)|analyzer1_clock_OBUF|   0.000|
+disp_clock        |    9.133(R)|analyzer1_clock_OBUF|   0.000|
+------------------+------------+--------------------+--------+
+
+Clock to Setup on destination clock clock_27mhz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clock_27mhz    |    7.230|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+clock_27mhz    |analyzer1_clock|    9.323|
+clock_27mhz    |analyzer2_clock|    9.816|
+clock_27mhz    |analyzer3_clock|    8.885|
+clock_27mhz    |analyzer4_clock|   17.412|
+---------------+---------------+---------+
+
+
+Analysis completed Sun Dec  9 23:32:33 2012 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 366 MB
+
+
+

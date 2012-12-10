@@ -190,10 +190,10 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    ////////////////////////////////////////////////////////////////////////////
    
    // Audio Input and Output
-//   assign beep= 1'b0;
-//   assign audio_reset_b = 1'b0;
-//   assign ac97_synch = 1'b0;
-//   assign ac97_sdata_out = 1'b0;
+   assign beep= 1'b0;
+   assign audio_reset_b = 1'b0;
+   assign ac97_synch = 1'b0;
+   assign ac97_sdata_out = 1'b0;
    // ac97_sdata_in is an input
 
    // VGA Output
@@ -270,12 +270,12 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // mouse_clock, mouse_data, keyboard_clock, and keyboard_data are inputs
 
    // LED Displays
-   assign disp_blank = 1'b1;
-   assign disp_clock = 1'b0;
-   assign disp_rs = 1'b0;
-   assign disp_ce_b = 1'b1;
-   assign disp_reset_b = 1'b0;
-   assign disp_data_out = 1'b0;
+//   assign disp_blank = 1'b1;
+//   assign disp_clock = 1'b0;
+//   assign disp_rs = 1'b0;
+//   assign disp_ce_b = 1'b1;
+//   assign disp_reset_b = 1'b0;
+//   assign disp_data_out = 1'b0;
    // disp_data_in is an input
 
    // Buttons, Switches, and Individual LEDs
@@ -301,14 +301,14 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // systemace_irq and systemace_mpbrdy are inputs
 
    // Logic Analyzer
-   assign analyzer1_data = 16'h0;
-   assign analyzer1_clock = 1'b1;
-   assign analyzer2_data = 16'h0;
-   assign analyzer2_clock = 1'b1;
-   assign analyzer3_data = 16'h0;
-   assign analyzer3_clock = 1'b1;
+//   assign analyzer1_data[15:9] = 0;
+//   assign analyzer1_clock = 1'b1;
+   assign analyzer2_data[15:1]= 15'h0;
+   assign analyzer2_clock = clock_27mhz;
+//   assign analyzer3_data = 16'h0;
+   assign analyzer3_clock = clock_27mhz;
    assign analyzer4_data = 16'h0;
-   assign analyzer4_clock = 1'b1;
+   assign analyzer4_clock = clock_27mhz;
 	
 	
 	///////////////////////////////////////////////////
@@ -324,7 +324,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	
 	//UI inputs
 	wire [2:0] inc_command;
-	wire init, ready, 
+	wire init, ready;
 	wire [7:0] inc_address;
 	wire [15:0] audio_in_data, dout;
 	wire [3:0] voicemail_status;
@@ -333,13 +333,17 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	//UI outputs
 	wire [127:0] string_data;
 	wire [3:0] voicemail_command;
-	wire [7:0] phn_num,address;
+	wire [7:0] phn_num,address,ascii_out_ready;
 	wire [15:0] din,audio_out_data;
 	wire [1:0] disp_control;
 	wire [2:0] current_state;
 	wire [15:0] current_menu_item;
 	wire [4:0] headphone_volume;
+	wire ascii_out, start;
+	wire [10:0] addr,length;
+	wire done;
 	
+
 	
 	//Debounce buttons
 	debounce db0(.reset(reset),.clock(clock_27mhz),.noisy(~button0),
@@ -359,7 +363,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	.clean(debleft));
 	debounce dright(.reset(reset),.clock(clock_27mhz),.noisy(~button_right),
 	.clean(debright));
-	debounce dright(.reset(reset),.clock(clock_27mhz),.noisy(~button_enter),
+	debounce denter(.reset(reset),.clock(clock_27mhz),.noisy(~button_enter),
 	.clean(debenter));
 	
 	//Contention Resolver
@@ -387,7 +391,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	//Instantiate User Interface module
 	user_interface ui(.clk(clock_27mhz),.s7(s7),.s6(s6),.s5(s5),.s4(s4), 
 	.s3(s3),.s2(s2),.s1(s1),.s0(s0),.b3(b3),.b2(b2), 
-	.b1(b1),b0(b0),.reset(reset),.enter(enter), 
+	.b1(b1),.b0(b0),.reset(reset),.enter(enter), 
 	.up(up),.down(down),.left(left),.right(right), 
 	.inc_command(inc_command),.init(init), 
 	.audio_in_data(audio_in_data),.ready(ready),
@@ -399,19 +403,30 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	.current_menu_item(current_menu_item),
 	.headphone_volume(headphone_volume),
 	.audio_out_data(audio_out_data),
-	.string_data(string_data));
+	.string_data(string_data),.ascii_out(ascii_out),
+	.ascii_out_ready(ascii_out_ready),.txt_addr(addr),
+	.txt_length(length),.txt_start(start),.done(done));
 	
 	
 	
 	
 	//display here
-	display_string ds (.reset(reset), .clock_27mhz(.clock_27mhz),
+	display_string ds(.reset(reset), .clock_27mhz(clock_27mhz),
 	.string_data(string_data),.disp_blank(disp_blank),
 	.disp_clock(disp_clock),.disp_rs(disp_rs),
 	.disp_ce_b(disp_ce_b),.disp_reset_b(disp_reset_b)
 	,.disp_data_out(disp_data_out));
 	
-	//display mux here
+	//Logic Analyzer
+	assign analyzer1_data[7:0] = ascii_out;
+	assign analyzer1_data[8]=ascii_out_ready;
+	assign analyzer1_clock=clock_27mhz;
+	assign analyzer1_data[9]=start;
+	assign analyzer1_data[15:10]=addr[10:5];
+	assign analyzer3_data[4:0]=addr[4:0];
+	assign analyzer3_data[15:5]=length;
+	assign analyzer2_data[0]=done;
+
 
 
 	//////////////////////////////////////////////////

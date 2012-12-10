@@ -2,7 +2,7 @@ CommandLine-Map
 
 s
 CommandLine-Ngdbuild
-
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI_Part2/UI_Part2.ise -intstyle ise -dd _ngo -sd /afs/athena.mit.edu/user/n/b/nbugg/FPGA_Telephony/UI/UI Interfaces/Voicemail Interface -aul -nt timestamp -i -p xc2v6000-bf957-6 labkit.ngc labkit.ngd
 s
 CommandLine-Par
 
@@ -11,7 +11,7 @@ CommandLine-Xst
 
 s
 Previous-NGD
-AC97_PCM_prev_built.ngd
+labkit_prev_built.ngd
 s
 Previous-NGM
 

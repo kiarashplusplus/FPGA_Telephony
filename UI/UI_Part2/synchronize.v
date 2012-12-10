@@ -1,6 +1,6 @@
 // pulse synchronizer
 module synchronize #(parameter NSYNC = 2)  // number of sync flops.  must be >= 2
-                   (input clk,in;
+                   (input clk,in,
                     output reg out);
 
   reg [NSYNC-2:0] sync;
