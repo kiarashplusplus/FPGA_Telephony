@@ -4,15 +4,15 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   01:26:46 12/10/2012
-// Design Name:   connectedSys
-// Module Name:   /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz//sys_tb.v
+// Create Date:   13:12:42 12/10/2012
+// Design Name:   complete
+// Module Name:   /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz//complete_tb.v
 // Project Name:  transport
 // Target Device:  
 // Tool versions:  
 // Description: 
 //
-// Verilog Test Fixture created by ISE for module: connectedSys
+// Verilog Test Fixture created by ISE for module: complete
 //
 // Dependencies:
 // 
@@ -29,15 +29,13 @@ module complete_tb;
 	reg reset;
 	reg [7:0] onephoneNum;
 	reg [4:0] oneuserInp;
-	reg [15:0] oneaudioIn;
 	reg [15:0] onepacketIn;
 	reg [1:0] onecmdIn;
 	reg sendData;
-	reg[4:0] twouserInp;
-	
+	reg [4:0] twouserInp;
+
 	// Outputs
 	wire [7:0] twophoneOut;
-	wire [15:0] twoaudioIn;
 	wire twotransportBusy;
 
 	// Instantiate the Unit Under Test (UUT)
@@ -46,41 +44,39 @@ module complete_tb;
 		.reset(reset), 
 		.onephoneNum(onephoneNum), 
 		.oneuserInp(oneuserInp), 
-		.oneaudioIn(oneaudioIn), 
 		.onepacketIn(onepacketIn), 
 		.onecmdIn(onecmdIn), 
-		.sendData(sendData),
-		.twophoneOut(twophoneOut), 
+		.sendData(sendData), 
 		.twouserInp(twouserInp), 
-		.twoaudioIn(twoaudioIn), 
+		.twophoneOut(twophoneOut), 
 		.twotransportBusy(twotransportBusy)
 	);
-	
-	always #5 clk= !clk;
-
+	always #5 clk=!clk;
+	always #20 onepacketIn=onepacketIn+2;
 	initial begin
 		// Initialize Inputs
 		clk = 0;
 		reset = 0;
-		onephoneNum = 8'h17;
+		onephoneNum = 8'h22;
 		oneuserInp = 0;
-		oneaudioIn = 0;
 		onepacketIn = 0;
 		onecmdIn = 0;
-		sendData=0;
-		
+		sendData = 1;
+		twouserInp = 0;
+
 		// Wait 100 ns for global reset to finish
 		#100;
         
 		// Add stimulus here
-		oneuserInp=5'h01;
+      oneuserInp=5'h01;
 		#100;
 		oneuserInp=0;
-		sendData=1;
+		//#300;
+		//oneuserInp=5'h5;
+		#100;
+		oneuserInp=0;
 		#500;
-		twouserInp=5'h02;
-		
-		
+
 		
 	end
       

@@ -19,52 +19,59 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module complete(
-	 input clk, input reset,	
+	 input clk,  input reset,	
 	input [7:0] onephoneNum,
 	input [4:0] oneuserInp,
-	input [15:0] oneaudioIn,
 	input [15:0] onepacketIn,
 	input [1:0] onecmdIn,
 	input sendData,
 	input [4:0] twouserInp,
 	
 	output [7:0] twophoneOut,
-	output [15:0] twoaudioIn,
 	output twotransportBusy
 	);
 	
 	
 	wire onetransportBusy;
 	
-	wire oneaudioInFlag;
-	wire oneaudioOutFlag;
-	wire [15:0] oneaudioOut;
+	wire onemicFlag;
 	wire [1:0] onecmd;
 	wire [15:0] onedataOut;
 	wire onesessionBusy;
 	wire [7:0] onephoneOut;
 	wire [3:0] onecurrent_state;
-	
+
+	wire [15:0] onespkBufferOut;
+	wire onemicBufferFull;
+	wire onemicBufferEmpty;
+	wire onespkBufferFull;
+	wire onespkBufferEmpty;
+	wire [15:0] onemicBufferOut;
 	
 	session one (
 		.clk(clk), 
 		.reset(reset), 
 		.phoneNum(onephoneNum), 
 		.userInp(oneuserInp), 
-		.audioIn(oneaudioIn), 
 		.cmdIn(onecmdIn), 
 		.packetIn(onepacketIn), 
 		.transportBusy(onetransportBusy), 
-		.audioInFlag(oneaudioInFlag), 
-		.audioOutFlag(oneaudioOutFlag), 
-		.audioOut(oneaudioOut), 
+		.micFlag(onemicFlag), 
 		.cmd(onecmd), 
 		.dataOut(onedataOut), 
 		.sessionBusy(onesessionBusy), 
 		.phoneOut(onephoneOut), 
-		.current_state(onecurrent_state)
+		.current_state(onecurrent_state), 
+		.ac97_clk(clk), 
+		.micBuffer_wr_en(1'b0), 
+		.micBufferIn(16'b0), 
+		.spkBuffer_rd_en(1'b0), 
+		.spkBufferOut(onemicBufferOut), 
+		.micBufferFull(onemicBufferFull), 
+		.micBufferEmpty(onemicBufferEmpty), 
+		.spkBufferFull(onespkBufferFull), 
+		.spkBufferEmpty(onespkBufferEmpty)
 	);
-
  
 	wire sending;
 	wire [7:0] sendPacketOut;
@@ -102,35 +109,45 @@ module complete(
 	);
 
 
-	wire twoaudioInFlag;
-	wire twoaudioOutFlag;
+	wire twomicFlag;
 	wire [15:0] twoaudioOut;
 	wire [1:0] twocmd;
 	wire [15:0] twodataOut;
 	wire [7:0] twophoneNum;
 	wire [3:0] twocurrent_state;
 
-
+	
+	wire [15:0] twospkBufferOut;
+	wire twomicBufferFull;
+	wire twomicBufferEmpty;
+	wire twospkBufferFull;
+	wire twospkBufferEmpty;
+	wire [15:0] twomicBufferOut;
+	
 	session two (
 		.clk(clk), 
 		.reset(reset), 
 		.phoneNum(twophoneNum), 
 		.userInp(twouserInp), 
-		.audioIn(twoaudioIn), 
 		.cmdIn(sendingToSession), 
 		.packetIn(sessionData), 
 		.transportBusy(twotransportBusy), 
-		.audioInFlag(twoaudioInFlag), 
-		.audioOutFlag(twoaudioOutFlag), 
-		.audioOut(twoaudioOut), 
+		.micFlag(twomicFlag), 
 		.cmd(twocmd), 
 		.dataOut(twodataOut), 
 		.sessionBusy(sessionBusy), 
 		.phoneOut(twophoneOut), 
-		.current_state(twocurrent_state)
+		.current_state(twocurrent_state), 
+		.ac97_clk(clk), 
+		.micBuffer_wr_en(1'b0), 
+		.micBufferIn(16'b0), 
+		.spkBuffer_rd_en(1'b0), 
+		.spkBufferOut(twomicBufferOut), 
+		.micBufferFull(twomicBufferFull), 
+		.micBufferEmpty(twomicBufferEmpty), 
+		.spkBufferFull(twospkBufferFull), 
+		.spkBufferEmpty(twospkBufferEmpty)
 	);	
-	
-	
 
 
 endmodule

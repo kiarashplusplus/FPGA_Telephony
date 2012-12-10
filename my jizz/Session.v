@@ -15,8 +15,8 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 	  output reg [1:0] cmd, output reg [15:0] dataOut, output reg sessionBusy, 
 	  output reg [7:0] phoneOut, output [3:0] current_state,
 	  
-	  input ac97_clk, input micBuffer_wr_en, input micBufferIn,
-	  input spkBuffer_rd_en, output spkBufferOut, output micBufferFull, output micBufferEmpty, 
+	  input ac97_clk, input micBuffer_wr_en, input [15:0] micBufferIn,
+	  input spkBuffer_rd_en, output [15:0] spkBufferOut, output micBufferFull, output micBufferEmpty, 
 	  output spkBufferFull, output spkBufferEmpty
 	  );
 	
@@ -39,7 +39,7 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 	wire [15:0] spkBufferIn;
 	assign spkBufferIn=packetIn;
 	
-	reg [15:0] micBufferOut;
+	wire [15:0] micBufferOut;
 	reg micBuffer_rd_en;
 
 	audioBuffer micBuffer (	.din(micBufferIn), .rd_clk(clk),.rd_en(micBuffer_rd_en), .rst(reset),
@@ -94,10 +94,10 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 					state<=s_connectedToVoice;
 				end else if ((cmdIn==2'b01) && (packetIn[7:0]==8'h5)) begin //rejected
 					state<=s_noAnswer;
-				end else if (userInp==5'h2) begin //user disconnect
+				end else if (userInp==5'h5) begin //user disconnect
 					cmd<=2'b01;      //sending a control packet
 					dataOut[15:8]<=phone;
-					dataOut[7:0]<=8'h2;  
+					dataOut[7:0]<=8'h5;  
 					state<=s_idle;						
 				end else state<=s_calling;
 				
@@ -181,10 +181,10 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 						cmd<=0;
 				end else if (cmdIn==2'b10) begin  //incoming audio
 						spkBuffer_wr_en<=1;
-						state<=s_voicmail;
+						state<=s_voicemail;
 				end else begin
 						spkBuffer_wr_en<=0;
-						state<=s_voicmail;
+						state<=s_voicemail;
 				end
 									
 			end
