@@ -324,6 +324,113 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	         .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
   defparam reset_sr.INIT = 16'hFFFF;
 
+	assign clk=clock_27mhz;
+ 
+
+	reg [7:0] onephoneNum;
+	reg [4:0] oneuserInp;
+	reg [15:0] oneaudioIn;
+	reg [1:0] onecmdIn;
+	reg [15:0] onepacketIn;
+	reg onetransportBusy;
+
+	wire oneaudioInFlag;
+	wire oneaudioOutFlag;
+	wire [15:0] oneaudioOut;
+	wire [1:0] onecmd;
+	wire [15:0] onedataOut;
+	wire onesessionBusy;
+	wire [7:0] onephoneOut;
+	wire [3:0] onecurrent_state;
+	
+	
+	session one (
+		.clk(clk), 
+		.reset(reset), 
+		.phoneNum(onephoneNum), 
+		.userInp(oneuserInp), 
+		.audioIn(oneaudioIn), 
+		.cmdIn(onecmdIn), 
+		.packetIn(onepacketIn), 
+		.transportBusy(onetransportBusy), 
+		.audioInFlag(oneaudioInFlag), 
+		.audioOutFlag(oneaudioOutFlag), 
+		.audioOut(oneaudioOut), 
+		.cmd(onecmd), 
+		.dataOut(onedataOut), 
+		.sessionBusy(onesessionBusy), 
+		.phoneOut(onephoneOut), 
+		.current_state(onecurrent_state)
+	);
+
+ 
+	wire sendData;
+
+	wire sending;
+	wire [7:0] sendPacketOut;
+	
+	transportSend sender (
+		.clk(clk), 
+		.reset(reset), 
+		.cmd(onecmd), 
+		.data(onedataOut), 
+		.sendData(sendData), 
+		.sending(sending), 
+		.packetOut(sendPacketOut), 
+		.busy(onetransportBusy)
+	);
+
+	wire sessionBusy;
+
+	wire [1:0] sendingToSession;
+	wire [15:0] data;
+	wire dafuq;
+
+	transportRcv receive (
+		.clk(clk), 
+		.reset(reset), 
+		.rcvSignal(sending), 
+		.packetIn(sendPacketOut), 
+		.sessionBusy(sessionBusy), 
+		.sendingToSession(sendingToSession), 
+		.data(data), 
+		.dafuq(dafuq)
+	);
+
+
+	reg [7:0] twophoneNum;
+	reg [4:0] twouserInp;
+	reg [15:0] twoaudioIn;
+	reg twotransportBusy;
+
+
+	wire twoaudioInFlag;
+	wire twoaudioOutFlag;
+	wire [15:0] twoaudioOut;
+	wire [1:0] twocmd;
+	wire [15:0] twodataOut;
+	wire [7:0] twophoneOut;
+	wire [3:0] twocurrent_state;
+
+
+	session two (
+		.clk(clk), 
+		.reset(reset), 
+		.phoneNum(twophoneNum), 
+		.userInp(twouserInp), 
+		.audioIn(twoaudioIn), 
+		.cmdIn(sendingToSession), 
+		.packetIn(packetIn), 
+		.transportBusy(twotransportBusy), 
+		.audioInFlag(twoaudioInFlag), 
+		.audioOutFlag(twoaudioOutFlag), 
+		.audioOut(twoaudioOut), 
+		.cmd(twocmd), 
+		.dataOut(twodataOut), 
+		.sessionBusy(sessionBusy), 
+		.phoneOut(twophoneOut), 
+		.current_state(twocurrent_state)
+	);
 
 
 endmodule

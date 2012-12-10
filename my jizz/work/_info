@@ -3,8 +3,10 @@ K3
 13
 cModel Technology
 Z0 d/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz
+vconnectedSys
+Z1 o-L mtiAvm -L mtiOvm -L mtiUPF
+nconnected@sys
 vtransportSend
-!s100 VR7?do<P7KB008DYZWz=m2
 Ik4fleJG^9Ne313@6Y6cI51
 VRXG>WU5h8`RmSj>eBYV0T1
 w1354996907
@@ -13,7 +15,8 @@ FtransportSend.v
 L0 2
 OE;L;6.4a;39
 r1
-!s85 0
 31
-o-L mtiAvm -L mtiOvm -L mtiUPF
+R1
 ntransport@send
+!s100 VR7?do<P7KB008DYZWz=m2
+!s85 0
