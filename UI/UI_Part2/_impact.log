@@ -1,6 +1,6 @@
 iMPACT Version: 10.1.03
 
-iMPACT log file Started on Mon Dec 10 16:40:40 2012
+iMPACT log file Started on Mon Dec 10 16:44:00 2012
 
 // *** BATCH CMD : setMode -bs
 // *** BATCH CMD : setMode -bs
@@ -8,25 +8,45 @@ GUI --- Auto connect to cable...
 // *** BATCH CMD : setCable -port auto
 AutoDetecting cable. Please wait.
 PROGRESS_START - Starting Operation.
+Reusing 78010001 key.
+Reusing FC010001 key.
 Connecting to cable (Parallel Port - parport0).
  Linux release = 3.2.0-34-generic.
 WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
 Cable connection failed.
+Reusing 79010001 key.
+Reusing FD010001 key.
 Connecting to cable (Parallel Port - parport1).
  Linux release = 3.2.0-34-generic.
 WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
 Cable connection failed.
+Reusing 7A010001 key.
+Reusing FE010001 key.
 Connecting to cable (Parallel Port - parport2).
  Linux release = 3.2.0-34-generic.
 WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
 Cable connection failed.
+Reusing 7B010001 key.
+Reusing FF010001 key.
 Connecting to cable (Parallel Port - parport3).
  Linux release = 3.2.0-34-generic.
 WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
 Cable connection failed.
+Reusing A0010001 key.
+Reusing 24010001 key.
  Using libusb.
 Connecting to cable (Usb Port - USB21).
 Checking cable driver.
 File version of/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/xusbdfwu.hex = 1030.
 File version of /usr/share/xusbdfwu.hex = 1030.
  Using libusb.
+Cable connection failed.
+Reusing A1010001 key.
+Reusing 25010001 key.
+ Using libusb.
+Connecting to cable (Usb Port - USB22).
+Checking cable driver.
+File version of/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/xusbdfwu.hex = 1030.
+File version of /usr/share/xusbdfwu.hex = 1030.
+ Using libusb.
+Cable connection failed.
