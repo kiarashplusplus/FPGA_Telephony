@@ -56,6 +56,7 @@
 # Top level modules:
 # 	glbl
 # vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps complete_tb glbl 
+# ** Note: (vsim-3812) Design is being optimized...
 # Loading work.complete_tb(fast)
 # Loading work.complete(fast)
 # Loading work.session(fast)
@@ -79,3 +80,26 @@
 # Warning in complete_tb.uut.one.spkBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
 # Warning in complete_tb.uut.two.micBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
 # Warning in complete_tb.uut.two.spkBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+do {/afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/complete.do}
+restart -f; run 1000ns
+# Loading work.complete_tb(fast)
+# Loading work.complete(fast)
+# Loading work.session(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'session' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /complete_tb/uut/one
+# Loading work.audioBuffer(fast)
+# Loading work.transportSend(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportSend' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /complete_tb/uut/sender
+# Loading work.packetBuffer(fast)
+# Loading xilinxcorelib_ver.FIFO_GENERATOR_V4_4(fast__1)
+# Loading work.readyPackets(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /complete_tb/uut/receive
+# Loading work.glbl(fast)
+# Warning in complete_tb.uut.one.micBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+# Warning in complete_tb.uut.one.spkBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+# Warning in complete_tb.uut.two.micBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+# Warning in complete_tb.uut.two.spkBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+run 1000ns

@@ -176,12 +176,15 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 			end
 			
 			s_voicemail: begin
-				sessionBusy<=0;			
+				sessionBusy<=0;		
+					
 				if (userInp==5'h5) begin  //user disconnects the call
+				
 					cmd<=2'b01;
 					dataOut[7:0]<=8'h5;
-					dataOut[15:0]<=phone;
+					dataOut[15:8]<=phone;
 					state<=s_idle;
+					
 				end else if ((cmdIn==2'b01) && (packetIn[7:0]==8'h5)) begin //they hung up
 						state<=s_idle;
 						cmd<=0;
@@ -201,7 +204,7 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 					micBuffer_wr_en<=0;
 					cmd<=2'b01;
 					dataOut[7:0]<=8'h5;
-					dataOut[15:0]<=phone;
+					dataOut[15:8]<=phone;
 					state<=s_idle;
 				end else if ((cmdIn==2'b01) && (packetIn[7:0]==8'h5)) begin //they hung up
 					micBuffer_wr_en<=0;

@@ -55,7 +55,8 @@ module complete(
 	wire [15:0] onemicBufferOut;
 	
 	wire [15:0] onepacketInp;
-	
+
+	  
 	session one (
 		.clk(clk), 
 		.reset(reset), 
@@ -64,16 +65,13 @@ module complete(
 		.cmdIn(onecmdIn), 
 		.packetIn(onepacketInp), 
 		.transportBusy(onetransportBusy), 
-		.micFlag(onemicFlag), 
 		.cmd(onecmd), 
 		.dataOut(onedataOut), 
 		.sessionBusy(onesessionBusy), 
 		.phoneOut(onephoneOut), 
 		.current_state(onecurrent_state), 
 		.ac97_clk(clk), 
-		.micBuffer_wr_en(1'b0), 
 		.micBufferIn(16'b0), 
-		.spkBuffer_rd_en(1'b0), 
 		.spkBufferOut(onemicBufferOut), 
 		.micBufferFull(onemicBufferFull), 
 		.micBufferEmpty(onemicBufferEmpty), 
@@ -139,16 +137,13 @@ module complete(
 		.cmdIn(sendingToSession), 
 		.packetIn(sessionData), 
 		.transportBusy(twotransportBusy), 
-		.micFlag(twomicFlag), 
 		.cmd(twocmd), 
 		.dataOut(twodataOut), 
 		.sessionBusy(sessionBusy), 
 		.phoneOut(twophoneOut), 
 		.current_state(twocurrent_state), 
 		.ac97_clk(clk), 
-		.micBuffer_wr_en(1'b0), 
 		.micBufferIn(16'b0), 
-		.spkBuffer_rd_en(1'b0), 
 		.spkBufferOut(twomicBufferOut), 
 		.micBufferFull(twomicBufferFull), 
 		.micBufferEmpty(twomicBufferEmpty), 

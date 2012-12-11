@@ -2,7 +2,7 @@ CommandLine-Map
 
 s
 CommandLine-Ngdbuild
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/transport.ise -intstyle ise -dd _ngo -sd /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz -aul -nt timestamp -i -p xc2v6000-bf957-4 labkit.ngc labkit.ngd
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz/transport/transport.ise -intstyle ise -dd _ngo -sd /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz -sd /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz -aul -nt timestamp -i -p xc2v6000-bf957-4 labkit.ngc labkit.ngd
 s
 CommandLine-Par
 

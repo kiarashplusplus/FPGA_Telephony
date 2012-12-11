@@ -81,6 +81,26 @@ audioBuffer YourInstanceName (
 
  
 		</Template>
+		<Template label="dummyBuffer" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+dummyBuffer YourInstanceName (
+    .clk(clk),
+    .din(din), // Bus [7 : 0] 
+    .rd_en(rd_en),
+    .srst(srst),
+    .wr_en(wr_en),
+    .data_count(data_count), // Bus [10 : 0] 
+    .dout(dout), // Bus [7 : 0] 
+    .empty(empty),
+    .full(full));
+
+ 
+		</Template>
 	</Folder>
 	<Folder label="VHDL Component Instantiation" treetype="folder">
 		<Template label="readyPackets" treetype="template">
@@ -230,6 +250,44 @@ your_instance_name : audioBuffer
             rst =&gt; rst,
             wr_clk =&gt; wr_clk,
             wr_en =&gt; wr_en,
+            dout =&gt; dout,
+            empty =&gt; empty,
+            full =&gt; full);
+ 
+		</Template>
+		<Template label="dummyBuffer" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component dummyBuffer
+    port (
+    clk: IN std_logic;
+    din: IN std_logic_VECTOR(7 downto 0);
+    rd_en: IN std_logic;
+    srst: IN std_logic;
+    wr_en: IN std_logic;
+    data_count: OUT std_logic_VECTOR(10 downto 0);
+    dout: OUT std_logic_VECTOR(7 downto 0);
+    empty: OUT std_logic;
+    full: OUT std_logic);
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : dummyBuffer
+        port map (
+            clk =&gt; clk,
+            din =&gt; din,
+            rd_en =&gt; rd_en,
+            srst =&gt; srst,
+            wr_en =&gt; wr_en,
+            data_count =&gt; data_count,
             dout =&gt; dout,
             empty =&gt; empty,
             full =&gt; full);
