@@ -36,16 +36,13 @@ module tranToNet #(parameter packetSize=16)
             end
             
             s_receive: begin
-					  sendDate<=1;
-					  dummyBufferIn<=data;
-					  if (sending) 
-							dummyBufferIn<=data;							
+					  sendData<=1;
+					  if (sending) begin
 							state<=s_phone;
-					  else state<=s_receive;			
+					  end else state<=s_receive;			
             end
             
             s_phone: begin
-                dummyBufferIn<=data;
                 phone<=data;
                 state<=s_continue;                
             end
@@ -55,7 +52,6 @@ module tranToNet #(parameter packetSize=16)
                     sendData<=0;
                     state<=s_idle;
                 end else begin
-                    dummyBufferIn<=data;
 						  if (!sending) 
 								state<=s_idle;
                 end				

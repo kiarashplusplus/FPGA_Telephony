@@ -1,0 +1,33 @@
+PROP_DevDevice
+xa2c*
+s
+PROP_DevFamily
+Automotive CoolRunner2
+s
+PROP_DevPackage
+*
+s
+PROP_DevSpeed
+-*
+s
+PROP_Enable_Incremental_Messaging
+false
+s
+PROP_Enable_Message_Capture
+true
+s
+PROP_Enable_Message_Filtering
+false
+s
+PROP_PreferredLanguage
+Verilog
+s
+PROP_Simulator
+Modelsim-SE Mixed
+s
+PROP_Synthesis_Tool
+XST (VHDL/Verilog)
+s
+PROP_Top_Level_Module_Type
+HDL
+s
