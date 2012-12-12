@@ -94,7 +94,27 @@ dummyBuffer YourInstanceName (
     .rd_en(rd_en),
     .srst(srst),
     .wr_en(wr_en),
-    .data_count(data_count), // Bus [10 : 0] 
+    .data_count(data_count), // Bus [9 : 0] 
+    .dout(dout), // Bus [7 : 0] 
+    .empty(empty),
+    .full(full));
+
+ 
+		</Template>
+		<Template label="transferFIFO" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+transferFIFO YourInstanceName (
+    .clk(clk),
+    .din(din), // Bus [7 : 0] 
+    .rd_en(rd_en),
+    .srst(srst),
+    .wr_en(wr_en),
+    .data_count(data_count), // Bus [9 : 0] 
     .dout(dout), // Bus [7 : 0] 
     .empty(empty),
     .full(full));
@@ -267,7 +287,7 @@ component dummyBuffer
     rd_en: IN std_logic;
     srst: IN std_logic;
     wr_en: IN std_logic;
-    data_count: OUT std_logic_VECTOR(10 downto 0);
+    data_count: OUT std_logic_VECTOR(9 downto 0);
     dout: OUT std_logic_VECTOR(7 downto 0);
     empty: OUT std_logic;
     full: OUT std_logic);
@@ -281,6 +301,44 @@ end component;
 -- Substitute your own instance name and net names.
  
 your_instance_name : dummyBuffer
+        port map (
+            clk =&gt; clk,
+            din =&gt; din,
+            rd_en =&gt; rd_en,
+            srst =&gt; srst,
+            wr_en =&gt; wr_en,
+            data_count =&gt; data_count,
+            dout =&gt; dout,
+            empty =&gt; empty,
+            full =&gt; full);
+ 
+		</Template>
+		<Template label="transferFIFO" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component transferFIFO
+    port (
+    clk: IN std_logic;
+    din: IN std_logic_VECTOR(7 downto 0);
+    rd_en: IN std_logic;
+    srst: IN std_logic;
+    wr_en: IN std_logic;
+    data_count: OUT std_logic_VECTOR(9 downto 0);
+    dout: OUT std_logic_VECTOR(7 downto 0);
+    empty: OUT std_logic;
+    full: OUT std_logic);
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : transferFIFO
         port map (
             clk =&gt; clk,
             din =&gt; din,

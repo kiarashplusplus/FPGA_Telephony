@@ -36,6 +36,6 @@ PINATTR PinName empty
 PINATTR Polarity OUT
 LINE Wide 576 624 544 624
 PIN 576 624 RIGHT 36
-PINATTR PinName data_count[10:0]
+PINATTR PinName data_count[9:0]
 PINATTR Polarity OUT
 

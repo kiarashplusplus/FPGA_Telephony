@@ -37,7 +37,7 @@ dummyBuffer YourInstanceName (
 	.rd_en(rd_en),
 	.srst(srst),
 	.wr_en(wr_en),
-	.data_count(data_count), // Bus [10 : 0] 
+	.data_count(data_count), // Bus [9 : 0] 
 	.dout(dout), // Bus [7 : 0] 
 	.empty(empty),
 	.full(full));

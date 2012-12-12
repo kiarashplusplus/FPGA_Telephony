@@ -21,20 +21,10 @@
 # Top level modules:
 # 	packetBuffer
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module dummyBuffer
-# 
-# Top level modules:
-# 	dummyBuffer
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
 # -- Compiling module audioBuffer
 # 
 # Top level modules:
 # 	audioBuffer
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module tranToNet
-# 
-# Top level modules:
-# 	tranToNet
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
 # -- Compiling module transportSend
 # 
@@ -67,72 +57,26 @@
 # 	glbl
 # vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps complete_tb glbl 
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error: /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/mti_se/XilinxCoreLib_ver/XilinxCoreLib_ver_source.v(96286): LSB of part-select into 'num_read_words' is out of bounds.
-# Error loading design
-# Error: Error loading design 
-#        Pausing macro execution 
-# MACRO ./complete_tb.fdo PAUSED at line 16
-do {complete_tb.fdo}
-# ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module readyPackets
-# 
-# Top level modules:
-# 	readyPackets
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module packetBuffer
-# 
-# Top level modules:
-# 	packetBuffer
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module dummyBuffer
-# 
-# Top level modules:
-# 	dummyBuffer
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module audioBuffer
-# 
-# Top level modules:
-# 	audioBuffer
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module tranToNet
-# 
-# Top level modules:
-# 	tranToNet
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module transportSend
-# 
-# Top level modules:
-# 	transportSend
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module transportRcv
-# 
-# Top level modules:
-# 	transportRcv
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module session
-# 
-# Top level modules:
-# 	session
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module complete
-# 
-# Top level modules:
-# 	complete
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module complete_tb
-# 
-# Top level modules:
-# 	complete_tb
-# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module glbl
-# 
-# Top level modules:
-# 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps complete_tb glbl 
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error: /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/mti_se/XilinxCoreLib_ver/XilinxCoreLib_ver_source.v(96286): LSB of part-select into 'num_read_words' is out of bounds.
-# Error loading design
-# Error: Error loading design 
-#        Pausing macro execution 
-# MACRO ./complete_tb.fdo PAUSED at line 16
+# Loading work.complete_tb(fast)
+# Loading work.complete(fast)
+# Loading work.session(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'session' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /complete_tb/uut/one
+# Loading work.audioBuffer(fast)
+# Loading work.transportSend(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportSend' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /complete_tb/uut/sender
+# Loading work.packetBuffer(fast)
+# Loading xilinxcorelib_ver.FIFO_GENERATOR_V4_4(fast__1)
+# Loading work.readyPackets(fast)
+# Loading work.transportRcv(fast)
+# ** Warning: (vsim-3009) [TSCALE] - Module 'transportRcv' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /complete_tb/uut/receive
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# Warning in complete_tb.uut.one.micBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+# Warning in complete_tb.uut.one.spkBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+# Warning in complete_tb.uut.two.micBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.
+# Warning in complete_tb.uut.two.spkBuffer.inst at time                    0: When using an asynchronous configuration for the FIFO Generator, the behavioral model is not cycle-accurate. You may wish to choose the structural simulation model instead of the behavioral model. This will ensure accurate behavior and latencies during simulation. You can enable this from CORE Generator by selecting Project -> Project Options -> Generation tab -> Structural Simulation. See the FIFO Generator User Guide for more information.

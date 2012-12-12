@@ -36,7 +36,7 @@ component dummyBuffer
 	rd_en: IN std_logic;
 	srst: IN std_logic;
 	wr_en: IN std_logic;
-	data_count: OUT std_logic_VECTOR(10 downto 0);
+	data_count: OUT std_logic_VECTOR(9 downto 0);
 	dout: OUT std_logic_VECTOR(7 downto 0);
 	empty: OUT std_logic;
 	full: OUT std_logic);

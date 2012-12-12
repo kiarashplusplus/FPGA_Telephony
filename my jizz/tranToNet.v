@@ -1,10 +1,10 @@
 module tranToNet #(parameter packetSize=16)
     (input clk, input reset, input [7:0] data, input sending, input dummyBufferRd,
 	 output reg sendData, output [7:0] packetOut, 
-	 output [7:0] phoneNum, output [10:0] dummyBufferCount, output dummyBufferEmpty);
-
+	 output [7:0] phoneNum, output [9:0] dummyBufferCount, output dummyBufferEmpty, output [2:0] debug);
 
     reg [2:0] state=0;
+	assign debug=state;
 
     reg [7:0] phone=0;
 
@@ -17,8 +17,8 @@ module tranToNet #(parameter packetSize=16)
 	 
 	 wire dummyBufferFull;
 
-	 dummyBuffer dummyBuffer( .clk(clk),	.din(data), .rd_en(dummyBufferRd), 
-	   .srst(reset), .wr_en(sending),.data_count(dummyBufferCount),
+	 transferFIFO dummyBuffer( .clk(clk),	.din(data), .rd_en(dummyBufferRd), 
+	   .srst(reset), .wr_en(sending), .data_count(dummyBufferCount),
 		.dout(packetOut),.empty(dummyBufferEmpty),.full(dummyBufferFull));
 
     always @(posedge clk) begin

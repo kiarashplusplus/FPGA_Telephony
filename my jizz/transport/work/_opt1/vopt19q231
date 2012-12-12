@@ -1,0 +1,18 @@
+library verilog;
+use verilog.vl_types.all;
+entity combinedTransport is
+    generic(
+        packetSize      : integer := 16
+    );
+    port(
+        clk             : in     vl_logic;
+        reset           : in     vl_logic;
+        cmd             : in     vl_logic_vector(1 downto 0);
+        data            : in     vl_logic_vector(15 downto 0);
+        packetOut       : out    vl_logic_vector(7 downto 0);
+        dummyBufferRd   : in     vl_logic;
+        phoneNum        : out    vl_logic_vector(7 downto 0);
+        dummyBufferCount: out    vl_logic_vector(9 downto 0);
+        dummyBufferEmpty: out    vl_logic
+    );
+end combinedTransport;

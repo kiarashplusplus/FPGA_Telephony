@@ -47,7 +47,7 @@ ENTITY dummyBuffer IS
 	rd_en: IN std_logic;
 	srst: IN std_logic;
 	wr_en: IN std_logic;
-	data_count: OUT std_logic_VECTOR(10 downto 0);
+	data_count: OUT std_logic_VECTOR(9 downto 0);
 	dout: OUT std_logic_VECTOR(7 downto 0);
 	empty: OUT std_logic;
 	full: OUT std_logic);
@@ -62,7 +62,7 @@ component wrapped_dummyBuffer
 	rd_en: IN std_logic;
 	srst: IN std_logic;
 	wr_en: IN std_logic;
-	data_count: OUT std_logic_VECTOR(10 downto 0);
+	data_count: OUT std_logic_VECTOR(9 downto 0);
 	dout: OUT std_logic_VECTOR(7 downto 0);
 	empty: OUT std_logic;
 	full: OUT std_logic);
@@ -84,11 +84,11 @@ end component;
 			c_use_embedded_reg => 0,
 			c_has_wr_rst => 0,
 			c_wr_freq => 1,
-			c_use_dout_rst => 0,
+			c_use_dout_rst => 1,
 			c_underflow_low => 0,
 			c_has_meminit_file => 0,
 			c_has_overflow => 0,
-			c_preload_latency => 0,
+			c_preload_latency => 1,
 			c_dout_width => 8,
 			c_msgon_val => 1,
 			c_rd_depth => 1024,
@@ -98,31 +98,31 @@ end component;
 			c_has_rd_rst => 0,
 			c_has_almost_full => 0,
 			c_has_rst => 0,
-			c_data_count_width => 11,
+			c_data_count_width => 10,
 			c_has_wr_ack => 0,
 			c_use_ecc => 0,
 			c_wr_ack_low => 0,
 			c_common_clock => 1,
 			c_rd_pntr_width => 10,
-			c_use_fwft_data_count => 1,
+			c_use_fwft_data_count => 0,
 			c_has_almost_empty => 0,
-			c_rd_data_count_width => 11,
+			c_rd_data_count_width => 10,
 			c_enable_rlocs => 0,
 			c_wr_pntr_width => 10,
 			c_overflow_low => 0,
 			c_prog_empty_type => 0,
 			c_optimization_mode => 0,
-			c_wr_data_count_width => 11,
-			c_preload_regs => 1,
+			c_wr_data_count_width => 10,
+			c_preload_regs => 0,
 			c_dout_rst_val => "0",
 			c_has_data_count => 1,
-			c_prog_full_thresh_negate_val => 1022,
+			c_prog_full_thresh_negate_val => 1021,
 			c_wr_depth => 1024,
-			c_prog_empty_thresh_negate_val => 5,
-			c_prog_empty_thresh_assert_val => 4,
+			c_prog_empty_thresh_negate_val => 3,
+			c_prog_empty_thresh_assert_val => 2,
 			c_has_valid => 0,
 			c_init_wr_pntr_val => 0,
-			c_prog_full_thresh_assert_val => 1023,
+			c_prog_full_thresh_assert_val => 1022,
 			c_use_fifo16_flags => 0,
 			c_has_backup => 0,
 			c_valid_low => 0,

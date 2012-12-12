@@ -1,5 +1,5 @@
 NUM_USER_FILES
-16
+18
 s
 user_file_1
 ../transportSend.v
@@ -23,7 +23,13 @@ user_file_15
 ../tranToNet.v
 s
 user_file_16
-../dummyBuffer.xco
+../combinedTransport.v
+s
+user_file_17
+../combinedTransport_tb.v
+s
+user_file_18
+../transferFIFO.xco
 s
 user_file_2
 readyPackets.xco

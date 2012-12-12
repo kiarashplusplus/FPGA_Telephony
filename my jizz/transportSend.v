@@ -150,7 +150,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 				sending<=1;
 				packetSizeCounter2<=packetSizeCounter2-1;
 			end
-		end else if (sendData && (!readyEmpty) ) begin
+		end else if (sendData && (ready_data_count>=packetSize) ) begin
 			ready_rd_en<=1;
 			packetSizeCounter2<=packetSize;
 			goingToSend<=1;	

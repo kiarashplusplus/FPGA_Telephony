@@ -1,0 +1,12 @@
+# Output products list for <transferFIFO>
+transferFIFO.asy
+transferFIFO.ngc
+transferFIFO.sym
+transferFIFO.v
+transferFIFO.veo
+transferFIFO.vhd
+transferFIFO.vho
+transferFIFO.xco
+transferFIFO_fifo_generator_v4_4_xst_1.ngc_xst.xrpt
+transferFIFO_flist.txt
+transferFIFO_xmdf.tcl

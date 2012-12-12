@@ -1,4 +1,5 @@
-// set rcvSignal to high to send data from network to here.
+// set rcvSignal to high and send data from network to here.
+
 
 module transportRcv #(parameter packetSize=16)  //in bytes
 	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, 
@@ -8,16 +9,17 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 	
 	
 	//initializing recieved packets' fifo
+	
 	wire [7:0] rcvIn;
 	reg rcv_rd_en=0;
 	wire rcv_wr_en	;
-	//wire [10:0] rcv_data_count;
 	wire [7:0] rcvOut;
 	wire rcvEmpty;
 	wire rcvFull;
 	readyPackets rcvPackets (.clk(clk), .din(rcvIn), .rd_en(rcv_rd_en), .srst(reset), .wr_en(rcv_wr_en),
 		.data_count(rcv_data_count), .dout(rcvOut), .empty(rcvEmpty), .full(rcvFull));
-		
+
+	//This module buffers data as they are available. 
 	assign rcv_wr_en=rcvSignal;
 	assign rcvIn=packetIn;
 
@@ -34,22 +36,21 @@ module transportRcv #(parameter packetSize=16)  //in bytes
     parameter s_sending=2;
     parameter s_control=3;
     parameter s_controlTwo=4;	
-	parameter s_zeros=5;   
+	 parameter s_zeros=5;   
     parameter s_countDown=6;
     parameter s_audio=7;
     parameter s_audioTwo=8;	
 	 parameter s_audioThree=9;
+	 
+	 
+	 reg [4:0] state=s_idle;
 	
-	reg [4:0] state=s_idle;
-	//reg [4:0]  state=s_idle;
 	
-	
-	//debug
+	//for debugging purposes
 	assign dafuq=rcvOut;
 	
 	
 	initial begin
-		
 		sendingToSession=0;
 		rcvState=0;
 	end
@@ -61,7 +62,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
  				
 			end else case (state)
 		
-				s_idle:  begin
+				s_idle:  begin   //Idle mode  
 					if ((rcv_data_count>=packetSize) && (sessionBusy==0) ) begin
 						rcv_rd_en<=1;
 						state<=s_sending;
@@ -71,11 +72,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 					end
 				end
 				
-				/*s_before_sending: begin
-					state<=s_sending;
-				end*/
-				
-				s_sending: begin
+				s_sending: begin   //checking whether the recieved packet has a "control message" or audio data.
 					if (rcvOut==8'b0100_0000) begin
 						
 						state<=s_control;
@@ -84,8 +81,10 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 						state<=s_audio;
 						packetSizeCounter<=packetSize-2;
 					end
-					//end else dafuq<=1;
+					
 				end
+				
+				//we need two clock cycles two receive 16 bits of data
 				
 				s_control: begin
 					data[15:8]<=rcvOut;
@@ -99,9 +98,10 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 				
 				end
 				
+				//After the 3rd byte of "control" packets are just zeros; just discarding.
 				s_zeros: begin
 					sendingToSession<=0;
-					counter<=packetSize-4; ///?????????
+					counter<=packetSize-4;
 					state<=s_countDown;
 				end
 				
@@ -117,6 +117,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 				end
 				
 
+				// every two continous bytes go together. 
 				s_audio: begin
 					sendingToSession<=0;
 					if (packetSizeCounter==2) begin
@@ -141,6 +142,8 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 					state<=s_idle;				
 				end
 			endcase
+			
+			
     end
 	
 	

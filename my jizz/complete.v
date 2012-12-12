@@ -83,35 +83,17 @@ module complete(
 	wire [7:0] sendPacketOut;
 	wire [10:0] senderCounter;
 	
-	wire  dummyBufferEmpty;
-	
 	transportSend sender (
 		.clk(clk), 
 		.reset(reset), 
 		.cmd(onecmd), 
 		.data(onedataOut), 
-		.sendData(!dummyBufferEmpty), 
+		.sendData(1'b1), 
 		.sending(sending), 
 		.packetOut(sendPacketOut), 
 		.busy(onetransportBusy),
 		.ready_data_count(senderCounter)
 	);
-
-	wire [7:0] onePacketOut;
-	
-	reg dummyBufferRd=0;
-	wire [10:0] dummyBufferCount;
-	
-	tranToNet oneTran
-    (.clk(clk), .reset(reset), .data(sendPacketOut), .sending(sending), .dummyBufferRd(dummyBufferRd),
-	  .packetOut(onePacketOut), 	  .dummyBufferCount(dummyBufferCount), .dummyBufferEmpty(dummyBufferEmpty));
-
-	always @(posedge clk) begin
-		if (dummyBufferCount==16) begin
-			dummyBufferRd<=1;
-		end 
-		if (dummyBufferEmpty) dummyBufferRd<=0;
-	end
 
 	wire sessionBusy;
 
@@ -123,8 +105,8 @@ module complete(
 	transportRcv receive (
 		.clk(clk), 
 		.reset(reset), 
-		.rcvSignal(dummyBufferRd), 
-		.packetIn(onePacketOut), 
+		.rcvSignal(sending), 
+		.packetIn(sendPacketOut), 
 		.sessionBusy(sessionBusy), 
 		.sendingToSession(sendingToSession), 
 		.data(sessionData), 
