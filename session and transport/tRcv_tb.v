@@ -1,26 +1,8 @@
-`timescale 1ns / 1ps
+////////////////////////////////////////////////////////////////////////////////
+// Engineer: Kiarash Adl
+// Module Name:  TransportReceive Test Bench
+////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:
-//
-// Create Date:   21:41:36 12/08/2012
-// Design Name:   transportRcv
-// Module Name:   /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz//tRcv_tb.v
-// Project Name:  transport
-// Target Device:  
-// Tool versions:  
-// Description: 
-//
-// Verilog Test Fixture created by ISE for module: transportRcv
-//
-// Dependencies:
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-////////////////////////////////////////////////////////////////////////////////
 
 module tRcv_tb;
 

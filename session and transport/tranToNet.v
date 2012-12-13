@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////
+// Engineer: Kiarash Adl
+// Module Name:  TranToNet Module -- a helper module to connect TransportSend to Network.
+////////////////////////////////////////////////////////////////////////////////
+
 module tranToNet #(parameter packetSize=16)
     (input clk, input reset, input [7:0] data, input sending, input dummyBufferRd,
 	 output reg sendData, output [7:0] packetOut, 
@@ -59,10 +64,5 @@ module tranToNet #(parameter packetSize=16)
         
         endcase
 
-
     end
-
-
-
-
 endmodule

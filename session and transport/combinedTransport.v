@@ -1,23 +1,8 @@
-//`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    17:21:17 12/11/2012 
-// Design Name: 
-// Module Name:    combinedTransport 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
+// Engineer: Kiarash Adl
+// Module: combinedTransport
 //////////////////////////////////////////////////////////////////////////////////
+
 module combinedTransport #(parameter packetSize=16) //in bytes
 	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
 	  output [7:0] packetOut, input dummyBufferRd,output busy,

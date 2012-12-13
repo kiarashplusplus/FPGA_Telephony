@@ -1,25 +1,6 @@
-`timescale 1ns / 1ps
-
 ////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:
-//
-// Create Date:   12:24:28 12/10/2012
-// Design Name:   session
-// Module Name:   /afs/athena.mit.edu/user/k/i/kiarash/Documents/6.111/FPGA_Telephony/my jizz//session_tb.v
-// Project Name:  transport
-// Target Device:  
-// Tool versions:  
-// Description: 
-//
-// Verilog Test Fixture created by ISE for module: session
-//
-// Dependencies:
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
+// Engineer: Kiarash Adl
+// Module Name:  Session Module Test Bench
 ////////////////////////////////////////////////////////////////////////////////
 
 module session_tb;

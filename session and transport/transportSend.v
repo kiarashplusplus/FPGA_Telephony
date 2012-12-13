@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////////////////
+// Engineer: Kiarash Adl
+// Module Name:  TransportSend Module
+////////////////////////////////////////////////////////////////////////////////
 
 module transportSend #(parameter packetSize=16) //in bytes
 	(input clk, input reset, input [1:0] cmd, input [15:0] data, 
@@ -61,7 +65,7 @@ module transportSend #(parameter packetSize=16) //in bytes
 			buffer_rd_en<=0;
 			ready_wr_en<=0;
 			ready_wr_en<=0;
-		end else if(cmd==2'b01 && cdFlag==0) begin  //recieving contol data    //assuming the control data is 16 bits
+		end else if(cmd==2'b01 && cdFlag==0) begin  //recieving contol data 
 			busy<=1;
 			cdFlag<=1;
 			buffer<=data[15:0];

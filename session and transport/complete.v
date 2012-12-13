@@ -1,30 +1,19 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    01:12:05 12/10/2012 
-// Design Name: 
-// Module Name:    connectedSys 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
-module complete(
-	 input clk,  input reset,	
+////////////////////////////////////////////////////////////////////////////////
+// Engineer: Kiarash Adl
+// Module Name:  CompleteTest Module
+////////////////////////////////////////////////////////////////////////////////
+
+module complete(    
+	input clk,  input reset,	
 	input [3:0] oneInp,
 	input [3:0] twoInp,
 	output [3:0] onecurrent_state,
 	output [3:0] twocurrent_state
 	);
+
+//session "one" is connected to transport "sender" and the result is connected to transportRcv "recieve" 
+// then there sesult is connected to session "two" ... session "two" is then outputs data to transport "s2" and the packets will 
+// be recieved by transportRcv "r2" which outputs the result to session "one". 
 	
 	wire [4:0] oneuserInp;
 	assign oneuserInp={1'b0,oneInp};

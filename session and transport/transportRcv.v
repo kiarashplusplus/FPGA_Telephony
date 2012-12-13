@@ -1,5 +1,9 @@
-// set rcvSignal to high and send data from network to here.
+////////////////////////////////////////////////////////////////////////////////
+// Engineer: Kiarash Adl
+// Module Name:  TransportReceive Module
+////////////////////////////////////////////////////////////////////////////////
 
+// set rcvSignal to high and send data from network to here.
 
 module transportRcv #(parameter packetSize=16)  //in bytes
 	(input clk, input reset, input rcvSignal, input [7:0] packetIn, input sessionBusy, 
@@ -8,8 +12,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 		
 	
 	
-	//initializing recieved packets' fifo
-	
+	//initializing recieved packets' FIFO
 	wire [7:0] rcvIn;
 	reg rcv_rd_en=0;
 	wire rcv_wr_en	;
@@ -31,19 +34,19 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 
 
 	parameter s_idle=0;   
-	    parameter s_before_sending=1;
+	parameter s_before_sending=1;
 
     parameter s_sending=2;
     parameter s_control=3;
     parameter s_controlTwo=4;	
-	 parameter s_zeros=5;   
+	parameter s_zeros=5;   
     parameter s_countDown=6;
     parameter s_audio=7;
     parameter s_audioTwo=8;	
-	 parameter s_audioThree=9;
+	parameter s_audioThree=9;
 	 
 	 
-	 reg [4:0] state=s_idle;
+	reg [4:0] state=s_idle;
 	
 	
 	//for debugging purposes
@@ -68,7 +71,7 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 						state<=s_sending;
 					end else begin 
 						rcv_rd_en<=0;
-							state<=s_idle;
+						state<=s_idle;
 					end
 				end
 				
@@ -145,7 +148,5 @@ module transportRcv #(parameter packetSize=16)  //in bytes
 			
 			
     end
-	
-	
 	
 endmodule

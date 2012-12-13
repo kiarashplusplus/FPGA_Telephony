@@ -1,12 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// Engineer: Kiarash Adl
+// Module Name:  Session Module
+////////////////////////////////////////////////////////////////////////////////
+
 /*
-
- user input: 
-
+ possible user input:
  call phone number  5'h1
  answer call  5'h2
  disconnect phone number 5'h5
  voicmail  5'h3
-
 */
 
 module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userInp, 
@@ -24,9 +26,9 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 	
 	reg [3:0] state=0;
 	
-	 assign current_state = state;
+	assign current_state = state;
 
-	 parameter s_idle=4'd0;   
+	parameter s_idle=4'd0;   
     parameter s_calling=4'd1;
     parameter s_connected=4'd2;
     parameter s_noAnswer=4'd3;
@@ -34,7 +36,7 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
     parameter s_connectedToVoice=4'd5;
     parameter s_ringing=4'd6;	
 	
-	 reg [7:0] phone;
+	reg [7:0] phone;
 	
 	reg spkBuffer_wr_en=0;
 	wire [15:0] spkBufferIn;
@@ -171,7 +173,7 @@ module session (input clk, input reset, input [7:0] phoneNum, input [4:0] userIn
 				
 			end
 
-			s_noAnswer: begin 	
+			s_noAnswer: begin 	 //UI needs this state change
 				state<=s_idle;
 			end
 			
