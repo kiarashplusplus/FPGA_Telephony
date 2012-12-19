@@ -1,0 +1,62 @@
+##############################################################
+#
+# Xilinx Core Generator version K.39
+# Date: Wed Nov 21 11:56:18 2012
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = False
+SET asysymbol = True
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = False
+SET designentry = VHDL
+SET device = xc2v6000
+SET devicefamily = virtex2
+SET flowvendor = Foundation_iSE
+SET formalverification = False
+SET foundationsym = False
+SET implementationfiletype = Ngc
+SET package = bf957
+SET removerpms = False
+SET simulationfiles = Behavioral
+SET speedgrade = -4
+SET verilogsim = True
+SET vhdlsim = True
+# END Project Options
+# BEGIN Select
+SELECT Decode_8b/10b family Xilinx,_Inc. 7.1
+# END Select
+# BEGIN Parameters
+CSET b_clock_enable=true
+CSET b_code_violation_out=true
+CSET b_disparity_violation_out=true
+CSET b_new_data=true
+CSET b_running_disparity_in=false
+CSET b_running_disparity_out=false
+CSET b_symbol_disparity_out=false
+CSET b_synchronous_reset=true
+CSET b_synchronous_reset_value=B_D_0_0_pos
+CSET clock_enable=true
+CSET code_violation_out=true
+CSET component_name=PHY_Decoder
+CSET disparity_violation_out=true
+CSET implementation=Block_RAM_Based
+CSET new_data=true
+CSET running_disparity_in=false
+CSET running_disparity_out=false
+CSET secondary_decoder=true
+CSET symbol_disparity_out=false
+CSET synchronous_reset=true
+CSET synchronous_reset_value=D_0_0_pos
+# END Parameters
+GENERATE
+# CRC: cb4a80e1
+

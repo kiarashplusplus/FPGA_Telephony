@@ -1,0 +1,60 @@
+##############################################################
+#
+# Xilinx Core Generator version K.39
+# Date: Sat Dec  8 05:02:20 2012
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = False
+SET asysymbol = True
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = False
+SET designentry = VHDL
+SET device = xc2v6000
+SET devicefamily = virtex2
+SET flowvendor = Foundation_iSE
+SET formalverification = False
+SET foundationsym = False
+SET implementationfiletype = Ngc
+SET package = bf957
+SET removerpms = False
+SET simulationfiles = Behavioral
+SET speedgrade = -4
+SET verilogsim = True
+SET vhdlsim = True
+# END Project Options
+# BEGIN Select
+SELECT Linear_Feedback_Shift_Register family Xilinx,_Inc. 3.0
+# END Select
+# BEGIN Parameters
+CSET asynchronous_reset=true
+CSET asynchronous_reset_value=FFFFFFFFFFFFFFFF
+CSET clock_enable=false
+CSET component_name=LSFR_64
+CSET create_rpm=false
+CSET data_valid_output=false
+CSET feedback_gate_type=X_OR
+CSET implementation=Registers
+CSET lfsr_size=64
+CSET lfsr_type=Fibonacci
+CSET load_type=Load_Type_None
+CSET new_seed_output=false
+CSET output_type=Output_Type_Parallel
+CSET synchronous_reset=false
+CSET synchronous_reset_value=FFFFFFFFFFFFFFFF
+CSET tap_locations=1B
+CSET terminal_count_output=false
+CSET use_counter_for_max_length_logic=false
+CSET use_maximum_length_logic=false
+# END Parameters
+GENERATE
+# CRC:  d70b156
+
